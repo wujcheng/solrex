@@ -13,18 +13,16 @@
  *         Author:  Wenbo Yang, solrex@gmail.com
  *        Company:  the State Key Laboratory of Information Security
  *                  CAS, Beijing.
- *
  **********************************************************
  */
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "include/des.h"
+//#include "include/des.h"
 
 /* inital, final and identical permutations*/
 unsigned char iperm[16][16][8];
-unsigned char fperm[16][16][8]; 
+unsigned char fperm[16][16][8];
 unsigned char Iperm[16][16][8];
 
 unsigned char s[4][4096]; 		/* S1 thru S8 precomputed*/
@@ -81,11 +79,11 @@ static const unsigned char pc1[56]		/* permuted choice table (key)  */
 
 static const unsigned char rpc1[64]		/* reverse permuted choice table(DC)*/
 = {  8, 16, 24, 56, 52, 44, 36,  0,
-	 7, 15, 23, 55, 51, 43, 35,  0, 
-	 6, 14, 22, 54, 50, 42, 34,  0, 
-	 5, 13, 21, 53, 49, 41, 33,  0, 
-	 4, 12, 20, 28, 48, 40, 32,  0, 
-	 3, 11, 19, 27, 47, 39, 31,  0, 
+	 7, 15, 23, 55, 51, 43, 35,  0,
+	 6, 14, 22, 54, 50, 42, 34,  0,
+	 5, 13, 21, 53, 49, 41, 33,  0,
+	 4, 12, 20, 28, 48, 40, 32,  0,
+	 3, 11, 19, 27, 47, 39, 31,  0,
 	 2, 10, 18, 26, 46, 38, 30,  0,
 	 1, 9,  17, 25, 45, 37, 29,  0 };
 
@@ -203,7 +201,7 @@ void permute(unsigned char *inblock,
 
 /* 32-bit permutation at end of the f crypto function*/
 void perm32(unsigned char *inblock, unsigned char *outblock,
-		    unsigned char perm[4][256][4])		
+		    unsigned char perm[4][256][4])
 {
 	register int j;
 	register char *ib, *ob, *q;
@@ -223,7 +221,7 @@ void perm32(unsigned char *inblock, unsigned char *outblock,
 }
 
 /* 32 to 48 bits with E oper, right is 32, bigright 48	*/
-void expand(unsigned char *right, unsigned char *bigright)			
+void expand(unsigned char *right, unsigned char *bigright)
 {
 	register char *bb, *r, r0, r1, r2, r3;
 
@@ -252,8 +250,8 @@ void expand(unsigned char *right, unsigned char *bigright)
 }
 
 /* contract f from 48 to 32 bits, using 12-bit pieces into bytes */
-void contract(unsigned char *in48, unsigned char *out32)	
-{	
+void contract(unsigned char *in48, unsigned char *out32)
+{
 	register char *c;
 	register char *i;
 	register int i0, i1, i2, i3, i4, i5;
@@ -269,7 +267,7 @@ void contract(unsigned char *in48, unsigned char *out32)
 
 /* critical cryptographic trans, num: index number of this iter,
  * right, fret: 32 bits each */
-void f(unsigned char *right,int num, unsigned char *fret)			
+void f(unsigned char *right,int num, unsigned char *fret)
 {
 	register char *kb, *rb, *bb;	/* ptr to key selection &c	*/
 	char bigright[6];		/* right expanded to 48 bits	*/
@@ -292,7 +290,7 @@ void f(unsigned char *right,int num, unsigned char *fret)
 
 /* 1 churning operation, num: i.e. the num-th one,
  * inblock, outblock: 64 bits each	*/
-void iter(int num, unsigned char *inblock, unsigned char *outblock)	
+void iter(int num, unsigned char *inblock, unsigned char *outblock)
 {
 	char fret[4];			/* return from f(R[i-1],key)	*/
 	register char *ib, *ob, *fb;
@@ -311,7 +309,7 @@ void iter(int num, unsigned char *inblock, unsigned char *outblock)
 }
 
 /* decrypt 64-bit inblock	*/
-void dedes(unsigned char *inblock, unsigned char *outblock)			
+void dedes(unsigned char *inblock, unsigned char *outblock)
 {
 	char iters[17][8];		/* workspace for each iteration */
 	char swap[8];			/* place to interchange L and R */
@@ -381,7 +379,7 @@ void kinit(unsigned char *key)				/* initialize key schedule array*/
 }
 
 /* 1 compression value for sinit*/
-int getcomp(int k,int v)				
+int getcomp(int k,int v)
 {
 	register int i,j;		/* correspond to i and j in FIPS*/
 
@@ -391,7 +389,7 @@ int getcomp(int k,int v)
 }
 
 /* initialize s1-s8 arrays		*/
-void sinit()				 
+void sinit()
 {
 	register int i,j;
 
@@ -404,7 +402,7 @@ void sinit()
 
 /* initialize 32-bit permutation*/
 void p32init(unsigned char perm[4][256][4], const unsigned char p[32])
-{	
+{
 	register int l, j, k;
 	int i,m;
 
@@ -426,7 +424,7 @@ void p32init(unsigned char perm[4][256][4], const unsigned char p[32])
 }
 
 /* initialize all des arrays	*/
-void desinit(unsigned char *key)				
+void desinit(unsigned char *key)
 {
 	perminit(Iperm,I);		/* initial permutation		*/
 	perminit(iperm,ip);		/* initial permutation		*/
@@ -458,10 +456,10 @@ void endes(unsigned char *inblock, unsigned char *outblock,
 	s = swap;
 	if(last_swap) {
 		/* interchange left and right. */
-		for(i=4;i<8;i++) *s++ = iters[round][i];	
-		for(i=0;i<4;i++) *s++ = iters[round][i];	
+		for(i=4;i<8;i++) *s++ = iters[round][i];
+		for(i=0;i<4;i++) *s++ = iters[round][i];
 	} else {
-		for(i=0;i<8;i++) *s++ = iters[round][i];	
+		for(i=0;i<8;i++) *s++ = iters[round][i];
 	}
 
 	if(have_ip)
@@ -500,7 +498,7 @@ void print_des(unsigned char *in, unsigned char *out, int binary)
 	printf("\tC: "); print_array(out, 8, binary);
 }
 
-void test_j(unsigned char sindiff[6], 
+void test_j(unsigned char sindiff[6],
 			unsigned char soutdiff[4],
 			unsigned char sin[6])
 {
@@ -512,7 +510,7 @@ void test_j(unsigned char sindiff[6],
 		inS[4*i] = (sin[3*i]>>2) & 0x3f;
 		inS[4*i+1] = ((sin[3*i]<<4) | (sin[3*i+1]>>4)) & 0x3f;
 		inS[4*i+2] = ((sin[3*i+1]<<2) | (sin[3*i+2]>>6)) & 0x3f;
-		inS[4*i+3] = sin[3*i+2] & 0x3f; 
+		inS[4*i+3] = sin[3*i+2] & 0x3f;
 	}
 	for(i=0;i<64;i++) {
 		for(j=0;j<6;j++)
@@ -562,7 +560,7 @@ void get_key(unsigned char sub_key[6], unsigned char key[8],
 	for(j=0; j<56; j++)		/* rotate pc1 the right amount  */
 		pcr[j] = pc1m[(i=j-4) >= (j<28 ? 0 : 28) ? i : 28+i];
 	for(i=0;i<8;i++) key[i] = 0;
-	for(i=0;i<64;i++) 
+	for(i=0;i<64;i++)
 		if(rpc1[i]!=0)
 			if(pcr[rpc1[i]-1])
 				key[i>>3] |= bytebit[i&0x7];
@@ -616,7 +614,7 @@ int main(int argc, char *argv[])
 		printf("Pair %d encryption result:\n", i);
 		print_des(in[i],out[i], 0);
 	}
-	
+
 	/* ---------------- DC start. ------------------*/
 	printf("\nDifferencial Cryptanalysis start...\n");
 	for(i=0;i<6;i++){ /* Got 3rd round S box input. */
@@ -626,7 +624,7 @@ int main(int argc, char *argv[])
 	}
 	printf("\n");
 	for (i=0;i<8;i++) 		/* Initial J matrix. */
-		for(j=0;j<64;j++) 
+		for(j=0;j<64;j++)
 			J[i][j] = 0;
 	for(i=0;i<3;i++) {
 		for(j=0;j<6;j++)
@@ -639,7 +637,7 @@ int main(int argc, char *argv[])
 			T[j] = inDiff[i][j] ^ outDiff[i][j+4];
 		}
 		perm32(T, S3outDiff[i], rp32);
-		printf("The 3rd-round S box input diff of pair %d and %d:\n", 
+		printf("The 3rd-round S box input diff of pair %d and %d:\n",
 				2*i, 2*i+1);
 		print_array(S3inDiff[i], 6, 1);
 		printf("The 3rd round S box output diff of pair %d and %d:\n",
