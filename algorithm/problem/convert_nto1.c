@@ -8,7 +8,7 @@
  * Algorithm I: (Bit Operation)
  *   WHILE n != 1
  *     IF n = 3    n := n - 1
- *     IF n mod 2 = 0    n := n/2
+ *     ELSE IF n mod 2 = 0    n := n/2
  *     ELSE IF n mod 4 = 1    n := n - 1
  *     ELSE IF n mod 4 = 3    n := n + 1
  *
