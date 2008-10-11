@@ -55,6 +55,13 @@
  *   size 2*log(n) to store the intermadiate result, the computational 
  *   complexity of this algorithm can be reduced to O(log(n)).
  *
+ * Compile and Run:
+ *   $ gcc convert_nto1.c
+ *   $ ./a.out
+ *   91->92->46->23->24->12->6->3->2->1
+ *   For n=91, algorithm I get 1 in 9 steps.
+ *   For n=91, algorithm II get 1 in 9 steps.
+ *
  * ===========================================================================
  */
 
@@ -84,9 +91,11 @@ int algo2(unsigned int n)
   return (a < b ? a : b);
 }
 
-int main()
+int main(int argc, char **argv)
 {
-  int t = 91, count;
+  int t, count;
+  if (argc > 1) t = atoi(argv[1]);
+  else t = 91;
   count = algo1(t);
   printf("For n=%d, algorithm I get 1 in %d steps.\n", t, count);
   count = algo2(t);
