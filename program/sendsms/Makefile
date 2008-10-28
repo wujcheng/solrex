@@ -1,21 +1,23 @@
-
 CC = gcc
 CPP = g++
-CFLAGS = -Iinclude -g
-LFLAGS = -lcurl -pthread
+CFLAGS = -Iinclude -O2
+LFLAGS = lib/libfetion_32.a -lcurl -pthread 
 
 BIN = sendsms
-SRC = $(BIN).cpp
-OBJ = $(BIN).o
+SRCS = $(BIN).cpp
+OBJS = $(BIN).o 
 
-$(BIN): $(OBJ)
-	$(CPP) $^ lib/libfetion_32.a $(LFLAGS) -o $@ 
+$(BIN): $(OBJS)
+	$(CPP) $^ $(LFLAGS) -o $@ 
 
-$(OBJ) : %.o : %.cpp
+$(OBJS) : %.o : %.cpp
 	$(CPP) $(CFLAGS) -c $<
 
+install: $(BIN)
+	install $< /usr/bin
+
 clean:
-	rm -rf *.o
+	@rm -rf *.o
 
 distclean: clean
-	rm -f sendsms
+	@rm -f $(BIN)

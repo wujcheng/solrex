@@ -40,7 +40,7 @@ parse_html()
     MES=$MES`sed -n -e '2p' $city.txt | tr -d '\r\n'`,
     MES=$MES`sed -n -e '4p' $city.txt | tr -d '\r\n'`到
     MES=$MES`sed -n -e '3p' $city.txt | tr -d '\r\n'`度,
-    MES=$MES`sed -n -e '5p' $city.txt | tr -d '\n'`
+    MES=$MES`sed -n -e '5p' $city.txt | tr -d '\r\n'`'\n'
     MES=$MES`sed -n -e '6p' $city.txt | tr -d '\r\n'`,
     MES=$MES`sed -n -e '7p' $city.txt | tr -d '\r\n'`,
     MES=$MES`sed -n -e '9p' $city.txt | tr -d '\r\n'`到
@@ -54,16 +54,23 @@ parse_html()
 send_forcast()
 {
   for city in ${MY_CITIES[*]}; do
-    sendsms -f 13xxxxxxxxx -p ******** `cat $city.txt`
-    sendsms -f 13xxxxxxxxx -p ******** -t yyyyyyyyy `cat $city.txt`
+    sendsms -f 13xxxxxxxxx -p ******** "`cat $city.txt`"
   done
   i=0
   for user in ${SMS_USER[*]}; do
-    sendsms -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} `cat ${SMS_CITY[$i]}.txt`
+    sendsms -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} "`cat ${SMS_CITY[$i]}.txt`"
     i=$(($i+1))
+  done
+}
+
+clear_html()
+{
+  for city in ${CITY_LIST[*]}; do
+    rm -f $city.txt
   done
 }
 
 get_html
 parse_html
 send_forcast
+clear_html
