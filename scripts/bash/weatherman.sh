@@ -12,6 +12,7 @@ get_html()
   i=0
   for city in ${CITY_LIST[*]}; do
     url=$URLBASE${URL_LIST[i]}.shtml
+    #wget -e "http_proxy=http://user:passwd@192.168.0.1:8080" -O $city.txt $url
     wget -O $city.txt $url
     i=$(($i+1))
   done
@@ -36,12 +37,12 @@ parse_html()
     sed -i -e 's/星期/周/g;'  $city.txt
     # Format file content to SMS.
     MES="${city}天气\n"
-    MES=$MES`sed -n -e '1p' $city.txt | tr -d '\r\n'`,
+    MES=$MES`sed -n -e '1p' $city.txt | tr -d '\r\n'`:
     MES=$MES`sed -n -e '2p' $city.txt | tr -d '\r\n'`,
     MES=$MES`sed -n -e '4p' $city.txt | tr -d '\r\n'`到
     MES=$MES`sed -n -e '3p' $city.txt | tr -d '\r\n'`度,
     MES=$MES`sed -n -e '5p' $city.txt | tr -d '\r\n'`'\n'
-    MES=$MES`sed -n -e '6p' $city.txt | tr -d '\r\n'`,
+    MES=$MES`sed -n -e '6p' $city.txt | tr -d '\r\n'`:
     MES=$MES`sed -n -e '7p' $city.txt | tr -d '\r\n'`,
     MES=$MES`sed -n -e '9p' $city.txt | tr -d '\r\n'`到
     MES=$MES`sed -n -e '8p' $city.txt | tr -d '\r\n'`度,
@@ -55,10 +56,16 @@ send_forcast()
 {
   for city in ${MY_CITIES[*]}; do
     sendsms -f 13xxxxxxxxx -p ******** "`cat $city.txt`"
+    if [ $? -eq 0 ]; then
+      echo "Sent $city to me."
+    fi
   done
   i=0
   for user in ${SMS_USER[*]}; do
     sendsms -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} "`cat ${SMS_CITY[$i]}.txt`"
+    if [ $? -eq 0 ]; then
+      echo "Sent ${SMS_CITY[$i]} to ${SMS_USER[$i]}."
+    fi
     i=$(($i+1))
   done
 }

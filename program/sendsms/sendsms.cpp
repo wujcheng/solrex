@@ -69,6 +69,8 @@ static struct argp p_argp = {options, parse_opt, args_doc, doc};
 int main(int argc, char** argv)
 {
   ARGUMENTS args;
+  PROXY_ITEM proxy;
+  char *proxyenv = NULL, *p;
   int ret;
   long int uid;
 
@@ -87,6 +89,33 @@ int main(int argc, char** argv)
     fprintf(stderr, "Failed to init.\n");
     return 1;
   }
+
+  /* Read environment variable "http_proxy". */
+  if (proxyenv = getenv("http_proxy")) {
+    proxyenv = strdup(proxyenv);
+    if (strncmp(proxyenv, "http://", 7) == 0) {
+      if (p = strchr(proxyenv, '@')) {
+        *p = '\0';
+        proxy.host = p + 1;
+        proxy.name = proxyenv + 7;
+        if (p = strchr(proxy.name, ':')) {
+          *p = '\0';
+          proxy.pwd = p + 1;
+        }
+      } else {
+        proxy.host = proxyenv + 7;
+        proxy.name = NULL;
+        proxy.pwd = NULL;
+      }
+      if (p = strchr(proxy.host, ':')) {
+        *p = '\0';
+        proxy.port = p + 1;
+      }
+    }
+    fx_set_proxy(&proxy);
+  }
+
+  fx_set_login_status(FX_STATUS_OFFLINE);   /* Set status offline. */
   ret = fs_login(args.from, args.passwd);   /* Login with id and passwd. */
   if (!ret) {
     fprintf(stderr, "Failed to login.\n");
