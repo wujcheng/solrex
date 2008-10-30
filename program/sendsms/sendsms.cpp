@@ -4,6 +4,8 @@
 #include <argp.h>
 #include "include/libfetion.h"
 
+#define MAX_RETRY 2
+
 /* Version, contact, user defined doc, argument doc strings for argp.h. */
 const char *argp_program_version = "sendsms 0.1";
 const char *argp_program_bug_address = "<solrex@gmail.com>";
@@ -71,7 +73,7 @@ int main(int argc, char** argv)
   ARGUMENTS args;
   PROXY_ITEM proxy;
   char *proxyenv = NULL, *p;
-  int ret;
+  int ret, i;
   long int uid;
 
   /* Default option values. */
@@ -111,35 +113,45 @@ int main(int argc, char** argv)
         *p = '\0';
         proxy.port = p + 1;
       }
+      proxy.type = PROXY_HTTP;
+      /* Set http proxy. */
+      fx_set_proxy(&proxy);
     }
-    fx_set_proxy(&proxy);
   }
 
   fx_set_login_status(FX_STATUS_OFFLINE);   /* Set status offline. */
-  ret = fs_login(args.from, args.passwd);   /* Login with id and passwd. */
+  for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+    ret = fs_login(args.from, args.passwd);
+  }
   if (!ret) {
     fprintf(stderr, "Failed to login.\n");
-    return ret;
+    return 2;
   }
   /* If "-t" option is ignored, send the MESSAGE to the SENDER-self. */
   if (args.to == NULL) {
-    ret = fs_send_sms_to_self(args.message);
+    for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+      ret = fs_send_sms_to_self(args.message);
+    }
   } else {
     /* If "-t" option is a mobile phone number, use API: 
      * |fs_send_sms_by_mobile_no|. */
     /* FIXME!/Wenbo-20081028: It doesn't work with libfetion 0.81. Maybe a
      * bug exsits, so we can only use fetion num as the value of RECEIVER. */
     if (strncmp(args.to, "13", 2) == 0) {
-      ret = fs_send_sms_by_mobile_no(args.to, args.message);
+      for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+        ret = fs_send_sms_by_mobile_no(args.to, args.message);
+      }
     } else {
       /* If "-t" option is a fetion number, use API: |fs_send_sms|. */
       uid = strtol(args.to, NULL, 10);
-      ret = fs_send_sms(uid, args.message);
+      for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+        ret = fs_send_sms(uid, args.message);
+      }
     }
   }
   if (!ret) {
     fprintf(stderr, "Failed to send.\n");
-    return ret;
+    return 3; 
   }
   /* Logout, disconnect and release resources. */
   /* FIXME!/Wenbo-20081028: |fx_loginout| doesn't work in this case. */
