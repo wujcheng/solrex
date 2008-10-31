@@ -180,9 +180,13 @@ int main(int argc, char** argv)
             args.from, args.to, i);
   }
   /* Logout, disconnect and release resources. */
-  /* FIXME!/Wenbo-20081028: |fx_loginout| doesn't work in this case. */
-  //fx_loginout();
+  fx_loginout();
   fx_close_network();
-  fx_terminate();
+  /* NOTE!/Wenbo-20081031: The fetion doc is wrong. terminate after logout
+   * will cause a CAN-NOT TERMINATE error. */
+  //fx_terminate();
+  if (args.verbose == TRUE) {
+    fprintf(stderr, "PASS: terminate().\n");
+  }
   return 0;
 }
