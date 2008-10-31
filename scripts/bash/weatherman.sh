@@ -55,17 +55,13 @@ parse_html()
 send_forcast()
 {
   for city in ${MY_CITIES[*]}; do
-    sendsms -f 13xxxxxxxxx -p ******** "`cat $city.txt`"
-    if [ $? -eq 0 ]; then
-      echo "Sent $city to me."
-    fi
+    sendsms -v -f 13xxxxxxxxx -p ******** "`cat $city.txt`"
+    sleep 1
   done
   i=0
   for user in ${SMS_USER[*]}; do
-    sendsms -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} "`cat ${SMS_CITY[$i]}.txt`"
-    if [ $? -eq 0 ]; then
-      echo "Sent ${SMS_CITY[$i]} to ${SMS_USER[$i]}."
-    fi
+    sendsms -v -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} "`cat ${SMS_CITY[$i]}.txt`"
+    sleep 1
     i=$(($i+1))
   done
 }

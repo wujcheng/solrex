@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <argp.h>
+#include <unistd.h>
 #include "include/libfetion.h"
 
-#define MAX_RETRY 2
+#define MAX_RETRY 5
 
 /* Version, contact, user defined doc, argument doc strings for argp.h. */
 const char *argp_program_version = "sendsms 0.1";
@@ -14,9 +15,10 @@ static char args_doc[] = "MESSAGE";
 
 /* Program options we understand. */
 static struct argp_option options[] = {
-  {"from",   'f', "SENDER",    0, "The sender's fetion/phone number." },
-  {"passwd", 'p', "PASSWD",    0, "The sender's password." },
-  {"to",     't', "RECEIVER",  0, "The receiver's fetion number." },
+  {"from",   'f',   "SENDER",    0, "The sender's fetion/phone number." },
+  {"passwd", 'p',   "PASSWD",    0, "The sender's password." },
+  {"to",     't', "RECEIVER",    0, "The receiver's fetion number." },
+  {"verbose",'v',          0,    0, "Print verbose information." },
   { 0 }
 };
  
@@ -26,6 +28,7 @@ typedef struct _args {
   char *passwd;     /* Sender's password string pointer. */
   char *to;         /* Receiver's phone/fetion number string pointer. */
   char *message;    /* SMS message body pointer. */
+  BOOL  verbose;
 } ARGUMENTS;
 
 /* Parse a single option. */
@@ -45,6 +48,9 @@ parse_opt (int key, char *arg, struct argp_state *state)
     break;
     case 't':
       p_args->to = arg;
+    break;
+    case 'v':
+      p_args->verbose = TRUE;
     break;
     case ARGP_KEY_ARG:   /* We have only one(none-option) argument: MESSAGE. */
       if (state->arg_num > 1)   
@@ -82,14 +88,17 @@ int main(int argc, char** argv)
   args.passwd = "*********";
 #endif
   args.to = NULL;
+  args.verbose = FALSE;
 
   /* Parse our arguments; every option seen by |parse_opt| will be reflected
    * in |args|. */
   argp_parse (&p_argp, argc, argv, 0, 0, &args);
 
   if (!fx_init()) {                         /* Init libfetion. */
-    fprintf(stderr, "Failed to init.\n");
+    fprintf(stderr, "FAIL: init().\n");
     return 1;
+  } else if (args.verbose == TRUE) {
+    fprintf(stderr, "PASS: init().\n");
   }
 
   /* Read environment variable "http_proxy". */
@@ -120,17 +129,25 @@ int main(int argc, char** argv)
   }
 
   fx_set_login_status(FX_STATUS_OFFLINE);   /* Set status offline. */
-  for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+  for (i=0; i<=MAX_RETRY; i++) {
     ret = fs_login(args.from, args.passwd);
+    if (ret) break;
+    else sleep(1);
   }
+  i++;
   if (!ret) {
-    fprintf(stderr, "Failed to login.\n");
+    fprintf(stderr, "FAIL: %s login() after %d tries.\n", args.from, i);
     return 2;
+  } else if (args.verbose == TRUE) {
+    fprintf(stderr, "PASS: %s login() after %d tries.\n", args.from, i);
   }
   /* If "-t" option is ignored, send the MESSAGE to the SENDER-self. */
   if (args.to == NULL) {
-    for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+    args.to = args.from;
+    for (i=0; i<=MAX_RETRY; i++) {
       ret = fs_send_sms_to_self(args.message);
+      if (ret) break;
+      else sleep(1);
     }
   } else {
     /* If "-t" option is a mobile phone number, use API: 
@@ -138,20 +155,29 @@ int main(int argc, char** argv)
     /* FIXME!/Wenbo-20081028: It doesn't work with libfetion 0.81. Maybe a
      * bug exsits, so we can only use fetion num as the value of RECEIVER. */
     if (strncmp(args.to, "13", 2) == 0) {
-      for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+      for (i=0; i<=MAX_RETRY; i++) {
         ret = fs_send_sms_by_mobile_no(args.to, args.message);
+        if (ret) break;
+        else sleep(1);
       }
     } else {
       /* If "-t" option is a fetion number, use API: |fs_send_sms|. */
       uid = strtol(args.to, NULL, 10);
-      for (i=0, ret=0; (i<=MAX_RETRY) && (ret==0); i++) {
+      for (i=0; i<=MAX_RETRY; i++) {
         ret = fs_send_sms(uid, args.message);
+        if (ret) break;
+        else sleep(1);
       }
     }
   }
+  i++;
   if (!ret) {
-    fprintf(stderr, "Failed to send.\n");
+    fprintf(stderr, "FAIL: send_sms() from %s to %s after %d tries.\n",
+            args.from, args.to, i);
     return 3; 
+  } else if (args.verbose == TRUE) {
+    fprintf(stderr, "PASS: send_sms() from %s to %s after %d tries.\n",
+            args.from, args.to, i);
   }
   /* Logout, disconnect and release resources. */
   /* FIXME!/Wenbo-20081028: |fx_loginout| doesn't work in this case. */
