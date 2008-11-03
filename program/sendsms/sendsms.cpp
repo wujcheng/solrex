@@ -5,7 +5,8 @@
 #include <unistd.h>
 #include "include/libfetion.h"
 
-#define MAX_RETRY 5
+#define MAX_LOGIN 5
+#define MAX_SEND  20
 
 /* Version, contact, user defined doc, argument doc strings for argp.h. */
 const char *argp_program_version = "sendsms 0.1";
@@ -94,6 +95,24 @@ int main(int argc, char** argv)
    * in |args|. */
   argp_parse (&p_argp, argc, argv, 0, 0, &args);
 
+  ret = strlen(args.message);
+  if ((ret<1) || (ret>160)) {
+    fprintf(stderr, "FAIL: Argument MESSAGE is too long or too short.\n");
+    return 1;
+  }
+  ret = strlen(args.from);
+  if ((ret!=9) && (ret!=11)) {
+    fprintf(stderr, "FAIL: Option value SENDER has wrong bits.\n");
+    return 1;
+  }
+  if (args.to != NULL) {
+    ret = strlen(args.to);
+    if ((ret!=9) && (ret!=11)) {
+      fprintf(stderr, "FAIL: Option value RECEIVER has wrong bits.\n");
+      return 1;
+    }
+  }
+
   if (!fx_init()) {                         /* Init libfetion. */
     fprintf(stderr, "FAIL: init().\n");
     return 1;
@@ -129,12 +148,12 @@ int main(int argc, char** argv)
   }
 
   fx_set_login_status(FX_STATUS_OFFLINE);   /* Set status offline. */
-  for (i=0; i<=MAX_RETRY; i++) {
+  for (i=1; i<=MAX_LOGIN; i++) {
     ret = fs_login(args.from, args.passwd);
     if (ret) break;
     else sleep(1);
   }
-  i++;
+  i>MAX_LOGIN ? i-- : i ;
   if (!ret) {
     fprintf(stderr, "FAIL: %s login() after %d tries.\n", args.from, i);
     return 2;
@@ -144,7 +163,7 @@ int main(int argc, char** argv)
   /* If "-t" option is ignored, send the MESSAGE to the SENDER-self. */
   if (args.to == NULL) {
     args.to = args.from;
-    for (i=0; i<=MAX_RETRY; i++) {
+    for (i=1; i<=MAX_SEND; i++) {
       ret = fs_send_sms_to_self(args.message);
       if (ret) break;
       else sleep(1);
@@ -155,7 +174,7 @@ int main(int argc, char** argv)
     /* FIXME!/Wenbo-20081028: It doesn't work with libfetion 0.81. Maybe a
      * bug exsits, so we can only use fetion num as the value of RECEIVER. */
     if (strncmp(args.to, "13", 2) == 0) {
-      for (i=0; i<=MAX_RETRY; i++) {
+      for (i=1; i<=MAX_SEND; i++) {
         ret = fs_send_sms_by_mobile_no(args.to, args.message);
         if (ret) break;
         else sleep(1);
@@ -163,14 +182,14 @@ int main(int argc, char** argv)
     } else {
       /* If "-t" option is a fetion number, use API: |fs_send_sms|. */
       uid = strtol(args.to, NULL, 10);
-      for (i=0; i<=MAX_RETRY; i++) {
+      for (i=1; i<=MAX_SEND; i++) {
         ret = fs_send_sms(uid, args.message);
         if (ret) break;
         else sleep(1);
       }
     }
   }
-  i++;
+  i>MAX_SEND ? i-- : i ;
   if (!ret) {
     fprintf(stderr, "FAIL: send_sms() from %s to %s after %d tries.\n",
             args.from, args.to, i);
