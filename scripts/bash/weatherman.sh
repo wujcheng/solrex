@@ -21,11 +21,12 @@ get_html()
 parse_html()
 {
   for city in ${CITY_LIST[*]}; do
+    grep -q "dd_0" $city.txt
     # Select useful part.
-    if [ $(date +%H) -lt 18 ]; then
-      sed -i -e '1,/c_1_1/d;/c_1_2/,1000d;' $city.txt
+    if [ $? -ne 0 ]; then
+      sed -i -e '1,/c_1_1/d;/c_1_2/,$d;' $city.txt
     else
-      sed -i -e '1,/dd_0/d;/surf/,1000d;' $city.txt
+      sed -i -e '1,/dd_0/d;/surf/,$d;' $city.txt
     fi
     # Remove HTML tags.
     sed -i -e 's/<[^>]*>//g;/<!--/d' $city.txt
