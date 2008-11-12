@@ -27,7 +27,7 @@
  *   say is that signal `r' will be 1 if two or three of the inputs are 1.
  *   Meanwhile, signal `s' will be 1 if only one input is 1 or if all three
  *   inputs are 1. The end result is that the two-bit word formed from `r'
- *   and `s' tells us how many 1's we have:
+ *   and `s' tells us how many 1's we have[1]:
  *   | r s | Means  |    | x y z | r s |    | x y z | r s |
  *   |++++++++++++++|    |+++++++++++++|    |+++++++++++++|
  *   | 0 0 | 0 Ones |    | 0 0 0 | 0 0 |    | 1 0 0 | 0 1 |
@@ -36,27 +36,28 @@
  *   | 1 1 | 3 Ones |    | 0 1 1 | 1 0 |    | 1 1 1 | 1 1 |
  *
  *   Thus now that we have the signals r and s (and their inverse
- *   counterparts R and S), it's easy(?) to construct any Boolean function of
+ *   counterparts R and S), it's easy to construct any Boolean function of
  *   x, y, and z, using only AND and OR gates:
  *     X = (R & S) | (R & s & (y | z)) | (r & S & (y & z))
  *   Proof:
- *    1> (x, y, z) are all 0s, (R & S) = ~(r | s) = 1, obviously X=Y=Z=1;
- *    2> (x, y, z) has at least one 1s, R & S = 0, will be ignored, hence we
+ *    1> x, y, z are all 0s, (R & S) = ~(r | s) = 1, obviously X=Y=Z=1, X = ~x;
+ *    2> (x, y, z) has at least one 1, R & S = 0, will be ignored, hence we
  *       have:
  *         X = (R & s & (y | z)) | (r & S & (y & z))
- *    2.1> (x, y, z) has more than one 1s, R = ~r = 0, (R & s & (y | z)) = 0,
- *         will be ignored, hence we have:
+ *    2.1> (x, y, z) has two or three 1s, R = ~r = 0, (R & s & (y | z)) = 0,
+ *         will be ignored, then we get:
  *           X = S & (y & z)
- *    2.1.1> (x, y, z) has three 1s, S = ~s = 0, obviously X=Y=Z=0;
- *    2.1.2> (x, y, z) has two 1s, S = ~s = 1, will be ignored, we have:
+ *    2.1.1> (x, y, z) has three 1s, S = ~s = 0, obviously X=Y=Z=0, X = ~x;
+ *    2.1.2> (x, y, z) has two 1s, S = ~s = 1, will be ignored, hence we have:
  *             X = y & z
- *    2.1.2.1> (y, z) has one 1, x = 1, X = y & z = 1 & 0 = 0
- *    2.1.2.2> (y, z) has two 1s, x = 0, X = y & z = 1 & 1 = 1
+ *    2.1.2.1> (y, z) has one 1, x = 1, X = y & z = 1 & 0 = 0, X = ~x;
+ *    2.1.2.2> (y, z) has two 1s, x = 0, X = y & z = 1 & 1 = 1, X = ~x;
  *    2.2> (x, y, z) has one 1, r = 0, (r & S & (y & z)) = 0, will be ignored,
  *         we have:
  *           X = y | z
- *    2.2.1> (y, z) has one 1, x = 0, X = y | z = 1 | 0 = 1
- *    2.2.2> (y, z) has no 1s, x = 1, X = y | z = 0 | 0 = 0
+ *    2.2.1> (y, z) has one 1, x = 0, X = y | z = 1 | 0 = 1, X = ~x;
+ *    2.2.2> (y, z) has no 1s, x = 1, X = y | z = 0 | 0 = 0, X = ~x.
+ *    In conclusion, X = ~x for all cases.
  *   QED.
  *
  * Algorithm II:
@@ -76,6 +77,8 @@
  *
  * Analysis II:
  *   Almost the same as Analysis I.
+ *
+ * [1] http://www.edadesignline.com/howto/191600992
  * ===========================================================================
  */
 
