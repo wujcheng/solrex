@@ -9,14 +9,26 @@
  *   Assume we have a signed integer number array a[n], the sum of prior k
  *   elements can be given as:
  *     s[k] = a[0] + a[1] + ... + a[k]. Then
- *     s[j]-s[i] = a[i+1] + ... + a[j], j>i, i,j belongs to {0,...,n};
+ *     s[j]-s[i] = a[i+1] + ... + a[j], j>i, i,j belongs to {0,...,n-1};
  *   Problem can be changed to find MIN(s[j] - s[i]) in s[n]. This can be done
  *   in one scan through s[n].
  *   1. I = 0; J = 1; max = 0;
- *   2. for i = 1, 2, ..., n
- *   3.   if s[i]-s[max] < s[J]-s[I]
- *   4.     Give (i, max) to (I,J).
- *   5.   max = s[i] > s[I] ? i : max;
+ *   2. for j = 1, 2, ..., n-1
+ *   3.   if s[j]-s[max] < s[J]-s[I]
+ *   4.     (I,J) := (max, j)
+ *   5.   max = s[j] > s[I] ? j : max;
+ *
+ *   Proof: 
+ *     If s[J] - s[I] == MIN(s[j] -s[i]) satisfied, we must have:
+ *     s[I] >= s[i] ie. s[I] = MAX(s[i]), for arbitrary i < J and i >= 0;
+ *     s[J] <= s[i] ie. s[J] = MIN(s[i]) for arbitrary i > I and i < n.
+ *     That is what our algorithm does.
+ *     Step 5 makes sure s[max] is the MAX(s[i]) for i<=j;
+ *     Step 4 makes sure s[I] is the MAX(s[i]) for i<=J;
+ *     Step 3 makes sure s[J] - s[I] is the minimal s[j] -s[i], also s[J]
+ *     is the MIN(s[i]) for i>I.
+ *     So we found (I, J) which makes  s[J] - s[I] minimal.
+ *     QED.
  *
  * Analysis:
  *   The most important and useful idea of this algorithm is converting a
