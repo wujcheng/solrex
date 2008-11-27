@@ -80,5 +80,7 @@ int main()
   printf("popcount_1(%d) = %d\n", i, popcount_1(i));
   printf("popcount_2(%d) = %d\n", i, popcount_2(i));
   printf("popcount_3(%d) = %d\n", i, popcount_3(i));
+  /* If compiled with other compiler than gcc, comment the line bellow. */
+  printf("GCC's  __builtin_popcount(%d) = %d\n", i,  __builtin_popcount(i));
   return 0;
 }
