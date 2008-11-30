@@ -11,15 +11,17 @@
 /* Version, contact, user defined doc, argument doc strings for argp.h. */
 const char *argp_program_version = "sendsms 0.1";
 const char *argp_program_bug_address = "<solrex@gmail.com>";
-static char doc[] = "Options:";
+static char doc[] = "Example:\n  sendsms -f SENDER -p PASSWD -t fetion1,\
+fetion2 Hello!\nOptions:";
 static char args_doc[] = "MESSAGE";
 
 /* Program options we understand. */
 static struct argp_option options[] = {
-  {"from",   'f',   "SENDER",    0, "The sender's fetion/phone number." },
-  {"passwd", 'p',   "PASSWD",    0, "The sender's password." },
-  {"to",     't', "RECEIVER",    0, "The receiver's fetion number." },
-  {"verbose",'v',          0,    0, "Print verbose information." },
+  {"from",   'f',   "SENDER",    0, "The sender's fetion/phone number" },
+  {"passwd", 'p',   "PASSWD",    0, "The sender's password" },
+  {"to",     't',"RECEIVERS",    0, 
+   "The receivers' fetion numbers, split by ','" },
+  {"verbose",'v',          0,    0, "Print verbose information" },
   { 0 }
 };
  
@@ -79,7 +81,7 @@ int main(int argc, char** argv)
 {
   ARGUMENTS args;
   PROXY_ITEM proxy;
-  char *proxyenv = NULL, *p;
+  char *proxyenv = NULL, *p, *q;
   int ret, i;
   long int uid;
 
@@ -107,7 +109,7 @@ int main(int argc, char** argv)
   }
   if (args.to != NULL) {
     ret = strlen(args.to);
-    if ((ret!=9) && (ret!=11)) {
+    if (ret<9) {
       fprintf(stderr, "FAIL: Option value RECEIVER has wrong bits.\n");
       return 1;
     }
@@ -173,30 +175,41 @@ int main(int argc, char** argv)
      * |fs_send_sms_by_mobile_no|. */
     /* FIXME!/Wenbo-20081028: It doesn't work with libfetion 0.81. Maybe a
      * bug exsits, so we can only use fetion num as the value of RECEIVER. */
-    if (strncmp(args.to, "13", 2) == 0) {
-      for (i=1; i<=MAX_SEND; i++) {
-        ret = fs_send_sms_by_mobile_no(args.to, args.message);
-        if (ret) break;
-        else sleep(1);
+    p = strdup(args.to);
+    q = strchr(p, ',');
+    while (p != NULL) {
+      if (q != NULL)    *q = '\0';
+      if (strncmp(p, "13", 2) == 0) {
+        for (i=1; i<=MAX_SEND; i++) {
+          ret = fs_send_sms_by_mobile_no(p, args.message);
+          if (ret) break;
+          else sleep(1);
+        }
+      } else {
+        /* If "-t" option is a fetion number, use API: |fs_send_sms|. */
+        uid = strtol(p, NULL, 10);
+        for (i=1; i<=MAX_SEND; i++) {
+          ret = fs_send_sms(uid, args.message);
+          if (ret) break;
+          else sleep(1);
+        }
       }
-    } else {
-      /* If "-t" option is a fetion number, use API: |fs_send_sms|. */
-      uid = strtol(args.to, NULL, 10);
-      for (i=1; i<=MAX_SEND; i++) {
-        ret = fs_send_sms(uid, args.message);
-        if (ret) break;
-        else sleep(1);
+      i>MAX_SEND ? i-- : i ;
+      if (!ret) {
+        fprintf(stderr, "FAIL: send_sms() from %s to %s after %d tries.\n",
+                args.from, p, i);
+        return 3; 
+      } else if (args.verbose == TRUE) {
+        fprintf(stderr, "PASS: send_sms() from %s to %s after %d tries.\n",
+                args.from, p, i);
+      }
+      if (q != NULL) {
+        p = q+1;
+        q = strchr(p, ',');
+      } else {
+        p = NULL;
       }
     }
-  }
-  i>MAX_SEND ? i-- : i ;
-  if (!ret) {
-    fprintf(stderr, "FAIL: send_sms() from %s to %s after %d tries.\n",
-            args.from, args.to, i);
-    return 3; 
-  } else if (args.verbose == TRUE) {
-    fprintf(stderr, "PASS: send_sms() from %s to %s after %d tries.\n",
-            args.from, args.to, i);
   }
   /* Logout, disconnect and release resources. */
   fx_loginout();
