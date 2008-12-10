@@ -1,0 +1,49 @@
+\documentclass{article}
+
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex]{graphicx}
+  \graphicspath{{images/}}
+\else
+  \RequirePackage[dvipdfm, CJKbookmarks, bookmarks=true, bookmarksnumbered=true%
+                unicode,%
+             colorlinks,%
+         linkcolor=blue,%
+             hyperindex,%
+       plainpages=false,%
+      pdfstartview=FitH]{hyperref}
+  \AtBeginDvi{\special{pdf:tounicode UTF8-UCS2}}
+  \usepackage[dvipdfm]{graphicx}
+  \graphicspath{{images/}}
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+\RequirePackage{CJKutf8,CJKnumb,CJKulem}
+\RequirePackage{color,verbatim,cite}
+\RequirePackage{texnames,makeidx,indentfirst}
+\RequirePackage{amsmath,amssymb,amsfonts,bm,manfnt}
+\RequirePackage{fancyhdr,titlesec,datetime}
+\RequirePackage{wasysym,fancyvrb,longtable,multirow,bigstrut}
+\usepackage[section]{placeins}
+\usepackage[left=3.2cm,right=2.54cm,top=3.3cm,bottom=2.6cm,twoside]{geometry}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\AtBeginDocument{\begin{CJK*}{UTF8}{song}\CJKtilde\CJKindent\CJKcaption{utf8}}
+\AtEndDocument{\clearpage\end{CJK*}}
+
+\setlength{\parskip}{0.75ex plus .2ex minus .5ex}
+\renewcommand{\baselinestretch}{1.2}
+
+\hypersetup {
+    pdftitle={无线传感器网络中的位置感知安全服务},
+    pdfauthor={杨文博}%,
+}
+
+\title{无线传感器网络中的位置感知安全服务}
+\author{杨文博}
+
+\begin{document}
+\maketitle
+\section{测试}
+
+\end{document}
+
