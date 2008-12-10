@@ -24,7 +24,7 @@
 \RequirePackage{texnames,makeidx,indentfirst}
 \RequirePackage{amsmath,amssymb,amsfonts,bm,manfnt}
 \RequirePackage{fancyhdr,titlesec,datetime}
-\RequirePackage{wasysym,fancyvrb,longtable,multirow,bigstrut}
+\RequirePackage{wasysym,longtable,multirow,bigstrut}
 \usepackage[section]{placeins}
 \usepackage[left=3.2cm,right=2.54cm,top=3.3cm,bottom=2.6cm]{geometry}
 \usepackage[caption=false,font=footnotesize]{subfig}
@@ -51,9 +51,7 @@
 
 \subsection{课题的研究意义和国内外研究的概况}
 
-\subsubsection{研究意义}
-
-\subsubsection{无线传感器网络及其存在的安全问题}  
+\subsubsection{无线传感器网络及其中的安全问题}  
 
 无线传感器网络(Wireless Sensor Network, WSN)在最近几年获得了全球的广泛关注。伴随着与传感器相关的通信、嵌入式和分布式计算技术的飞速发展，特别是微机电系统(Micro-Electro-Mechanical, MEMS)的长足进步，人们研制出了各种不同共用的廉价微型传感器。这些传感器可以感知、测量并收集所处的环境信息，并将这些信息通过某种方式传输给布置无线传感器网络的用户。它们可以被广泛应用于国防军事、国家安全、环境监测、火灾预警、交通管理、医疗卫生和灾难救援等许多领域，帮助人们获得大量有价值的目标环境信息。
 
@@ -63,7 +61,7 @@
 
 \begin{enumerate}
 
-\item 路由转发需要多跳。由于无线信号的覆盖范围受限，无线传感器网络中的节点间通信往往需要经过多跳转发，并且其路由转发由传感器节点完成，没有专门的路由设备。
+\item 树形路由、多跳转发。无线传感器网络需要将收集到的信息传回基站，所以一般构成以基站为根节点的树形结构；由于信号的覆盖范围受限，无线传感器节点间通信往往需要经过多跳转发，其转发由传感器节点完成，没有专门的路由设备。
 
 \item 无线传输的带宽、稳定性和安全性较差。由于底层采用无线通信，受到信道本身物理特性的限制，无线传感器网络的通信质量和稳定性往往较差；考虑到无线信号的开放性，其更容易受到信道窃听、伪装、拒绝服务等攻击，需要特别考虑一些安全需求。
 
@@ -71,7 +69,13 @@
 
 \end{enumerate}
 
-由于节点的计算能力、能量携带、存储空间以及通信带宽的限制，传统的安全措施往往难以使用在无线传感器网络上，而且无线传感器网络往往用于监测敏感信息或者部署在充满敌意的环境中，所以无线传感器网络在应用中面临很多安全问题~\cite{Xiao2006}：
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth,keepaspectratio]{wsn_sec_map}
+  \caption{\label{wsn_sec_map}无线传感器网络安全架构~\cite{Li2005}}
+\end{figure}
+
+由于受以上条件限制，很多传统的安全措施难以使用在无线传感器网络上，而且无线传感器网络往往用于监测敏感信息或者部署在充满敌意的环境中，所以无线传感器网络在应用中面临很多安全问题~\cite{Xiao2006}：
 
 \begin{enumerate}
 
@@ -103,7 +107,7 @@ a
 
 \section{已取得的与论文研究内容相关的成果} 
 
-(已发表或被接收发表的文章目录或其它相关研究成果。)
+无。
 
 \bibliographystyle{IEEEtran}
 \bibliography{wsn}
