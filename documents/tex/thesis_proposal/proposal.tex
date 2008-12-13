@@ -117,20 +117,26 @@ WSN~安全定位技术是一个比较新的研究课题，对其系统的研究�
 
 \begin{itemize}
 
-\item 密码学手段(Security through Cryptography)。密码学是保证信息安全的重要工具之一，因此也被广泛用于保护定位系统传输数据的安全中。数据包加密和数据源认证是安全定位系统中被广泛采用的密码学手段。华盛顿大学的~Loukas Lazos~和~Radha Proovendran~等人提出的~SeRLoc \cite{Lazos2005}、~ROPE \cite{Lazos2006}~和~HiRLoc \cite{Lazos2005a}~等方案中，都采用了加密和数据源认证方法来保证~beacon~消息的安全传输。其中~SeRLoc~主要依靠已知自身位置的定位者节点，利用定向天线向扇形区域广播包含其自身位置和扇区信息的~beacon~信号，其它节点通过接收到的~beacon~信号判断自己处于哪些扇区内，这些扇区相交区域的重心就是该节点的位置~\cite{Lazos2005}~；\cite{Capkun2005}
+\item 密码学手段(Security through Cryptography)。密码学是保证信息安全的重要工具之一，因此也被广泛用于保护定位系统传输数据的安全中。数据包加密和数据源认证是安全定位系统中被广泛采用的密码学手段。
+
+L. Lazos~和~R. Proovendran~等人提出的~SeRLoc \cite{Lazos2005}、~ROPE \cite{Lazos2006}~和~HiRLoc \cite{Lazos2005a}，S. \v{C}apkun~和~J.P. Hubaux~提出的~SPINE \cite{Capkun2005}~等方案，都采用了加密和数据源认证方法来保证~beacon~消息的安全传输。其中~SeRLoc~主要依靠已知自身位置的定位者节点，利用定向天线向扇形区域广播包含其自身位置和扇区信息的~beacon~信号，其它节点通过接收到的~beacon~信号判断自己处于哪些扇区内，这些扇区相交区域的重心就是该节点的位置。SeRLoc~采用全局的密钥来加密~beacon~消息，用私密口令的~hash~值链实现对~beacon~的消息源认证~\cite{Lazos2005}~(range-independent)；SPINE~中提出了可验证的多向法(Verifiable Multilateration)，第一次将距离边界协议(Distance Bounding Protocol)引入~WSN~位置验证中，在~VM~中至少三个验证节点独立使用距离边界协议计算某节点的位置，并将计算得的距离上传到一个~CA(Central Authority)~，CA~使用最小均方误差(Minimum Mean Square Error, MMSE)或者其它方法来估计得该节点的位置，并验证其是否在误差范围和扇区相交区域内，如果是就承认该距离估计有效。在~SPINE~方案中，距离边界协议使用了加密的挑战应答过程，需要节点与定位者共享对偶密钥~\cite{Capkun2005}~(range-based)；ROPE~方案在~SeRLoc~基础上增加了距离边界协议，节点和能与其双向通信的定位者节点计算可信距离，配合扇区相交区域计算出节点位置。节点同样可以使用距离边界协议向某定位者节点证明自己在某位置附近，但是~ROPE~的过程不需要~CA~的参与。ROPE~同样要求所有节点与所有定位者共享对偶密钥~\cite{Lazos2006}；HiLoc~是在~SeRLoc~的基础上，利用可旋转和可变发射功率的定向天线来达到高精度定位的目的。它与~SeRLoc~相同，也使用全局的密钥来加密~beacon~消息，用私密口令的~hash~值链实现对~beacon~的消息源认证~\cite{Lazos2005a}。
 
 \item 异常行为检测和屏蔽(Misbehavior Detection and Block)。\cite{Liu2005c}\cite{Srinivasan2006}
 
-\item 鲁棒的位置算法(Robust Position Computation)。\cite{Li2005a}\cite{Liu2005b}\cite{Liu2008a}
+\item 鲁棒的位置算法(Robust Position Computation)。解决恶意节点问题的另一种办法是接受恶意节点存在这一现实，使用鲁棒的位置计算方法来消除恶意信息的影响。研究者一般假设正常节点多于恶意节点，然后使用统计或者修剪过滤(outlier filtering)技术来实现消除恶意节点影响的目标。这些方法一般用来防范对定位算法中位置计算或者位置/角度估计部分的攻击。
+
+
+\cite{Liu2005b}\cite{Li2005a}\cite{Liu2008a}
 
 \item 位置验证技术(Location Verification)。\cite{Du2006}\cite{Fang2005}\cite{Capkun2008}\cite{Capkun2006a}\cite{Sastry2003}\cite{Lazos2005a}
+
 位置验证(Location Verificaiton)是安全定位研究中最重要的一个方面。
 
 \end{itemize}
 
 保护节点位置信息私密性的研究并不多，主要是~\cite{Ozturk2004, Gruteser2003}。
 
-~WSN~节点位置信息在其它安全服务的应用主要有~\cite{Liu2003,Huang2004}，但这两种方法所利用的位置信息主要是预知的，而不是在定位过程中得到的位置信息。
+~WSN~节点位置信息在其它安全服务的应用主要有~\cite{Liu2003, Huang2004}，但这两种方法所利用的位置信息主要是预知的，而不是在定位过程中得到的位置信息。
 
 \section{研究内容和研究方法} 
 
