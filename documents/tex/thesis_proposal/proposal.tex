@@ -143,15 +143,33 @@ S. \v{C}apkun, M. \v{C}agalj~和~M. Srivastava~提出了利用可信的隐藏和
 
 目前保护~WSN~节点位置信息私密性的研究并不多。~M. Gruteser~等在~\cite{Gruteser2003}~中首先提出使用数据隐藏(降低数据精度)、分层数据融合和加密通信的方法保证位置信息的私密性；C. Ozturk, Y. Zhang~和~W. Trappe~提出了利用抵抗流量分析的手段来防止敌手通过追踪通信得到节点位置，主要使用随机路由和增加虚假流量的方式~\cite{Ozturk2004}，这些方式的主要问题是为了达到匿名性引入不必要的通信，因而使得能量消耗过大~\cite{Xiao2006}；Y. Xi~等对~C. Ozturk~的方法进行了改进，提出了使用双向贪心随机游走的~GROW(Greedy Random Walk)~方案~\cite{Xi2006}，~GROW~要求消息的发送者和接收者都进行若干跳的随机游走，当发送者和接收者的随机游走路径发生交叉时，就用该路径进行消息的传输。
 
-~WSN~节点的位置信息在其它安全服务中也有一定的应用。D. Liu~和~Peng Ning~认为可以利用~WSN~节点的部署信息来减少密钥预分配的复杂度，提出了两个方案：CPKS(Closest Pairwise Keys Scheme)~和~LBKP(Location-Based Key Predistribution)\cite{Liu2003}。前者利用准确的周围临近节点信息预分配对偶密钥，后者将部署区域划分成块，使用基于二元多项式的密钥预分配方法来为每块区域中的节点分配对偶密钥；D. Huang~等在~\cite{Huang2004}~中提出了
+~WSN~节点的位置信息在其它安全服务中也有一定的应用。D. Liu~和~Peng Ning~认为可以利用~WSN~节点的部署信息来减少密钥预分配的复杂度，提出了两个方案：CPKS(Closest Pairwise Keys Scheme)~和~LBKP(Location-Based Key Predistribution)\cite{Liu2003}。前者利用准确的周围临近节点信息预分配对偶密钥，后者将部署区域划分成块，使用基于二元多项式的密钥预分配方法来为每块区域中的节点分配对偶密钥；D. Huang~等在~\cite{Huang2004}~中提出了将~SK-RKP (Structured Key-pool Random Key Predistribution)~算法应用到分组按网格部署的~WSN~网络上，每个节点存储密钥所需空间比不利用部署信息要少将近~3~倍。
 
 \section{研究内容和研究方法} 
 
-研究内容、拟采用的研究方法、技术路线等方面有哪些创新之处。
+\subsection{研究内容}
 
 \begin{enumerate}
 
-\item 对分布式信誉系统在~WSN~安全定位中的应用进行深入研究。
+\item 探索更适合~WSN~的简单的安全定位方法。
+
+\item 设计通信开销更小的位置信息私密性保护方案。
+
+\item 将安全定位与其它安全方案结合考虑。
+
+\end{enumerate}
+
+\subsection{研究方法}
+
+\begin{enumerate}
+
+\item 综合评估现有安全定位方法的特点与不足。
+
+\item 将安全定位方案与其它安全方案结合考虑。
+
+\item 提出新的安全方案的细节。
+
+\item 提出对安全定位和隐私保护通信开销估量的指标。
 
 \end{enumerate}
 
