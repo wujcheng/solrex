@@ -127,11 +127,14 @@ L. Lazos~和~R. Proovendran~等人提出的~SeRLoc \cite{Lazos2005}、~ROPE \cit
 
 D. Liu~等在~\cite{Liu2005b}~中提出了攻击容忍的两个方案：第一个方案利用最小均方误差估计(Minimum Mean Square Estimation, MMSE)来识别并排除恶意节点。节点首先用基于~MMSE~的方案估计自身位置，然后看该位置能否由一个一致的参考者节点集合推出（距离估计的均方误差作为非一致性的参数），如果均方误差比较大，那么就剔除参考点集合中最不一致的节点重新估计位置，直到所有非一致节点都被剔除；第二个方案基于投票机制。WSN~部署区域被量化成网格，每个参考者节点对某节点所在位置进行投票，得票数最多的网格区域中央被选为该节点所在位置，这样能降低恶意节点在网络中的作用。D. Liu~等在~\cite{Liu2008a}~中又改进了~\cite{Liu2005b}~中提出的方案，提出一个增强的贪心~MMSE~算法(Enhanced Greedy Algorithm, EARMMSE)，使用贪心算法减少了恶意节点识别和排除过程的计算量。
 
+L. Fang, W. Du~和~P. Ning~在~\cite{Fang2005}~中提出了一个不需要~beacon~节点的位置计算方案~KPS(deployment Knowledge-based Positioning System)，在~KPS~中节点根据预知的部署信息和当前的邻居节点，使用最大似然估计(Maximum Likelihood Estimation, MLE)方法计算自身可能的位置。该方案可以容易小部分邻居节点是恶意节点的情况。
+
 Z. Li~等在~\cite{Li2005a}~中提出了使用自适应的最小二乘法(Least Squares, LS)和最小均方算法(Least Mean Squares, LMS)的统计方法来容忍对定位算法的攻击。具体做法是在使用三角方法(Triangulation)估计节点位置时，无攻击存在时使用~LS~算法，当有攻击存在时使用~LMS~算法，因为~LMS~算法能够容忍不超过~50\%~的异常值并且获得正确估计。
 
-\item 位置验证技术(Location Verification)。位置验证也是安全定位研究中非常重要的一个方面，它将视角从直接解决安全定位问题转向验证定位结果是否正确。\cite{Sastry2003}\cite{Fang2005}\cite{Lazos2005a}\cite{Du2006}\cite{Capkun2006a}\cite{Capkun2008}
+\item 位置验证技术(Location Verification)。位置验证也是安全定位研究中非常重要的一个方面，它将视角从直接解决安全定位问题转向验证定位结果是否正确。
 
-
+N. Sastry~等在~\cite{Sastry2003}~中首先提出安全位置验证(Secure Location Verification)的概念，并给出了一个~Echo~方案，主要原理是使用无线射频和超声波测距的距离边界协议。原始~Echo~方案中使用~nonce~来抵御重放攻击，~\cite{Sastry2003}~也提出如果在存在共享密钥的情况下，可以使用共享密钥来对消息源进行认证；W. Du, L. Fang~和~N. Peng~扩展了~KPS~\cite{Fang2005}，提出了一个新的~LAD(Localization Anomaly Detection)~\cite{Du2006}~方案。
+\cite{Capkun2008}\cite{Capkun2006a}\cite{Lazos2005a}
 
 \end{itemize}
 
