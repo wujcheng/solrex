@@ -113,7 +113,7 @@
 
 \subsubsection{国内外研究现状}  
 
-WSN~安全定位技术是一个比较新的研究课题，对其系统的研究起源于~2003~年左右。目前来讲，~WSN~的安全定位技术按照其算法可以大致分为用密码学手段、异常行为检测和屏蔽、鲁棒的位置算法、位置验证技术和安全简单算法等几大类。下面我们对这几大类技术进行一些简单的说明和分析。
+WSN~安全定位技术是一个比较新的研究课题，对其系统的研究起源于~2003~年左右。目前来讲，~WSN~的安全定位技术按照其算法可以大致分为用密码学手段、异常行为检测和屏蔽、容忍攻击的鲁棒位置算法、位置验证技术和安全简单算法等几大类~\cite{Boukerche2008}。下面我们对这几大类技术进行一些简单的说明和分析。
 
 \begin{itemize}
 
@@ -121,16 +121,17 @@ WSN~安全定位技术是一个比较新的研究课题，对其系统的研究�
 
 L. Lazos~和~R. Proovendran~等人提出的~SeRLoc \cite{Lazos2005}、~ROPE \cite{Lazos2006}~和~HiRLoc \cite{Lazos2005a}，S. \v{C}apkun~和~J.P. Hubaux~提出的~SPINE \cite{Capkun2005}~等方案，都采用了加密和数据源认证方法来保证~beacon~消息的安全传输。其中~SeRLoc~主要依靠已知自身位置的定位者节点，利用定向天线向扇形区域广播包含其自身位置和扇区信息的~beacon~信号，其它节点通过接收到的~beacon~信号判断自己处于哪些扇区内，这些扇区相交区域的重心就是该节点的位置。SeRLoc~采用全局的密钥来加密~beacon~消息，用私密口令的~hash~值链实现对~beacon~的消息源认证~\cite{Lazos2005}~(range-independent)；SPINE~中提出了可验证的多向法(Verifiable Multilateration)，第一次将距离边界协议(Distance Bounding Protocol)引入~WSN~位置验证中，在~VM~中至少三个验证节点独立使用距离边界协议计算某节点的位置，并将计算得的距离上传到一个~CA(Central Authority)~，CA~使用最小均方误差(Minimum Mean Square Error, MMSE)或者其它方法来估计得该节点的位置，并验证其是否在误差范围和扇区相交区域内，如果是就承认该距离估计有效。在~SPINE~方案中，距离边界协议使用了加密的挑战应答过程，需要节点与定位者共享对偶密钥~\cite{Capkun2005}~(range-based)；ROPE~方案在~SeRLoc~基础上增加了距离边界协议，节点和能与其双向通信的定位者节点计算可信距离，配合扇区相交区域计算出节点位置。节点同样可以使用距离边界协议向某定位者节点证明自己在某位置附近，但是~ROPE~的过程不需要~CA~的参与。ROPE~同样要求所有节点与所有定位者共享对偶密钥~\cite{Lazos2006}；HiLoc~是在~SeRLoc~的基础上，利用可旋转和可变发射功率的定向天线来达到高精度定位的目的。它与~SeRLoc~相同，也使用全局的密钥来加密~beacon~消息，用私密口令的~hash~值链实现对~beacon~的消息源认证~\cite{Lazos2005a}。
 
-\item 异常行为检测和屏蔽(Misbehavior Detection and Block)。\cite{Liu2005c}\cite{Srinivasan2006}
+\item 异常行为检测和屏蔽(Misbehavior Detection and Block)。防范对定位系统的攻击还可以使用检测恶意节点的异常行为并屏蔽该恶意节点的方法。此方法主要用来防范对定位算法中位置计算部分的攻击。D. Liu~等在~\cite{Liu2005c}~提出了两个检测恶意~beacon~节点的方法：一个是节点用其与目标节点的坐标距离和实测距离（由信号估计得来）相比较，如果误差大于某个阈值，就认为该目标节点传输了虚假的坐标值，视其为恶意节点；另一个是节点用其与目标节点的通信往返时间与正常往返时间比较，如果误差大于某个阈值，则认为该目标节点进行了重放攻击，视其为恶意节点。A. Srinivasan~等在~\cite{Srinivasan2006}~中提出了一个分布式的基于信誉的~becon~信任系统(Distributed Reputation-based Beacon Trust System, DRBTS)。每个~beacon~节点维护一个邻居~beacon~节点的信誉表(Neighbor-Reputation-Table, NRT)，节点间交换~NRT~，使用基于投票的方式选择可信节点组。
 
-\item 鲁棒的位置算法(Robust Position Computation)。解决恶意节点问题的另一种办法是接受恶意节点存在这一现实，使用鲁棒的位置计算方法来消除恶意信息的影响。研究者一般假设正常节点多于恶意节点，然后使用统计或者修剪过滤(outlier filtering)技术来实现消除恶意节点影响的目标。这些方法一般用来防范对定位算法中位置计算或者位置/角度估计部分的攻击。
+\item 容忍攻击的鲁棒位置算法(Robust Position Computation)。解决恶意节点问题的另一种办法是接受恶意节点存在这一现实，使用鲁棒的位置计算方法来消除恶意信息的影响。研究者一般假设正常节点多于恶意节点，然后使用统计或者异常值过滤(outlier filtering)技术来实现消除恶意节点影响的目标。这些方法一般用来防范对定位算法中位置计算或者位置/角度估计部分的攻击。
+
+D. Liu~等在~\cite{Liu2005b}~中提出了攻击容忍的两个方案：第一个方案利用最小均方误差估计(Minimum Mean Square Estimation, MMSE)来识别并排除恶意节点。节点首先用基于~MMSE~的方案估计自身位置，然后看该位置能否由一个一致的参考者节点集合推出（距离估计的均方误差作为非一致性的参数），如果均方误差比较大，那么就剔除参考点集合中最不一致的节点重新估计位置，直到所有非一致节点都被剔除；第二个方案基于投票机制。WSN~部署区域被量化成网格，每个参考者节点对某节点所在位置进行投票，得票数最多的网格区域中央被选为该节点所在位置，这样能降低恶意节点在网络中的作用。D. Liu~等在~\cite{Liu2008a}~中又改进了~\cite{Liu2005b}~中提出的方案，提出一个增强的贪心~MMSE~算法(Enhanced Greedy Algorithm, EARMMSE)，使用贪心算法减少了恶意节点识别和排除过程的计算量。
+
+Z. Li~等在~\cite{Li2005a}~中提出了使用自适应的最小二乘法(Least Squares, LS)和最小均方算法(Least Mean Squares, LMS)的统计方法来容忍对定位算法的攻击。具体做法是在使用三角方法(Triangulation)估计节点位置时，无攻击存在时使用~LS~算法，当有攻击存在时使用~LMS~算法，因为~LMS~算法能够容忍不超过~50\%~的异常值并且获得正确估计。
+
+\item 位置验证技术(Location Verification)。位置验证也是安全定位研究中非常重要的一个方面，它将视角从直接解决安全定位问题转向验证定位结果是否正确。\cite{Sastry2003}\cite{Fang2005}\cite{Lazos2005a}\cite{Du2006}\cite{Capkun2006a}\cite{Capkun2008}
 
 
-\cite{Liu2005b}\cite{Li2005a}\cite{Liu2008a}
-
-\item 位置验证技术(Location Verification)。\cite{Du2006}\cite{Fang2005}\cite{Capkun2008}\cite{Capkun2006a}\cite{Sastry2003}\cite{Lazos2005a}
-
-位置验证(Location Verificaiton)是安全定位研究中最重要的一个方面。
 
 \end{itemize}
 
