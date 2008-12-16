@@ -14,19 +14,22 @@
 % 如果取消上一行的注解 %, 就会使得被覆盖部分变得透明(依稀可见)
 }
 
-\usepackage{CJKutf8}
+\usepackage{CJKutf8}   % 文档使用 UTF8 编码
 \usepackage{hyperref}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{color,xcolor}
 \usepackage{graphicx}
 \usepackage{manfnt}
 
-\hypersetup{bookmarks=true, unicode,%
-            colorlinks=false, pdfborder={0 0 0},%
-            pdfstartview=FitBH, pdfpagemode=FullScreen,%
-            pdfauthor={Wenbo Yang},%
-            pdftitle={WSN Security},%
-            pdfsubject={WSN Security},
+\hypersetup{bookmarks=true, % 是否使用书签
+                   unicode, % 使用 unicode 编码书签
+          colorlinks=false, % 是否使用彩色链接
+         pdfborder={0 0 0}, % 链接周围有无边框，{0 0 0}表示无
+        pdfstartview=FitBH, % 
+    pdfpagemode=FullScreen, % 全屏显示
+    pdfauthor={Wenbo Yang}, % pdf 作者
+   pdftitle={WSN Security}, % pdf 标题
+ pdfsubject={WSN Security}, % pdf 主题
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,7 +99,7 @@
 
 \begin{frame}{无线传感器网络(WSN)}
 
-未完成
+未完成\cite{Lee2007}
 \end{frame}
 
 \section{安全定位}
@@ -119,5 +122,9 @@
 未完成
 \end{frame}
 
+\begin{frame}{参考文献}
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEfull,wsn}
+\end{frame}
 \end{CJK*}
 \end{document}

@@ -3,7 +3,10 @@ ARTICLE_SRC=$(ARTICLE).tex IEEEfull.bib IEEEtran.bst utf8.cpx
 SLIDES=slides
 SLIDES_SRC=$(SLIDES).tex IEEEfull.bib IEEEtran.bst utf8.cpx
 
-all: $(ARTICLE).pdf $(SLIDES).pdf
+all: article slides
+
+article: $(ARTICLE).pdf
+slides:  $(SLIDES).pdf
 
 $(ARTICLE).pdf: $(ARTICLE_SRC)
 	latex $(ARTICLE).tex
@@ -13,6 +16,9 @@ $(ARTICLE).pdf: $(ARTICLE_SRC)
 	dvipdfmx $(ARTICLE).dvi
 
 $(SLIDES).pdf: $(SLIDES_SRC)
+	pdflatex $(SLIDES).tex
+	bibtex $(SLIDES)
+	pdflatex $(SLIDES).tex
 	pdflatex $(SLIDES).tex
 
 clean:
