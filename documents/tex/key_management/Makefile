@@ -1,9 +1,9 @@
-ARTICLE=proposal
+ARTICLE=key_management
 ARTICLE_SRC=$(ARTICLE).tex IEEEfull.bib IEEEtran.bst utf8.cpx
 SLIDES=slides
 SLIDES_SRC=$(SLIDES).tex IEEEfull.bib IEEEtran.bst utf8.cpx
 
-all: article slides
+all: article
 
 article: $(ARTICLE).pdf
 slides:  $(SLIDES).pdf

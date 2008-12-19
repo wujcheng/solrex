@@ -1,0 +1,102 @@
+% This is the file zh-Hans.cpx of the CJK package
+%   for using Asian logographs (Chinese/Japanese/Korean) with LaTeX2e
+%
+% created by Werner Lemberg <wl@gnu.org>
+%
+% Version 4.6.0 (11-Aug-2005)
+
+% Copyright (C) 1994-2006  Werner Lemberg <wl@gnu.org>
+%
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program in doc/COPYING; if not, write to the Free
+% Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+% MA 02110-1301 USA
+
+\def\fileversion{4.6.0}
+\def\filedate{2005/08/11}
+\ProvidesFile{zh-Hans.cpx}[\filedate\space\fileversion]
+
+
+% Chinese captions
+%
+% character set: GB 2312-80
+% encoding: EUC
+
+\renewcommand\contentsname{目录}
+% \renewcommand\listfigurename{}             %   ?
+% \renewcommand\listtablename{}              %   ?
+
+\CJK@ifundefined\chapter
+  {\renewcommand\refname{参考资料}}
+  \ifx\bibname\undefined
+    {\newcommand\bibname{文献}}
+  \else
+    {\renewcommand\bibname{文献}}
+  \fi
+
+\renewcommand\indexname{索引}
+
+\newcommand\prefigurename{第}
+\newcommand\postfigurename{图}
+\ifx\figureformat\undefined
+  \newcommand\figureformat{\prefigurename~\thefigure~\postfigurename}
+\else
+  \renewcommand\figureformat{\prefigurename~\thefigure~\postfigurename}
+\fi
+
+\newcommand\pretablename{第}
+\newcommand\posttablename{表}
+\ifx\tableformat\undefined
+  \newcommand\tableformat{\pretablename~\thetable~\posttablename}
+\else
+  \renewcommand\tableformat{\pretablename~\thetable~\posttablename}
+\fi
+
+\newcommand\prepartname{第}
+\newcommand\postpartname{部}
+\ifx\partformat\undefined
+  \newcommand\partformat{\prepartname\CJKnumber{\value{part}}\postpartname}
+\else
+  \renewcommand\partformat{\prepartname\CJKnumber{\value{part}}\postpartname}
+\fi
+
+% \newcommand\prechaptername{第}
+% \newcommand\postchaptername{章}
+% \newcommand\presectionname{第}
+% \newcommand\postsectionname{节}
+% \newcommand\preappendixname{第}
+% \newcommand\postappendixname{附录}
+
+\CJK@ifundefined\mainmatter
+  {\renewcommand\abstractname{摘要}}{}
+
+% \renewcommand\ccname{}                     %   ?
+% \renewcommand\enclname{附件}
+% \newcommand\prepagename{}                  %   ?
+% \newcommand\postpagename{}                 %   ?
+% \renewcommand\headtoname{}                 %   ?
+% \renewcommand\seename{}                    %   ?
+
+\renewcommand\today{\number\year年\number\month月\number\day日}
+\CJK@ifundefined\CJKnumber
+  {\def\CJKnumber#1{\ifcase#1\or
+                    一\or二\or三\or四\or五\or
+                    六\or七\or八\or九\or十\fi}}{}
+
+\endinput
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
