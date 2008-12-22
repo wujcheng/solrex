@@ -31,6 +31,7 @@
    pdftitle={WSN Security}, % pdf 标题
  pdfsubject={WSN Security}, % pdf 主题
 }
+\setbeamertemplate{bibliography item}[text]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                          定制幻灯片---重定义字体、字号命令                           %
@@ -76,7 +77,7 @@
 %\subtitle{副标题}
 
 \author[杨文博]%
-{\hei 杨文博\\~\\电子邮件：~\href{mailto:wbyang@is.ac.cn}{\textcolor{blue}{\texttt{wbyang@is.ac.cn}}}}
+{\hei 杨文博\\~\\学号：200728017029195\\电子邮件：~\href{mailto:wbyang@is.ac.cn}{\textcolor{blue}{\texttt{wbyang@is.ac.cn}}}}
 
 \institute{\sihao\kai 信息安全国家重点实验室}
 
@@ -98,34 +99,87 @@
 \section{背景}
 
 \begin{frame}{无线传感器网络(WSN)}
-
-未完成\cite{Lee2007}
-
+\begin{columns}
+  \begin{column}{0.7\textwidth}
+   \textbf{无线传感器网络}是由大量无线传感器节点构成的分布式、自组织的无线网络。
+   \wuhao \begin{itemize}
+    \item 树形路由、多跳转发
+    \item 无线传输的带宽、稳定性和安全性较差
+    \item 网络节点资源受限(计算、能量)
+    \end{itemize}
+   \includegraphics[width=\textwidth]{images/wsn.png}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \centering \liuhao{mica2, mica2dot(伯克利)}\\
+   \includegraphics[width=.9\textwidth]{images/mica_family.jpg}\\
+   \liuhao{FLOWS3(清华)}\\
+   \includegraphics[width=\textwidth]{images/flows3.jpg}
+  \end{column}
+\end{columns}
 \end{frame}
 
-\section{安全定位}
+\begin{frame}{WSN~中节点的位置信息}
+
+\textbf{节点的位置信息}是无线传感器网络中的一项重要信息，有着非常广泛的应用：
+
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+\begin{itemize}
+\item 节点定位
+\item 目标追踪
+\item 数据的识别和关联
+\item 得到网络能量分布图
+\item 评估节点密度和覆盖范围
+\item 指定区域节点的管理和查询
+\item 基于地理位置的路由和密钥管理
+\end{itemize}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \includegraphics[width=\textwidth]{images/localization.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\section{研究现状}
+
+\subsection{安全定位}
 
 \begin{frame}{WSN~中的安全定位问题}
 
-未完成
+未完成\cite{Capkun2006}
 \end{frame}
 
-\section{位置隐私保护}
+\subsection{位置隐私保护}
 
 \begin{frame}{WSN~安全定位的解决方案}
 
 未完成
 \end{frame}
 
-\section{位置信息应用}
+\subsection{位置信息应用}
 
 \begin{frame}{WSN~位置信息在其它安全方案中的应用}
 未完成
 \end{frame}
 
+\section{研究方向和研究内容}
+
+\begin{frame}{研究方向和内容}
+未完成
+\end{frame}
+
+\section{研究工作进度安排}
+
+\begin{frame}{研究工作进度安排}
+\end{frame}
+
+\section{参考文献}
+
 \begin{frame}{参考文献}
+\footnotesize
 \bibliographystyle{IEEEtran}
-\bibliography{IEEEfull,wsn}
+\bibliography{IEEEabrv,wsn}
+
 \end{frame}
 \end{CJK*}
 \end{document}
