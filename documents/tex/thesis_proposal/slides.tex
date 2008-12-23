@@ -32,6 +32,7 @@
  pdfsubject={WSN Security}, % pdf 主题
 }
 \setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{blocks}[rounded][shadow=true]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                          定制幻灯片---重定义字体、字号命令                           %
@@ -81,8 +82,8 @@
 
 \institute{\sihao\kai 信息安全国家重点实验室}
 
-\date{\CJKtoday}
-
+%\date{\CJKtoday}
+\date{2008~年~12~月~26~日}
 \titlegraphic{\includegraphics[height=0.17\textwidth]{images/lois.png}} % 徽章
 
 \begin{frame}
@@ -144,28 +145,68 @@
 
 \subsection{安全定位}
 
-\begin{frame}{WSN~中的安全定位问题}
-
-未完成\cite{Capkun2006}
+\begin{frame}{WSN~中的安全定位算法}
+\begin{itemize}
+\item 密码学手段
+\begin{itemize}
+\item 加密和数据源认证，保证定位消息的安全传输
+\item SeRLoc \cite{Lazos2005}, SPINE \cite{Capkun2005, Capkun2006}, ROPE \cite{Lazos2006}, HiRLoc \cite{Lazos2005a}
+\end{itemize}
+\item 异常行为检测和屏蔽
+\begin{itemize}
+\item 检测恶意节点的异常行为并屏蔽该节点
+\item Liu ICDCS'05 \cite{Liu2005c}, DRBTS \cite{Srinivasan2006}
+\end{itemize}
+\item 攻击容忍的鲁棒位置算法
+\begin{itemize}
+\item 使用鲁棒算法消除恶意信息的影响，多使用统计学手段
+\item Liu IPSN'05 \cite{Liu2005b}, KPS \cite{Fang2005}, Li IPSN'05 \cite{Li2005a}
+\end{itemize}
+\item 位置验证技术
+\begin{itemize}
+\item 对位置算法得到的位置进行验证，判断位置是否异常
+\item Echo \cite{Sastry2003}, LAD \cite{Du2006}, \v{C}apkun INFOCOM'06 \cite{Capkun2006a, Capkun2008}
+\end{itemize}
+\end{itemize}
 \end{frame}
 
-\subsection{位置隐私保护}
-
-\begin{frame}{WSN~安全定位的解决方案}
-
-未完成
+\begin{frame}{WSN~中的安全定位算法}
+\centerline{\includegraphics[width=.8\textwidth]{images/wsn_sec_pos.png}}
 \end{frame}
 
-\subsection{位置信息应用}
+\subsection{位置信息的保护和应用}
 
-\begin{frame}{WSN~位置信息在其它安全方案中的应用}
-未完成
+\begin{frame}{WSN~节点位置信息的保护和应用}
+
+\begin{block}{节点位置信息私密性的保护}
+\begin{itemize}
+\item 保护节点位置不被敌方获得，例如关键节点位置不被发现
+\item 主要采用数据融合、虚假路由、增加虚假流量等方式
+\item Gruteser HOTOS'03 \cite{Gruteser2003}, Ozturk SASN'04 \cite{Ozturk2004}, GROW \cite{Xi2006}
+\end{itemize}
+\end{block}
+
+\bigskip
+
+\begin{block}{位置信息在其它安全算法中的应用}
+\begin{itemize}
+\item 已知位置能够提供给其它安全算法额外的信息
+\item 目前主要的应用是利用部署信息降低密钥分配的复杂度
+\item Liu SASN'03 \cite{Liu2003}, Huang SASN'04 \cite{Huang2004}
+\end{itemize}
+\end{block}
 \end{frame}
 
 \section{研究方向和研究内容}
 
 \begin{frame}{研究方向和内容}
-未完成
+\begin{itemize}
+\item 探索更适合~WSN~的简单的安全定位方法
+\item 寻找更稳健的安全定位算法
+\item 设计通信开销与隐私保护强度更均衡的位置信息私密性保护方案
+\item 将安全定位算法与其它安全方案结合考虑
+\end{itemize}
+
 \end{frame}
 
 \section{研究工作进度安排}
@@ -175,11 +216,18 @@
 
 \section{参考文献}
 
-\begin{frame}{参考文献}
-\footnotesize
+\begin{frame}[allowframebreaks]{参考文献}
+\tiny
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,wsn}
+\end{frame}
 
+\section*{Q\&A}
+
+\begin{frame}{Q\&A}
+\begin{block}{}
+\centerline{\chuhao{Q\&A}}
+\end{block}
 \end{frame}
 \end{CJK*}
 \end{document}
