@@ -78,7 +78,7 @@
 %\subtitle{副标题}
 
 \author[杨文博]%
-{\hei 杨文博\\~\\学号：200728017029195\\电子邮件：~\href{mailto:wbyang@is.ac.cn}{\textcolor{blue}{\texttt{wbyang@is.ac.cn}}}}
+{\hei 杨文博\\~\\导师：朱文涛\\学号：200728017029195}
 
 \institute{\sihao\kai 信息安全国家重点实验室}
 
@@ -205,32 +205,59 @@
 \end{block}
 \end{frame}
 
-\section{研究方向和研究内容}
+\section{研究内容和研究方法}
 
 \begin{frame}{大纲}
 	\tableofcontents[currentsection]
 \end{frame}
 
-\begin{frame}{研究方向和内容}
+\subsection{研究内容}
+
+\begin{frame}{研究内容}
 \begin{itemize}
 \item 探索更适合~WSN~的简单的安全定位方法
 \begin{itemize}
-\item 目前的安全定位方法要求定位者节点具有更强的硬件(GPS，定向天线等)，应用上依然有困难。
+\item \xiaowuhao{目前的安全定位方法要求定位者节点具有更强的硬件(GPS，定向天线等)，应用上依然有困难。}
 \end{itemize}
 \item 寻找更鲁棒的安全定位算法
 \begin{itemize}
-\item 异常节点的识别和排除主要使用统计学方法，我们希望找到使定位算法能够更鲁棒的方法。
+\item \xiaowuhao{异常节点的识别和排除主要使用统计学方法，我们希望找到使定位算法能够更鲁棒的方法。}
+\end{itemize}
+\item 将安全定位与其它安全方案相结合
+\begin{itemize}
+\item \xiaowuhao{考虑到安全定位算法与其它安全方案可以共享一些信息和模块，将它们结合一起考虑，希望会发现更优的算法。}
 \end{itemize}
 \item 设计开销与隐私保护更均衡的位置私密性保护方案
 \begin{itemize}
-\item 希望能降低在网络中使用虚假路由或者引入虚假流量来迷惑敌手引入的通信开销。
-\end{itemize}
-\item 结合考虑安全定位算法与其它安全方案
-\begin{itemize}
-\item 考虑到安全定位算法与其它安全方案可以共享一些信息和模块，将它们结合一起考虑，希望会发现更优的算法。
+\item \xiaowuhao{希望能降低在网络中使用虚假路由或者引入虚假流量来迷惑敌手引入的通信开销。}
 \end{itemize}
 \end{itemize}
+\end{frame}
 
+\subsection{研究方法}
+\begin{frame}{研究方法}
+\begin{itemize}
+\item 综合评估现有安全定位方法的特点与不足
+\begin{itemize}
+\item \xiaowuhao{从抵御的攻击类型、硬件要求、定位精确度、算法复杂度、通信开销、可扩展性等几个方面对它们进行比较分析。}
+\end{itemize}
+\item 对基于统计的定位算法进行详细研究
+\begin{itemize}
+\item \xiaowuhao{探索每个统计模型适用范围和对错误数据的容忍程度，寻找更健壮的统计模型。}
+\end{itemize}
+\item 比较安全定位与其它方案，找出可共同利用的信息和模块
+\begin{itemize}
+\item \xiaowuhao{研究安全定位与密钥管理、数据融合、安全路由等安全方案，从算法、协议等处寻找可共同利用的部分。}
+\end{itemize}
+\item 提出新的安全定位方案并进行仿真实验
+\begin{itemize}
+\item \xiaowuhao{以提高定位算法的安全性和健壮性、降低算法和协议的复杂度为目的，构造新的安全定位方案并进行仿真。}
+\end{itemize}
+\item 进一步探索位置信息的私密性保护和应用
+\begin{itemize}
+\item \xiaowuhao{分析已有方案中各部分保护效果和开销，寻找减轻通信开销的替代方法；评价位置信息能否使其它方案产生更优的结果。}
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 \section{研究工作进度安排}
@@ -243,10 +270,6 @@
 \item 2010年01月-2010年06月：总结归纳研究成果，撰写毕业论文。
 \end{itemize}
 
-\end{frame}
-
-\begin{frame}{已取得成果}
-无
 \end{frame}
 
 \section{参考文献}
