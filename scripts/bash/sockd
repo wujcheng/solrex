@@ -1,0 +1,46 @@
+#!/bin/sh
+set -e
+
+. /lib/lsb/init-functions
+
+[ -f /usr/local/sbin/sockd ] || exit 0
+
+[ ! -f /etc/sockd.conf ] && exit 1
+SOCKD_CONF="-f /etc/sockd.conf"
+
+SOCKD_OPTS="-D"
+
+case "$1" in
+  start)
+    # Start daemons.
+    log_daemon_msg "Starting Dante socks proxy server" "sockd"
+    if start-stop-daemon --start --quiet --oknodo --pidfile /var/run/sockd.pid --exec /usr/local/sbin/sockd -- $SOCKD_OPTS; then
+	    log_end_msg 0
+	else
+	    log_end_msg 1
+	fi
+    ;;
+  stop)
+    # Stop daemons.
+    log_daemon_msg "Stoping Dante socks proxy server" "sockd"
+	if start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/sockd.pid; then
+	    log_end_msg 0
+	else
+	    log_end_msg 1
+	fi
+	;;
+  restart)
+    log_daemon_msg "Restarting Dante socks proxy server" "sockd"
+	start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile /var/run/sockd.pid
+	if start-stop-daemon --start --quiet --oknodo --pidfile /var/run/sockd.pid --exec /usr/local/sbin/sockd -- $SOCKD_OPTS; then
+	    log_end_msg 0
+	else
+	    log_end_msg 1
+	fi
+	;;
+  *)
+    log_action_msg "Usage: /etc/init.d/sockd {start|stop|restart}\n"
+    exit 1
+esac
+
+exit 0
