@@ -7,9 +7,10 @@
 
 #define MAX_LOGIN 5
 #define MAX_SEND  20
+#define MES_LEN   160
 
 /* Version, contact, user defined doc, argument doc strings for argp.h. */
-const char *argp_program_version = "sendsms 0.1";
+const char *argp_program_version = "sendsms 0.11(2009-01-11)";
 const char *argp_program_bug_address = "<solrex@gmail.com>";
 static char doc[] = "Example:\n  sendsms -f SENDER -p PASSWD -t fetion1,\
 fetion2 Hello!\nOptions:";
@@ -20,7 +21,7 @@ static struct argp_option options[] = {
   {"from",   'f',   "SENDER",    0, "The sender's fetion/phone number" },
   {"passwd", 'p',   "PASSWD",    0, "The sender's password" },
   {"to",     't',"RECEIVERS",    0, 
-   "The receivers' fetion numbers, split by ','" },
+   "The receivers' fetion numbers, separated by ','" },
   {"verbose",'v',          0,    0, "Print verbose information" },
   { 0 }
 };
@@ -55,19 +56,28 @@ parse_opt (int key, char *arg, struct argp_state *state)
     case 'v':
       p_args->verbose = TRUE;
     break;
-    case ARGP_KEY_ARG:   /* We have only one(none-option) argument: MESSAGE. */
+    case ARGP_KEY_ARG:   /* No more than one(none-option) argument: MESSAGE. */
       if (state->arg_num > 1)   
         argp_usage (state);
-      p_args->message = arg;
+      /* Read MESSAGE from command line. */
+      p_args->message = (char *) malloc(MES_LEN*sizeof(char));
+      if (p_args->message) {
+        strncpy (p_args->message, arg, MES_LEN);
+        p_args->message[MES_LEN-1] = '\0';
+      }
     break;
-    case ARGP_KEY_NO_ARGS:      /* The MESSAGE argument can not be ignored. */
-      argp_usage (state);
+    case ARGP_KEY_NO_ARGS: 
+      /* If MESSAGE is not given in command, read MESSAGE from stdin. */
+      p_args->message = (char *) malloc(MES_LEN*sizeof(char));
+      if (p_args->message) {
+        fread (p_args->message, MES_LEN, sizeof(char), stdin);
+        p_args->message[MES_LEN-1] = '\0';
+      }
     break;
     case ARGP_KEY_END:
-      if (state->arg_num < 1)   /* The MESSAGE argument can not be ignored. */
-        argp_usage(state);
+      if (state->arg_num > 1) /* No more than one argument: MESSAGE. */
+        argp_usage (state);
     break;
-
     default:
       return ARGP_ERR_UNKNOWN;
   }
@@ -86,10 +96,8 @@ int main(int argc, char** argv)
   long int uid;
 
   /* Default option values. */
-#if 0
-  args.from = "136xxxxxxxx";
-  args.passwd = "*********";
-#endif
+  args.from = NULL;
+  args.passwd = NULL;
   args.to = NULL;
   args.verbose = FALSE;
 
@@ -97,20 +105,25 @@ int main(int argc, char** argv)
    * in |args|. */
   argp_parse (&p_argp, argc, argv, 0, 0, &args);
 
+  if (args.from == NULL || args.passwd == NULL || args.message == NULL) {
+    fprintf(stderr, "ERROR: SENDER, PASSWD and MESSAGE is needed.\n");
+    return 1;
+  }
+
   ret = strlen(args.message);
-  if ((ret<1) || (ret>160)) {
-    fprintf(stderr, "FAIL: Argument MESSAGE is too long or too short.\n");
+  if ((ret<1) || (ret>=MES_LEN)) {
+    fprintf(stderr, "ERROR: Argument MESSAGE is too long or too short.\n");
     return 1;
   }
   ret = strlen(args.from);
   if ((ret!=9) && (ret!=11)) {
-    fprintf(stderr, "FAIL: Option value SENDER has wrong bits.\n");
+    fprintf(stderr, "ERROR: Option value SENDER has wrong bits.\n");
     return 1;
   }
   if (args.to != NULL) {
     ret = strlen(args.to);
     if (ret<9) {
-      fprintf(stderr, "FAIL: Option value RECEIVER has wrong bits.\n");
+      fprintf(stderr, "ERROR: Option value RECEIVER has wrong bits.\n");
       return 1;
     }
   }
@@ -220,5 +233,6 @@ int main(int argc, char** argv)
   if (args.verbose == TRUE) {
     fprintf(stderr, "PASS: terminate().\n");
   }
+  free (args.message);
   return 0;
 }
