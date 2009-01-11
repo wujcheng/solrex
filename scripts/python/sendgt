@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+
+import xmpp
+import getopt, sys
+
+def usage():
+  print '''Usage: sendgt [OPTION...] MESSAGE
+Example:
+  sendgt -f solrex -p PASSWD -t solrex Hello!
+Options:
+
+  -f, --from=SENDER          The sender's google account name
+  -p, --passwd=PASSWD        The sender's password
+  -t, --to=RECEIVERS         The receivers' google account name
+  -v, --verbose              Print verbose information
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
+
+Report bugs to <solrex@gmail.com>.'''
+
+
+def main():
+
+  From = None # without @gmail.com
+  passwd = None
+  to = None
+  verbose = False
+
+  try:
+    opts, args = getopt.getopt(sys.argv[1:], "hf:p:t:v", ["help"])
+  except getopt.GetoptError, err:
+    # print help information and exit:
+    print str(err) # will print something like "option -a not recognized"
+    usage()
+    sys.exit(2)
+  for o, a in opts:
+    if o == "-v":
+      verbose = True
+    elif o in ("-h", "--help"):
+      usage()
+      sys.exit()
+    elif o in ("-f", "--from"):
+      From = a
+    elif o in ("-p", "--passwd"):
+      passwd = a
+    elif o in ("-t", "--to"):
+      to = a
+    else:
+      assert False, "unhandled option"
+
+  cnx = xmpp.Client('gmail.com', debug=[])
+  cnx.connect( server=('talk.google.com', 5223) )
+  cnx.auth(From, passwd, 'python')
+
+  cnx.send(xmpp.Message(to, args))
+
+
+if __name__ == "__main__":
+    main()
+
