@@ -12,7 +12,7 @@ Options:
 
   -f, --from=SENDER          The sender's google account name
   -p, --passwd=PASSWD        The sender's password
-  -t, --to=RECEIVERS         The receivers' google account name
+  -t, --To=RECEIVERS         The receivers' account name, separated by ','
   -v, --verbose              Print verbose information
   -?, --help                 Give this help list
       --usage                Give a short usage message
@@ -22,13 +22,15 @@ Mandatory or optional arguments to long options are also mandatory or optional
 for any corresponding short options.
 
 Report bugs to <solrex@gmail.com>.'''
+  sys.exit()
 
 
 def main():
 
-  From = None # without @gmail.com
-  passwd = None
-  to = None
+  From = ''
+  Passwd = ''
+  To = ''
+  Message = ''
   verbose = False
 
   try:
@@ -43,21 +45,34 @@ def main():
       verbose = True
     elif o in ("-h", "--help"):
       usage()
-      sys.exit()
     elif o in ("-f", "--from"):
       From = a
     elif o in ("-p", "--passwd"):
-      passwd = a
+      Passwd = a
     elif o in ("-t", "--to"):
-      to = a
+      To = a.split(',')
     else:
-      assert False, "unhandled option"
+      assert False, "Unkown option."
+      usage()
+  if args == []:
+    args = sys.stdin.readlines()
+  for a in args:
+    Message += a
+
+  if From == '' or Passwd == '' or Message == '':
+    print 'ERROR: SENDER, PASSWD and MESSAGE is needed.'
+    usage()
+
+  From, a, b = From.partition('@')
 
   cnx = xmpp.Client('gmail.com', debug=[])
   cnx.connect( server=('talk.google.com', 5223) )
-  cnx.auth(From, passwd, 'python')
+  cnx.auth(From, Passwd, 'python')
 
-  cnx.send(xmpp.Message(to, args))
+  for a in To:
+    if a.find('@') == -1:
+      a += '@gmail.com'
+    cnx.send(xmpp.Message(a, Message))
 
 
 if __name__ == "__main__":
