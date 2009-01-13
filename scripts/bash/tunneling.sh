@@ -12,8 +12,10 @@ SSHOPTS="-C -f -N -g -o PreferredAuthentications=publickey -o StrictHostKeyCheck
 
 get_server_info()
 {
+  #info=`wget -nv -O - $INFOURL 2> /dev/null | iconv -f gbk -t utf8 |
+        grep -o -e "{.*}" | tr -d '{}'`
   info=`wget -nv -O - $INFOURL 2> /dev/null | iconv -f gbk -t utf8 |
-        grep "{*}" | sed -e "s/.*{//;s/}.*//;"`
+        sed -n "/{*}/s/.*{\(.*\)}.*/\1/p"`
   COMMAND=${info%%:*}
   SERVER=${info#*:}
   USRNAME=${SERVER%:*}
