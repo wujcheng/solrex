@@ -42,17 +42,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int smallest_subseq(int a[], unsigned int len)
+int smallest_subseq_1(int a[], unsigned int len)
 {
   int i, I, J, max;
   int *s = (int *)malloc(len*sizeof(int));
 
   /* Get prior sum array s[len]. */
-  printf("An array of %d signed numbers:\n", len);
-  for (i=0; i<len; i++) {
-    if (i && (i%7 == 0)) printf("\n");
-    printf("a[%d]=%d, ", i, a[i]);
-  }
   s[0] = a[0];
   for (i=1; i<len; i++) {
     s[i] = s[i-1] + a[i];
@@ -67,7 +62,7 @@ int smallest_subseq(int a[], unsigned int len)
     max = s[i] > s[I] ? i : max;
   }
   /* The result. */
-  printf("\b\b.\nThe smallest subsequence is:\n");
+  printf("The smallest subsequence is:\n");
   for (i = I+1; i<=J; i++) {
     if ((i-I-1) && ((i-I-1)%7 == 0)) printf("\n");
     printf("a[%d]=%d, ", i, a[i]);
@@ -77,11 +72,42 @@ int smallest_subseq(int a[], unsigned int len)
   return 0;
 }
 
+int smallest_subseq_2(int a[], unsigned int len)
+{
+  int i = 0, I = 0, J = 0, I_end = 0;
+  int max_end = 0, max_sofar = 0;
+  for (i=0; i<len; i++) {
+    max_end += a[i];
+    if (max_end > 0) {
+      max_end = 0; I_end = i;
+    }
+    if (max_sofar > max_end) {
+      max_sofar = max_end;
+      I = I_end; J = i;
+    }
+  }
+  /* The result. */
+  printf("The smallest subsequence is:\n");
+  for (i = I; i<=J; i++) {
+    if ((i-I-1) && ((i-I-1)%7 == 0)) printf("\n");
+    printf("a[%d]=%d, ", i, a[i]);
+  }
+  printf("\b\b.\nThe sum of them is %d.\n", max_sofar);
+  return 0;
+}
 int main()
 {
   int a[] = {48, -53, 27, -32, 58, 25, 38};
   int b[] = {48, -53, 27, -32, -58, 25, -38, 99, -100, 24, 57};
-  smallest_subseq(a, sizeof(a)/4);
-  smallest_subseq(b, sizeof(b)/4);
+  int i;
+  printf("An array of %d signed numbers:\n", sizeof(a)/4);
+  for (i=0; i<sizeof(a)/4; i++) {
+    if (i && (i%7 == 0)) printf("\n");
+    printf("a[%d]=%d, ", i, a[i]);
+  }
+  smallest_subseq_1(a, sizeof(a)/4);
+  smallest_subseq_2(a, sizeof(a)/4);
+  smallest_subseq_1(b, sizeof(b)/4);
+  smallest_subseq_2(b, sizeof(b)/4);
   return 0;
 }
