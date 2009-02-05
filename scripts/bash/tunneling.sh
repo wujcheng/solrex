@@ -79,7 +79,7 @@ case "$COMMAND" in
     fi
     ;;
   failsafe)
-    echo "Starging ssh tunneling.(failsafe mode)"
+    echo "Starting ssh tunneling.(failsafe mode)"
     failsafe_tunneling
     ;;
   sleep)
