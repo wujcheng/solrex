@@ -209,6 +209,15 @@ int main(int argc, char** argv)
       if (ret) break;
       else sleep(1);
     }
+    i>MAX_SEND ? i-- : i ;
+    if (!ret) {
+      fprintf(stderr, "FAIL: send_sms() from %s to %s after %d tries.\n",
+              args.from, args.to, i);
+      return 3; 
+    } else if (args.verbose == TRUE) {
+      fprintf(stderr, "PASS: send_sms() from %s to %s after %d tries.\n",
+              args.from, args.to, i);
+    }
   } else {
     /* If "-t" option is a mobile phone number, use API: 
      * |fs_send_sms_by_mobile_no|. */
