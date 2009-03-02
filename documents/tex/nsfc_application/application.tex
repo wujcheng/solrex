@@ -92,7 +92,7 @@ Research Solutions)~在~2008~年~12~月发布的《无线传感器网络技术�
 
 L. Lazos~和~R. Proovendran~等人提出的~SeRLoc \cite{Lazos2005}、~HiRLoc \cite{Lazos2005a}~和~ROPE \cite{Lazos2006}，S. \v{C}apkun~和~J.P. Hubaux~提出的~SPINE \cite{Capkun2006}~等方案，都采用了加密和数据源认证方法来保证~beacon~消息的安全传输。SeRLoc~采用全局的密钥来加密定位者消息，用私密口令的哈希值链实现对定位者消息的数据源认证~\cite{Lazos2005}；SPINE~中提出了可验证的多向法(Verifiable Multilateration)，第一次将距离边界协议(Distance Bounding Protocol)引入无线传感器网络位置验证中，在可验证的多向法中至少三个验证节点独立使用带加密的距离边界协议计算某节点的位置，并将计算得的距离上传到一个~CA(Central Authority)~，CA~使用最小均方误差(Minimum Mean Square Error, MMSE)或者其它方法来计算并验证节点位置是否在误差范围和扇区相交区域内~\cite{Capkun2006}；HiLoc~是在~SeRLoc~的基础上，利用可旋转和可变发射功率的定向天线来达到高精度定位的目的。它与~SeRLoc~相同，也使用全局的密钥来加密定位者消息，用私密口令的哈希值链实现对定位者消息的数据源认证~\cite{Lazos2005a}；ROPE~方案在~SeRLoc~基础上增加了距离边界协议，但是~ROPE~的计算和验证过程和~SPINE~不同，不需要~CA~的参与~\cite{Lazos2006}。
 
-\item 异常行为检测和屏蔽(Misbehavior Detection and Block)。防范对无线传感器网络定位系统的攻击还可以使用检测恶意节点的异常行为并屏蔽该恶意节点的方法。此方法主要用来防范对定位算法中位置计算部分的攻击。D. Liu~等在~\cite{Liu2005c}~提出了两个检测恶意定位者节点的方法：一个是节点用其与目标节点的坐标距离和实测距离（由信号估计得来）相比较，如果误差大于某个阈值，就认为该目标节点传输了虚假的坐标值，视其为恶意节点；另一个是节点用其与目标节点的通信往返时间与正常往返时间比较，如果误差大于某个阈值，则认为该目标节点进行了重放攻击，视其为恶意节点。A. Srinivasan~等在~\cite{Srinivasan2006}~中提出了一个分布式的基于信誉的定位者节点信任系统(Distributed Reputation-based Beacon Trust System, DRBTS)。每个定位者节点维护一个邻居定位者节点的信誉表(Neighbor-Reputation-Table, NRT)，节点间交换~NRT~，使用基于投票的方式选择可信节点组。
+\item 异常行为检测和屏蔽(Misbehavior Detection and Block)。防范对无线传感器网络定位系统的攻击还可以使用检测恶意节点的异常行为并屏蔽该恶意节点的方法。此方法主要用来防范对定位算法中位置计算部分的攻击。D. Liu~等在~\cite{Liu2005c}~提出了两个检测恶意定位者节点的方法：一个是节点用其与目标节点的坐标距离和实测距离（由信号估计得来）相比较，如果误差大于某个阈值，就认为该目标节点传输了虚假的坐标值，视其为恶意节点；另一个是节点用其与目标节点的通信往返时间与正常往返时间比较，如果误差大于某个阈值，则认为该目标节点进行了重放攻击，视其为恶意节点。A. Srinivasan~等在~\cite{Srinivasan2006}~中提出了一个分布式的基于信誉的定位者节点信任系统(Distributed Reputation-based Beacon Trust System, DRBTS)。每个定位者节点维护一个邻居定位者节点的信誉表(Neighbor-Reputation-Table, NRT)，节点间交换~NRT~，使用基于投票的方式选择可信节点组。陈鸿龙等在文献~\cite{Chen2008}~中提出了基于~TDoA~测距的虫洞攻击检测技术，使用时空特性加一致性检测的方法检测错误的定位消息并排除其干扰。
 
 \item 攻击容忍的鲁棒位置算法(Robust Position Computation)。解决恶意节点问题的另一种办法是接受恶意节点存在这一现实，使用鲁棒的位置计算方法来消除恶意信息的影响。研究者一般假设正常节点多于恶意节点，然后使用统计学方法来消除恶意节点影响。
 
@@ -135,9 +135,8 @@ N. Sastry~等在~\cite{Sastry2003}~中首先提出安全位置验证(Secure Loca
 \section{本项目的特色与创新之处} 
 
 \begin{enumerate}
-\item 采用新的安全定位方法，提高定位算法的安全性和健壮性。
-\item 分析多种安全方案的可结合之处，共同协作减少复杂度。
-\item 考虑位置信息的不同安全应用，简化整体安全方案。
+\item 以算法的安全性和健壮性为目标，适用于现阶段的无线传感器设备。
+\item 分析多种安全方案的可结合之处，共同协作减少复杂度，简化整体安全方案。
 \end{enumerate}
 
 \bibliographystyle{IEEEtran}
