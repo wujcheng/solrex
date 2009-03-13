@@ -1,7 +1,8 @@
 /*
- * Jingle call example
+ * XXPalk example
  * Copyright 2004--2005, Google Inc.
  *
+ * Modified by XIONG Qin
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -201,7 +202,7 @@ int main(int argc, char **argv) {
   
   if (debug)
     talk_base::LogMessage::LogToDebug(talk_base::LS_VERBOSE);
-
+  
 
   talk_base::InitializeSSL();   
   XmppPump pump;
@@ -210,27 +211,16 @@ int main(int argc, char **argv) {
   talk_base::InsecureCryptStringImpl pass;
   std::string username;
 
-  std::cout << "JID: ";
-  std::cin >> username;
-  jid = buzz::Jid(username);
-  if (!jid.IsValid() || jid.node() == "") {
-    printf("Invalid JID. JIDs should be in the form user@domain\n");
-    return 1;
-  }
-  SetConsoleEcho(false);
-  std::cout << "Password: ";
-  std::cin >> pass.password();
-  SetConsoleEcho(true);
-  std::cout << std::endl;
 
-  xcs.set_user(jid.node());
-  xcs.set_resource("call");
-  xcs.set_host(jid.domain());
-  xcs.set_use_tls(true);
- 
-  xcs.set_pass(talk_base::CryptString(pass));
-  xcs.set_server(talk_base::SocketAddress("talk.google.com", 5222));
-  printf("Logging in as %s\n", jid.Str().c_str());
+//  std::cout << "JID: ";
+//  std::cin >> username;
+  
+
+//  SetConsoleEcho(false);
+//  std::cout << "Password: ";
+//  std::cin >> pass.password();
+//  SetConsoleEcho(true);
+//  std::cout << std::endl;
 
   talk_base::PhysicalSocketServer ss;
 
@@ -238,19 +228,95 @@ int main(int argc, char **argv) {
   
   talk_base::Thread main_thread(&ss);
   talk_base::ThreadManager::SetCurrent(&main_thread);
-  Console *console = new Console(&main_thread, client);
+
+  int port;
+  std::string arg;
+
+  if(argc == 2){
+    printf("%d\n, %s\n", argc, argv[1]);
+    port = atoi(argv[1]);
+
+  }//if
+  else{
+    port = 0;
+    printf("\n\nyou like commande line, cool!!!!!!!!!!!\n\n\n");
+
+    std::cout << "gmail account (yourID@gmail.com): ";
+    std::cin >> username;
+  
+
+    SetConsoleEcho(false);
+    std::cout << "Password: ";
+    std::cin >> pass.password();
+    SetConsoleEcho(true);
+    std::cout << std::endl;
+  }//else
+   
+  Console *console = new Console(&main_thread, client, port);
   client->SetConsole(console);
   talk_base::Thread *console_thread = new talk_base::Thread(&ss);
-  console_thread->Start();
-  console_thread->Post(console, MSG_START);
+
+
 
   if (debug) {
     pump.client()->SignalLogInput.connect(&debug_log_, &DebugLog::Input);
     pump.client()->SignalLogOutput.connect(&debug_log_, &DebugLog::Output);
   }
 
-  pump.DoLogin(xcs, new XmppSocket(true), NULL);
-  main_thread.Run();
+//  std::cout<<argv[1]<<std::endl;
+  
+//  password = std::string(argv[2]);
+  
+   if(console->b_with_ui){
+  
+      console->Send("Gui bien connecter avec application\n");
+      std::string str;
+      std::size_t pos;
+    
+      console->Send("Waiting for username\n");
+      username = console->Receive();
+      pos = username.find("\n");
+      str = username.substr(0, pos);
+      username = str;
+      std::cout<<username<<std::endl;
 
+      console->Send("Waiting for password\n");
+      std::string& password = pass.password();
+      console->Send("Password received\n");
+      password = console->Receive();
+      pos = password.find("\n");
+      str = password.substr(0, pos);
+      password = str;
+   }//if
+    
+    jid = buzz::Jid(username);
+    if (!jid.IsValid() || jid.node() == "") {
+      printf("Invalid JID. JIDs should be in the form user@domain\n");
+   // return 1;
+      console->Send("loggedout\n");
+      return 1;
+    }//if
+    
+    xcs.set_user(jid.node());
+    xcs.set_resource("call");
+    xcs.set_host(jid.domain());
+    xcs.set_use_tls(true);
+ 
+    xcs.set_pass(talk_base::CryptString(pass));
+    xcs.set_server(talk_base::SocketAddress("talk.google.com", 5222));
+    printf("Logging in as %s\n", jid.Str().c_str());
+    std::string log = "Logging in as ";
+    log += jid.Str();
+    log += "\n";
+    console->Send(log);
+    //    console->Send("logging in as");
+    console_thread->Start();
+    console_thread->Post(console, MSG_START);
+
+    console->Send("connecting\n");
+    pump.DoLogin(xcs, new XmppSocket(true), NULL);
+      
+  main_thread.Run();
+  //main_thread.Run();
   return 0;
 }
