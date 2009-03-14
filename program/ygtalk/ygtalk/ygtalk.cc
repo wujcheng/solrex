@@ -16,6 +16,7 @@
 
 #include <time.h>
 #include <iomanip>
+#include <cstdlib>
 #include "talk/base/logging.h"
 #include "talk/base/physicalsocketserver.h"
 #include "talk/base/ssladapter.h"
@@ -197,7 +198,7 @@ int main(int argc, char **argv) {
     debug = true;
 
   if (debug)
-    talk_base::LogMessage::LogToDebug(talk_base::LS_VERBOSE);
+    talk_base::LogMessage::LogToDebug(talk_base::LS_SENSITIVE);
 
   const std::string WelcomeMes = "YGTALK(Yet another Gtalk) 0.1\n\
 Copyright (C) 2009 Solrex Yang <http://solrex.cn>\n\
@@ -220,11 +221,11 @@ Welcome!\n";
   int port;
   std::string arg;
 
-  if(argc == 2){
+  //if(argc == 2){
+  if(0){
     printf("%d\n, %s\n", argc, argv[1]);
     port = atoi(argv[1]);
-  }
-  else{
+  } else{
     port = 0;
     std::cout << WelcomeMes;
     std::cout << "Gmail account (with @gmail.com): ";
@@ -273,7 +274,55 @@ Welcome!\n";
     console->Send("loggedout\n");
     return 1;
   }
-    
+
+  talk_base::ProxyType proxy_type;
+  std::string proxy_host, proxy_user;
+  talk_base::InsecureCryptStringImpl proxy_pass;
+  int proxy_port;
+  bool proxy_auth = false;
+  char *proxyenv_ = NULL, *p, *q;
+
+  /* Read environment variable "http_proxy" and "socks_proxy". */
+  if (proxyenv_ = getenv("socks_proxy")) {
+    proxy_type = talk_base::PROXY_SOCKS5;
+  } else if (proxyenv_ = getenv("http_proxy")) {
+    proxy_type = talk_base::PROXY_HTTPS;
+  } else if (proxyenv_ = getenv("https_proxy")) {
+    proxy_type = talk_base::PROXY_HTTPS;
+  }
+  // Set proxy.
+  if (proxyenv_) {
+    std::string proxyenv = proxyenv_;
+    int m, n;
+    if (proxyenv.find("http://", 0) != std::string::npos)
+      proxyenv.erase(0, 7);
+    if ((m = proxyenv.find("@", 0)) != std::string::npos) {
+      if ((n = proxyenv.find(":", 0)) != std::string::npos && n < m) {
+        proxy_user = proxyenv.substr(0, n);
+        n++;
+        proxy_pass.password() = proxyenv.substr(n, m-n);
+      } else {
+        proxy_user = proxyenv.substr(0, m);
+        proxy_pass.password() = "";
+      }
+      proxyenv.erase(0, m+1);
+      proxy_auth = true;
+    }
+    if ((m = proxyenv.find(":", 0)) != std::string::npos) {
+      proxy_host = proxyenv.substr(0, m);
+      m++;
+      proxy_port = atoi(proxyenv.substr(m).c_str());
+    }
+    xcs.set_protocol(cricket::PROTO_SSLTCP);
+    xcs.set_proxy(proxy_type);
+    xcs.set_proxy_host(proxy_host);
+    xcs.set_proxy_port(proxy_port);
+    xcs.set_use_proxy_auth(proxy_auth);
+    xcs.set_proxy_user(proxy_user);
+    xcs.set_proxy_pass(talk_base::CryptString(proxy_pass));
+    xcs.set_allow_plain(false);
+  }
+
   xcs.set_user(jid.node());
   xcs.set_resource("call");
   xcs.set_host(jid.domain());
