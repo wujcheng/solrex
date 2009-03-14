@@ -2,6 +2,8 @@
 #define _URLENCODE_H_ 
 
 #include <string>
+#include <cstdlib>
+#include <cstring>
 
 int UrlDecode(const char *source, char *dest);
 int UrlEncode(const char *source, char *dest, unsigned max);

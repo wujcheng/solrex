@@ -43,6 +43,7 @@
 #endif
 
 #include <sstream>
+#include <cstring>
 #include "talk/base/basictypes.h"
 
 namespace talk_base {

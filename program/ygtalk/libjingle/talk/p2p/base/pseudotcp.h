@@ -29,6 +29,7 @@
 #define __PSEUDOTCP_H__
 
 #include <list>
+#include <cstdlib>
 #include "talk/base/basictypes.h"
 
 namespace cricket {

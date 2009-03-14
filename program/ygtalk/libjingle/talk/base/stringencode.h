@@ -29,6 +29,7 @@
 #define TALK_BASE_STRINGENCODE_H__
 
 #include <string>
+#include <cstdlib>
 #include <sstream>
 
 namespace talk_base {

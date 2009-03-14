@@ -29,6 +29,7 @@
 #define TALK_BASE_SOCKET_H__
 
 #include <errno.h>
+#include <cstring>
 
 #ifdef POSIX
 #include <sys/types.h>

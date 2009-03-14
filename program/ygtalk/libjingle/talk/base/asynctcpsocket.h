@@ -28,6 +28,7 @@
 #ifndef TALK_BASE_ASYNCTCPSOCKET_H__
 #define TALK_BASE_ASYNCTCPSOCKET_H__
 
+#include <cstring>
 #include "talk/base/asyncpacketsocket.h"
 
 namespace talk_base {

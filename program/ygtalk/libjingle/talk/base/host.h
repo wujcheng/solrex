@@ -29,6 +29,7 @@
 #define TALK_BASE_HOST_H__
 
 #include <string>
+#include <cstdlib>
 #include <vector>
 #include "talk/base/network.h"
 

@@ -32,6 +32,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <cstring>
 
 #include "talk/base/basictypes.h"
 

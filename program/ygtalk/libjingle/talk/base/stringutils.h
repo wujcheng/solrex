@@ -29,13 +29,14 @@
 #define TALK_BASE_STRINGUTILS_H__
 
 #include <ctype.h>
-#include <stdarg.h>
-#include <stdio.h>
+#include <cstdarg>
+#include <cstdio>
 #ifdef WIN32
 #include <wchar.h>
 #endif  // WIN32
 
 #include <string>
+#include <cstring>
 
 ///////////////////////////////////////////////////////////////////////////////
 // Generic string/memory utilities

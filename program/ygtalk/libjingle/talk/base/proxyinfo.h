@@ -29,6 +29,7 @@
 #define TALK_BASE_PROXYINFO_H__
 
 #include <string>
+#include <cstring>
 #include "talk/base/socketaddress.h"
 #include "talk/base/cryptstring.h"
 

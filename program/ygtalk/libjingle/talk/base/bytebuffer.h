@@ -29,6 +29,7 @@
 #define TALK_BASE_BYTEBUFFER_H__
 
 #include <string>
+#include <cstring>
 #include "talk/base/basictypes.h"
 
 namespace talk_base {
