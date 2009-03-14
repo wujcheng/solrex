@@ -29,6 +29,7 @@
 #include "xmpptask.h"
 #include "talk/xmpp/constants.h"
 #include "talk/base/sigslot.h"
+#include "talk/base/socketadapters.h"
 #include "talk/xmpp/saslplainmechanism.h"
 #include "talk/xmpp/prexmppauth.h"
 #include "talk/base/scoped_ptr.h"
@@ -96,6 +97,24 @@ XmppClient::Connect(const XmppClientSettings & settings, const std::string & lan
   if (d_->socket_.get() != NULL)
     return XMPP_RETURN_BADSTATE;
 
+  if (settings.proxy()) {
+    talk_base::AsyncSocket * proxy_socket = 0;
+    if (settings.proxy() == talk_base::PROXY_SOCKS5) {
+      proxy_socket = new talk_base::AsyncSocksProxySocket(socket->socket(), talk_base::SocketAddress(settings.proxy_host(), settings.proxy_port()),
+        settings.proxy_user(), settings.proxy_pass());
+    } else {
+      // Note: we are trying unknown proxies as HTTPS currently
+      proxy_socket = new talk_base::AsyncHttpsProxySocket(socket->socket(),
+        "Google Talk", talk_base::SocketAddress(settings.proxy_host(), settings.proxy_port()),
+        settings.proxy_user(), settings.proxy_pass());
+    }
+    if (!proxy_socket) {
+      delete socket;
+      return XMPP_RETURN_OK;
+    }
+    socket->socket(proxy_socket);  // for our purposes the proxy is now the socket
+  }
+
   d_->socket_.reset(socket);
 
   d_->socket_->SignalConnected.connect(d_.get(), &Private::OnSocketConnected);
@@ -137,6 +156,8 @@ XmppClient::Connect(const XmppClientSettings & settings, const std::string & lan
   d_->proxy_port_ = settings.proxy_port();
   d_->allow_plain_ = settings.allow_plain();
   d_->pre_auth_.reset(pre_auth);
+
+
 
   return XMPP_RETURN_OK;
 }
@@ -257,12 +278,12 @@ XmppClient::ProcessCookieLogin() {
 
 int
 XmppClient::ProcessStartXmppLogin() {
+  // NOTE Wenbo/20090314: Xmpp start login here, first packet.
   // Done with pre-connect tasks - connect!
   if (!d_->socket_->Connect(d_->server_)) {
     EnsureClosed();
     return STATE_ERROR;
   }
-  
   return STATE_RESPONSE;
 }
 

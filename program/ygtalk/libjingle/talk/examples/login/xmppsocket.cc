@@ -60,6 +60,14 @@ XmppSocket::~XmppSocket() {
   delete cricket_socket_;
 }
 
+void XmppSocket::socket(talk_base::AsyncSocket* socket) {
+  cricket_socket_ = socket;
+}
+
+talk_base::AsyncSocket* XmppSocket::socket(){
+  return cricket_socket_;
+}
+
 void XmppSocket::OnReadEvent(talk_base::AsyncSocket * socket) {
   SignalRead(); 
 }

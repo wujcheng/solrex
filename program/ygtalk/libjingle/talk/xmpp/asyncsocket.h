@@ -29,6 +29,7 @@
 #define _ASYNCSOCKET_H_
 
 #include "talk/base/sigslot.h"
+#include "talk/base/asyncsocket.h"
 
 namespace talk_base {
   class SocketAddress;
@@ -63,6 +64,9 @@ public:
   virtual State state() = 0;
   virtual Error error() = 0;
   virtual int GetError() = 0;    // winsock error code
+
+  virtual void socket(talk_base::AsyncSocket* socket) = 0;
+  virtual talk_base::AsyncSocket* socket() = 0;
 
   virtual bool Connect(const talk_base::SocketAddress& addr) = 0;
   virtual bool Read(char * data, size_t len, size_t* len_read) = 0;

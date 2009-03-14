@@ -33,6 +33,7 @@
 #include "talk/base/sigslot.h"
 #include "talk/xmpp/asyncsocket.h"
 
+
 extern talk_base::AsyncSocket* cricket_socket_;
 
 class XmppSocket : public buzz::AsyncSocket, public sigslot::has_slots<> {
@@ -43,6 +44,9 @@ public:
   virtual buzz::AsyncSocket::State state();
   virtual buzz::AsyncSocket::Error error();
   virtual int GetError();
+
+  virtual void socket(talk_base::AsyncSocket* socket);
+  virtual talk_base::AsyncSocket* socket();
 
   virtual bool Connect(const talk_base::SocketAddress& addr);
   virtual bool Read(char * data, size_t len, size_t* len_read);
