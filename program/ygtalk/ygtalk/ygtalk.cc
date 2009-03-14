@@ -1,22 +1,18 @@
-/*
- * XXPalk example
- * Copyright 2004--2005, Google Inc.
- *
- * Modified by XIONG Qin
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
+/* YGtalk: Yet another Gtalk.
+   Copyright (C) 2009 Solrex Yang <http://solrex.cn>
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <time.h>
 #include <iomanip>
@@ -199,33 +195,25 @@ int main(int argc, char **argv) {
   bool debug = false;
   if (argc > 1 && !strcmp(argv[1], "-d"))
     debug = true;
-  
+
   if (debug)
     talk_base::LogMessage::LogToDebug(talk_base::LS_VERBOSE);
-  
 
-  talk_base::InitializeSSL();   
+  const std::string WelcomeMes = "YGTALK(Yet another Gtalk) 0.1\n\
+Copyright (C) 2009 Solrex Yang <http://solrex.cn>\n\
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+Welcome!\n";
+  talk_base::InitializeSSL();
   XmppPump pump;
   buzz::Jid jid;
   buzz::XmppClientSettings xcs;
   talk_base::InsecureCryptStringImpl pass;
   std::string username;
 
-
-//  std::cout << "JID: ";
-//  std::cin >> username;
-  
-
-//  SetConsoleEcho(false);
-//  std::cout << "Password: ";
-//  std::cin >> pass.password();
-//  SetConsoleEcho(true);
-//  std::cout << std::endl;
-
   talk_base::PhysicalSocketServer ss;
 
   CallClient *client = new CallClient(pump.client());
-  
+
   talk_base::Thread main_thread(&ss);
   talk_base::ThreadManager::SetCurrent(&main_thread);
 
@@ -235,88 +223,76 @@ int main(int argc, char **argv) {
   if(argc == 2){
     printf("%d\n, %s\n", argc, argv[1]);
     port = atoi(argv[1]);
-
-  }//if
+  }
   else{
     port = 0;
-    printf("\n\nyou like commande line, cool!!!!!!!!!!!\n\n\n");
-
-    std::cout << "gmail account (yourID@gmail.com): ";
+    std::cout << WelcomeMes;
+    std::cout << "Gmail account (with @gmail.com): ";
     std::cin >> username;
-  
 
     SetConsoleEcho(false);
     std::cout << "Password: ";
     std::cin >> pass.password();
     SetConsoleEcho(true);
     std::cout << std::endl;
-  }//else
+  }
    
   Console *console = new Console(&main_thread, client, port);
   client->SetConsole(console);
   talk_base::Thread *console_thread = new talk_base::Thread(&ss);
-
-
 
   if (debug) {
     pump.client()->SignalLogInput.connect(&debug_log_, &DebugLog::Input);
     pump.client()->SignalLogOutput.connect(&debug_log_, &DebugLog::Output);
   }
 
-//  std::cout<<argv[1]<<std::endl;
-  
-//  password = std::string(argv[2]);
-  
-   if(console->b_with_ui){
-  
-      console->Send("Gui bien connecter avec application\n");
-      std::string str;
-      std::size_t pos;
-    
-      console->Send("Waiting for username\n");
-      username = console->Receive();
-      pos = username.find("\n");
-      str = username.substr(0, pos);
-      username = str;
-      std::cout<<username<<std::endl;
+  if(console->b_with_ui){
+    console->Send("Gui bien connecter avec application\n");
+    std::string str;
+    std::size_t pos;
 
-      console->Send("Waiting for password\n");
-      std::string& password = pass.password();
-      console->Send("Password received\n");
-      password = console->Receive();
-      pos = password.find("\n");
-      str = password.substr(0, pos);
-      password = str;
-   }//if
+    console->Send("Waiting for username\n");
+    username = console->Receive();
+    pos = username.find("\n");
+    str = username.substr(0, pos);
+    username = str;
+    std::cout<<username<<std::endl;
+
+    console->Send("Waiting for password\n");
+    std::string& password = pass.password();
+    console->Send("Password received\n");
+    password = console->Receive();
+    pos = password.find("\n");
+    str = password.substr(0, pos);
+    password = str;
+  }
     
-    jid = buzz::Jid(username);
-    if (!jid.IsValid() || jid.node() == "") {
-      printf("Invalid JID. JIDs should be in the form user@domain\n");
-   // return 1;
-      console->Send("loggedout\n");
-      return 1;
-    }//if
+  jid = buzz::Jid(username);
+  if (!jid.IsValid() || jid.node() == "") {
+    printf("Invalid JID. JIDs should be in the form user@domain\n");
+    console->Send("loggedout\n");
+    return 1;
+  }
     
-    xcs.set_user(jid.node());
-    xcs.set_resource("call");
-    xcs.set_host(jid.domain());
-    xcs.set_use_tls(true);
+  xcs.set_user(jid.node());
+  xcs.set_resource("call");
+  xcs.set_host(jid.domain());
+  xcs.set_use_tls(true);
  
-    xcs.set_pass(talk_base::CryptString(pass));
-    xcs.set_server(talk_base::SocketAddress("talk.google.com", 5222));
-    printf("Logging in as %s\n", jid.Str().c_str());
-    std::string log = "Logging in as ";
-    log += jid.Str();
-    log += "\n";
-    console->Send(log);
-    //    console->Send("logging in as");
-    console_thread->Start();
-    console_thread->Post(console, MSG_START);
+  xcs.set_pass(talk_base::CryptString(pass));
+  xcs.set_server(talk_base::SocketAddress("talk.google.com", 5222));
+  printf("Logging in as %s\n", jid.Str().c_str());
+  std::string log = "Logging in as ";
+  log += jid.Str();
+  log += "\n";
+  console->Send(log);
+  //    console->Send("logging in as");
+  console_thread->Start();
+  console_thread->Post(console, MSG_START);
 
-    console->Send("connecting\n");
-    pump.DoLogin(xcs, new XmppSocket(true), NULL);
-      
+  console->Send("connecting\n");
+  pump.DoLogin(xcs, new XmppSocket(true), NULL);
+
   main_thread.Run();
-  //main_thread.Run();
   return 0;
 }
