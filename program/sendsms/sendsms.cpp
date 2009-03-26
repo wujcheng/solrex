@@ -68,6 +68,7 @@ parse_opt (int key, char *arg, struct argp_state *state)
   /* Get the input argument from |argp_parse|, which we know is a pointer to
    * our |ARGUMENTS| structure. */
   ARGUMENTS *p_args = (ARGUMENTS *)state->input;
+  int read_count;
   /* Parse option key. */
   switch (key) {
     case 'f':
@@ -96,8 +97,8 @@ parse_opt (int key, char *arg, struct argp_state *state)
       /* If MESSAGE is not given in command, read MESSAGE from stdin. */
       p_args->message = (char *) malloc(MES_LEN*sizeof(char));
       if (p_args->message) {
-        fread (p_args->message, MES_LEN, sizeof(char), stdin);
-        p_args->message[MES_LEN-1] = '\0';
+        read_count = fread (p_args->message, MES_LEN, sizeof(char), stdin);
+        p_args->message[read_count] = '\0';
       }
     break;
     case ARGP_KEY_END:
@@ -162,14 +163,14 @@ int main(int argc, char** argv)
   }
 
   /* Read environment variable "http_proxy". */
-  if (proxyenv = getenv("http_proxy")) {
+  if ((proxyenv = getenv("http_proxy"))) {
     proxyenv = strdup(proxyenv);
     if (strncmp(proxyenv, "http://", 7) == 0) {
-      if (p = strchr(proxyenv, '@')) {
+      if ((p = strchr(proxyenv, '@'))) {
         *p = '\0';
         proxy.host = p + 1;
         proxy.name = proxyenv + 7;
-        if (p = strchr(proxy.name, ':')) {
+        if ((p = strchr(proxy.name, ':'))) {
           *p = '\0';
           proxy.pwd = p + 1;
         }
@@ -178,7 +179,7 @@ int main(int argc, char** argv)
         proxy.name = NULL;
         proxy.pwd = NULL;
       }
-      if (p = strchr(proxy.host, ':')) {
+      if ((p = strchr(proxy.host, ':'))) {
         *p = '\0';
         proxy.port = p + 1;
       }

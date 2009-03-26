@@ -26,7 +26,7 @@
 
 CC = gcc
 CPP = g++
-CFLAGS = -Iinclude -O2
+CFLAGS = -Iinclude -O2 -Wall
 LFLAGS = lib/libfetion_32.a -lcurl -pthread 
 
 BIN = sendsms
