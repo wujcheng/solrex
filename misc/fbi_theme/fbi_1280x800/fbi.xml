@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE greeter SYSTEM "greeter.dtd">
+<!--
+Copyright 2009 Solrex Yang <http://blog.solrex.cn>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of 
+the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<greeter id="theme">
+	<!-- The general style settings	 -->
+	<style font="Serif 10" window-text-color="#FFFFFF"
+		base-color="#FFFFFF" alternate-base-color="#FFFFFF"
+		text-color="#000000" disabled-text-color="#808080"/>
+	<!-- The Background	 -->
+	<item type="pixmap" id="background" background="true">
+		<normal file="fbi_1280x800.png"/>
+		<pos anchor="nw" x="0" y="0" width="100%" height="100%"/>
+	</item>
+
+	<!--System and Session buttons-->
+	<item type="rect" id="system-session"> 
+	<pos anchor="sw" x="5%" y="93%"/>	
+	<fixed>
+		<!--Session-->
+		<item type="pixmap" id="session_button" button="true">
+			<normal file="session.png"/>
+			<prelight file="session-pl.png"/>
+			<active file="session-act.png"/>
+			<pos anchor="sw" x="0" y="0"/>
+		</item>
+		<!--System-->
+		<item type="pixmap" id="system_button" button="true">
+			<normal file="system.png"/>
+			<prelight file="system-pl.png"/>
+			<active file="system-act.png"/>
+			<pos anchor="sw" x="97" y="0"/>
+		</item>
+	</fixed>
+	</item> 
+
+	<!-- 	The centred item - verification 	-->
+	<!-- 		Verification			 -->
+	<item type="rect" id="verify">
+	<pos anchor="c" x="50%" y="74%" width="32%" height="70"/>
+	<box orientation="vertical" spacing="5" homogeneous="true">
+		<!--Username field-->
+		<item type="rect" id="user-field">
+		<pos width="100%" height="25"/>
+			<box orientation="horizontal" spacing="10" homogeneous="true">
+				<!--Username-label-->
+				<item type="label">
+				<pos anchor="nw" x="0%" y="0%" />
+					<normal color="#FFFFFF" font="Serif 11"/>
+					<text>Welcome back, agent:</text>
+				</item>
+				<!--Username-entry-->
+				<item type="entry" id="user-entry">
+				<pos width="10%^^" height="20"/>
+				</item>
+			</box>
+		</item>
+		<!--Password field-->
+		<item type="rect" id="pw-field">
+		<pos width="100%" height="45"/>
+			<box orientation="vertical" spacing="5" homogeneous="true">
+				<!--Password-label-->
+				<item type="label">
+				<pos anchor="nw" x="0%" y="0%" />
+					<normal color="#FFFFFF" font="Serif 11"/>
+					<text>Enter your authorized FBI terminal access code:</text>
+				</item>
+				<!--Password-entry-->
+				<item type="entry" id="pw-entry">
+				<pos anchor="se" x="96%" y="100%" width="25%^^" height="20"/>
+				</item>
+			</box>
+		</item>
+		</box>
+	</item>
+	<!--The clock-date field-->
+	<item type="rect" id="clock-date">
+	<pos anchor="se" x="96%" y="93%"/>
+	<fixed>
+		<item type="pixmap">
+		<normal file="date.png"/>
+		<pos anchor="se" x="100%" y="0%" width="178"/>
+		<fixed>
+			<item type="label" id="clock">
+			<normal color="#7C7C7C" font="Serif 6"/>
+			<pos anchor="w" x="40" y="56%"/>	
+				<text>%c</text>
+			</item>
+		</fixed>
+		</item>
+	</fixed>
+	</item>
+	
+	<!-- 		Caps-warning			 -->
+	<item type="label" id="caps-lock-warning">
+	<normal color="#C7C7C7" font="Serif 10"/>
+	<pos anchor="c" x="60%" y="84%"/>
+		<stock type="caps-lock-warning"/>
+	</item>
+	
+	<!--Login failure-->
+	<item type="rect" id="pam-error-placeholder">
+	<pos anchor="c" x="50%" y="82%" width="100%" height="box"/>
+	<box orientation="horizontal">
+		<item type="label" id="dummy1">
+		<normal alpha="0" font="Serif Bold 11"/>
+			<text/>
+		</item>
+		<item type="label" id="pam-error">
+		<pos anchor="c" x="50%" y="80%" expand="true"/>
+		<normal color="#C7C7C7" font="Serif Bold 11"/>
+			<text/>
+		</item>
+	</box>
+	</item>
+</greeter>

@@ -1,0 +1,11 @@
+# This is not really a .desktop file like the rest, but it is useful to treat
+# it as such
+
+[KdmGreeterTheme]
+Greeter=fbi.xml
+Name=fbi
+Description[x-test]=xxFBI Themexx
+Author=Solrex Yang
+Copyright=(c) 2009 Solrex Yang
+Screenshot=screenshot.png
+X-Ubuntu-Gettext-Domain=desktop_kdebase-workspace
