@@ -1,11 +1,12 @@
 # This is not really a .desktop file like the rest, but it is useful to treat
 # it as such
 
-[KdmGreeterTheme]
-Greeter=fbi.xml
+[GdmGreeterTheme]
+Encoding=UTF-8
+Greeter=fbi-gdm.xml
 Name=fbi
+Description=FBI Termial Theme
 Description[x-test]=xxFBI Themexx
 Author=Solrex Yang
-Copyright=(c) 2009 Solrex Yang
+Copyright=(c) 2009 Solrex Yang <http://solrex.cn>
 Screenshot=screenshot.png
-X-Ubuntu-Gettext-Domain=desktop_kdebase-workspace
