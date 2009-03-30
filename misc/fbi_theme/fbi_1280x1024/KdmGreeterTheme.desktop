@@ -8,6 +8,6 @@ Name=fbi
 Description=FBI Terminal Theme
 Description[x-test]=xxFBI Themexx
 Author=Solrex Yang
-Copyright=(c) 2009 Solrex Yang <http://solrex.cn>
+Copyright=(c)
 Screenshot=screenshot.png
 X-Ubuntu-Gettext-Domain=desktop_kdebase-workspace
