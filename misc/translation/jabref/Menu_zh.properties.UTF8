@@ -68,7 +68,7 @@ Open_URL_or_DOI=打开_&URL_或_DOI
 Options=选项_(&O)
 Paste=粘贴_(&P)
 # Options
-Preferences=选项_(&P)
+Preferences=首选项_(&P)
 Previous_tab=上一标签_(&P)
 Quit=退出_(&Q)
 Recent_files=最近打开的文件_(&R)

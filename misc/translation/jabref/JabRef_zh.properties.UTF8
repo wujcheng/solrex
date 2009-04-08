@@ -1537,7 +1537,7 @@ Searching_for_duplicates...=Searching_for_duplicates...
 
 Searching_for_files=Searching_for_files
 
-Secondary_sort_criterion=Secondary_sort_criterion
+Secondary_sort_criterion=第二排序依据
 
 Select=选择
 
@@ -1603,7 +1603,7 @@ Show_confirmation_dialog_when_deleting_entries=删除多条记录时发出警告
 
 Show_description=显示描述
 
-Show_dynamic_groups_in_<i>italics</i>=用<i>斜体</i>显示动态分组
+Show_dynamic_groups_in_<i>italics</i>=用_<i>斜体</i>_显示动态分组
 
 Show_entries_*not*_in_group_selection=Show_entries_*not*_in_group_selection
 
@@ -1707,7 +1707,7 @@ Table_text_color=Table_text_color
 Tabname=Tabname
 Target_file_cannot_be_a_directory.=Target_file_cannot_be_a_directory.
 
-Tertiary_sort_criterion=Tertiary_sort_criterion
+Tertiary_sort_criterion=第三排序依据
 
 Test=测试
 
@@ -1846,7 +1846,7 @@ untitled=untitled
 
 Up=上
 
-Update_to_current_column_widths=Update_to_current_column_widths
+Update_to_current_column_widths=使用当前视图中的列宽
 
 Updated_group_selection=Updated_group_selection
 
@@ -1867,59 +1867,59 @@ Use_autocompletion_for_the_following_fields=Use_autocompletion_for_the_following
 Use_custom_icon_theme=Use_custom_icon_theme
 Use_default_viewer=Use_default_viewer
 
-Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时Use_inspection_window_also_when_a_single_entry_is_imported.
-Use_native_file_dialog=Use_native_file_dialog
+Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开_inspection_窗口显示该记录。
+Use_native_file_dialog=使用本地文件对话框
 
-Use_other_look_and_feel=Use_other_look_and_feel
-Use_Regular_Expression_Search=Use_Regular_Expression_Search
+Use_other_look_and_feel=使用其它外观类
+Use_Regular_Expression_Search=使用正则表达式搜索
 
-Use_regular_expressions=Use_Regular_Expressions
+Use_regular_expressions=使用正则表达式
 
-Use_the_following_delimiter_character(s)=Use_the_following_delimiter_character(s)
-User_does_not_have_sufficient_privileges.\n=User_does_not_have_sufficient_privileges.\n
-Username_\:=Username:
+Use_the_following_delimiter_character(s)=使用下面的分隔符
+User_does_not_have_sufficient_privileges.\n=用户没有足够的权限。\n
+Username_\:=用户名:
 
-Uses_default_application=Uses_default_application
+Uses_default_application=使用默认应用程序
 
 Value_cleared_externally=Value_cleared_externally
 
 Value_set_externally=Value_set_externally
 
-verify_that_LyX_is_running_and_that_the_lyxpipe_is_valid=verify_that_LyX_is_running_and_that_the_lyxpipe_is_valid
+verify_that_LyX_is_running_and_that_the_lyxpipe_is_valid=检查_LyX_是否在运行以及_lyx_管道是否可用
 
 View=视图
 Vim_Server_Name=Vim_服务器名
 
-Waiting_for_ArXiv...=Waiting_for_ArXiv...
+Waiting_for_ArXiv...=等待_ArXiv...
 
-Warn_about_unresolved_duplicates_when_closing_inspection_window=Warn_about_unresolved_duplicates_when_closing_inspection_window
+Warn_about_unresolved_duplicates_when_closing_inspection_window=关闭_inspection_时警告未处理的_BibTeX_key_重复情况
 
-Warn_before_overwriting_existing_keys=Warn_before_overwriting_existing_keys
+Warn_before_overwriting_existing_keys=覆盖已存在的_BibTeX_key_之前发出警告
 
 Warning=警告
-Warning\:_could_not_complete_file_repair;_your_file_may_have_been_corrupted._Error_message=Warning:_could_not_complete_file_repair;_your_file_may_have_been_corrupted._Error_message
+Warning\:_could_not_complete_file_repair;_your_file_may_have_been_corrupted._Error_message=警告:_无法完成修复操作；您的文件可能已损坏。错误信息
 
-Warning_there_is_a_duplicate_key=Warning_there_is_a_duplicate_key
+Warning_there_is_a_duplicate_key=警告:_已存在重复的_BibTeX_key
 
 Warnings=警告
 
 web_link=web_链接
 
-What_do_you_want_to_do?=What_do_you_want_to_do?
+What_do_you_want_to_do?=您希望做什么?
 
 When_adding/removing_keywords,_separate_them_by=When_adding/removing_keywords,_separate_them_by
 Will_write_XMP-metadata_to_the_PDFs_linked_from_selected_entries.=Will_write_XMP-metadata_to_the_PDFs_linked_from_selected_entries.
 
 with=with
 
-Word=Word
-Write_BibtexEntry_as_XMP-metadata_to_PDF.=Write_BibtexEntry_as_XMP-metadata_to_PDF.
+Word=单词
+Write_BibtexEntry_as_XMP-metadata_to_PDF.=将_Bibtex_记录作为_XMP_源数据写入到_PDF_中。
 
 Write_XMP=写入_XMP
 Write_XMP-metadata=写入_XMP_元数据
 Write_XMP-metadata_for_all_PDFs_in_current_database?=将_XMP_元数据写入到当前数据库中所有_PDF_文件?
 Writing_XMP=正在写入_XMP
-Writing_XMP_metadata...=正在写入_XMP_metadata...
+Writing_XMP_metadata...=正在写入_XMP_元数据...
 Writing_XMP_metadata_for_selected_entries...=正在为选中记录写入_XMP_元数据...
 Writing_XMP_to_'%0'...=正在写入_XMP_到_'%0'...
 
@@ -1955,43 +1955,43 @@ You_must_set_both_BibTeX_key_and_%0_directory=You_must_set_both_BibTeX_key_and_%
 Your_new_key_bindings_have_been_stored.=Your_new_key_bindings_have_been_stored.
 
 
-The_following_fetchers_are_available:=The_following_fetchers_are_available:
-Could_not_find_fetcher_'%0'=Could_not_find_fetcher_'%0'
+The_following_fetchers_are_available:=下面列出的是可用的抓取器:
+Could_not_find_fetcher_'%0'=无法找到抓取器_'%0'
 Running_Query_'%0'_with_fetcher_'%1'.=Running_Query_'%0'_with_fetcher_'%1'.
-Please_wait!=Please_wait!
+Please_wait!=请稍候！
 Query_'%0'_with_fetcher_'%1'_did_not_return_any_results.=Query_'%0'_with_fetcher_'%1'_did_not_return_any_results.
 Open_SPIRES_entry=Open_SPIRES_entry
-Move/Rename_file=Move/Rename_file
-File_moved=File_moved
-Move_file_failed=Move_file_failed
-Could_not_move_file=Could_not_move_file
-Could_not_find_file_'%0'.=Could_not_find_file_'%0'.
-Move/rename_file=Move/rename_file
-Number_of_entries_successfully_imported=Number_of_entries_successfully_imported
-Import_canceled_by_user=Import_canceled_by_user
-Fetch_Citeseer=Fetch_Citeseer
-Error_fetching_from_Citeseer\:\\n=Error_fetching_from_Citeseer\:\\n
-Progress:_%0_of_%1=Progress:_%0_of_%1
+Move/Rename_file=移动/重命名_文件
+File_moved=文件移动完成
+Move_file_failed=移动文件失败
+Could_not_move_file=无法移动文件
+Could_not_find_file_'%0'.=无法找到文件_'%0'。
+Move/rename_file=移动/重命名_文件
+Number_of_entries_successfully_imported=成功导入的记录数
+Import_canceled_by_user=导入操作被用户取消
+Fetch_Citeseer=抓取_Citeseer
+Error_fetching_from_Citeseer\:\\n=从_Citeseer_抓取错误\:\\n
+Progress:_%0_of_%1=进度:_%0_of_%1
 Error_while_fetching_from_JSTOR=从_JSTOR_抓取发生错误
 
-Fetching_Medline_by_id...=Fetching_Medline_by_id...
+Fetching_Medline_by_id...=依据_id_从_Medline_抓取...
 
-Fetching_Medline_by_term...=Fetching_Medline_by_term...
+Fetching_Medline_by_term...=依据_term_从_Medline_抓取...
 Medline_import_canceled=Medline_import_canceled
 Please_enter_a_valid_number=请输入一个合法的数字
-Please_enter_a_comma_separated_list_of_Medline_IDs_(numbers)_or_search_terms.=Please_enter_a_comma_separated_list_of_Medline_IDs_(numbers)_or_search_terms.
+Please_enter_a_comma_separated_list_of_Medline_IDs_(numbers)_or_search_terms.=请输入以逗号分割的_Medline_ID_(数字)_或者_term_列表。
 An_Error_occurred_while_fetching_from_SPIRES_source_(%0)\:=从_SPIRES_源_(%0)_抓取时发生了一个错误\:
 Error_while_fetching_from_Spires\:_=从_Spires_抓取发生错误\:_
 Connect_to_external_SQL_database=连接到外部_SQL_数据库
 Export_to_external_SQL_database=导出到外部_SQL_数据库
 
-Show_results_in_dialog=Show_results_in_dialog
+Show_results_in_dialog=在对话框中显示结果
 Global_search=全局查询
-Show_search_results_in_a_window=Show_search_results_in_a_window
+Show_search_results_in_a_window=在新窗口中显示查询结果
 Search_results=查询结果
-Move_file_to_file_directory?=Move_file_to_file_directory?
+Move_file_to_file_directory?=移动文件到文件目录?
 Rename_to_'%0'=重命名为_'%0'
-Move_to_file_directory=Move_to_file_directory
+Move_to_file_directory=移动到文件目录
 
 You_have_changed_the_menu_and_label_font_size._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经修改了菜单和标签字体大小设置。为了该更改生效，您必须重新启动_Jabref。
 
@@ -2004,20 +2004,20 @@ Unable_to_save_database=无法保存数据库
 BibTeX_key_generator=BibTeX_key_生成器
 Unable_to_open_link.=无法打开链接。
 Search_JSTOR=搜索_JSTOR
-Attempting_SQL_import...=Attempting_SQL_import...
+Attempting_SQL_import...=尝试_SQL_导入...
 BibO_RDF=BibO_RDF
 HTML_parser=HTML_parser
 RIS_importer=RIS_导入器
 
-Move_the_keyboard_focus_to_the_entry_table=Move_the_keyboard_focus_to_the_entry_table
+Move_the_keyboard_focus_to_the_entry_table=将键盘焦点移动到记录列表
 MIME_type=MIME_type
 
 This_feature_lets_new_files_be_opened_or_imported_into_an_already_running_instance_of_JabRef<BR>instead_of_opening_a_new_instance._For_instance,_this_is_useful_when_you_open_a_file_in_JabRef<br>from_your_web_browser.<BR>Note_that_this_will_prevent_you_from_running_more_than_one_instance_of_JabRef_at_a_time.=该选项使得打开或者导入新文件的操作在已经运行的_JabRef_中进行，而不是新建另一个_JabRef_窗口来进行这些操作。<BR>例如，当您从浏览器中调用_JabRef_打开一个文件时，这个选项将比较有用。<BR>注意：它将阻止您同时运行多个_JabRef_实例。
-Note_that_these_settings_are_used_for_the_legacy_<b>pdf</b>_and_<b>ps</b>_fields_only.<br>For_most_users,_setting_the_<b>Main_file_directory</b>_above_should_be_sufficient.=注意：这些设置主要应用于旧式的(Legacy)_<b>pdf</b>_和_<b>ps</b>_域。<br>对大部分用户来说，设置上面的“主文件目录”就足够了。
-Legacy_file_fields=旧式(Legacy)文件域
+Note_that_these_settings_are_used_for_the_legacy_<b>pdf</b>_and_<b>ps</b>_fields_only.<br>For_most_users,_setting_the_<b>Main_file_directory</b>_above_should_be_sufficient.=注意：这些设置主要应用于旧式的_(Legacy)_<b>pdf</b>_和_<b>ps</b>_域。<br>对大部分用户来说，设置上面的“主文件目录”就足够了。
+Legacy_file_fields=旧式_(Legacy)_文件域
 
 %0_entries_found._To_reduce_server_load,_only_%1_will_be_downloaded.=共找到_%0_条相关记录，为减轻服务器负担，只下载其中的_%1_条。
-This_makes_JabRef_look_up_each_%0_extension_and_check_if_the_file_exists._If_not,_you_will_be_given_options<BR>to_resolve_the_problem.=This_makes_JabRef_look_up_each_%0_extension_and_check_if_the_file_exists._If_not,_you_will_be_given_options<BR>to_resolve_the_problem.
+This_makes_JabRef_look_up_each_%0_extension_and_check_if_the_file_exists._If_not,_you_will_be_given_options<BR>to_resolve_the_problem.=这将使_JabRef_依据_%0_扩展名查找文件是否存在，如果找不到，JabRef_将提供给您选项来解决这个问题。
 Run_Fetcher,_e.g._"--fetch=Medline\:cancer"=运行抓取器，例如_"--fetch=Medline\:cancer"
 Override_legacy_file_fields=Override_legacy_file_fields
 
