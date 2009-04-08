@@ -1533,7 +1533,7 @@ Searched_database._Number_of_hits=Searched_database._Number_of_hits
 
 Searching_for_%0_file=Searching_for_%0_file
 
-Searching_for_duplicates...=Searching_for_duplicates...
+Searching_for_duplicates...=正在查找重复记录...
 
 Searching_for_files=Searching_for_files
 
@@ -1685,27 +1685,27 @@ Strings=字符串
 
 Strings_for_database=Strings_for_database
 
-Subdatabase_from_aux=Subdatabase_from_aux
+Subdatabase_from_aux=从_AUX_文件生成的子数据库
 
 Suggest=建议
 
 Switches_between_full_and_abbreviated_journal_name_if_the_journal_name_is_known.=Switches_between_full_and_abbreviated_journal_name_if_the_journal_name_is_known.
 
-Synchronize_%0_links=Synchronize_%0_links
-Synchronize_file_links=Synchronize_file_links
+Synchronize_%0_links=同步_%0_链接
+Synchronize_file_links=同步文件链接
 
-Synchronizing_%0_links...=Synchronizing_%0_links...
+Synchronizing_%0_links...=正在同步_%0_链接...
 
-Table_appearance=Table_appearance
+Table_appearance=列表外观
 
-Table_background_color=Table_background_color
+Table_background_color=列表背景颜色
 
-Table_grid_color=Table_grid_color
+Table_grid_color=列表网格颜色
 
-Table_text_color=Table_text_color
+Table_text_color=列表文字颜色
 
 Tabname=Tabname
-Target_file_cannot_be_a_directory.=Target_file_cannot_be_a_directory.
+Target_file_cannot_be_a_directory.=目标文件不可为目录。
 
 Tertiary_sort_criterion=第三排序依据
 
@@ -1713,13 +1713,13 @@ Test=测试
 
 Text_Input_Area=paste_text_here
 
-The_#_character_is_not_allowed_in_BibTeX_fields=The_#_character_is_not_allowed_in_BibTeX_fields
+The_#_character_is_not_allowed_in_BibTeX_fields=#_字符无法在_BibTeX_域中使用
 
-The_chosen_date_format_for_new_entries_is_not_valid=The_chosen_date_format_for_new_entries_is_not_valid
+The_chosen_date_format_for_new_entries_is_not_valid=为新记录选择的日期格式非法
 
-The_chosen_encoding_'%0'_could_not_encode_the_following_characters\:_=The_chosen_encoding_'%0'_could_not_encode_the_following_characters:_
+The_chosen_encoding_'%0'_could_not_encode_the_following_characters\:_=选择的编码_'%0'_无法支持下列字符:_
 
-The_CiteSeer_fetch_operation_returned_zero_results.=The_CiteSeer_fetch_operation_returned_zero_results.
+The_CiteSeer_fetch_operation_returned_zero_results.=CiteSeer_抓取操作返回_0_个结果。
 
 
 The_current_version_features_a_new_way_of_handling_links_to_external_files.<br>To_take_advantage_of_this,_your_links_must_be_changed_into_the_new_format,_and<br>JabRef_must_be_configured_to_show_the_new_links.=The_current_version_features_a_new_way_of_handling_links_to_external_files.<br>To_take_advantage_of_this,_your_links_must_be_changed_into_the_new_format,_and<br>JabRef_must_be_configured_to_show_the_new_links.
@@ -1741,13 +1741,13 @@ The_PDF_contains_one_or_several_bibtex-records.\nDo_you_want_to_import_these_as_
 
 The_regular_expression_<b>%0</b>_is_invalid%c=The_Regular_Expression_<b>%0</b>_is_invalid%c
 
-The_search_is_case_insensitive.=The_search_is_case_insensitive.
+The_search_is_case_insensitive.=该查询是不区分大小写的。
 
-The_search_is_case_sensitive.=The_search_is_case_sensitive.
+The_search_is_case_sensitive.=该查询是区分大小写的。
 
 The_string_has_been_removed_locally=The_string_has_been_removed_locally
 
-The_type_name_can_not_contain_spaces.=The_type_name_can_not_contain_spaces.
+The_type_name_can_not_contain_spaces.=类型名不应该包含空格.
 
 The_URL_field_appears_to_be_empty_on_entry_number_=The_URL_field_appears_to_be_empty_on_entry_number_
 
@@ -1760,9 +1760,9 @@ This_database_was_written_using_an_older_version_of_JabRef.=This_database_was_wr
 
 This_entry_has_no_BibTeX_key._Generate_key_now?=This_entry_has_no_BibTeX_key._Generate_key_now?
 
-This_entry_is_incomplete=This_entry_is_incomplete
+This_entry_is_incomplete=该记录是不完整的
 
-This_entry_type_cannot_be_removed.=This_entry_type_cannot_be_removed.
+This_entry_type_cannot_be_removed.=该记录类型无法被移除。
 
 This_external_link_is_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?=This_external_link_is_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?
 
@@ -1799,19 +1799,19 @@ Try_different_encoding=尝试其它编码
 
 Type=类型
 
-Type_set_to_'other'=Type_set_to_'other'
-Unabbreviate_journal_names_of_the_selected_entries=Unabbreviate_journal_names_of_the_selected_entries
-Unabbreviated_%0_journal_names.=Unabbreviated_%0_journal_names.
+Type_set_to_'other'=设置类型为_'other'
+Unabbreviate_journal_names_of_the_selected_entries=展开选中记录的缩写期刊名称
+Unabbreviated_%0_journal_names.=展开_%0_期刊名称。
 
 unable_to_access_LyX-pipe=无法访问_LyX_管道
 
-Unable_to_create_graphical_interface=Unable_to_create_graphical_interface
+Unable_to_create_graphical_interface=无法生成图形界面
 
 Unable_to_open_file.=无法打开文件.
-Unable_to_open_link._The_application_'%0'_associated_with_the_file_type_'%1'_could_not_be_called.=Unable_to_open_link._The_application_'%0'_associated_with_the_file_type_'%1'_could_not_be_called.
-Unable_to_parse_the_following_URL=Unable_to_parse_the_following_URL
-Unable_to_read_default_icon_theme.=Unable_to_read_default_icon_theme.
-Unable_to_read_icon_theme_file=Unable_to_read_icon_theme_file
+Unable_to_open_link._The_application_'%0'_associated_with_the_file_type_'%1'_could_not_be_called.=无法打开链接。无法调用与文件类型_'%1'_关联的应用程序_'%0'_。
+Unable_to_parse_the_following_URL=无法分析下列_URL
+Unable_to_read_default_icon_theme.=无法读入默认的图标主题。
+Unable_to_read_icon_theme_file=无法读取图标的主题文件
 
 unable_to_write_to=无法写入
 Undefined_file_type=未定义的文件类型
@@ -1820,27 +1820,27 @@ Undo=撤销
 
 Union=Union
 
-Unknown_bibtex_entries=Unknown_bibtex_entries
+Unknown_bibtex_entries=未知的_BibTeX_记录
 
 unknown_edit=unknown_edit
 
-unknown_entry_type=unknown_entry_type
+unknown_entry_type=位置的记录类型
 
-Unknown_export_format=Unknown_export_format
+Unknown_export_format=未知的导出格式
 
-Unmark_all=Unmark_all
+Unmark_all=撤销所有标记
 
-Unmark_entries=Unmark_entries
+Unmark_entries=撤销选中标记
 
-Unmark_entry=Unmark_entry
+Unmark_entry=撤销记录标记
 
-Unmarked_selected=Unmarked_selected
+Unmarked_selected=已撤销选中标记
 
-Unpack_EndNote_filter_set=Unpack_EndNote_filter_set
+Unpack_EndNote_filter_set=解开_EndNote_filter_set
 
-Unpacked_file.=Unpacked_file.
+Unpacked_file.=释放的文件。
 
-Unsupported_version_of_class_%0:_%1=Unsupported_version_of_class_%0:_%1
+Unsupported_version_of_class_%0:_%1=不支持的类版本_%0:_%1
 
 untitled=untitled
 
@@ -1850,8 +1850,8 @@ Update_to_current_column_widths=使用当前视图中的列宽
 
 Updated_group_selection=Updated_group_selection
 
-Updating_entries...=Updating_entries...
-Upgrade_external_links=Upgrade_external_links
+Updating_entries...=升级记录中...
+Upgrade_external_links=升级外部链接
 Upgrade_external_PDF/PS_links_to_use_the_'%0'_field.=Upgrade_external_PDF/PS_links_to_use_the_'%0'_field.
 Upgrade_file=Upgrade_file
 Upgrade_old_external_file_links_to_use_the_new_feature=Upgrade_old_external_file_links_to_use_the_new_feature
@@ -1863,8 +1863,8 @@ Upper_first=Upper_first
 usage=usage
 
 Use_antialiasing_font=Use_antialiasing_font
-Use_autocompletion_for_the_following_fields=Use_autocompletion_for_the_following_fields
-Use_custom_icon_theme=Use_custom_icon_theme
+Use_autocompletion_for_the_following_fields=为以下域开启自动完成功能
+Use_custom_icon_theme=使用自定义图标主题
 Use_default_viewer=Use_default_viewer
 
 Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开_inspection_窗口显示该记录。
@@ -1907,8 +1907,8 @@ web_link=web_链接
 
 What_do_you_want_to_do?=您希望做什么?
 
-When_adding/removing_keywords,_separate_them_by=When_adding/removing_keywords,_separate_them_by
-Will_write_XMP-metadata_to_the_PDFs_linked_from_selected_entries.=Will_write_XMP-metadata_to_the_PDFs_linked_from_selected_entries.
+When_adding/removing_keywords,_separate_them_by=当增加/移除关键字时，使用分隔符
+Will_write_XMP-metadata_to_the_PDFs_linked_from_selected_entries.=将写入_XMP_元数据到选中记录链接的_PDF_文件。
 
 with=with
 
