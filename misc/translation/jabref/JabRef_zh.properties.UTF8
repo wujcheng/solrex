@@ -1646,9 +1646,9 @@ Sort_Automatically=自动排序
 
 Sort_order=排序顺序
 
-sort_subgroups=sort_subgroups
+sort_subgroups=排序子分组
 
-Sorted_all_subgroups_recursively.=Sorted_all_subgroups_recursively.
+Sorted_all_subgroups_recursively.=递归排序所有子分组。
 
 Sorted_immediate_subgroups.=Sorted_immediate_subgroups.
 
@@ -1656,16 +1656,16 @@ source_edit=source_edit
 Special_Name_Formatters=Special_Name_Formatters
 
 Special_table_columns=Special_table_columns
-SQL_connection_established.=SQL_connection_established.
+SQL_connection_established.=SQL_连接已建立。
 
-Start_incremental_search=Start_incremental_search
+Start_incremental_search=开始增量查找
 
-Start_search=Start_search
-Starting_import=Starting_import
+Start_search=开始查找
+Starting_import=开始导入
 
 Statically_group_entries_by_manual_assignment=Statically_group_entries_by_manual_assignment
 
-Status=Status
+Status=状态
 
 Stop=停止
 
@@ -1689,7 +1689,7 @@ Subdatabase_from_aux=从_AUX_文件生成的子数据库
 
 Suggest=建议
 
-Switches_between_full_and_abbreviated_journal_name_if_the_journal_name_is_known.=Switches_between_full_and_abbreviated_journal_name_if_the_journal_name_is_known.
+Switches_between_full_and_abbreviated_journal_name_if_the_journal_name_is_known.=在已知的期刊名简写和全称之间切换。
 
 Synchronize_%0_links=同步_%0_链接
 Synchronize_file_links=同步文件链接
@@ -1724,22 +1724,22 @@ The_CiteSeer_fetch_operation_returned_zero_results.=CiteSeer_抓取操作返回_
 
 The_current_version_features_a_new_way_of_handling_links_to_external_files.<br>To_take_advantage_of_this,_your_links_must_be_changed_into_the_new_format,_and<br>JabRef_must_be_configured_to_show_the_new_links.=The_current_version_features_a_new_way_of_handling_links_to_external_files.<br>To_take_advantage_of_this,_your_links_must_be_changed_into_the_new_format,_and<br>JabRef_must_be_configured_to_show_the_new_links.
 
-the_field_<b>%0</b>=the_field_<b>%0</b>
+the_field_<b>%0</b>=域_<b>%0</b>
 
-The_file<BR>'%0'<BR>has_been_modified<BR>externally!=The_file<BR>'%0'<BR>has_been_modified<BR>externally!
+The_file<BR>'%0'<BR>has_been_modified<BR>externally!=文件<BR>'%0'<BR>已经被外部程序修改！
 
 The_group_"%0"_already_contains_the_selection.=The_group_"%0"_already_contains_the_selection.
 
-The_label_of_the_string_can_not_be_a_number.=The_label_of_the_string_can_not_be_a_number.
+The_label_of_the_string_can_not_be_a_number.=该字符串的_label_不可以为数字。
 
-The_label_of_the_string_can_not_contain_spaces.=The_label_of_the_string_can_not_contain_spaces.
+The_label_of_the_string_can_not_contain_spaces.=该字符串的_label_不可以包含空格。
 
-The_label_of_the_string_can_not_contain_the_'#'_character.=The_label_of_the_string_can_not_contain_the_'#'_character.
+The_label_of_the_string_can_not_contain_the_'#'_character.=该字符串的_label_不可以包含_'#'_字符。
 
 The_output_option_depends_on_a_valid_import_option.=The_output_option_depends_on_a_valid_import_option.
 The_PDF_contains_one_or_several_bibtex-records.\nDo_you_want_to_import_these_as_new_entries_into_the_current_database?=The_PDF_contains_one_or_several_bibtex-records.\nDo_you_want_to_import_these_as_new_entries_into_the_current_database?
 
-The_regular_expression_<b>%0</b>_is_invalid%c=The_Regular_Expression_<b>%0</b>_is_invalid%c
+The_regular_expression_<b>%0</b>_is_invalid%c=正则表达式_<b>%0</b>_是非法的%c
 
 The_search_is_case_insensitive.=该查询是不区分大小写的。
 
@@ -1755,10 +1755,10 @@ There_are_possible_duplicates_(marked_with_a_'D'_icon)_that_haven't_been_resolve
 
 There_is_no_entry_type=There_is_no_entry_type
 
-this_button_will_update=this_button_will_update
-This_database_was_written_using_an_older_version_of_JabRef.=This_database_was_written_using_an_older_version_of_JabRef.
+this_button_will_update=这个按钮将更新
+This_database_was_written_using_an_older_version_of_JabRef.=此数据库是由旧版本的_JabRef_生成的。
 
-This_entry_has_no_BibTeX_key._Generate_key_now?=This_entry_has_no_BibTeX_key._Generate_key_now?
+This_entry_has_no_BibTeX_key._Generate_key_now?=此记录没有_BibTeX_key，现在生成它？
 
 This_entry_is_incomplete=该记录是不完整的
 
@@ -1784,9 +1784,9 @@ This_makes_JabRef_look_up_each_%0_link_and_check_if_the_file_exists._If_not,_you
 This_operation_requires_all_selected_entries_to_have_BibTex_keys_defined.=This_operation_requires_all_selected_entries_to_have_BibTex_keys_defined.
 This_operation_requires_at_least_one_entry.=This_operation_requires_at_least_one_entry.
 
-This_operation_requires_one_or_more_entries_to_be_selected.=This_operation_requires_one_or_more_entries_to_be_selected.
+This_operation_requires_one_or_more_entries_to_be_selected.=这个操作需要首先选中一条或多条记录。
 
-This_will_move_all_external_links_from_the_'pdf'_and_'ps'_fields_into_the_'%0'_field._Proceed?=This_will_move_all_external_links_from_the_'pdf'_and_'ps'_fields_into_the_'%0'_field._Proceed?
+This_will_move_all_external_links_from_the_'pdf'_and_'ps'_fields_into_the_'%0'_field._Proceed?=这会将所有_'pdf'_和_'ps'_域的链接移动到_'%0'_域，是否继续？
 
 To_set_up,_go_to_<B>Tools_->_Manage_journal_abbreviations</B>=To_set_up,_go_to_<B>Options_->_Manage_journal_abbreviations</B>
 
