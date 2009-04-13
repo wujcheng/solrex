@@ -2,9 +2,9 @@
 #! created/edited by Popeye version 0.54 (popeye.sourceforge.net)
 #! encoding:ISO-8859-1
 
-%0_contains_the_Regular_Expression_<b>%1</b>=%0%0&nbsp;contains_the_Regular_Expression_<b>%1</b>
+%0_contains_the_Regular_Expression_<b>%1</b>=%0_包含正则表达式_<b>%1</b>
 
-%0_contains_the_term_<b>%1</b>=%0&nbsp;contains_the_term_<b>%1</b>
+%0_contains_the_term_<b>%1</b>=%0_contains_the_term_<b>%1</b>
 
 %0_doesn't_contain_the_Regular_Expression_<b>%1</b>=%0_doesn't_contain_the_Regular_Expression_<b>%1</b>
 
@@ -39,8 +39,8 @@ A_CiteSeer_fetch_operation_is_currently_in_progress.=一个_CiteSeer_抓取操�
 
 A_CiteSeer_import_operation_is_currently_in_progress.=一个_CiteSeer_导入操作正在进行中。
 A_string_with_that_label_already_exists=A_string_with_that_label_already_exists
-Abbreviate_journal_names_of_the_selected_entries_(ISO_abbreviation)=Abbreviate_journal_names_of_the_selected_entries_(ISO_abbreviation)
-Abbreviate_journal_names_of_the_selected_entries_(MEDLINE_abbreviation)=Abbreviate_journal_names_of_the_selected_entries_(MEDLINE_abbreviation)
+Abbreviate_journal_names_of_the_selected_entries_(ISO_abbreviation)=缩写选中记录的期刊名_(ISO_格式缩写)
+Abbreviate_journal_names_of_the_selected_entries_(MEDLINE_abbreviation)=缩写选中记录的期刊名_(MEDLINE_格式缩写)
 
 Abbreviate_names=缩写名
 Abbreviated_%0_journal_names.=缩写的_%0_期刊名称。
@@ -63,9 +63,9 @@ Add_a_(compiled)_custom_ImportFormat_class_from_a_class_path._\nThe_path_need_no
 
 Add_a_(compiled)_custom_ImportFormat_class_from_a_Zip-archive.\nThe_Zip-archive_need_not_be_on_the_classpath_of_JabRef.=Add_a_(compiled)_custom_ImportFormat_class_from_a_Zip-archive.\nThe_Zip-archive_need_not_be_on_the_classpath_of_JabRef.
 
-add_entries_to_group=add_entries_to_group
+add_entries_to_group=添加记录到分组
 
-Add_entry_selection_to_this_group=Add_entry_selection_to_this_group
+Add_entry_selection_to_this_group=添加选中记录到此分组
 
 Add_from_folder=从文件夹中添加
 
@@ -99,14 +99,14 @@ All_entries_of_this_type_will_be_declared_typeless._Continue?=All_entries_of_thi
 
 All_fields=所有域
 
-All_subgroups_(recursively)=All_subgroups_(recursively)
+All_subgroups_(recursively)=所有子分组(递归地)
 
 Allow_editing_in_table_cells=Allow_editing_in_table_cells
 An_Error_occurred_while_fetching_from_OAI2_source_(%0)\:=An_Error_occurred_while_fetching_from_OAI2_source_(%0):
 An_Exception_ocurred_while_accessing_'%0'=An_Exception_ocurred_while_accessing_'%0'
 An_SAXException_ocurred_while_parsing_'%0':=An_SAXException_ocurred_while_parsing_'%0':
 
-and=&nbsp;和
+and=和
 and_inside_the_JabRef-jar\:=and_inside_the_JabRef-jar:
 
 and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.=and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.
@@ -116,12 +116,12 @@ any_field_that_matches_the_regular_expression_<b>%0</b>=any_field_that_matches_t
 Appearance=外观
 
 Append=追加
-Append_contents_from_a_BibTeX_database_into_the_currently_viewed_database=Append_contents_from_a_BibTeX_database_into_the_currently_viewed_database
+Append_contents_from_a_BibTeX_database_into_the_currently_viewed_database=从一个_BibTeX_数据库追加内容到当前查看的数据库
 
 Append_database=追加数据库
 
 append_the_selected_text_to_bibtex_key=append_the_selected_text_to_bibtex_key
-Application=Application
+Application=应用程序
 
 Apply=应用
 
@@ -143,33 +143,33 @@ Attach_%0_file=Attach_%0_file
 Attach_URL=Attach_URL
 
 Attempt_to_autoset_%0_links_for_your_entries._Autoset_works_if_a_%0_file_in_your_%0_directory_or_a_subdirectory<BR>is_named_identically_to_an_entry's_BibTeX_key,_plus_extension.=Attempt_to_autoset_%0_links_for_your_entries._Autoset_works_if_a_%0_file_in_your_%0_directory_or_a_subdirectory<BR>is_named_identically_to_an_entry's_BibTeX_key,_plus_extension.
-Attempting_SQL_export...=Attempting_SQL_export...
+Attempting_SQL_export...=尝试_SQL_导出...
 
-Auto=Auto
+Auto=自动
 
-Autodetect_format=Autodetect_format
+Autodetect_format=自动检测格式
 
-Autogenerate_BibTeX_key=Autogenerate_BibTeX_key
-Autogenerate_BibTeX_keys=Autogenerate_BibTeX_keys
+Autogenerate_BibTeX_key=自动生成_BibTeX_key
+Autogenerate_BibTeX_keys=自动生成_BibTeX_keys
 
-Autogenerate_groups=Autogenerate_groups
+Autogenerate_groups=自动生成分组
 
-autogenerate_keys=autogenerate_keys
-Autolink_files_with_names_starting_with_the_BibTeX_key=Autolink_files_with_names_starting_with_the_BibTeX_key
+autogenerate_keys=自动生成_keys
+Autolink_files_with_names_starting_with_the_BibTeX_key=自动链接文件名以_BibTeX_key_开头的文件
 
-Autolink_only_files_that_match_the_BibTeX_key=Autolink_only_files_that_match_the_BibTeX_key
+Autolink_only_files_that_match_the_BibTeX_key=自动链接文件名匹配_BibTeX_key_的文件
 
-Automatically_create_groups=Automatically_create_groups
+Automatically_create_groups=自动创建分组
 
-Automatically_create_groups_for_database.=Automatically_create_groups_for_database.
+Automatically_create_groups_for_database.=自动为数据库创建分组。
 
-Automatically_created_groups=Automatically_created_groups
+Automatically_created_groups=完成自动创建分组
 
-Automatically_hide_groups_interface_when_switching_to_a_database_that_contains_no_groups=Automatically_hide_groups_interface_when_switching_to_a_database_that_contains_no_groups
+Automatically_hide_groups_interface_when_switching_to_a_database_that_contains_no_groups=当切换到一个不包含分组的数据库时自动隐藏分组界面
 
-Automatically_remove_exact_duplicates=Automatically_remove_exact_duplicates
+Automatically_remove_exact_duplicates=自动移除完全重复的项
 
-Automatically_show_groups_interface_when_switching_to_a_database_that_contains_groups=Automatically_show_groups_interface_when_switching_to_a_database_that_contains_groups
+Automatically_show_groups_interface_when_switching_to_a_database_that_contains_groups=当切换到一个包含分组的数据库时自动打开分组界面
 
 Autoset=Autoset
 
@@ -181,43 +181,43 @@ Autoset_%0_links._Do_not_overwrite_existing_links.=Autoset_%0_links._Do_not_over
 Autoset_external_links=Autoset_external_links
 Autosetting_links=Autosetting_links
 
-AUX_file_import=AUX_file_import
+AUX_file_import=AUX_文件导入
 
-Available_export_formats=Available_export_formats
+Available_export_formats=可用的导出格式
 
 Available_fields=Allowed_BibTeX_fields
 
-Available_import_formats=Available_import_formats
+Available_import_formats=可用的导入格式
 
-Background_color_for_marked_entries=Background_color_for_marked_entries
+Background_color_for_marked_entries=被标记记录的背景颜色
 
-Background_color_for_optional_fields=Background_color_for_optional_fields
+Background_color_for_optional_fields=可选域的背景颜色
 
-Background_color_for_required_fields=Background_color_for_required_fields
+Background_color_for_required_fields=必选域的背景颜色
 
 Backup_old_file_when_saving=保存数据库时保留备份
-Beta_version=Beta_version
+Beta_version=Beta_版本
 
 Bibkey_to_filename_conversion=Bibkey_to_filename_conversion
 
 BibTeX_key=BibTeX_key
 
-BibTeX_key_is_unique.=BibTeX_key_is_unique.
+BibTeX_key_is_unique.=BibTeX_key_是唯一的。
 
 BibTeX_key_not_set._Enter_a_name_for_the_downloaded_file=BibTeX_key_not_set._Enter_a_name_for_the_downloaded_file
 
-BibTeX_source=BibTeX_source
+BibTeX_source=BibTeX_源代码
 
 BibTeXML=BibTeXML
 
-Binding=Binding
-Broken_link=Broken_link
+Binding=绑定
+Broken_link=失效链接
 
 Browse=Browse
 
 by=by
 
-Calling_external_viewer...=Calling_external_viewer...
+Calling_external_viewer...=调用外部查看器...
 
 Cancel=取消
 
@@ -260,13 +260,13 @@ Change_table_column_and_General_fields_settings_to_use_the_new_feature=Change_ta
 
 change_type=change_type
 
-changed_=changed_
+changed_=已修改_
 
-Changed_font_settings=Changed_font_settings
+Changed_font_settings=已修改字体设置
 
-Changed_language_settings=Changed_language_settings
+Changed_language_settings=已修改语言设置
 
-Changed_look_and_feel_settings=Changed_look_and_feel_settings
+Changed_look_and_feel_settings=已修改_look_and_feel_设置
 
 Changed_preamble=Changed_preamble
 
@@ -276,10 +276,10 @@ Characters_to_ignore=Characters_to_ignore
 
 Check_existing_%0_links=Check_existing_%0_links
 
-Check_links=Check_links
+Check_links=核对链接
 
 Choose_the_URL_to_download._The_default_value_points_to_a_list_provided_by_the_JabRef_developers.=Choose_the_URL_to_download._The_default_value_points_to_a_list_provided_by_the_JabRef_developers.
-Cite_command=Cite_command
+Cite_command=Cite_命令
 
 CiteSeer_Error=CiteSeer_错误
 
@@ -327,7 +327,7 @@ Command_line_id=Command_line_id
 Complete_record=Complete_record
 
 Completed_Import_Fields_from_CiteSeer.=Completed_Import_Fields_from_CiteSeer.
-Connect=Connect
+Connect=连接
 Connect_to_SQL_database=Connect_to_SQL_database
 Connect_to_SQL_Database=Connect_to_SQL_Database
 Connection_to_IEEEXplore_failed=Connection_to_IEEEXplore_failed
@@ -336,17 +336,17 @@ Contained_in=Contained_in
 
 Content=内容
 
-Copied=Copied
+Copied=已复制
 
 Copied_cell_contents=Copied_cell_contents
 
-Copied_key=Copied_key
+Copied_key=已复制_key
 
-Copied_keys=Copied_keys
+Copied_keys=已复制_keys
 
 Copy=复制
 
-Copy_BibTeX_key=Copy_BibTeX_key
+Copy_BibTeX_key=复制_BibTeX_key
 Copy_file_to_file_directory.=Copy_file_to_file_directory.
 Copy_files_to_file_directory.=Copy_files_to_file_directory.
 
@@ -356,32 +356,32 @@ Could_not_call_executable=Could_not_call_executable
 
 Could_not_connect_to_a_running_gnuserv_process._Make_sure_that_Emacs_or_XEmacs_is_running,<BR>and_that_the_server_has_been_started_(by_running_the_command_'gnuserv-start').=Could_not_connect_to_a_running_gnuserv_process._Make_sure_that_Emacs_or_XEmacs_is_running,<BR>and_that_the_server_has_been_started_(by_running_the_command_'gnuserv-start').
 
-Could_not_connect_to_host=Could_not_connect_to_host
+Could_not_connect_to_host=无法连接到主机
 
-Could_not_connect_to_host_=Could_not_connect_to_host_
-Could_not_connect_to_Vim_server._Make_sure_that_Vim_is_running<BR>with_correct_server_name.=Could_not_connect_to_Vim_server._Make_sure_that_Vim_is_running<BR>with_correct_server_name.
+Could_not_connect_to_host_=无法连接到主机_
+Could_not_connect_to_Vim_server._Make_sure_that_Vim_is_running<BR>with_correct_server_name.=无法连接到_Vim_服务器，请检查_Vim_是否以正确的_Vim_服务器名选项启动。
 Could_not_determine_exception_message.=Could_not_determine_exception_message.
 
 Could_not_export_entry_types=Could_not_export_entry_types
 
 Could_not_export_file=无法导出文件
 
-Could_not_export_preferences=Could_not_export_preferences
+Could_not_export_preferences=无法导出首选项
 
 Could_not_find_a_suitable_import_format.=Could_not_find_a_suitable_import_format.
 Could_not_find_directory_for_%0-files\:_%1=Could_not_find_directory_for_%0-files:_%1
-Could_not_find_image_file=Could_not_find_image_file
+Could_not_find_image_file=无法找到图像文件
 
 Could_not_find_layout_file=Could_not_find_layout_file
 
 Could_not_import_entry_types=Could_not_import_entry_types
 
-Could_not_import_preferences=Could_not_import_preferences
+Could_not_import_preferences=无法导入首选项
 
 Could_not_instantiate_%0_%1=Could_not_instantiate_%0_%1
 
 Could_not_instantiate_%0_%1._Have_you_chosen_the_correct_package_path?=Could_not_instantiate_%0_%1._Have_you_chosen_the_correct_package_path?
-Could_not_open_link=Could_not_open_link
+Could_not_open_link=无法打开链接
 
 Could_not_parse_number_of_hits=Could_not_parse_number_of_hits
 Could_not_print_preview=Could_not_print_preview
@@ -391,8 +391,8 @@ Could_not_resolve_import_format=Could_not_resolve_import_format
 Could_not_run_the_'gnuclient'_program._Make_sure_you_have_the_gnuserv/gnuclient_programs_installed.=Could_not_run_the_'gnuclient'_program._Make_sure_you_have_the_gnuserv/gnuclient_programs_installed.
 Could_not_run_the_'vim'_program.=Could_not_run_the_'vim'_program.
 
-Could_not_save_file=Could_not_save_file
-Could_not_save_file._Character_encoding_'%0'_is_not_supported.=Could_not_save_file._Character_encoding_'%0'_is_not_supported.
+Could_not_save_file=无法保存文件
+Could_not_save_file._Character_encoding_'%0'_is_not_supported.=无法保存文件，不支持编码_'%0'。
 
 Couldn't_find_an_entry_associated_with_this_URL=Couldn't_find_an_entry_associated_with_this_URL
 
@@ -408,21 +408,21 @@ Current_content=当前内容
 
 Current_value=当前值
 
-Custom_entry_types=Custom_entry_types
+Custom_entry_types=自定义的记录类型
 
 Custom_entry_types_found_in_file=Custom_entry_types_found_in_file
-Custom_icon_theme=Custom_icon_theme
+Custom_icon_theme=自定义图标主题
 Custom_icon_theme_file=Custom_icon_theme_file
 
 Custom_importers=自定义导入器
 
-Customize_entry_types=Customize_entry_types
+Customize_entry_types=自定义记录类型
 
 Customize_key_bindings=Customize_key_bindings
 
 Cut=剪切
 
-cut_entries=cut_entries
+cut_entries=剪切记录
 
 cut_entry=剪切该记录
 
@@ -431,7 +431,7 @@ Database_\:=数据库:
 
 Database_encoding=数据库编码
 
-Database_has_changed._Do_you_want_to_save_before_closing?=Database_has_changed._Do_you_want_to_save_before_closing?
+Database_has_changed._Do_you_want_to_save_before_closing?=数据库已被修改，是否保存修改？
 
 Database_properties=数据库属性
 
@@ -480,7 +480,7 @@ Descending=降序
 Description=描述
 
 Deselect_all=取消所有选定
-Deselect_all_duplicates=Deselect_all_duplicates
+Deselect_all_duplicates=检测所有重复项
 
 Details=Details
 
@@ -578,16 +578,16 @@ Edit_preamble=Edit_preamble
 Edit_strings=编辑字符串
 Editor_options=编辑器选项
 
-empty_BibTeX_key=empty_BibTeX_key
+empty_BibTeX_key=空_BibTeX_key
 
-Empty_BibTeX_key.=Empty_BibTeX_key.
+Empty_BibTeX_key.=空_BibTeX_key。
 
 Empty_BibTeX_key._Grouping_may_not_work_for_this_entry.=Empty_BibTeX_key._Grouping_may_not_work_for_this_entry.
 
-empty_database=empty_database
+empty_database=空数据库
 
-Enable_source_editing=Enable_source_editing
-Enable_word/name_autocompletion=Enable_word/name_autocompletion
+Enable_source_editing=启用源代码编辑
+Enable_word/name_autocompletion=启用词组/姓名自动完成
 
 Endnote=Endnote
 
@@ -679,11 +679,11 @@ Export_to_SQL_database=导出到_SQL_数据库
 Exporting=正在导出
 Extension=扩展名
 
-External_changes=External_changes
+External_changes=外部修改
 
-External_file_links=External_file_links
+External_file_links=外部文件链接
 
-External_files=External_files
+External_files=外部文件
 
 External_programs=外部程序
 
@@ -744,7 +744,7 @@ File_type=File_type
 
 File_updated_externally=File_updated_externally
 
-filename=filename
+filename=文件名
 
 Files_opened=Files_opened
 
@@ -858,7 +858,7 @@ Icon=图标
 
 Ignore=忽略
 
-Illegal_type_name=Illegal_type_name
+Illegal_type_name=非法的类型名
 
 Immediate_subgroups=Immediate_subgroups
 
@@ -870,7 +870,7 @@ Import_and_remove_old_entry=Import_and_remove_old_entry
 
 Import_Data_from_CiteSeer_Database=Import_Data_from_CiteSeer_Database
 
-Import_entries=Import_entries
+Import_entries=导入记录
 
 Import_entry_types=Import_entry_types
 
@@ -927,7 +927,7 @@ Initially_show_groups_tree_expanded=Initially_show_groups_tree_expanded
 
 Input=Work_options
 
-Input_error=Input_error
+Input_error=输入错误
 
 Insert=插入
 
@@ -963,15 +963,15 @@ ISO_abbreviation=ISO_abbreviation
 Item_list_for_field=Item_list_for_field
 jabref=jabref
 
-JabRef_help=JabRef_help
+JabRef_help=JabRef_帮助
 
-JabRef_preferences=JabRef_preferences
+JabRef_preferences=JabRef_首选项
 
-Journal_abbreviations=Journal_abbreviations
+Journal_abbreviations=期刊缩写名
 
 Journal_list_preview=Journal_list_preview
 
-Journal_name=Journal_name
+Journal_name=期刊名
 
 Keep=Keep
 
@@ -1000,7 +1000,7 @@ Language=语言
 
 Last_modified=Last_modified
 
-LaTeX_AUX_file=LaTeX_AUX_file
+LaTeX_AUX_file=LaTeX_AUX_文件
 Leave_file_in_its_current_directory.=Leave_file_in_its_current_directory.
 Leave_files_in_their_current_directory.=Leave_files_in_their_current_directory.
 
@@ -1012,7 +1012,7 @@ Limit_to_fields=Limit_to_fields
 
 Limit_to_selected_entries=Limit_to_selected_entries
 
-Link=Link
+Link=链接
 Link_local_file=Link_local_file
 Link_to_file_%0=Link_to_file_%0
 
@@ -1024,16 +1024,16 @@ Load_session=载入会话
 Loading_session...=载入会话...
 localhost=localhost
 
-Look_and_feel=Look_and_feel
+Look_and_feel=Look_and_feel_(Java)
 Looking_for_pdf...=Looking_for_pdf...
 lower=lower
 Main_file_directory=Main_file_directory
 
 Main_layout_file=Main_layout_file
 
-Main_PDF_directory=Main_PDF_directory
+Main_PDF_directory=PDF_文件主目录
 
-Main_PS_directory=Main_PS_directory
+Main_PS_directory=PS_文件主目录
 
 Manage=管理
 
@@ -1042,7 +1042,7 @@ Manage_custom_exports=管理自定义导出器
 Manage_custom_imports=管理自定义导入器
 Manage_external_file_types=Manage_external_file_types
 
-Manage_journal_abbreviations=Manage_journal_abbreviations
+Manage_journal_abbreviations=管理期刊名称缩写
 
 Mark_entries=标记多记录
 
@@ -1053,9 +1053,9 @@ Mark_new_entries_with_addition_date=建立新记录时标记时间
 Mark_new_entries_with_owner_name=建立新记录时标记所有者为
 
 Marked_selected=标记选中
-Memory_Stick_Mode=Memory_Stick_Mode
+Memory_Stick_Mode=记忆棒模式
 
-Menu_and_label_font_size=Menu_and_label_font_size
+Menu_and_label_font_size=菜单和标签字体大小
 
 Merged_external_changes=Merged_external_changes
 
@@ -1071,7 +1071,7 @@ Modified_groups=Modified_groups
 
 Modified_string=Modified_string
 
-Modify=Modify
+Modify=修改
 
 modify_group=modify_group
 
@@ -1870,7 +1870,7 @@ Use_default_viewer=Use_default_viewer
 Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开检视窗口显示该记录。
 Use_native_file_dialog=使用本地文件对话框
 
-Use_other_look_and_feel=使用其它外观类
+Use_other_look_and_feel=使用其它_look_and_feel_(Java_界面类)
 Use_Regular_Expression_Search=使用正则表达式搜索
 
 Use_regular_expressions=使用正则表达式
