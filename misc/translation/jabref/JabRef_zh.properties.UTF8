@@ -14,50 +14,50 @@
 
 %0_doesn't_match_the_term_<b>%1</b>=%0_doesn't_match_the_term_<b>%1</b>
 
-%0_export_successful=%0_export_successful
+%0_export_successful=%0_导出成功
 
 %0_field_set=%0_field_set
 
-%0_matches_the_Regular_Expression_<b>%1</b>=%0_matches_the_Regular_Expression_<b>%1</b>
+%0_matches_the_Regular_Expression_<b>%1</b>=%0_匹配正则表达式_<b>%1</b>
 
 %0_matches_the_term_<b>%1</b>=%0_matches_the_term_<b>%1</b>
 
-<field_name>=<field_name>
-<HTML>Could_not_find_file_'%0'<BR>linked_from_entry_'%1'</HTML>=<HTML>Could_not_find_file_'%0'<BR>linked_from_entry_'%1'</HTML>
+<field_name>=<域名称>
+<HTML>Could_not_find_file_'%0'<BR>linked_from_entry_'%1'</HTML>=<HTML>无法找到记录'%1'链接的文件'%0'</HTML>
 
 <HTML>Unpack_the_zip_file_containing_import/export_filters_for_Endnote,<BR>for_optimal_interoperability_with_JabRef</HTML>=<HTML>Unpack_the_zip_file_containing_import/export_filters_for_Endnote,<BR>for_optimal_interoperability_with_JabRef</HTML>
 
 <no_field>=<no_field>
 
-<select>=<select>
+<select>=<选择>
 
 <select_word>=<select_word>
 
 _on_entry_number_=_on_entry_number_
 
-A_CiteSeer_fetch_operation_is_currently_in_progress.=A_CiteSeer_fetch_operation_is_currently_in_progress.
+A_CiteSeer_fetch_operation_is_currently_in_progress.=一个_CiteSeer_抓取操作正在进行中。
 
-A_CiteSeer_import_operation_is_currently_in_progress.=A_CiteSeer_import_operation_is_currently_in_progress.
+A_CiteSeer_import_operation_is_currently_in_progress.=一个_CiteSeer_导入操作正在进行中。
 A_string_with_that_label_already_exists=A_string_with_that_label_already_exists
 Abbreviate_journal_names_of_the_selected_entries_(ISO_abbreviation)=Abbreviate_journal_names_of_the_selected_entries_(ISO_abbreviation)
 Abbreviate_journal_names_of_the_selected_entries_(MEDLINE_abbreviation)=Abbreviate_journal_names_of_the_selected_entries_(MEDLINE_abbreviation)
 
-Abbreviate_names=Abbreviate_names
-Abbreviated_%0_journal_names.=Abbreviated_%0_journal_names.
+Abbreviate_names=缩写名
+Abbreviated_%0_journal_names.=缩写的_%0_期刊名称。
 
-Abbreviation=Abbreviation
+Abbreviation=缩写
 
-About_JabRef=About_JabRef
+About_JabRef=关于_JabRef
 
-Abstract=Abstract
+Abstract=摘要
 
-Accept=Accept
+Accept=接受
 
-Accept_change=Accept_change
+Accept_change=接受修改
 
 Action=Action
 
-Add=Add
+Add=添加
 
 Add_a_(compiled)_custom_ImportFormat_class_from_a_class_path._\nThe_path_need_not_be_on_the_classpath_of_JabRef.=Add_a_(compiled)_custom_ImportFormat_class_from_a_class_path._\nThe_path_need_not_be_on_the_classpath_of_JabRef.
 
@@ -67,37 +67,37 @@ add_entries_to_group=add_entries_to_group
 
 Add_entry_selection_to_this_group=Add_entry_selection_to_this_group
 
-Add_from_folder=Add_from_folder
+Add_from_folder=从文件夹中添加
 
-Add_from_jar=Add_from_jar
+Add_from_jar=从_jar_中添加
 
-add_group=add_group
+add_group=添加分组
 
-Add_Group=Add_group
+Add_Group=添加分组
 
-Add_new=Add_new
+Add_new=新建
 
-Add_Subgroup=Add_subgroup
+Add_Subgroup=添加子分组
 
-Add_to_group=Add_to_group
+Add_to_group=添加到分组
 
-Added_group_"%0".=Added_group_"%0".
+Added_group_"%0".=已添加分组_"%0"。
 
-Added_new=Added_new
+Added_new=已添加
 
-Added_string=Added_string
+Added_string=已添加字符串
 
 Additionally,_entries_whose_<b>%0</b>_field_does_not_contain_<b>%1</b>_can_be_assigned_manually_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._This_process_adds_the_term_<b>%1</b>_to_each_entry's_<b>%0</b>_field._Entries_can_be_removed_manually_from_this_group_by_selecting_them_then_using_the_context_menu._This_process_removes_the_term_<b>%1</b>_from_each_entry's_<b>%0</b>_field.=Additionally,_entries_whose_<b>%0</b>_field_does_not_contain_<b>%1</b>&nbsp;can_be_assigned_manually_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._This_process_adds_the_term_<b>%1</b>&nbsp;to_each_entry's_<b>%0</b>_field._Entries_can_be_removed_manually_from_this_group_by_selecting_them_then_using_the_context_menu._This_process_removes_the_term_<b>%1</b>&nbsp;from_each_entry's_<b>%0</b>_field.
 
-Advanced=Advanced
-All_custom_file_types_will_be_lost._Proceed?=All_custom_file_types_will_be_lost._Proceed?
+Advanced=高级
+All_custom_file_types_will_be_lost._Proceed?=所有的自定义文件类型将丢失，是否继续？
 
-All_Entries=All_Entries
+All_Entries=所有记录
 
-All_entries=All_entries
+All_entries=所以记录
 All_entries_of_this_type_will_be_declared_typeless._Continue?=All_entries_of_this_type_will_be_declared_typeless._Continue?
 
-All_fields=All_fields
+All_fields=所有域
 
 All_subgroups_(recursively)=All_subgroups_(recursively)
 
@@ -106,24 +106,24 @@ An_Error_occurred_while_fetching_from_OAI2_source_(%0)\:=An_Error_occurred_while
 An_Exception_ocurred_while_accessing_'%0'=An_Exception_ocurred_while_accessing_'%0'
 An_SAXException_ocurred_while_parsing_'%0':=An_SAXException_ocurred_while_parsing_'%0':
 
-and=&nbsp;and
+and=&nbsp;和
 and_inside_the_JabRef-jar\:=and_inside_the_JabRef-jar:
 
 and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.=and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.
 
 any_field_that_matches_the_regular_expression_<b>%0</b>=any_field_that_matches_the_Regular_Expression_<b>%0</b>
 
-Appearance=Appearance
+Appearance=外观
 
-Append=Append
+Append=追加
 Append_contents_from_a_BibTeX_database_into_the_currently_viewed_database=Append_contents_from_a_BibTeX_database_into_the_currently_viewed_database
 
-Append_database=Append_database
+Append_database=追加数据库
 
 append_the_selected_text_to_bibtex_key=append_the_selected_text_to_bibtex_key
 Application=Application
 
-Apply=Apply
+Apply=应用
 
 Arguments_passed_on_to_running_JabRef_instance._Shutting_down.=Arguments_passed_on_to_running_JabRef_instance._Shutting_down.
 
@@ -195,7 +195,7 @@ Background_color_for_optional_fields=Background_color_for_optional_fields
 
 Background_color_for_required_fields=Background_color_for_required_fields
 
-Backup_old_file_when_saving=Backup_old_file_when_saving
+Backup_old_file_when_saving=保存数据库时保留备份
 Beta_version=Beta_version
 
 Bibkey_to_filename_conversion=Bibkey_to_filename_conversion
@@ -496,7 +496,7 @@ Display_all_error_messages=Display_all_error_messages
 
 Display_help_on_command_line_options=Display_help_on_command_line_options
 
-Display_imported_entries_in_an_inspection_window_before_they_are_added.=使用单独窗口检视将被导入的记录
+Display_imported_entries_in_an_inspection_window_before_they_are_added.=使用单独检视窗口显示将被导入的记录
 
 Display_only_entries_belonging_to_all_selected_groups.=Display_only_entries_belonging_to_all_selected_groups.
 Display_version=Display_version
@@ -617,9 +617,9 @@ Entry_in_import=Entry_in_import
 
 Entry_preview=预览记录
 
-Entry_table=Entry_table
+Entry_table=记录列表
 
-Entry_table_columns=Entry_table_columns
+Entry_table_columns=记录列表列
 
 Entry_type=记录类型
 
@@ -685,7 +685,7 @@ External_file_links=External_file_links
 
 External_files=External_files
 
-External_programs=External_programs
+External_programs=外部程序
 
 External_viewer_called=External_viewer_called
 
@@ -821,7 +821,7 @@ Group_properties=Group_properties
 
 grouping_may_not_work_for_this_entry=grouping_may_not_work_for_this_entry
 
-Groups=Groups
+Groups=分组
 
 Harvard_RTF=Harvard_RTF
 
@@ -1017,7 +1017,7 @@ Link_local_file=Link_local_file
 Link_to_file_%0=Link_to_file_%0
 
 Listen_for_remote_operation_on_port=Listen_for_remote_operation_on_port
-Load_and_Save_preferences_from/to_jabref.xml_on_start-up_(memory_stick_mode)=Load_and_Save_preferences_from/to_jabref.xml_on_start-up_(memory_stick_mode)
+Load_and_Save_preferences_from/to_jabref.xml_on_start-up_(memory_stick_mode)=加载/保存首选项设置从/到_jabref.xml_文件(记忆棒模式)
 
 Load_session=载入会话
 
@@ -1048,9 +1048,9 @@ Mark_entries=标记多记录
 
 Mark_entry=标记该记录
 
-Mark_new_entries_with_addition_date=Mark_new_entries_with_addition_date
+Mark_new_entries_with_addition_date=建立新记录时标记时间
 
-Mark_new_entries_with_owner_name=Mark_new_entries_with_owner_name
+Mark_new_entries_with_owner_name=建立新记录时标记所有者为
 
 Marked_selected=标记选中
 Memory_Stick_Mode=Memory_Stick_Mode
@@ -1099,8 +1099,8 @@ MS_Office_2007=MS_Office_2007
 MySQL=MySQL
 MySQL_database=MySQL_database
 
-Name=名称
-Name_formatter=Name_formatter
+Name=姓名
+Name_formatter=姓名格式化器
 
 Natbib_style=Natbib_style
 
@@ -1211,11 +1211,11 @@ Open_editor_when_a_new_entry_is_created=Open_editor_when_a_new_entry_is_created
 
 Open_file=打开文件
 
-Open_last_edited_databases_at_startup=Open_last_edited_databases_at_startup
+Open_last_edited_databases_at_startup=启动_JabRef_时打开上次使用的数据库
 
 Open_PDF_or_PS=打开_PDF_或_PS
 
-Open_right-click_menu_with_Ctrl+left_button=Open_right-click_menu_with_Ctrl+left_button
+Open_right-click_menu_with_Ctrl+left_button=使用_Ctrl+Left_按键组合打开右键菜单
 
 Open_URL_or_DOI=打开_URL_或_DOI
 OpenDocument_Spreadsheet=OpenDocument_Spreadsheet
@@ -1388,9 +1388,9 @@ Remove_all_subgroups=移除子分组
 
 Remove_all_subgroups_of_"%0"?=Remove_all_subgroups_of_"%0"?
 
-Remove_double_braces_around_BibTeX_fields_when_loading.=Remove_double_braces_around_BibTeX_fields_when_loading.
+Remove_double_braces_around_BibTeX_fields_when_loading.=载入时移除_BibTeX_域中的双层括号。
 
-Remove_duplicates=Remove_duplicates
+Remove_duplicates=移除重复项
 
 Remove_entry_from_import=Remove_entry_from_import
 
@@ -1867,7 +1867,7 @@ Use_autocompletion_for_the_following_fields=为以下域开启自动完成功能
 Use_custom_icon_theme=使用自定义图标主题
 Use_default_viewer=Use_default_viewer
 
-Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开_inspection_窗口显示该记录。
+Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开检视窗口显示该记录。
 Use_native_file_dialog=使用本地文件对话框
 
 Use_other_look_and_feel=使用其它外观类
@@ -1892,7 +1892,7 @@ Vim_Server_Name=Vim_服务器名
 
 Waiting_for_ArXiv...=等待_ArXiv...
 
-Warn_about_unresolved_duplicates_when_closing_inspection_window=关闭_inspection_时警告未处理的_BibTeX_key_重复情况
+Warn_about_unresolved_duplicates_when_closing_inspection_window=关闭检视窗口时警告未处理的_BibTeX_key_重复情况
 
 Warn_before_overwriting_existing_keys=覆盖已存在的_BibTeX_key_之前发出警告
 
@@ -1930,7 +1930,7 @@ Wrote_XMP_to_'%0'.=Wrote_XMP_to_'%0'.
 
 XMP-annotated_PDF=XMP-annotated_PDF
 XMP_Export_Privacy_Settings=XMP_Export_Privacy_Settings
-XMP_metadata=XMP_metadata
+XMP_metadata=XMP_元数据
 XMP_metadata_found_in_PDF\:_%0=XMP_metadata_found_in_PDF:_%0
 
 You_have_changed_the_language_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了语言设置。为了该更改生效，您必须重新启动_Jabref。
@@ -2037,7 +2037,7 @@ Assign_exclusively_to_group=分配到惟一分组
 
 Bad_Request_'%0'.=错误的请求_'%0'.
 
-Mark_entries_imported_into_an_existing_database=Mark_entries_imported_into_an_existing_database
+Mark_entries_imported_into_an_existing_database=标记导入到已有数据库的新记录
 Unmark_all_entries_before_importing_new_entries_into_an_existing_database=Unmark_all_entries_before_importing_new_entries_into_an_existing_database
 
 Forward=前进
