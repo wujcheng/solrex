@@ -109,7 +109,7 @@ An_SAXException_ocurred_while_parsing_'%0':=An_SAXException_ocurred_while_parsin
 and=和
 and_inside_the_JabRef-jar\:=and_inside_the_JabRef-jar:
 
-and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.=and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.
+and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.=并且下次您启动_JabRef_的时候，请确保该类在您的_classpath_中。
 
 any_field_that_matches_the_regular_expression_<b>%0</b>=any_field_that_matches_the_Regular_Expression_<b>%0</b>
 
@@ -217,7 +217,7 @@ Browse=Browse
 
 by=by
 
-Calling_external_viewer...=调用外部查看器...
+Calling_external_viewer...=正在调用外部查看器...
 
 Cancel=取消
 
@@ -291,7 +291,7 @@ CiteSeer_Import_Fields=CiteSeer_Import_Fields
 
 CiteSeer_Transfer=CiteSeer_Transfer
 
-Class_name=Class_name
+Class_name=类名
 
 Clear=清除
 
@@ -318,7 +318,7 @@ Collapse_subtree=Collapse_subtree
 
 Color_codes_for_required_and_optional_fields=Color_codes_for_required_and_optional_fields
 
-Color_for_marking_incomplete_entries=Color_for_marking_incomplete_entries
+Color_for_marking_incomplete_entries=不完整记录的颜色
 
 Column_width=列宽
 
@@ -441,13 +441,13 @@ Default=默认
 
 Default_encoding=默认编码
 
-Default_grouping_field=Default_grouping_field
+Default_grouping_field=默认分组依据域
 
-Default_look_and_feel=Default_look_and_feel
+Default_look_and_feel=默认_look_and_feel
 
 Default_pattern=Default_pattern
 
-Default_sort_criteria=Default_sort_criteria
+Default_sort_criteria=默认排序规则
 Define_'%0'=Define_'%0'
 
 defined.=defined.
@@ -484,7 +484,7 @@ Deselect_all_duplicates=检测所有重复项
 
 Details=Details
 
-Disable_entry_editor_when_multiple_entries_are_selected=Disable_entry_editor_when_multiple_entries_are_selected
+Disable_entry_editor_when_multiple_entries_are_selected=选中多条记录是关闭记录编辑器
 
 Disable_this_confirmation_dialog=Disable_this_confirmation_dialog
 
@@ -515,11 +515,11 @@ Do_not_overwrite_existing_keys=Do_not_overwrite_existing_keys
 Do_not_show_splash_window_at_startup=Do_not_show_splash_window_at_startup
 Do_not_show_these_options_in_the_future=Do_not_show_these_options_in_the_future
 
-Do_not_wrap_the_following_fields_when_saving=Do_not_wrap_the_following_fields_when_saving
-Do_not_write_the_following_fields_to_XMP_Metadata:=Do_not_write_the_following_fields_to_XMP_Metadata:
-Do_not_write_the_following_fields_to_XMP_Metadata\:=Do_not_write_the_following_fields_to_XMP_Metadata:
+Do_not_wrap_the_following_fields_when_saving=保存时不要对下列域执行换行操作
+Do_not_write_the_following_fields_to_XMP_Metadata:=不要将以下域写入_XMP_元数据:
+Do_not_write_the_following_fields_to_XMP_Metadata\:=不要将以下域写入_XMP_元数据:
 
-Do_you_want_JabRef_to_do_the_following_operations?=Do_you_want_JabRef_to_do_the_following_operations?
+Do_you_want_JabRef_to_do_the_following_operations?=您希望_JabRef_做以下操作吗？
 
 Docbook=Docbook
 
@@ -555,7 +555,7 @@ Duplicates_found=Duplicates_found
 
 Duplicates_removed=Duplicates_removed
 
-Dynamic_groups=Dynamic_groups
+Dynamic_groups=动态分组
 
 Dynamically_group_entries_by_a_free-form_search_expression=Dynamically_group_entries_by_a_free-form_search_expression
 
@@ -667,7 +667,7 @@ Export_entry_types=导出记录类型
 
 Export_name=导出名称
 
-Export_preferences=导出偏好设置
+Export_preferences=导出首选项设置
 
 Export_preferences_to_file=导出偏好设置到文件
 
@@ -687,7 +687,7 @@ External_files=外部文件
 
 External_programs=外部程序
 
-External_viewer_called=External_viewer_called
+External_viewer_called=成功调用外部查看器
 
 Failed_to_read_groups_data_(unsupported_version:_%0)=Failed_to_read_groups_data_(unsupported_version:_%0)
 
@@ -775,11 +775,11 @@ FontSelector=FontSelector
 
 for=for
 
-Format_of_author_and_editor_names=Format_of_author_and_editor_names
-Format_String=Format_String
+Format_of_author_and_editor_names=作者和编辑的姓名格式
+Format_String=格式化字串
 
 Format_used=Format_used
-Formatter_Name=Formatter_Name
+Formatter_Name=格式化器名称
 
 Formatter_not_found=Formatter_not_found
 
@@ -884,7 +884,7 @@ Import_group_definitions=Import_group_definitions
 
 Import_name=Import_name
 
-Import_preferences=Import_preferences
+Import_preferences=导入首选项设置
 
 Import_preferences_from_file=Import_preferences_from_file
 
@@ -923,7 +923,7 @@ Incremental_search_failed._Repeat_to_search_from_top.=Incremental_search_failed.
 
 Independent_group\:_When_selected,_view_only_this_group's_entries=Independent_group:_When_selected,_view_only_this_group's_entries
 
-Initially_show_groups_tree_expanded=Initially_show_groups_tree_expanded
+Initially_show_groups_tree_expanded=初始时显示展开的分组树
 
 Input=Work_options
 
@@ -933,9 +933,9 @@ Insert=插入
 
 Insert_rows=Insert_rows
 
-Insert_selected_citations_into_LyX/Kile=Insert_selected_citations_into_LyX/Kile
+Insert_selected_citations_into_LyX/Kile=插入选中记录引用到_LyX/Kile
 
-Insert_selected_citations_into_WinEdt=Insert_selected_citations_into_WinEdt
+Insert_selected_citations_into_WinEdt=插入选中记录引用到_WinEdt
 
 insert_string_=insert_string_
 
@@ -1016,7 +1016,7 @@ Link=链接
 Link_local_file=Link_local_file
 Link_to_file_%0=Link_to_file_%0
 
-Listen_for_remote_operation_on_port=Listen_for_remote_operation_on_port
+Listen_for_remote_operation_on_port=监听端口
 Load_and_Save_preferences_from/to_jabref.xml_on_start-up_(memory_stick_mode)=加载/保存首选项设置从/到_jabref.xml_文件(记忆棒模式)
 
 Load_session=载入会话
@@ -1027,7 +1027,7 @@ localhost=localhost
 Look_and_feel=Look_and_feel_(Java)
 Looking_for_pdf...=Looking_for_pdf...
 lower=lower
-Main_file_directory=Main_file_directory
+Main_file_directory=文件主目录
 
 Main_layout_file=Main_layout_file
 
@@ -1102,9 +1102,9 @@ MySQL_database=MySQL_database
 Name=姓名
 Name_formatter=姓名格式化器
 
-Natbib_style=Natbib_style
+Natbib_style=Natbib_格式
 
-Native_file_dialog=Native_file_dialog
+Native_file_dialog=本地文件对话框
 
 nested_aux_files=nested_aux_files
 
@@ -1182,7 +1182,7 @@ Not_saved_(empty_session)=Not_saved_(empty_session)
 
 Note_that_the_entry_causing_the_problem_has_been_selected.=Note_that_the_entry_causing_the_problem_has_been_selected.
 
-Note_that_you_must_specify_the_fully_qualified_class_name_for_the_look_and_feel,=Note_that_you_must_specify_the_fully_qualified_class_name_for_the_look_and_feel,
+Note_that_you_must_specify_the_fully_qualified_class_name_for_the_look_and_feel,=注意：您必须为_look_and_feel_明确指定完整的经过验证的类名称，
 
 Nothing_to_redo=Nothing_to_redo
 
@@ -1207,7 +1207,7 @@ Open_BibTeX_database=打开_BibTeX_数据库
 
 Open_database=打开数据库
 
-Open_editor_when_a_new_entry_is_created=Open_editor_when_a_new_entry_is_created
+Open_editor_when_a_new_entry_is_created=创建新记录时打开记录编辑器
 
 Open_file=打开文件
 
@@ -1242,11 +1242,11 @@ Output=输出
 
 Output_or_export_file=Output_or_export_file
 
-Override=Override
+Override=覆盖
 
 Override_default_file_directories=Override_default_file_directories
 
-Override_default_font_settings=Override_default_font_settings
+Override_default_font_settings=覆盖默认字体设置
 
 override_the_bibtex_key_by_the_selected_text=override_the_bibtex_key_by_the_selected_text
 
@@ -1270,7 +1270,7 @@ Pasted=Pasted
 
 Path_to_%0_not_defined=Path_to_%0_not_defined
 
-Path_to_HTML_viewer=Path_to_HTML_viewer
+Path_to_HTML_viewer=到_HTML_查看器的路径
 
 Path_to_LatexEditor_(LEd.exe)=Path_to_LatexEditor_(LEd.exe)
 
@@ -1376,7 +1376,7 @@ Regular_Expression=Regular_Expression
 
 Remember_these_entry_types?=Remember_these_entry_types?
 
-Remote_operation=Remote_operation
+Remote_operation=远程操作
 
 Remote_server_port=Remote_server_port
 
@@ -1478,7 +1478,7 @@ Save_before_closing=Save_before_closing
 Save_database=保存数据库
 Save_database_as_...=保存数据库为_...
 
-Save_entries_in_their_original_order=Save_entries_in_their_original_order
+Save_entries_in_their_original_order=以原始顺序保存记录
 
 Save_failed=保存失败
 
@@ -1486,9 +1486,9 @@ Save_failed_during_backup_creation=Save_failed_during_backup_creation
 
 Save_failed_while_committing_changes=Save_failed_while_committing_changes
 
-Save_in_default_table_sort_order=Save_in_default_table_sort_order
+Save_in_default_table_sort_order=以缺省的列表排序顺序保存
 
-Save_ordered_by_author/editor/year=Save_ordered_by_author/editor/year
+Save_ordered_by_author/editor/year=以“作者/编辑/年份”顺序保存
 Save_selected_as_...=Save_selected_as_...
 
 Saved_database=Saved_database
@@ -1595,7 +1595,7 @@ Show_'Lastname,_Firstname'=显示_'Lastname,_Firstname'
 
 Show_BibTeX_source_by_default=缺省显示_BibTeX_源代码
 
-Show_BibTeX_source_panel=Show_BibTeX_source_panel
+Show_BibTeX_source_panel=显示_BibTeX_源代码面板
 
 Show_CiteSeer_column=显示_CiteSeer_列
 
@@ -1609,10 +1609,10 @@ Show_entries_*not*_in_group_selection=Show_entries_*not*_in_group_selection
 
 Show_file_column=显示“文件”列
 
-Show_icons_for_groups=Show_icons_for_groups
+Show_icons_for_groups=显示分组类型图标
 Show_last_names_only=只显示“Lastname”
 
-Show_names_unchanged=Show_names_unchanged
+Show_names_unchanged=显示原始姓名字串
 
 Show_one_less_rows=Show_one_less_rows
 
@@ -1653,9 +1653,9 @@ Sorted_all_subgroups_recursively.=递归排序所有子分组。
 Sorted_immediate_subgroups.=Sorted_immediate_subgroups.
 
 source_edit=source_edit
-Special_Name_Formatters=Special_Name_Formatters
+Special_Name_Formatters=特殊的姓名格式化器
 
-Special_table_columns=Special_table_columns
+Special_table_columns=特殊列表列
 SQL_connection_established.=SQL_连接已建立。
 
 Start_incremental_search=开始增量查找
@@ -1675,7 +1675,7 @@ Store_journal_abbreviations=Store_journal_abbreviations
 
 Store_string=Store_string
 
-Store_the_following_fields_with_braces_around_capital_letters=Store_the_following_fields_with_braces_around_capital_letters
+Store_the_following_fields_with_braces_around_capital_letters=保存下列域时使用大括号包裹大写字母
 
 Stored_definition_for_type=Stored_definition_for_type
 
@@ -1929,7 +1929,7 @@ Wrote_XMP-metadata=Wrote_XMP-metadata
 Wrote_XMP_to_'%0'.=Wrote_XMP_to_'%0'.
 
 XMP-annotated_PDF=XMP-annotated_PDF
-XMP_Export_Privacy_Settings=XMP_Export_Privacy_Settings
+XMP_Export_Privacy_Settings=XMP_导出隐私设置
 XMP_metadata=XMP_元数据
 XMP_metadata_found_in_PDF\:_%0=XMP_metadata_found_in_PDF:_%0
 
@@ -2038,7 +2038,7 @@ Assign_exclusively_to_group=分配到惟一分组
 Bad_Request_'%0'.=错误的请求_'%0'.
 
 Mark_entries_imported_into_an_existing_database=标记导入到已有数据库的新记录
-Unmark_all_entries_before_importing_new_entries_into_an_existing_database=Unmark_all_entries_before_importing_new_entries_into_an_existing_database
+Unmark_all_entries_before_importing_new_entries_into_an_existing_database=导入新记录到数据库之前移除所有新记录的标记
 
 Forward=前进
 Back=后退
