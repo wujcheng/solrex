@@ -5,12 +5,12 @@ Abbreviate_journal_names_(ISO)=缩写期刊名称_(ISO)
 Abbreviate_journal_names_(MEDLINE)=缩写期刊名称_(MEDLINE)
 About_JabRef=关于_JabRef_(&A)
 Append_database=追加数据库_(&A)
-Autogenerate_BibTeX_keys=自动生成_BibTeX_keys(&A)
+Autogenerate_BibTeX_keys=自动生成_BibTeX_键(&A)
 BibTeX=&BibTeX
 Close_database=关闭当前数据库_(&C)
 Copy=复制(&o)
-Copy_\\cite{BibTeX_key}=复制_\\c&ite{BibTeX_key}
-Copy_BibTeX_key=复制_&BibTeX_key
+Copy_\\cite{BibTeX_key}=复制_\\c&ite{BibTeX_键值}
+Copy_BibTeX_key=复制_&BibTeX_键值
 Custom_export=自定义导出器_(&x)
 Custom_importers=自定义导入器
 Customize_entry_types=自定义记录类别_(&C)
@@ -21,7 +21,7 @@ Edit=编辑_(&E)
 # Bibtex
 Edit_entry=编辑记录_(&E)
 Edit_preamble=编辑导言区_(&preamble)
-Edit_strings=编辑字符串_(&s)
+Edit_strings=编辑简写字串_(&s)
 Export=导出_(&E)
 Export_selected_entries_to_clipboard=导出选中记录到剪贴板_(&E)
 Fetch_citations_from_CiteSeer=从_&CiteSeer_抓取_cite_信息
@@ -35,8 +35,8 @@ Find_and_remove_exact_duplicates=查找并移除完全重复记录_(&d)
 Find_duplicates=查找重复记录_(&F)
 Help=帮助_(&H)
 Help_contents=帮助内容_(&c)
-Highlight_groups_matching_all_selected_entries=高亮显示所有选中记录所属分组
-Highlight_groups_matching_any_selected_entry=高亮显示选中记录所属的所有分组
+Highlight_groups_matching_all_selected_entries=高亮显示包含所有选中记录的分组
+Highlight_groups_matching_any_selected_entry=高亮显示包含任一选中记录的分组
 Import_Fields_from_CiteSeer=从_&CiteSeer_导入其它域
 Incremental_search=增量查找_(&I)
 
@@ -44,7 +44,7 @@ Insert_selected_citations_into_Emacs=将选中_cite_插入到_(&E)macs
 Insert_selected_citations_into_LatexEditor=将选中_cite_插入到_LatexEditor
 Insert_selected_citations_into_LyX/Kile=将选中_cite_插入到_&LyX/Kile
 Insert_selected_citations_into_WinEdt=将选中_cite_插入到_&WinEdt
-Integrity_check=完整性检验
+Integrity_check=完整性检查
 # Help
 JabRef_help=JabRef_帮助_(&h)
 Load_session=加载会话_(&D)
@@ -52,7 +52,7 @@ Manage_content_selectors=管理内容选择子_(&C)
 Manage_custom_exports=管理自定义导出器_(&M)
 Manage_custom_imports=管理自定义导入器_(&I)
 Manage_journal_abbreviations=管理期刊名缩写规则_(&J)
-Mark_entries=标记选中记录_(&M)
+Mark_entries=高亮标记选中记录_(&M)
 # File menu
 New_database=新建数据库_(&N)
 # Menu BibTeX (BibTeX)
@@ -61,7 +61,7 @@ New_entry...=新建记录_(&N)...
 New_entry_from_plain_text=以纯文本新建记录_(&W)
 New_subdatabase_based_on_AUX_file=根据_AU&X_文件新建子数据库
 # View
-Next_tab=下一标签_(&N)
+Next_tab=下一标签页_(&N)
 Open_database=打开数据库_(&O)
 Open_PDF_or_PS=打开_(&P)DF_或_PS
 Open_URL_or_DOI=打开_&URL_或_DOI
@@ -69,7 +69,7 @@ Options=选项_(&O)
 Paste=粘贴_(&P)
 # Options
 Preferences=首选项_(&P)
-Previous_tab=上一标签_(&P)
+Previous_tab=上一标签页_(&P)
 Quit=退出_(&Q)
 Recent_files=最近打开的文件_(&R)
 Redo=重做_(&R)
@@ -86,7 +86,7 @@ Select_all=全选_(&A)
 Set_up_general_fields=配置_&general_域
 Show_error_console=打开错误显示终端
 
-Sort_tabs=标签排序_(&S)
+Sort_tabs=标签页排序_(&S)
 Switch_preview_layout=切换记录预览方式_(&S)
 Synchronize_file_links=自动同步所有文件链接
 Synchronize_PDF_links=自动同步_PDF_链接
@@ -99,8 +99,8 @@ Tools=工具_(&T)
 Unabbreviate_journal_names=展开期刊名称
 # Edit
 Undo=撤销_(&U)
-Unmark_all=撤销所有标记_(&L)
-Unmark_entries=撤销选中标记_(&N)
+Unmark_all=撤销所有高亮标记_(&L)
+Unmark_entries=撤销选中高亮标记_(&N)
 Unpack_EndNote_filter_set=解开_&EndNote_filter_set
 View=视图_(&V)
 Web_search=Web_搜索
