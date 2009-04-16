@@ -213,9 +213,9 @@ BibTeXML=BibTeXML
 Binding=绑定
 Broken_link=失效链接
 
-Browse=Browse
+Browse=浏览...
 
-by=by
+by=为
 
 Calling_external_viewer...=正在调用外部查看器...
 
@@ -297,8 +297,8 @@ Clear=清除
 
 clear_all_groups=clear_all_groups
 
-Clear_field=Clear_field
-Clear_fields=Clear_fields
+Clear_field=清除域内容
+Clear_fields=清除域内容
 
 Clear_highlight=Clear_highlight
 
@@ -316,7 +316,7 @@ Closed_database=关闭数据库
 
 Collapse_subtree=Collapse_subtree
 
-Color_codes_for_required_and_optional_fields=Color_codes_for_required_and_optional_fields
+Color_codes_for_required_and_optional_fields=列表记录项的可选域和必选域用不同颜色显示
 
 Color_for_marking_incomplete_entries=不完整记录的颜色
 
@@ -472,7 +472,7 @@ Delete_strings=删除字符串
 
 Deleted=已删除
 
-Delimit_fields_with_semicolon,_ex.=Delimit_fields_with_semicolon,_ex.
+Delimit_fields_with_semicolon,_ex.=使用分号分隔域，例如
 Derby=Derby
 
 Descending=降序
@@ -501,9 +501,9 @@ Display_imported_entries_in_an_inspection_window_before_they_are_added.=使用�
 Display_only_entries_belonging_to_all_selected_groups.=Display_only_entries_belonging_to_all_selected_groups.
 Display_version=Display_version
 
-Displaying_no_groups=Displaying_no_groups
+Displaying_no_groups=非分组视图
 
-Do_not_abbreviate_names=Do_not_abbreviate_names
+Do_not_abbreviate_names=不要缩写姓名
 
 Do_not_autoset=Do_not_autoset
 
@@ -511,11 +511,11 @@ Do_not_import_entry=Do_not_import_entry
 
 Do_not_open_any_files_at_startup=Do_not_open_any_files_at_startup
 
-Do_not_overwrite_existing_keys=Do_not_overwrite_existing_keys
+Do_not_overwrite_existing_keys=不覆盖已存在的_key
 Do_not_show_splash_window_at_startup=Do_not_show_splash_window_at_startup
 Do_not_show_these_options_in_the_future=Do_not_show_these_options_in_the_future
 
-Do_not_wrap_the_following_fields_when_saving=保存时不要对下列域执行换行操作
+Do_not_wrap_the_following_fields_when_saving=保存时不要对下列域添加换行符
 Do_not_write_the_following_fields_to_XMP_Metadata:=不要将以下域写入_XMP_元数据:
 Do_not_write_the_following_fields_to_XMP_Metadata\:=不要将以下域写入_XMP_元数据:
 
@@ -653,7 +653,7 @@ Error_writing_XMP_to_file\:_%0=Error_writing_XMP_to_file:_%0
 Establishing_SQL_connection...=Establishing_SQL_connection...
 Exceptions=Exceptions
 
-Existing_file=Existing_file
+Existing_file=已有文件
 
 exists._Overwrite_file?=exists._Overwrite_file?
 exists.Overwrite?=exists._Overwrite?
@@ -714,7 +714,7 @@ Field_name=域名称
 Field_names_are_not_allowed_to_contain_white_space_or_the_following_characters=Field_names_are_not_allowed_to_contain_white_space_or_the_following_characters
 
 Field_sizes=Field_sizes
-Field_to_filter=Field_to_filter
+Field_to_filter=要过滤的域
 
 Field_to_group_by=Field_to_group_by
 
@@ -736,7 +736,7 @@ File_directory_is_not_set_or_does_not_exist!=File_directory_is_not_set_or_does_n
 File_download=File_download
 File_exists=File_exists
 
-File_extension=File_extension
+File_extension=文件扩展名
 File_has_been_updated_externally._What_do_you_want_to_do?=File_has_been_updated_externally._What_do_you_want_to_do?
 
 File_not_found=File_not_found
@@ -758,10 +758,10 @@ Finished_writing_XMP_for_%0_file_(%1_skipped,_%2_errors).=Finished_writing_XMP_f
 
 First_select_the_entries_you_want_keys_to_be_generated_for.=First_select_the_entries_you_want_keys_to_be_generated_for.
 
-Fit_table_horizontally_on_screen=Fit_table_horizontally_on_screen
+Fit_table_horizontally_on_screen=列表宽度填满屏幕宽度
 
-Float=Float
-Float_marked_entries=Float_marked_entries
+Float=浮动_(结果上浮到最前)
+Float_marked_entries=浮动标记的记录
 
 Font_Family=字体
 
@@ -792,7 +792,7 @@ Full_name=全称
 
 General=基本设置
 
-General_fields=General_fields
+General_fields=General_域
 
 Generate=生成
 
@@ -800,8 +800,8 @@ Generate_BibTeX_key=Generate_BibTeX_key
 
 Generate_keys=Generate_keys
 
-Generate_keys_before_saving_(for_entries_without_a_key)=Generate_keys_before_saving_(for_entries_without_a_key)
-Generate_keys_for_imported_entries=Generate_keys_for_imported_entries
+Generate_keys_before_saving_(for_entries_without_a_key)=保存数据库前为缺失_key_的记录自动生成_BibTeX_key
+Generate_keys_for_imported_entries=为导入的记录重新生成_key
 
 Generate_now=Generate_now
 
@@ -833,7 +833,7 @@ Help_contents=帮助内容
 
 Help_on_groups=Help_on_groups
 
-Help_on_key_patterns=Help_on_key_patterns
+Help_on_key_patterns=Key_表达式帮助
 Help_on_Preview_Settings=Help_on_Preview_Settings
 Help_on_Regular_Expression_Search=Help_on_Regular_Expression_Search
 
@@ -911,13 +911,13 @@ Importing_in_unknown_format=Importing_in_unknown_format
 In_JabRef,_use_pairs_of_#_characters_to_indicate_a_string.=In_JabRef,_use_pairs_of_#_characters_to_indicate_a_string.
 
 Include_abstracts=Include_abstracts
-Include_entries=Include_entries
+Include_entries=包括的记录
 
 Include_subgroups\:_When_selected,_view_entries_contained_in_this_group_or_its_subgroups=Include_subgroups:_When_selected,_view_entries_contained_in_this_group_or_its_subgroups
 
-Incremental=Incremental
+Incremental=增量
 
-Incremental_search=Incremental_search
+Incremental_search=增量查找
 
 Incremental_search_failed._Repeat_to_search_from_top.=Incremental_search_failed._Repeat_to_search_from_top.
 
@@ -985,9 +985,9 @@ Key_bindings=Key_bindings
 
 Key_bindings_changed=Key_bindings_changed
 
-Key_generator_settings=Key_generator_settings
+Key_generator_settings=Key_生成器设置
 
-Key_pattern=Key_pattern
+Key_pattern=Key_表达式
 
 keys_in_database=keys_in_database
 
@@ -1008,9 +1008,9 @@ Left=Left
 
 License=许可协议
 
-Limit_to_fields=Limit_to_fields
+Limit_to_fields=限制范围到域
 
-Limit_to_selected_entries=Limit_to_selected_entries
+Limit_to_selected_entries=限制范围为选中的记录
 
 Link=链接
 Link_local_file=Link_local_file
@@ -1040,7 +1040,7 @@ Manage=管理
 Manage_custom_exports=管理自定义导出器
 
 Manage_custom_imports=管理自定义导入器
-Manage_external_file_types=Manage_external_file_types
+Manage_external_file_types=管理外部文件类型
 
 Manage_journal_abbreviations=管理期刊名称缩写
 
@@ -1121,7 +1121,7 @@ New_BibTeX_subdatabase=New_BibTeX_subdatabase
 New_content=New_content
 
 New_database_created.=New_database_created.
-New_field_value=New_field_value
+New_field_value=新的域内容
 
 New_file=新建文件
 New_file_link_(INSERT)=New_file_link_(INSERT)
@@ -1231,7 +1231,7 @@ OpenOffice_CSV=OpenOffice_CSV
 Operation_canceled.\n=Operation_canceled.\n
 Operation_not_supported=Operation_not_supported
 
-Optional_fields=Optional_fields
+Optional_fields=可选域
 
 Options=选项
 
@@ -1252,7 +1252,7 @@ override_the_bibtex_key_by_the_selected_text=override_the_bibtex_key_by_the_sele
 
 
 Overwrite=覆盖
-Overwrite_existing_field_values=Overwrite_existing_field_values
+Overwrite_existing_field_values=覆盖原有域内容
 
 Overwrite_keys=Overwrite_keys
 
@@ -1283,7 +1283,7 @@ Path_to_WinEdt.exe=Path_to_WinEdt.exe
 PDF_directory=PDF_directory
 PDF_does_not_exist=PDF_does_not_exist
 
-Personal_journal_list=Personal_journal_list
+Personal_journal_list=私有的期刊列表
 
 Plain_text_import=Plain_text_import
 
@@ -1323,7 +1323,7 @@ Preview=预览
 
 Previous_entry=上一条
 
-Primary_sort_criterion=Primary_sort_criterion
+Primary_sort_criterion=主排序依据
 Print_Preview=打印预览
 Printing_Entry_Preview=Printing_Entry_Preview
 
@@ -1388,7 +1388,7 @@ Remove_all_subgroups=移除子分组
 
 Remove_all_subgroups_of_"%0"?=Remove_all_subgroups_of_"%0"?
 
-Remove_double_braces_around_BibTeX_fields_when_loading.=载入时移除_BibTeX_域中的双层括号。
+Remove_double_braces_around_BibTeX_fields_when_loading.=载入时移除_BibTeX_域中的双层括号
 
 Remove_duplicates=移除重复项
 
@@ -1438,7 +1438,7 @@ Renamed_string=重命名字符串
 
 Replace=替换
 
-Replace_(regular_expression)=Replace_(regular_expression)
+Replace_(regular_expression)=替换_(正则表达式)
 Replace_comma_by_and_where_appropriate=Replace_comma_by_and_where_appropriate
 
 Replace_string=替换字符串
@@ -1447,13 +1447,13 @@ Replace_with=替换为
 
 Replaced=被替换
 
-Required_fields=Required_fields
+Required_fields=必选域
 
 Reset_all=重置所有
 Reset_file_type_definitons=Reset_file_type_definitions
 
-Resolve_strings_for_all_fields_except=Resolve_strings_for_all_fields_except
-Resolve_strings_for_standard_BibTeX_fields_only=Resolve_strings_for_standard_BibTeX_fields_only
+Resolve_strings_for_all_fields_except=处理所有域的字符串，除了
+Resolve_strings_for_standard_BibTeX_fields_only=只处理标准_BibTeX_域的字符串
 
 resolved=resolved
 
@@ -1571,8 +1571,8 @@ Selected_entries=选中的记录
 Selector_enabled_fields=Selector_enabled_fields
 Server_Hostname_\:=服务器主机:
 Server_Type_\:=服务器类型:
-Set_field=Set_field
-Set_fields=Set_fields
+Set_field=设置域内容
+Set_fields=设置域内容
 
 Set_general_fields=设置_general_域
 Set_main_external_file_directory=设置外部文件的主目录
@@ -1589,9 +1589,8 @@ Shortcut=快捷键
 
 Show/edit_BibTeX_source=显示/编辑_BibTeX_源代码
 
-Show_'Firstname_Lastname'=显示_'Firstname_Lastname'
-
-Show_'Lastname,_Firstname'=显示_'Lastname,_Firstname'
+Show_'Firstname_Lastname'=显示_'名_(Firstname)_姓_(Lastname)'
+Show_'Lastname,_Firstname'=显示_'姓_(Lastname),_名_(Firstname)'
 
 Show_BibTeX_source_by_default=缺省显示_BibTeX_源代码
 
@@ -1610,7 +1609,7 @@ Show_entries_*not*_in_group_selection=Show_entries_*not*_in_group_selection
 Show_file_column=显示“文件”列
 
 Show_icons_for_groups=显示分组类型图标
-Show_last_names_only=只显示“Lastname”
+Show_last_names_only=只显示“姓_(Lastname)”
 
 Show_names_unchanged=显示原始姓名字串
 
@@ -1867,7 +1866,7 @@ Use_autocompletion_for_the_following_fields=为以下域开启自动完成功能
 Use_custom_icon_theme=使用自定义图标主题
 Use_default_viewer=Use_default_viewer
 
-Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开检视窗口显示该记录。
+Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开检视窗口显示该记录
 Use_native_file_dialog=使用本地文件对话框
 
 Use_other_look_and_feel=使用其它_look_and_feel_(Java_界面类)
@@ -2010,11 +2009,11 @@ HTML_parser=HTML_parser
 RIS_importer=RIS_导入器
 
 Move_the_keyboard_focus_to_the_entry_table=将键盘焦点移动到记录列表
-MIME_type=MIME_type
+MIME_type=MIME_类型
 
 This_feature_lets_new_files_be_opened_or_imported_into_an_already_running_instance_of_JabRef<BR>instead_of_opening_a_new_instance._For_instance,_this_is_useful_when_you_open_a_file_in_JabRef<br>from_your_web_browser.<BR>Note_that_this_will_prevent_you_from_running_more_than_one_instance_of_JabRef_at_a_time.=该选项使得打开或者导入新文件的操作在已经运行的_JabRef_中进行，而不是新建另一个_JabRef_窗口来进行这些操作。<BR>例如，当您从浏览器中调用_JabRef_打开一个文件时，这个选项将比较有用。<BR>注意：它将阻止您同时运行多个_JabRef_实例。
-Note_that_these_settings_are_used_for_the_legacy_<b>pdf</b>_and_<b>ps</b>_fields_only.<br>For_most_users,_setting_the_<b>Main_file_directory</b>_above_should_be_sufficient.=注意：这些设置主要应用于旧式的_(Legacy)_<b>pdf</b>_和_<b>ps</b>_域。<br>对大部分用户来说，设置上面的“主文件目录”就足够了。
-Legacy_file_fields=旧式_(Legacy)_文件域
+Note_that_these_settings_are_used_for_the_legacy_<b>pdf</b>_and_<b>ps</b>_fields_only.<br>For_most_users,_setting_the_<b>Main_file_directory</b>_above_should_be_sufficient.=注意：这些设置主要应用于旧式的_<b>pdf</b>_和_<b>ps</b>_域，这意味着如果您不知道它是什么意思，您可以忽视该选项。<br>对大部分用户来说，设置上面的“主文件目录”就足够了。
+Legacy_file_fields=旧式文件域
 
 %0_entries_found._To_reduce_server_load,_only_%1_will_be_downloaded.=共找到_%0_条相关记录，为减轻服务器负担，只下载其中的_%1_条。
 This_makes_JabRef_look_up_each_%0_extension_and_check_if_the_file_exists._If_not,_you_will_be_given_options<BR>to_resolve_the_problem.=这将使_JabRef_依据_%0_扩展名查找文件是否存在，如果找不到，JabRef_将提供给您选项来解决这个问题。
