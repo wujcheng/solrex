@@ -104,7 +104,7 @@ parse_opt (int key, char *arg, struct argp_state *state)
       /* If MESSAGE is not given in command, read MESSAGE from stdin. */
       p_args->message = (char *) malloc(L_MES_LEN*sizeof(char));
       if (p_args->message) {
-        read_count = fread (p_args->message, L_MES_LEN, sizeof(char), stdin);
+        read_count = fread (p_args->message, sizeof(char), L_MES_LEN, stdin);
         p_args->message[read_count] = '\0';
       }
     break;
@@ -274,7 +274,7 @@ int main(int argc, char** argv)
   /* Logout, disconnect and release resources. */
   fx_loginout();
   fx_close_network();
-  fx_terminate();
+  //fx_terminate();
   if (args.verbose == TRUE) {
     fprintf(stderr, "PASS: terminate().\n");
   }

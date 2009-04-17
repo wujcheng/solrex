@@ -34,6 +34,8 @@ BIN = sendsms
 SRCS = $(BIN).cpp
 OBJS = $(BIN).o 
 
+all: $(BIN)
+
 $(BIN): $(OBJS)
 	@if [ $(MACHINE) = x86_64 ];\
 	then echo $(CPP) $^ lib/libfetion_64.a $(LFLAGS) -o $@;\
