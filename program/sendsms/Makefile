@@ -27,14 +27,20 @@
 CC = gcc
 CPP = g++
 CFLAGS = -Iinclude -O2 -Wall
-LFLAGS = lib/libfetion_32.a -lcurl -pthread 
+LFLAGS = -lcurl -pthread
+MACHINE = $$(uname -m)
 
 BIN = sendsms
 SRCS = $(BIN).cpp
 OBJS = $(BIN).o 
 
 $(BIN): $(OBJS)
-	$(CPP) $^ $(LFLAGS) -o $@ 
+	@if [ $(MACHINE) = x86_64 ];\
+	then echo $(CPP) $^ lib/libfetion_64.a $(LFLAGS) -o $@;\
+	$(CPP) $^ lib/libfetion_64.a $(LFLAGS) -o $@;\
+	else echo $(CPP) $^ lib/libfetion_32.a $(LFLAGS) -o $@;\
+	$(CPP) $^ lib/libfetion_32.a $(LFLAGS) -o $@;\
+	fi
 
 $(OBJS) : %.o : %.cpp
 	$(CPP) $(CFLAGS) -c $<
