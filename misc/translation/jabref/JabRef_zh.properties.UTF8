@@ -4,15 +4,15 @@
 
 %0_contains_the_Regular_Expression_<b>%1</b>=%0_包含正则表达式_<b>%1</b>
 
-%0_contains_the_term_<b>%1</b>=%0_contains_the_term_<b>%1</b>
+%0_contains_the_term_<b>%1</b>=%0_包含词组_<b>%1</b>
 
 %0_doesn't_contain_the_Regular_Expression_<b>%1</b>=%0_不包含正则表达式_<b>%1</b>
 
-%0_doesn't_contain_the_term_<b>%1</b>=%0_doesn't_contain_the_term_<b>%1</b>
+%0_doesn't_contain_the_term_<b>%1</b>=%0_不包含词组_<b>%1</b>
 
 %0_doesn't_match_the_Regular_Expression_<b>%1</b>=%0_不匹配正则表达式_<b>%1</b>
 
-%0_doesn't_match_the_term_<b>%1</b>=%0_doesn't_match_the_term_<b>%1</b>
+%0_doesn't_match_the_term_<b>%1</b>=%0_不匹配词组_<b>%1</b>
 
 %0_export_successful=%0_导出成功
 
@@ -20,7 +20,7 @@
 
 %0_matches_the_Regular_Expression_<b>%1</b>=%0_匹配正则表达式_<b>%1</b>
 
-%0_matches_the_term_<b>%1</b>=%0_matches_the_term_<b>%1</b>
+%0_matches_the_term_<b>%1</b>=%0_匹配词组_<b>%1</b>
 
 <field_name>=<域名称>
 <HTML>Could_not_find_file_'%0'<BR>linked_from_entry_'%1'</HTML>=<HTML>无法找到记录'%1'链接的文件'%0'</HTML>
@@ -87,7 +87,7 @@ Added_new=已添加
 
 Added_string=已添加字符串
 
-Additionally,_entries_whose_<b>%0</b>_field_does_not_contain_<b>%1</b>_can_be_assigned_manually_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._This_process_adds_the_term_<b>%1</b>_to_each_entry's_<b>%0</b>_field._Entries_can_be_removed_manually_from_this_group_by_selecting_them_then_using_the_context_menu._This_process_removes_the_term_<b>%1</b>_from_each_entry's_<b>%0</b>_field.=Additionally,_entries_whose_<b>%0</b>_field_does_not_contain_<b>%1</b>&nbsp;can_be_assigned_manually_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._This_process_adds_the_term_<b>%1</b>&nbsp;to_each_entry's_<b>%0</b>_field._Entries_can_be_removed_manually_from_this_group_by_selecting_them_then_using_the_context_menu._This_process_removes_the_term_<b>%1</b>&nbsp;from_each_entry's_<b>%0</b>_field.
+Additionally,_entries_whose_<b>%0</b>_field_does_not_contain_<b>%1</b>_can_be_assigned_manually_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._This_process_adds_the_term_<b>%1</b>_to_each_entry's_<b>%0</b>_field._Entries_can_be_removed_manually_from_this_group_by_selecting_them_then_using_the_context_menu._This_process_removes_the_term_<b>%1</b>_from_each_entry's_<b>%0</b>_field.=此外，那些“<b>%0</b>”域里不包含“<b>%1</b>”的记录可以被手动添加到此分组（使用拖放或者右键菜单）——这个操作将会把词组“<b>%1</b>”添加到每条记录的“<b>%0</b>”域中。选中记录后用右键菜单可以将该记录从此分组中移除——这个操作将会把“<b>%1</b>”从被移除记录的“<b>%0</b>”域中去除。
 
 Advanced=高级
 All_custom_file_types_will_be_lost._Proceed?=所有的自定义文件类型将丢失，是否继续？
@@ -127,11 +127,11 @@ Apply=应用
 
 Arguments_passed_on_to_running_JabRef_instance._Shutting_down.=参数传递给了正在执行的_JabRef_实例，关闭自身程序。
 
-Assign_entry_selection_exclusively_to_this_group=Assign_entry_selection_exclusively_to_this_group
+Assign_entry_selection_exclusively_to_this_group=排它地分配记录到此分组
 
-Assign_new_file=Assign_new_file
+Assign_new_file=分配新文件
 
-Assign_the_original_group's_entries_to_this_group?=Assign_the_original_group's_entries_to_this_group?
+Assign_the_original_group's_entries_to_this_group?=将原分组中的记录分配到此分组？
 
 Assigned_%0_entries_to_group_"%1".=分配了_%0_条记录到分组_"%1".
 
@@ -256,7 +256,7 @@ change_preamble=修改导言区_(preamble)
 change_string_content=更改字符串内容
 
 change_string_name=修改简单字串名称
-Change_table_column_and_General_fields_settings_to_use_the_new_feature=修改列表列和_General_域设置以使用新特性
+Change_table_column_and_General_fields_settings_to_use_the_new_feature=修改列外观和_General_域设置以使用新特性
 
 change_type=修改类型
 
@@ -279,7 +279,7 @@ Check_existing_%0_links=检查存在的%0链接
 Check_links=核对链接
 
 Choose_the_URL_to_download._The_default_value_points_to_a_list_provided_by_the_JabRef_developers.=Choose_the_URL_to_download._The_default_value_points_to_a_list_provided_by_the_JabRef_developers.
-Cite_command=Cite_命令
+Cite_command=引用命令
 
 CiteSeer_Error=CiteSeer_错误
 
@@ -557,9 +557,9 @@ Duplicates_removed=已移除重复项
 
 Dynamic_groups=动态分组
 
-Dynamically_group_entries_by_a_free-form_search_expression=Dynamically_group_entries_by_a_free-form_search_expression
+Dynamically_group_entries_by_a_free-form_search_expression=使用自定义的搜索表达式创建动态分组
 
-Dynamically_group_entries_by_searching_a_field_for_a_keyword=Dynamically_group_entries_by_searching_a_field_for_a_keyword
+Dynamically_group_entries_by_searching_a_field_for_a_keyword=使用关键词搜索某域创建动态分组
 
 Each_line_must_be_on_the_following_form=每一行必须使用以下形式
 
@@ -597,11 +597,11 @@ Enter_URL_to_download=输入要下载的_URL_
 
 entries=记录
 
-Entries_cannot_be_manually_assigned_to_or_removed_from_this_group.=Entries_cannot_be_manually_assigned_to_or_removed_from_this_group.
+Entries_cannot_be_manually_assigned_to_or_removed_from_this_group.=此分组中的记录无法进行手动分配。
 
 Entries_exported_to_clipboard=记录被导出到剪贴板
 
-entries_have_undefined_BibTeX_key=entries_have_undefined_BibTeX_key
+entries_have_undefined_BibTeX_key=记录的_BibTeX_键值未定义
 
 entries_into_new_database=entries_into_new_database
 
@@ -619,7 +619,7 @@ Entry_preview=预览记录
 
 Entry_table=记录列表
 
-Entry_table_columns=记录列表列
+Entry_table_columns=记录列
 
 Entry_type=记录类型
 
@@ -823,25 +823,25 @@ grouping_may_not_work_for_this_entry=grouping_may_not_work_for_this_entry
 
 Groups=分组
 
-Harvard_RTF=Harvard_RTF
+Harvard_RTF=哈佛_RTF
 
-Have_you_chosen_the_correct_package_path?=Have_you_chosen_the_correct_package_path?
+Have_you_chosen_the_correct_package_path?=您选择了正确的包路径吗？
 
 Help=帮助
 
 Help_contents=帮助内容
 
-Help_on_groups=Help_on_groups
+Help_on_groups=分组帮助
 
 Help_on_key_patterns=键表达式帮助
-Help_on_Preview_Settings=Help_on_Preview_Settings
-Help_on_Regular_Expression_Search=Help_on_Regular_Expression_Search
+Help_on_Preview_Settings=预览设置帮助
+Help_on_Regular_Expression_Search=正则表达式搜索帮助
 
 Hide_non-hits=隐藏未选中
 
 Hide_non-matching_entries=隐藏不匹配的记录
 
-Hierarchical_context=Hierarchical_context
+Hierarchical_context=分级上下文
 
 Highlight=高亮
 Highlight_groups_matching_all_selected_entries=高亮显示包含所有选中记录的分组
@@ -849,7 +849,7 @@ Highlight_groups_matching_any_selected_entry=高亮显示包含任一选中记�
 
 Highlight_overlapping_groups=高亮显示有重叠记录的分组
 
-Hint%c_To_search_specific_fields_only,_enter_for_example%c<p><tt>author%esmith_and_title%eelectrical</tt>=Hint%c_To_search_specific_fields_only,_enter_for_example%c<p><tt>author%esmith_and_title%eelectrical</tt>
+Hint%c_To_search_specific_fields_only,_enter_for_example%c<p><tt>author%esmith_and_title%eelectrical</tt>=提示%c_若想只搜索特定域的话，可以像这样写%c<p><tt>author%esmith_and_title%eelectrical</tt>
 
 HTML=HTML
 HTML_table=HTML_表
@@ -860,7 +860,7 @@ Ignore=忽略
 
 Illegal_type_name=非法的类型名
 
-Immediate_subgroups=Immediate_subgroups
+Immediate_subgroups=直接子分组
 
 Import=导入
 
@@ -868,11 +868,11 @@ Import_and_keep_old_entry=Import_and_keep_old_entry
 
 Import_and_remove_old_entry=Import_and_remove_old_entry
 
-Import_Data_from_CiteSeer_Database=Import_Data_from_CiteSeer_Database
+Import_Data_from_CiteSeer_Database=从_CiteSeer_数据库导入数据
 
 Import_entries=导入记录
 
-Import_entry_types=Import_entry_types
+Import_entry_types=导入记录类型
 
 Import_failed=导入失败
 
@@ -913,7 +913,7 @@ In_JabRef,_use_pairs_of_#_characters_to_indicate_a_string.=In_JabRef,_use_pairs_
 Include_abstracts=包含摘要
 Include_entries=包括的记录
 
-Include_subgroups\:_When_selected,_view_entries_contained_in_this_group_or_its_subgroups=Include_subgroups:_When_selected,_view_entries_contained_in_this_group_or_its_subgroups
+Include_subgroups\:_When_selected,_view_entries_contained_in_this_group_or_its_subgroups=包含子分组：当分组被选中时，显示所有它和它的子分组中的记录
 
 Incremental=增量
 
@@ -921,7 +921,7 @@ Incremental_search=增量查找
 
 Incremental_search_failed._Repeat_to_search_from_top.=增量搜索失败，从顶部重新开始。
 
-Independent_group\:_When_selected,_view_only_this_group's_entries=Independent_group:_When_selected,_view_only_this_group's_entries
+Independent_group\:_When_selected,_view_only_this_group's_entries=独立分组：当分组被选中时，只显示属于此分组的记录
 
 Initially_show_groups_tree_expanded=初始时显示展开的分组树
 
@@ -1263,22 +1263,22 @@ Paste=粘贴
 
 paste_entries=粘贴多条记录
 
-paste_entry=paste_entry
+paste_entry=粘贴记录
 Paste_from_clipboard=从剪贴板粘贴
 
-Pasted=Pasted
+Pasted=完成粘贴
 
-Path_to_%0_not_defined=Path_to_%0_not_defined
+Path_to_%0_not_defined=到_%0_的路径未定义
 
 Path_to_HTML_viewer=到_HTML_查看器的路径
 
-Path_to_LatexEditor_(LEd.exe)=Path_to_LatexEditor_(LEd.exe)
+Path_to_LatexEditor_(LEd.exe)=到_LatexEditor_(LEd.exe)_的路径
 
-Path_to_LyX_pipe=Path_to_LyX_pipe
+Path_to_LyX_pipe=到_LyX_管道的路径
 
-Path_to_Vim=Path_to_Vim
+Path_to_Vim=到_Vim_的路径
 
-Path_to_WinEdt.exe=Path_to_WinEdt.exe
+Path_to_WinEdt.exe=到_WinEdt.exe_的路径
 
 PDF_directory=PDF_目录
 PDF_does_not_exist=PDF_不存在
@@ -1287,13 +1287,13 @@ Personal_journal_list=私有的期刊列表
 
 Plain_text_import=纯文本导入
 
-Please_check_your_network_connection_to_this_machine.=Please_check_your_network_connection_to_this_machine.
+Please_check_your_network_connection_to_this_machine.=请检查这台机器的网络连接。
 
-Please_enter_a_name_for_the_group.=Please_enter_a_name_for_the_group.
+Please_enter_a_name_for_the_group.=请为该分组输入一个名字
 
-Please_enter_a_search_term._For_example,_to_search_all_fields_for_<b>Smith</b>,_enter%c<p><tt>smith</tt><p>To_search_the_field_<b>Author</b>_for_<b>Smith</b>_and_the_field_<b>Title</b>_for_<b>electrical</b>,_enter%c<p><tt>author%esmith_and_title%eelectrical</tt>=Please_enter_a_search_term._For_example,_to_search_all_fields_for_<b>Smith</b>,_enter%c<p><tt>smith</tt><p>To_search_the_field_<b>Author</b>_for_<b>Smith</b>_and_the_field_<b>Title</b>_for_<b>electrical</b>,_enter%c<p><tt>author%esmith_and_title%eelectrical</tt>
+Please_enter_a_search_term._For_example,_to_search_all_fields_for_<b>Smith</b>,_enter%c<p><tt>smith</tt><p>To_search_the_field_<b>Author</b>_for_<b>Smith</b>_and_the_field_<b>Title</b>_for_<b>electrical</b>,_enter%c<p><tt>author%esmith_and_title%eelectrical</tt>=请输入一个搜索词组。例如，要在所有域中搜索_<b>Smith</b>，就输入%c<p><tt>smith</tt><p>要在_<b>Author</b>_域中搜索_<b>Smith</b>_并且_<b>Title</b>_域中搜索_<b>electrical</b>,_输入%c<p><tt>author%esmith_and_title%eelectrical</tt>
 
-Please_enter_the_field_to_search_(e.g._<b>keywords</b>)_and_the_keyword_to_search_it_for_(e.g._<b>electrical</b>).=Please_enter_the_field_to_search_(e.g._<b>keywords</b>)_and_the_keyword_to_search_it_for_(e.g._<b>electrical</b>).
+Please_enter_the_field_to_search_(e.g._<b>keywords</b>)_and_the_keyword_to_search_it_for_(e.g._<b>electrical</b>).=请输入要搜索的域(例如：_<b>keywords</b>)和要搜索的关键词(例如：_<b>electrical</b>)。
 
 Please_enter_the_string's_label=请输入字串的标签
 Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools=Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools
@@ -1325,37 +1325,37 @@ Previous_entry=上一条
 
 Primary_sort_criterion=主排序依据
 Print_Preview=打印预览
-Printing_Entry_Preview=Printing_Entry_Preview
+Printing_Entry_Preview=正在打印记录预览
 
 Problem_with_parsing_entry=Problem_with_parsing_entry
-Processing_=Processing_
-Program_output=Program_output
+Processing_=正在处理
+Program_output=程序输出
 
 PS_directory=PS_目录
-Push_entries_to_external_application_(%0)=Push_entries_to_external_application_(%0)
+Push_entries_to_external_application_(%0)=推送记录到外部程序_(%0)
 
 Push_selection_to_Emacs=推送选中记录到_Emacs
 
 Push_selection_to_LyX/Kile=推送选中记录到_LyX/Kile
 Push_selection_to_Vim=推送选中记录到_Vim
 
-Push_selection_to_WinEdt=推送选中记录到_to_WinEdt
+Push_selection_to_WinEdt=推送选中记录到_WinEdt
 
 Push_to_LatexEditor=推送到_LatexEditor
-Pushed_citations_to_%0=Pushed_citations_to_%0
+Pushed_citations_to_%0=已推送引用到_%0
 
-Pushed_citations_to_Emacs=Pushed_citations_to_Emacs
-Pushed_citations_to_Vim=Pushed_citations_to_Vim
+Pushed_citations_to_Emacs=已推送引用到_Emacs
+Pushed_citations_to_Vim=已推送引用到_Vim
 
-Pushed_citations_to_WinEdt=Pushed_citations_to_WinEdt
+Pushed_citations_to_WinEdt=已推送引用到_WinEdt
 
-Pushed_the_citations_for_the_following_rows_to=Pushed_the_citations_for_the_following_rows_to
+Pushed_the_citations_for_the_following_rows_to=已推送以下行记录的引用到
 
 Quit_JabRef=退出_JabRef
 
-Quit_synchronization=Quit_synchronization
+Quit_synchronization=退出同步
 
-Raw_source=Raw_source
+Raw_source=原始源数据
 
 Really_delete_the_selected=确认删除选中的
 
@@ -1363,22 +1363,22 @@ Rearrange_tabs_alphabetically_by_title=对标签页以标题按字母表排序
 
 Redo=重做
 
-Reference_database=Reference_database
+Reference_database=参考文献数据库
 
 #Thenexttwolinesareusedlikein"Referencesfound:1Numberofreferencestofetch?"
-References_found=References_found
+References_found=找到参考文献
 
-Refine_supergroup\:_When_selected,_view_entries_contained_in_both_this_group_and_its_supergroup=Refine_supergroup:_When_selected,_view_entries_contained_in_both_this_group_and_its_supergroup
+Refine_supergroup\:_When_selected,_view_entries_contained_in_both_this_group_and_its_supergroup=提炼父分组：当分组被选中时，显示同时包含在该分组和它父分组中的记录
 
-Refresh_view=Refresh_view
+Refresh_view=刷新视图
 
-Regular_Expression=Regular_Expression
+Regular_Expression=正则表达式
 
-Remember_these_entry_types?=Remember_these_entry_types?
+Remember_these_entry_types?=记住这些记录类型？
 
 Remote_operation=远程操作
 
-Remote_server_port=Remote_server_port
+Remote_server_port=远程服务器端口
 
 Remove=移除
 
@@ -1386,18 +1386,18 @@ Remove_all?=移除所有?
 
 Remove_all_subgroups=移除子分组
 
-Remove_all_subgroups_of_"%0"?=Remove_all_subgroups_of_"%0"?
+Remove_all_subgroups_of_"%0"?=移除_"%0"_的所有子分组？
 
 Remove_double_braces_around_BibTeX_fields_when_loading.=载入时移除_BibTeX_域中的双层括号
 
 Remove_duplicates=移除重复项
 
-Remove_entry_from_import=Remove_entry_from_import
+Remove_entry_from_import=从导入中移除记录
 
-Remove_entry_selection_from_this_group=Remove_entry_selection_from_this_group
+Remove_entry_selection_from_this_group=从该分组中移除记录
 
-Remove_entry_type=Remove_entry_type
-Remove_file_link_(DELETE)=Remove_file_link_(DELETE)
+Remove_entry_type=移除记录类型
+Remove_file_link_(DELETE)=移除文件链接(删除)
 
 remove_from_group=从分组中移除
 
@@ -1405,33 +1405,33 @@ Remove_from_group=从分组中移除
 
 Remove_group=移除分组
 
-Remove_group,_keep_subgroups=Remove_group,_keep_subgroups
+Remove_group,_keep_subgroups=移除分组，保留子分组
 
-Remove_group_"%0"?=Remove_group_"%0"?
+Remove_group_"%0"?=移除分组_"%0"?
 
-Remove_group_"%0"_and_its_subgroups?=Remove_group_"%0"_and_its_subgroups?
+Remove_group_"%0"_and_its_subgroups?=移除分组_"%0"_和它的子分组？
 
-remove_group_(keep_subgroups)=remove_group_(keep_subgroups)
+remove_group_(keep_subgroups)=移除分组(保留子分组)
 
-remove_group_and_subgroups=remove_group_and_subgroups
+remove_group_and_subgroups=移除分组和子分组
 
-Remove_group_and_subgroups=Remove_group_and_subgroups
+Remove_group_and_subgroups=移除分组和子分组
 
 Remove_link=移除链接
 
-Remove_old_entry=Remove_old_entry
+Remove_old_entry=移除旧记录
 
 Remove_selected_strings=移除选中的简写字串
 
-remove_string_=remove_string_
+remove_string_=移除简写字串
 
-Removed_entry_type.=Removed_entry_type.
+Removed_entry_type.=已移除记录类型。
 
-Removed_group_"%0".=Removed_group_"%0".
+Removed_group_"%0".=已移除分组_"%0"。
 
-Removed_group_"%0"_and_its_subgroups.=Removed_group_"%0"_and_its_subgroups.
+Removed_group_"%0"_and_its_subgroups.=已移除分组_"%0"_和它的子分组。
 
-Removed_string=Removed_string
+Removed_string=已移除简写字串
 Rename_to_match_citekey=Rename_to_match_citekey
 
 Renamed_string=重命名字符串
@@ -1455,9 +1455,9 @@ Reset_file_type_definitons=Reset_file_type_definitions
 Resolve_strings_for_all_fields_except=处理所有域的简写字串，除了
 Resolve_strings_for_standard_BibTeX_fields_only=只处理标准_BibTeX_域的简写字串
 
-resolved=resolved
+resolved=已解决
 
-Results=Results
+Results=结果
 
 Revert_to_original_source=Revert_to_original_source
 
@@ -1469,7 +1469,7 @@ Right=Right
 root=root
 
 Save=保存
-Save_all_finished.=Save_all_finished.
+Save_all_finished.=完成保存全部。
 
 Save_all_open_databases=保存所有打开的数据库
 
@@ -1482,9 +1482,9 @@ Save_entries_in_their_original_order=以原始顺序保存记录
 
 Save_failed=保存失败
 
-Save_failed_during_backup_creation=Save_failed_during_backup_creation
+Save_failed_during_backup_creation=保存失败，无法创建备份
 
-Save_failed_while_committing_changes=Save_failed_while_committing_changes
+Save_failed_while_committing_changes=保存失败，无法提交修改
 
 Save_in_default_table_sort_order=以缺省的列表排序顺序保存
 
@@ -1527,15 +1527,15 @@ Search_required_fields=在必选域中查找
 
 Search_Specified_Field(s)=在特定域中查找
 
-Searched_database._Global_number_of_hits=Searched_database._Global_number_of_hits
+Searched_database._Global_number_of_hits=完成搜索数据库，全局命中数
 
-Searched_database._Number_of_hits=Searched_database._Number_of_hits
+Searched_database._Number_of_hits=完成搜索数据库，命中数
 
-Searching_for_%0_file=Searching_for_%0_file
+Searching_for_%0_file=查找_%0_文件
 
 Searching_for_duplicates...=正在查找重复记录...
 
-Searching_for_files=Searching_for_files
+Searching_for_files=正在查找文件
 
 Secondary_sort_criterion=第二排序依据
 
@@ -1547,7 +1547,7 @@ Select_action=Select_action
 
 Select_all=全选
 
-Select_Classpath_of_New_Importer=Select_Classpath_of_New_Importer
+Select_Classpath_of_New_Importer=选择新导入器的_classpath
 
 Select_encoding=选择编码
 
@@ -1556,7 +1556,7 @@ Select_entries_in_group_selection=选中选中分组中的记录
 Select_entry_type=选择记录类型
 Select_external_application=选择外部程序
 
-Select_file_from_ZIP-archive=Select_file_from_ZIP-archive
+Select_file_from_ZIP-archive=从_ZIP-压缩包中选择文件
 
 Select_format=选择格式
 Select_icon=选择图标
@@ -1613,15 +1613,15 @@ Show_last_names_only=只显示“姓_(Lastname)”
 
 Show_names_unchanged=显示原始姓名字串
 
-Show_one_less_rows=Show_one_less_rows
+Show_one_less_rows=减少显示一行
 
-Show_one_more_row=Show_one_more_row
+Show_one_more_row=增加显示一行
 
-Show_optional_fields=Show_optional_field
+Show_optional_fields=显示可选域
 
 Show_PDF/PS_column=显示_PDF/PS_列
 
-Show_required_fields=Show_required_fields
+Show_required_fields=显示必选域
 
 Show_URL/DOI_column=显示_URL/DOI_列
 
@@ -1634,10 +1634,10 @@ Simple_HTML=简单_HTML
 Size=大小
 
 Skip=跳过
-Skipped_-_No_PDF_linked=Skipped_-_No_PDF_linked
-Skipped_-_PDF_does_not_exist=Skipped_-_PDF_does_not_exist
+Skipped_-_No_PDF_linked=跳过-没有_PDF_链接
+Skipped_-_PDF_does_not_exist=跳过-PDF_不存在
 
-Skipped_entry.=Skipped_entry.
+Skipped_entry.=已跳过记录
 
 Sort_alphabetically=按字母表排序
 
@@ -1649,12 +1649,12 @@ sort_subgroups=排序子分组
 
 Sorted_all_subgroups_recursively.=递归排序所有子分组。
 
-Sorted_immediate_subgroups.=Sorted_immediate_subgroups.
+Sorted_immediate_subgroups.=完成排序直接子分组。
 
-source_edit=source_edit
+source_edit=源代码编辑
 Special_Name_Formatters=特殊的姓名格式化器
 
-Special_table_columns=特殊列表列
+Special_table_columns=特殊列
 SQL_connection_established.=SQL_连接已建立。
 
 Start_incremental_search=开始增量查找
@@ -1662,23 +1662,23 @@ Start_incremental_search=开始增量查找
 Start_search=开始查找
 Starting_import=开始导入
 
-Statically_group_entries_by_manual_assignment=Statically_group_entries_by_manual_assignment
+Statically_group_entries_by_manual_assignment=手动创建静态分组
 
 Status=状态
 
 Stop=停止
 
-Store=Store
+Store=储存
 
-Store_journal_abbreviations=Store_journal_abbreviations
+Store_journal_abbreviations=储存期刊缩写
 
-Store_string=Store_string
+Store_string=储存简写字串
 
-Store_the_following_fields_with_braces_around_capital_letters=保存下列域时使用大括号包裹大写字母
+Store_the_following_fields_with_braces_around_capital_letters=储存下列域时使用大括号包裹大写字母
 
-Stored_definition_for_type=Stored_definition_for_type
+Stored_definition_for_type=储存的类型定义
 
-Stored_entry=Stored_entry
+Stored_entry=储存的记录
 
 Strings=简写字串
 
@@ -1703,14 +1703,14 @@ Table_grid_color=列表网格颜色
 
 Table_text_color=列表文字颜色
 
-Tabname=Tabname
+Tabname=标签页名
 Target_file_cannot_be_a_directory.=目标文件不可为目录。
 
 Tertiary_sort_criterion=第三排序依据
 
 Test=测试
 
-Text_Input_Area=paste_text_here
+Text_Input_Area=此处编辑文本
 
 The_#_character_is_not_allowed_in_BibTeX_fields=#_字符无法在_BibTeX_域中使用
 
@@ -1763,31 +1763,31 @@ This_entry_is_incomplete=该记录是不完整的
 
 This_entry_type_cannot_be_removed.=该记录类型无法被移除。
 
-This_external_link_is_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?=This_external_link_is_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?
+This_external_link_is_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?=此外部链接类型_'%0'_未定义，您想怎么办？
 
-This_group_contains_entries_based_on_manual_assignment._Entries_can_be_assigned_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._Entries_can_be_removed_from_this_group_by_selecting_them_then_using_the_context_menu._Every_entry_assigned_to_this_group_must_have_a_unique_key._The_key_may_be_changed_at_any_time_as_long_as_it_remains_unique.=This_group_contains_entries_based_on_manual_assignment._Entries_can_be_assigned_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._Entries_can_be_removed_from_this_group_by_selecting_them_then_using_the_context_menu._Every_entry_assigned_to_this_group_must_have_a_unique_key._The_key_may_be_changed_at_any_time_as_long_as_it_remains_unique.
+This_group_contains_entries_based_on_manual_assignment._Entries_can_be_assigned_to_this_group_by_selecting_them_then_using_either_drag_and_drop_or_the_context_menu._Entries_can_be_removed_from_this_group_by_selecting_them_then_using_the_context_menu._Every_entry_assigned_to_this_group_must_have_a_unique_key._The_key_may_be_changed_at_any_time_as_long_as_it_remains_unique.=此分组中的记录系用户手动方式分配。您可以使用拖放或者右键菜单将记录分配到此分组；选中记录后用右键菜单可以将该记录从此分组中移除；分配到此分组中的记录必须有一个唯一的键值，该键值可以随时被更改，但必须保证其唯一性。
 
-This_group_contains_entries_in_which=This_group_contains_entries_in_which
+This_group_contains_entries_in_which=此分组中记录
 
-This_group_contains_entries_in_which_any_field_contains_the_regular_expression_<b>%0</b>=This_group_contains_entries_in_which_any_field_contains_the_Regular_Expression_<b>%0</b>&nbsp;
+This_group_contains_entries_in_which_any_field_contains_the_regular_expression_<b>%0</b>=此分组中记录的某个域中包含正则表达式——<b>%0</b>&nbsp;
 
-This_group_contains_entries_in_which_any_field_contains_the_term_<b>%0</b>=This_group_contains_entries_in_which_any_field_contains_the_term_<b>%0</b>&nbsp;
+This_group_contains_entries_in_which_any_field_contains_the_term_<b>%0</b>=此分组中记录的某个域中包含词组_<b>%0</b>&nbsp;
 
-This_group_contains_entries_whose_<b>%0</b>_field_contains_the_keyword_<b>%1</b>=This_group_contains_entries_whose_<b>%0</b>_field_contains_the_keyword_<b>%1</b>&nbsp;
+This_group_contains_entries_whose_<b>%0</b>_field_contains_the_keyword_<b>%1</b>=此分组中记录的_<b>%0</b>_域包含关键词_<b>%1</b>&nbsp;
 
-This_group_contains_entries_whose_<b>%0</b>_field_contains_the_regular_expression_<b>%1</b>=This_group_contains_entries_whose_<b>%0</b>_field_contains_the_Regular_Expression_<b>%1</b>&nbsp;
+This_group_contains_entries_whose_<b>%0</b>_field_contains_the_regular_expression_<b>%1</b>=此分组中记录的_<b>%0</b>_域包含正则表达式_<b>%1</b>&nbsp;
 
-This_is_a_simple_copy_and_paste_dialog_for_import_some_fields_from_normal_text.=This_is_a_simple_copy_and_paste_dialog_for_import_some_fields_from_normal_text.
+This_is_a_simple_copy_and_paste_dialog_for_import_some_fields_from_normal_text.=这是一个为从普通文本中导入一些域内容的简单复制和粘贴对话框。
 This_makes_JabRef_look_up_each_%0_link_and_check_if_the_file_exists._If_not,_you_will_be_given_options<BR>to_resolve_the_problem.=该选项使_JabRef_遍历所有_%0_链接，检查链接文件是否存在。如果不存在，您将会得到一个选项来处理这个问题。
 
-This_operation_requires_all_selected_entries_to_have_BibTex_keys_defined.=This_operation_requires_all_selected_entries_to_have_BibTex_keys_defined.
-This_operation_requires_at_least_one_entry.=This_operation_requires_at_least_one_entry.
+This_operation_requires_all_selected_entries_to_have_BibTex_keys_defined.=此操作要求所有选中记录的_BibTeX_键值不为空。
+This_operation_requires_at_least_one_entry.=此操作要求至少选中一个记录。
 
-This_operation_requires_one_or_more_entries_to_be_selected.=这个操作需要首先选中一条或多条记录。
+This_operation_requires_one_or_more_entries_to_be_selected.=这个操作要求选中一条或多条记录。
 
 This_will_move_all_external_links_from_the_'pdf'_and_'ps'_fields_into_the_'%0'_field._Proceed?=这会将所有_'pdf'_和_'ps'_域的链接移动到_'%0'_域，是否继续？
 
-To_set_up,_go_to_<B>Tools_->_Manage_journal_abbreviations</B>=To_set_up,_go_to_<B>Options_->_Manage_journal_abbreviations</B>
+To_set_up,_go_to_<B>Tools_->_Manage_journal_abbreviations</B>=要设置的话，请到_<B>选项->管理期刊名缩写规则</B>菜单项
 
 Toggle_abbreviation=打开/关闭名称缩写
 Toggle_entry_preview=打开/关闭记录预览
@@ -1847,24 +1847,24 @@ Up=上
 
 Update_to_current_column_widths=使用当前视图中的列宽
 
-Updated_group_selection=Updated_group_selection
+Updated_group_selection=更新分组选择
 
 Updating_entries...=升级记录中...
 Upgrade_external_links=升级外部链接
-Upgrade_external_PDF/PS_links_to_use_the_'%0'_field.=Upgrade_external_PDF/PS_links_to_use_the_'%0'_field.
+Upgrade_external_PDF/PS_links_to_use_the_'%0'_field.=升级外部_PDF/PS_链接以使用_'%0'_域。
 Upgrade_file=Upgrade_file
-Upgrade_old_external_file_links_to_use_the_new_feature=Upgrade_old_external_file_links_to_use_the_new_feature
-Upgraded_links.=Upgraded_links.
+Upgrade_old_external_file_links_to_use_the_new_feature=升级旧外部文件链接以使用新特性
+Upgraded_links.=完成升级链接。
 UPPER=UPPER
 Upper_Each_First=Upper_Each_First
 Upper_first=Upper_first
 
-usage=usage
+usage=用法
 
 Use_antialiasing_font=Use_antialiasing_font
 Use_autocompletion_for_the_following_fields=为以下域开启自动完成功能
 Use_custom_icon_theme=使用自定义图标主题
-Use_default_viewer=Use_default_viewer
+Use_default_viewer=使用默认查看器
 
 Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开检视窗口显示该记录
 Use_native_file_dialog=使用本地文件对话框
@@ -1880,9 +1880,9 @@ Username_\:=用户名:
 
 Uses_default_application=使用默认应用程序
 
-Value_cleared_externally=Value_cleared_externally
+Value_cleared_externally=内容从外部被清除
 
-Value_set_externally=Value_set_externally
+Value_set_externally=内容从外部被设置
 
 verify_that_LyX_is_running_and_that_the_lyxpipe_is_valid=检查_LyX_是否在运行以及_lyx_管道是否可用
 
@@ -1909,7 +1909,7 @@ What_do_you_want_to_do?=您希望做什么?
 When_adding/removing_keywords,_separate_them_by=当增加/移除关键字时，使用分隔符
 Will_write_XMP-metadata_to_the_PDFs_linked_from_selected_entries.=将写入_XMP_元数据到选中记录链接的_PDF_文件。
 
-with=with
+with=以
 
 Word=单词
 Write_BibtexEntry_as_XMP-metadata_to_PDF.=将_Bibtex_记录作为_XMP_源数据写入到_PDF_中。
@@ -1924,13 +1924,13 @@ Writing_XMP_to_'%0'...=正在写入_XMP_到_'%0'...
 
 Wrong_file_format=错误的文件格式
 
-Wrote_XMP-metadata=Wrote_XMP-metadata
-Wrote_XMP_to_'%0'.=Wrote_XMP_to_'%0'.
+Wrote_XMP-metadata=写入_XMP-元数据
+Wrote_XMP_to_'%0'.=写入_XMP_到_'%0'.
 
 XMP-annotated_PDF=XMP-annotated_PDF
 XMP_Export_Privacy_Settings=XMP_导出隐私设置
 XMP_metadata=XMP_元数据
-XMP_metadata_found_in_PDF\:_%0=XMP_metadata_found_in_PDF:_%0
+XMP_metadata_found_in_PDF\:_%0=PDF_中的_XMP_元数据:_%0
 
 You_have_changed_the_language_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了语言设置。为了该更改生效，您必须重新启动_Jabref。
 You_have_changed_the_look_and_feel_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了外观设置。为了使该更改生效，您必须重新启动_Jabref。
@@ -2020,7 +2020,7 @@ This_makes_JabRef_look_up_each_%0_extension_and_check_if_the_file_exists._If_not
 Run_Fetcher,_e.g._"--fetch=Medline\:cancer"=运行抓取器，例如_"--fetch=Medline\:cancer"
 Override_legacy_file_fields=覆盖旧式文件域
 
-The_ACM_Digital_Library=The_ACM_Digital_Library
+The_ACM_Digital_Library=ACM_数字图书馆
 
 Use_IEEE_LaTeX_abbreviations=使用_IEEE_LaTeX_缩写
 The_Guide_to_Computing_Literature=The_Guide_to_Computing_Literature
