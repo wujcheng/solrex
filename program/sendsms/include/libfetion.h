@@ -1,7 +1,7 @@
 /**
  * \file libfetion.h
  * \author dengdd <dedodong@163.com>
- * \date 2008/1/1
+ * \date 2009/2/11
  * 
  * This file includes necessary interfaces of libfetion.
  *
@@ -956,7 +956,7 @@ FX_EXPORT int fx_is_authed_by_id(long id);
   * \return AUTH_OK if account is auth,  AUTH_REFUS if it auth refus, 
   * AUTH_WAIT if it not decide.
 */
-FX_EXPORT int fx_is_authed_by_account(Fetion_Account *account);
+FX_EXPORT int fx_is_authed_by_account(const Fetion_Account *account);
 
 /**
   * \fn BOOL fx_is_InBlacklist_by_id(const long id)
@@ -1370,7 +1370,7 @@ FX_EXPORT int fx_removefrom_blacklist_by_uri(const char* uri, EventListener func
   * \brief send a nudge 
   *
   * 
-  * this function should send by 5 minute pre time . or it will return FALSE, and the receicer must be online.
+  * this function should send by 10 second pre time . or it will return FALSE, and the receicer must be online.
   *
   * \param who which one you want to send.
   *
@@ -1483,6 +1483,18 @@ FX_EXPORT int fx_test_network(PROXY_ITEM *item, EventListener func, void *args);
 */
 FX_EXPORT char* fx_simple_paser_msg(const char * msg);
 
+/**
+  * \fn char* fx_get_original_ID(long id)
+  * \brief get the original id of the user.
+  *
+  * if the user is pc user, it will return the fetion id. 
+  * if the user is the mobile user, it will return the user's mobile. 
+  *
+  * \param msg The original msg.
+  *
+  * \return the no format message, return NULL if the msg is wrong format.
+*/
+FX_EXPORT char* fx_get_original_ID(long id);
 /** @} end of fetion_misc */
 
 #ifdef __cplusplus 

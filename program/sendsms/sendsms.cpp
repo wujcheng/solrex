@@ -1,28 +1,28 @@
 /* sendsms.cpp: defines main().
    Copyright (C) 2008  Solrex Yang <http://solrex.cn>
  
-This file is part of Sendsms.
+   This file is part of Sendsms.
 
-Sendsms is freeware: Redistribution and use in source and binary forms, 
-with or without modification, are permitted provided that the following
-conditions are met:
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
+   Sendsms is freeware: Redistribution and use in source and binary forms, 
+   with or without modification, are permitted provided that the following
+   conditions are met:
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-SUCH DAMAGE. */
+   THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+   FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   SUCH DAMAGE. */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,24 +31,27 @@ SUCH DAMAGE. */
 #include <unistd.h>
 #include "include/libfetion.h"
 
-#define MAX_LOGIN 5
-#define MAX_SEND  20
-#define MES_LEN   160
+#define MAX_LOGIN 5      /* Maximum login retry times. */
+#define MAX_SEND  20     /* Maximum send retry times. */
+#define MES_LEN   180    /* Standard message length. */
+#define L_MES_LEN 1024   /* Long message length. */
 
 /* Version, contact, user defined doc, argument doc strings for argp.h. */
 const char *argp_program_version = "sendsms 0.11(2009-01-11)";
-const char *argp_program_bug_address = "<solrex@gmail.com>";
+const char *argp_program_bug_address = "<http://solrex.cn>";
 static char doc[] = "Example:\n  sendsms -f SENDER -p PASSWD -t fetion1,\
-fetion2 Hello!\nOptions:";
+fetion2 \"Hey, sendsms is so cool!\"\nOptions:";
 static char args_doc[] = "MESSAGE";
 
 /* Program options we understand. */
 static struct argp_option options[] = {
-  {"from",   'f',   "SENDER",    0, "The sender's fetion/phone number" },
-  {"passwd", 'p',   "PASSWD",    0, "The sender's password" },
-  {"to",     't',"RECEIVERS",    0, 
-   "The receivers' fetion numbers, separated by ','" },
-  {"verbose",'v',          0,    0, "Print verbose information" },
+  {"from",    'f',   "SENDER",    0, "The sender's FETION/PHONE number." },
+  {"passwd",  'p',   "PASSWD",    0, "The sender's password." },
+  {"to",      't',"RECEIVERS",    0, 
+   "The receivers' FETION/PHONE numbers, using ',' to seperate numbers." },
+  {"longsms", 'l',          0,    0,
+   "Enable long SMS, up to 1024 chars in 1 message."},
+  {"verbose", 'v',          0,    0, "Print verbose information." },
   { 0 }
 };
  
@@ -58,7 +61,8 @@ typedef struct _args {
   char *passwd;     /* Sender's password string pointer. */
   char *to;         /* Receiver's phone/fetion number string pointer. */
   char *message;    /* SMS message body pointer. */
-  BOOL  verbose;
+  BOOL  longsms;    /* Switch of long SMS option. */
+  BOOL  verbose;    /* Switch of verbose mode. */
 } ARGUMENTS;
 
 /* Parse a single option. */
@@ -80,6 +84,9 @@ parse_opt (int key, char *arg, struct argp_state *state)
     case 't':
       p_args->to = arg;
     break;
+    case 'l':
+      p_args->longsms = TRUE;
+    break;
     case 'v':
       p_args->verbose = TRUE;
     break;
@@ -87,17 +94,17 @@ parse_opt (int key, char *arg, struct argp_state *state)
       if (state->arg_num > 1)   
         argp_usage (state);
       /* Read MESSAGE from command line. */
-      p_args->message = (char *) malloc(MES_LEN*sizeof(char));
+      p_args->message = (char *) malloc(L_MES_LEN*sizeof(char));
       if (p_args->message) {
-        strncpy (p_args->message, arg, MES_LEN);
-        p_args->message[MES_LEN-1] = '\0';
+        strncpy (p_args->message, arg, L_MES_LEN);
+        p_args->message[L_MES_LEN-1] = '\0';
       }
     break;
     case ARGP_KEY_NO_ARGS: 
       /* If MESSAGE is not given in command, read MESSAGE from stdin. */
-      p_args->message = (char *) malloc(MES_LEN*sizeof(char));
+      p_args->message = (char *) malloc(L_MES_LEN*sizeof(char));
       if (p_args->message) {
-        read_count = fread (p_args->message, MES_LEN, sizeof(char), stdin);
+        read_count = fread (p_args->message, L_MES_LEN, sizeof(char), stdin);
         p_args->message[read_count] = '\0';
       }
     break;
@@ -119,7 +126,7 @@ int main(int argc, char** argv)
   ARGUMENTS args;
   PROXY_ITEM proxy;
   char *proxyenv = NULL, *p, *q;
-  int ret, i;
+  int ret, i, mes_len;
   long int uid;
 
   /* Default option values. */
@@ -127,6 +134,7 @@ int main(int argc, char** argv)
   args.passwd = NULL;
   args.to = NULL;
   args.verbose = FALSE;
+  args.longsms = FALSE;
 
   /* Parse our arguments; every option seen by |parse_opt| will be reflected
    * in |args|. */
@@ -137,8 +145,9 @@ int main(int argc, char** argv)
     return 1;
   }
 
+  mes_len = args.longsms ? L_MES_LEN : MES_LEN;
   ret = strlen(args.message);
-  if ((ret<1) || (ret>=MES_LEN)) {
+  if ((ret<1) || (ret>=mes_len)) {
     fprintf(stderr, "ERROR: Argument MESSAGE is too long or too short.\n");
     return 1;
   }
@@ -190,6 +199,7 @@ int main(int argc, char** argv)
   }
 
   fx_set_login_status(FX_STATUS_OFFLINE);   /* Set status offline. */
+  fx_set_longsms(args.longsms);             /* Set long SMS mode. */
   for (i=1; i<=MAX_LOGIN; i++) {
     ret = fs_login(args.from, args.passwd);
     if (ret) break;
@@ -222,19 +232,17 @@ int main(int argc, char** argv)
   } else {
     /* If "-t" option is a mobile phone number, use API: 
      * |fs_send_sms_by_mobile_no|. */
-    /* FIXME!/Wenbo-20081028: It doesn't work with libfetion 0.81. Maybe a
-     * bug exsits, so we can only use fetion num as the value of RECEIVER. */
     p = strdup(args.to);
     q = strchr(p, ',');
     while (p != NULL) {
       if (q != NULL)    *q = '\0';
-      if (strncmp(p, "13", 2) == 0) {
+      if (strlen(p) == 11 && (strncmp(p, "13", 2) == 0 || strncmp(p, "15", 2) == 0)) {
         for (i=1; i<=MAX_SEND; i++) {
           ret = fs_send_sms_by_mobile_no(p, args.message);
           if (ret) break;
           else sleep(1);
         }
-      } else {
+      } else if (strlen(p) == 9){
         /* If "-t" option is a fetion number, use API: |fs_send_sms|. */
         uid = strtol(p, NULL, 10);
         for (i=1; i<=MAX_SEND; i++) {
@@ -242,6 +250,9 @@ int main(int argc, char** argv)
           if (ret) break;
           else sleep(1);
         }
+      } else {
+        fprintf(stderr, "FAIL: unsupported receiver number %s.\n", p);
+        i = 0;
       }
       i>MAX_SEND ? i-- : i ;
       if (!ret) {
@@ -263,9 +274,7 @@ int main(int argc, char** argv)
   /* Logout, disconnect and release resources. */
   fx_loginout();
   fx_close_network();
-  /* NOTE!/Wenbo-20081031: The fetion doc is wrong. terminate after logout
-   * will cause a CAN-NOT TERMINATE error. */
-  //fx_terminate();
+  fx_terminate();
   if (args.verbose == TRUE) {
     fprintf(stderr, "PASS: terminate().\n");
   }
