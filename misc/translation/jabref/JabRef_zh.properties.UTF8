@@ -16,7 +16,7 @@
 
 %0_export_successful=%0_导出成功
 
-%0_field_set=%0_field_set
+%0_field_set=%0_域被修改
 
 %0_matches_the_Regular_Expression_<b>%1</b>=%0_匹配正则表达式_<b>%1</b>
 
@@ -27,11 +27,11 @@
 
 <HTML>Unpack_the_zip_file_containing_import/export_filters_for_Endnote,<BR>for_optimal_interoperability_with_JabRef</HTML>=<HTML>打开解压包含_Endnote_导入/导出过滤器的_zip_文件，<BR>for_optimal_interoperability_with_JabRef</HTML>
 
-<no_field>=<no_field>
+<no_field>=<没有域>
 
 <select>=<选择>
 
-<select_word>=<select_word>
+<select_word>=<下拉菜单项>
 
 _on_entry_number_=_on_entry_number_
 
@@ -55,7 +55,7 @@ Accept=接受
 
 Accept_change=接受修改
 
-Action=Action
+Action=动作
 
 Add=添加
 
@@ -107,7 +107,7 @@ An_Exception_ocurred_while_accessing_'%0'=当访问_'%0'_时发生了一个异�
 An_SAXException_ocurred_while_parsing_'%0':=当解析'%0'时发生了一个_SAXException:
 
 and=和
-and_inside_the_JabRef-jar\:=and_inside_the_JabRef-jar:
+and_inside_the_JabRef-jar\:=和_JabRef-jar_中\:
 
 and_the_class_must_be_available_in_your_classpath_next_time_you_start_JabRef.=并且下次您启动_JabRef_的时候，请确保该类在您的_classpath_中。
 
@@ -138,9 +138,9 @@ Assigned_%0_entries_to_group_"%1".=分配了_%0_条记录到分组_"%1".
 Assigned_1_entry_to_group_"%0".=分配了_1_条记录到分组_"%0".
 At_least_the_plug-in_'net.sf.jabref.core'_should_be_there.=至少插件_'net.sf.jabref.core'_应该在那里。
 
-Attach_%0_file=Attach_%0_file
+Attach_%0_file=附加“%0”文件
 
-Attach_URL=Attach_URL
+Attach_URL=附加_URL
 
 Attempt_to_autoset_%0_links_for_your_entries._Autoset_works_if_a_%0_file_in_your_%0_directory_or_a_subdirectory<BR>is_named_identically_to_an_entry's_BibTeX_key,_plus_extension.=尝试为您的记录自动设置_%0_链接，该操作要求和记录_BibTeX_键同名的_%0_文件存在于您的_%0_目录或者子目录中。
 Attempting_SQL_export...=尝试_SQL_导出...
@@ -249,7 +249,7 @@ Change_file_type=更改文件类型
 
 change_key=修改键值
 
-Change_of_Grouping_Method=Change_of_Grouping_Method
+Change_of_Grouping_Method=分组方法改变
 
 change_preamble=修改导言区_(preamble)
 
@@ -278,7 +278,7 @@ Check_existing_%0_links=检查存在的%0链接
 
 Check_links=核对链接
 
-Choose_the_URL_to_download._The_default_value_points_to_a_list_provided_by_the_JabRef_developers.=Choose_the_URL_to_download._The_default_value_points_to_a_list_provided_by_the_JabRef_developers.
+Choose_the_URL_to_download._The_default_value_points_to_a_list_provided_by_the_JabRef_developers.=选择_URL_下载，默认值指向_JabRef_开发者提供的一个列表。
 Cite_command=引用命令
 
 CiteSeer_Error=CiteSeer_错误
@@ -289,7 +289,7 @@ CiteSeer_Import_Error=CiteSeer_导入错误
 
 CiteSeer_Import_Fields=CiteSeer_导入域
 
-CiteSeer_Transfer=CiteSeer_Transfer
+CiteSeer_Transfer=CiteSeer_迁移
 
 Class_name=类名
 
@@ -322,9 +322,9 @@ Color_for_marking_incomplete_entries=不完整记录的颜色
 
 Column_width=列宽
 
-Command_line_id=Command_line_id
+Command_line_id=命令行_id
 
-Complete_record=Complete_record
+Complete_record=完成记录
 
 Completed_Import_Fields_from_CiteSeer.=完成从_CiteSeer_导入域。
 Connect=连接
@@ -362,7 +362,7 @@ Could_not_connect_to_host_=无法连接到主机_
 Could_not_connect_to_Vim_server._Make_sure_that_Vim_is_running<BR>with_correct_server_name.=无法连接到_Vim_服务器，请检查_Vim_是否以正确的_Vim_服务器名选项启动。
 Could_not_determine_exception_message.=无法确定异常消息。
 
-Could_not_export_entry_types=Could_not_export_entry_types
+Could_not_export_entry_types=无法导出记录类型
 
 Could_not_export_file=无法导出文件
 
@@ -374,19 +374,19 @@ Could_not_find_image_file=无法找到图像文件
 
 Could_not_find_layout_file=无法找到_layout_文件
 
-Could_not_import_entry_types=Could_not_import_entry_types
+Could_not_import_entry_types=无法导入记录类型
 
 Could_not_import_preferences=无法导入首选项
 
-Could_not_instantiate_%0_%1=Could_not_instantiate_%0_%1
+Could_not_instantiate_%0_%1=无法例示_%0_%1
 
-Could_not_instantiate_%0_%1._Have_you_chosen_the_correct_package_path?=Could_not_instantiate_%0_%1._Have_you_chosen_the_correct_package_path?
+Could_not_instantiate_%0_%1._Have_you_chosen_the_correct_package_path?=无法例示_%0_%1，您选择了正确的包路径吗？
 Could_not_open_link=无法打开链接
 
 Could_not_parse_number_of_hits=无法解析点击数
 Could_not_print_preview=无法打印预览
 
-Could_not_resolve_import_format=Could_not_resolve_import_format
+Could_not_resolve_import_format=无法解析导入格式
 
 Could_not_run_the_'gnuclient'_program._Make_sure_you_have_the_gnuserv/gnuclient_programs_installed.=无法运行_'gnuclient'_程序，请确保您安装了_gnuserv/gnuclient_程序。
 Could_not_run_the_'vim'_program.=无法运行_'vim'_程序。
@@ -394,7 +394,7 @@ Could_not_run_the_'vim'_program.=无法运行_'vim'_程序。
 Could_not_save_file=无法保存文件
 Could_not_save_file._Character_encoding_'%0'_is_not_supported.=无法保存文件，不支持编码_'%0'。
 
-Couldn't_find_an_entry_associated_with_this_URL=Couldn't_find_an_entry_associated_with_this_URL
+Couldn't_find_an_entry_associated_with_this_URL=无法找到和此_URL_关联的记录
 
 Couldn't_parse_the_'citeseerurl'_field_of_the_following_entries=无法解析下列记录的_'citeseerurl'_域
 
@@ -402,7 +402,7 @@ Create_group=新建分组
 
 Created_groups.=建立分组
 
-crossreferenced_entries_included=crossreferenced_entries_included
+crossreferenced_entries_included=包含交叉引用的记录
 
 Current_content=当前内容
 
@@ -410,7 +410,7 @@ Current_value=当前值
 
 Custom_entry_types=自定义的记录类型
 
-Custom_entry_types_found_in_file=Custom_entry_types_found_in_file
+Custom_entry_types_found_in_file=文件中包含自定义的记录类型
 Custom_icon_theme=自定义图标主题
 Custom_icon_theme_file=自定义图标主题文件
 
@@ -418,7 +418,7 @@ Custom_importers=自定义导入器
 
 Customize_entry_types=自定义记录类型
 
-Customize_key_bindings=Customize_key_bindings
+Customize_key_bindings=自定义热键
 
 Cut=剪切
 
@@ -445,12 +445,12 @@ Default_grouping_field=默认分组依据域
 
 Default_look_and_feel=默认_look_and_feel
 
-Default_pattern=Default_pattern
+Default_pattern=默认模式
 
 Default_sort_criteria=默认排序规则
-Define_'%0'=Define_'%0'
+Define_'%0'=定义_'%0'
 
-defined.=defined.
+defined.=已定义
 
 Delete=删除
 
@@ -494,7 +494,7 @@ Display_all_entries_belonging_to_one_or_more_of_the_selected_groups.=显示属�
 
 Display_all_error_messages=显示所有错误消息
 
-Display_help_on_command_line_options=Display_help_on_command_line_options
+Display_help_on_command_line_options=用命令行选项显示帮助
 
 Display_imported_entries_in_an_inspection_window_before_they_are_added.=使用单独检视窗口显示将被导入的记录
 
@@ -534,8 +534,8 @@ Download_completed=下载完成
 Download_file=下载文件
 
 Downloading...=下载中...
-Drag_and_Drop_Error=Drag_and_Drop_Error
-Drop_%0=Drop_%0
+Drag_and_Drop_Error=拖放错误
+Drop_%0=释放_%0
 
 duplicate_BibTeX_key=重复的_BibTeX_键值
 
@@ -547,7 +547,7 @@ Duplicate_Key_Warning=重复键值警告
 
 Duplicate_pairs_found=发现重复记录对
 
-duplicate_removal=duplicate_removal
+duplicate_removal=移除重复
 
 Duplicate_string_name=重复的简写字串名称
 
@@ -603,13 +603,13 @@ Entries_exported_to_clipboard=记录被导出到剪贴板
 
 entries_have_undefined_BibTeX_key=记录的_BibTeX_键值未定义
 
-entries_into_new_database=entries_into_new_database
+entries_into_new_database=记录到新数据库
 
 entry=记录
 
 Entry_editor=记录编辑器
 
-Entry_has_no_citekey=Entry_has_no_citekey
+Entry_has_no_citekey=记录没有引用键值
 
 Entry_in_current_database=当前数据库中的记录
 
@@ -629,25 +629,25 @@ Entry_types=记录类型
 
 Error=错误
 Error\:_=错误:_
-Error_converting_Bibtex_to_XMP:_%0=Error_converting_Bibtex_to_XMP:_%0
-Error_converting_Bibtex_to_XMP\:_%0=Error_converting_Bibtex_to_XMP:_%0
-Error_converting_XMP_to_'%0'...=Error_converting_XMP_to_'%0'...
-Error_exporting_to_clipboard=Error_exporting_to_clipboard
+Error_converting_Bibtex_to_XMP:_%0=转换_Bibtex_到_XMP_错误:_%0
+Error_converting_Bibtex_to_XMP\:_%0=转换_Bibtex_到_XMP_错误:_%0
+Error_converting_XMP_to_'%0'...=转换_XMP_到_'%0'_错误...
+Error_exporting_to_clipboard=导出到剪贴板错误
 
-##Error:_check_your_External_viewer_settings_in_Preferences=Error:_check_your_External_viewer_settings_in_Preferences
+##Error:_check_your_External_viewer_settings_in_Preferences=错误：请检查“首选项”中的外部查看器设置
 Error_in_field=Error_in_field
-Error_in_starting_plug-in_system._Starting_without,_but_some_functionality_may_be_missing.=Error_in_starting_plug-in_system._Starting_without,_but_some_functionality_may_be_missing.
-Error_occured_when_parsing_entry=Error_occurred_when_parsing_entry
+Error_in_starting_plug-in_system._Starting_without,_but_some_functionality_may_be_missing.=启动插件系统时发生错误，忽略之，不过某些功能将不可用。
+Error_occured_when_parsing_entry=分析记录时发生错误
 
-Error_opening_file=Error_opening_file
+Error_opening_file=打开文件错误
 
-Error_setting_field=Error_setting_field
-Error_while_converting_BibtexEntry_to_XMP_%0=Error_while_converting_BibtexEntry_to_XMP_%0
-Error_while_downloading_file\:=Error_while_downloading_file:
-Error_while_fetching_from_OIA2=Error_while_fetching_from_OIA2
-Error_while_writing=Error_while_writing
-Error_writing_to_%0_file(s).=Error_writing_to_%0_file(s).
-Error_writing_XMP_to_file\:_%0=Error_writing_XMP_to_file:_%0
+Error_setting_field=设置域错误
+Error_while_converting_BibtexEntry_to_XMP_%0=转换_Bibtex_记录到_XMP_错误_%0
+Error_while_downloading_file\:=下载文件错误:
+Error_while_fetching_from_OIA2=从_OIA2_抓取错误
+Error_while_writing=写入错误
+Error_writing_to_%0_file(s).=写入到_%0_文件错误。
+Error_writing_XMP_to_file\:_%0=写入_XMP_到文件错误:_%0
 
 
 Establishing_SQL_connection...=正在建立_SQL_连接...
@@ -693,11 +693,11 @@ Failed_to_read_groups_data_(unsupported_version:_%0)=无法读取分组数据(�
 
 Fetch=抓取
 
-Fetch_Articles_Citing_your_Database=Fetch_Articles_Citing_your_Database
+Fetch_Articles_Citing_your_Database=抓取您数据库中的文章引用
 
 Fetch_CiteSeer=抓取_CiteSeer
 
-Fetched_all_citations_from_target_database.=Fetched_all_citations_from_target_database.
+Fetched_all_citations_from_target_database.=从目标数据库抓取所有引用。
 
 Fetching_Citations=抓取_Citations
 
@@ -711,12 +711,12 @@ field=域
 Field_content=域内容
 
 Field_name=域名称
-Field_names_are_not_allowed_to_contain_white_space_or_the_following_characters=Field_names_are_not_allowed_to_contain_white_space_or_the_following_characters
+Field_names_are_not_allowed_to_contain_white_space_or_the_following_characters=域名中不可含有空格或以下字符
 
-Field_sizes=Field_sizes
+Field_sizes=域大小
 Field_to_filter=要过滤的域
 
-Field_to_group_by=Field_to_group_by
+Field_to_group_by=要分组的域
 
 Fields=域
 
@@ -733,16 +733,16 @@ File_directory=文件目录
 File_directory_is_'%0':=文件目录是_'%0':
 
 File_directory_is_not_set_or_does_not_exist!=文件目录未设置或该目录不存在！
-File_download=File_download
-File_exists=File_exists
+File_download=文件下载
+File_exists=文件已存在
 
 File_extension=文件扩展名
-File_has_been_updated_externally._What_do_you_want_to_do?=File_has_been_updated_externally._What_do_you_want_to_do?
+File_has_been_updated_externally._What_do_you_want_to_do?=文件被外部程序修改，您要怎么做？
 
 File_not_found=无法找到文件
 File_type=文件类型
 
-File_updated_externally=File_updated_externally
+File_updated_externally=文件被外部程序修改
 
 filename=文件名
 
@@ -750,13 +750,13 @@ Files_opened=已打开文件
 
 Filter=过滤
 
-Finished_autosetting_external_links.=Finished_autosetting_external_links.
+Finished_autosetting_external_links.=完成自动设置外部链接。
 
-Finished_synchronizing_%0_links._Entries_changed%c_%1.=Finished_synchronizing_%0_links._Entries_changed%c_%1.
-Finished_writing_XMP-metadata._Wrote_to_%0_file(s).=Finished_writing_XMP-metadata._Wrote_to_%0_file(s).
-Finished_writing_XMP_for_%0_file_(%1_skipped,_%2_errors).=Finished_writing_XMP_for_%0_file_(%1_skipped,_%2_errors).
+Finished_synchronizing_%0_links._Entries_changed%c_%1.=完成同步_%0_条链接，记录改变%c_%1.
+Finished_writing_XMP-metadata._Wrote_to_%0_file(s).=完成写入_XMP-元数据，写入_%0_文件。
+Finished_writing_XMP_for_%0_file_(%1_skipped,_%2_errors).=完成写入_XMP-元数据到_%0_文件_(跳过_%1_条，%2_条错误).
 
-First_select_the_entries_you_want_keys_to_be_generated_for.=First_select_the_entries_you_want_keys_to_be_generated_for.
+First_select_the_entries_you_want_keys_to_be_generated_for.=首先选中您要生成_BibTeX_键的记录。
 
 Fit_table_horizontally_on_screen=列表宽度填满屏幕宽度
 
@@ -769,9 +769,9 @@ Font_Preview=预览字体
 
 Font_Size=字体大小
 
-Font_Style=Font_Style
+Font_Style=字体
 
-FontSelector=FontSelector
+FontSelector=字体下拉菜单项
 
 for=for
 
@@ -892,7 +892,7 @@ Import_strings=导入简写字串
 
 Import_to_open_tab=Import_to_open_tab
 
-Import_word_selector_definitions=Import_word_selector_definitions
+Import_word_selector_definitions=导入词组下拉菜单项
 
 Imported_database=已导入数据库
 
@@ -1026,7 +1026,7 @@ localhost=localhost
 
 Look_and_feel=Look_and_feel_(Java 界面类)
 Looking_for_pdf...=搜索_pdf...
-lower=lower
+lower=小写全部
 Main_file_directory=文件主目录
 
 Main_layout_file=主_layout_文件
@@ -1439,7 +1439,7 @@ Renamed_string=重命名字符串
 Replace=替换
 
 Replace_(regular_expression)=替换_(正则表达式)
-Replace_comma_by_and_where_appropriate=Replace_comma_by_and_where_appropriate
+Replace_comma_by_and_where_appropriate=在适当的位置替换“逗号”为“and”
 
 Replace_string=替换字符串
 
@@ -1450,7 +1450,7 @@ Replaced=被替换
 Required_fields=必选域
 
 Reset_all=重置所有
-Reset_file_type_definitons=Reset_file_type_definitions
+Reset_file_type_definitons=重置文件类型定义
 
 Resolve_strings_for_all_fields_except=处理所有域的简写字串，除了
 Resolve_strings_for_standard_BibTeX_fields_only=只处理标准_BibTeX_域的简写字串
@@ -1459,13 +1459,13 @@ resolved=已解决
 
 Results=结果
 
-Revert_to_original_source=Revert_to_original_source
+Revert_to_original_source=恢复到初始源
 
 Review=评论
 
 Review_changes=复查修改
 
-Right=Right
+Right=右
 root=root
 
 Save=保存
@@ -1543,7 +1543,7 @@ Select=选择
 
 Select_a_Zip-archive=选择一个_Zip_压缩包
 
-Select_action=Select_action
+Select_action=选择操作
 
 Select_all=全选
 
@@ -1563,12 +1563,12 @@ Select_icon=选择图标
 
 Select_matches=选中匹配的记录
 
-Select_new_ImportFormat_Subclass=Select_new_ImportFormat_Subclass
+Select_new_ImportFormat_Subclass=选择新的_ImportFormat_子类
 
-Select_the_tree_nodes_to_view_and_accept_or_reject_changes=Select_the_tree_nodes_to_view_and_accept_or_reject_changes
+Select_the_tree_nodes_to_view_and_accept_or_reject_changes=选择树节点查看和接受/拒绝修改
 Selected_entries=选中的记录
 
-Selector_enabled_fields=Selector_enabled_fields
+Selector_enabled_fields=启用下拉菜单的域
 Server_Hostname_\:=服务器主机:
 Server_Type_\:=服务器类型:
 Set_field=设置域内容
@@ -1581,7 +1581,7 @@ Set_table_font=设置表格字体
 
 Settings=设置
 
-Setup_selectors=Setup_selectors
+Setup_selectors=设置下拉菜单项
 
 Short_form=Short_form
 
@@ -1855,9 +1855,9 @@ Upgrade_external_PDF/PS_links_to_use_the_'%0'_field.=升级外部_PDF/PS_链接�
 Upgrade_file=Upgrade_file
 Upgrade_old_external_file_links_to_use_the_new_feature=升级旧外部文件链接以使用新特性
 Upgraded_links.=完成升级链接。
-UPPER=UPPER
-Upper_Each_First=Upper_Each_First
-Upper_first=Upper_first
+UPPER=大写全部
+Upper_Each_First=大写词首
+Upper_first=大写句首
 
 usage=用法
 

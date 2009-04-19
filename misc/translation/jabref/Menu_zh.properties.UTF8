@@ -48,7 +48,7 @@ Integrity_check=完整性检查
 # Help
 JabRef_help=JabRef_帮助_(&h)
 Load_session=加载会话_(&D)
-Manage_content_selectors=管理内容选择子_(&C)
+Manage_content_selectors=管理内容下拉菜单_(&C)
 Manage_custom_exports=管理自定义导出器_(&M)
 Manage_custom_imports=管理自定义导入器_(&I)
 Manage_journal_abbreviations=管理期刊名缩写规则_(&J)
