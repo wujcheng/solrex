@@ -25,7 +25,7 @@
 <field_name>=<域名称>
 <HTML>Could_not_find_file_'%0'<BR>linked_from_entry_'%1'</HTML>=<HTML>无法找到记录'%1'链接的文件'%0'</HTML>
 
-<HTML>Unpack_the_zip_file_containing_import/export_filters_for_Endnote,<BR>for_optimal_interoperability_with_JabRef</HTML>=<HTML>打开解压包含_Endnote_导入/导出过滤器的_zip_文件，<BR>for_optimal_interoperability_with_JabRef</HTML>
+<HTML>Unpack_the_zip_file_containing_import/export_filters_for_Endnote,<BR>for_optimal_interoperability_with_JabRef</HTML>=<HTML>打开解压包含_Endnote_导入/导出过滤器的_zip_文件<BR>（以最大的与_JabRef_的兼容性）</HTML>
 
 <no_field>=<没有域>
 
@@ -338,7 +338,7 @@ Content=内容
 
 Copied=已复制
 
-Copied_cell_contents=Copied_cell_contents
+Copied_cell_contents=已拷贝单元格内容
 
 Copied_key=已复制_BibTeX_键
 
@@ -699,9 +699,9 @@ Fetch_CiteSeer=抓取_CiteSeer
 
 Fetched_all_citations_from_target_database.=从目标数据库抓取所有引用。
 
-Fetching_Citations=抓取_Citations
+Fetching_Citations=正在抓取_Citations
 
-Fetching_Identifiers=Fetching_Identifiers
+Fetching_Identifiers=正在抓取_Identifiers
 
 Field=域
 
@@ -773,20 +773,20 @@ Font_Style=字体
 
 FontSelector=字体下拉菜单项
 
-for=for
+for=为
 
 Format_of_author_and_editor_names=作者和编辑的姓名格式
 Format_String=格式化字串
 
-Format_used=Format_used
+Format_used=使用的格式
 Formatter_Name=格式化器名称
 
-Formatter_not_found=Formatter_not_found
+Formatter_not_found=未发现格式化器
 
-found=found
-Found_%0_plugin(s)=Found_%0_plugin(s)
+found=发现
+Found_%0_plugin(s)=发现_%0_个插件
 
-found_in_aux_file=found_in_aux_file
+found_in_aux_file=在_aux_发现
 
 Full_name=全称
 
@@ -805,9 +805,9 @@ Generate_keys_for_imported_entries=为导入的记录重新生成_BibTeX_键
 
 Generate_now=现在生成
 
-Generated_BibTeX_key_for=Generated_BibTeX_key_for
+Generated_BibTeX_key_for=已生成_BibTeX_键——为
 
-Generating_BibTeX_key_for=Generating_BibTeX_key_for
+Generating_BibTeX_key_for=正在生成_BibTeX_键——为
 
 Grab=Grab
 
@@ -819,7 +819,7 @@ Gray_out_non-matching_entries=灰色显示不匹配记录
 
 Group_properties=分组属性
 
-grouping_may_not_work_for_this_entry=grouping_may_not_work_for_this_entry
+grouping_may_not_work_for_this_entry=分组操作可能无法应用于此记录
 
 Groups=分组
 
@@ -864,9 +864,9 @@ Immediate_subgroups=直接子分组
 
 Import=导入
 
-Import_and_keep_old_entry=Import_and_keep_old_entry
+Import_and_keep_old_entry=导入且保存旧记录
 
-Import_and_remove_old_entry=Import_and_remove_old_entry
+Import_and_remove_old_entry=导入且移除旧记录
 
 Import_Data_from_CiteSeer_Database=从_CiteSeer_数据库导入数据
 
@@ -890,7 +890,7 @@ Import_preferences_from_file=从文件中导入首选项设置
 
 Import_strings=导入简写字串
 
-Import_to_open_tab=Import_to_open_tab
+Import_to_open_tab=导入到打开标签页
 
 Import_word_selector_definitions=导入词组下拉菜单项
 
@@ -902,13 +902,13 @@ Imported_entry_types=已导入记录类型
 
 Imported_from_database=已从数据库导入
 
-ImportFormat_class=ImportFormat_class
+ImportFormat_class=ImportFormat_类
 
 Importing=正在导入
 
-Importing_in_unknown_format=Importing_in_unknown_format
+Importing_in_unknown_format=以未知格式导入
 
-In_JabRef,_use_pairs_of_#_characters_to_indicate_a_string.=In_JabRef,_use_pairs_of_#_characters_to_indicate_a_string.
+In_JabRef,_use_pairs_of_#_characters_to_indicate_a_string.=在_JabRef_中，使用成对的“#”字符代表一个简写字串。
 
 Include_abstracts=包含摘要
 Include_entries=包括的记录
@@ -931,13 +931,13 @@ Input_error=输入错误
 
 Insert=插入
 
-Insert_rows=Insert_rows
+Insert_rows=插入行
 
 Insert_selected_citations_into_LyX/Kile=插入选中记录引用到_LyX/Kile
 
 Insert_selected_citations_into_WinEdt=插入选中记录引用到_WinEdt
 
-insert_string_=insert_string_
+insert_string_=插入字串_
 
 Insert_URL=插入_URL
 
@@ -956,11 +956,11 @@ Invalid_URL=非法的_URL
 
 Inverted=补集
 
-is_a_standard_type.=is_a_standard_type.
+is_a_standard_type.=是一个标准类型。
 
 ISO_abbreviation=ISO_缩写
 
-Item_list_for_field=Item_list_for_field
+Item_list_for_field=域的元素列表
 jabref=jabref
 
 JabRef_help=JabRef_帮助
@@ -975,21 +975,21 @@ Journal_name=期刊名
 
 Keep=保留
 
-Keep_both=Keep_both
+Keep_both=保留全部
 
-Keep_lower=Keep_lower
+Keep_lower=保留下面
 
-Keep_upper=Keep_upper
+Keep_upper=保留上面
 
-Key_bindings=Key_bindings
+Key_bindings=热键绑定
 
-Key_bindings_changed=Key_bindings_changed
+Key_bindings_changed=热键绑定已修改
 
 Key_generator_settings=键值生成器设置
 
 Key_pattern=键值表达式
 
-keys_in_database=keys_in_database
+keys_in_database=数据库中的键值
 
 #nottranslated.Toviewit,usemenu"Tools|NewBibTeXfilefromAUxfile",andlaunchtheactiononanon-existantauxfile.
 Keyword=关键字
@@ -1001,8 +1001,8 @@ Language=语言
 Last_modified=上次修改的
 
 LaTeX_AUX_file=LaTeX_AUX_文件
-Leave_file_in_its_current_directory.=Leave_file_in_its_current_directory.
-Leave_files_in_their_current_directory.=Leave_files_in_their_current_directory.
+Leave_file_in_its_current_directory.=保留文件的当前位置不改变。
+Leave_files_in_their_current_directory.=保留文件的当前位置不改变。
 
 Left=Left
 
@@ -1061,19 +1061,19 @@ Merged_external_changes=合并外部修改
 
 Messages=消息
 
-Messages_and_Hints=Hints_and_Warnings
+Messages_and_Hints=提示和警告
 
-Modification_of_field=Modification_of_field
+Modification_of_field=域的修改
 
-Modified_group_"%0".=Modified_group_"%0".
+Modified_group_"%0".=已修改分组_"%0".
 
-Modified_groups=Modified_groups
+Modified_groups=已修改分组
 
-Modified_string=Modified_string
+Modified_string=已修改简写字串
 
 Modify=修改
 
-modify_group=modify_group
+modify_group=修改分组
 
 MODS=MODS
 
@@ -1081,10 +1081,10 @@ Move=移动
 
 Move_down=下移
 
-Move_entries_in_group_selection_to_the_top=Move_entries_in_group_selection_to_the_top
-Move_external_links_to_'file'_field=Move_external_links_to_'file'_field
-Move_file_to_file_directory=Move_file_to_file_directory
-Move_files_to_file_directory.=Move_files_to_file_directory
+Move_entries_in_group_selection_to_the_top=移动选中分组的记录到顶部
+Move_external_links_to_'file'_field=移动外部链接到_'file'_域
+Move_file_to_file_directory=移动文件到文件目录
+Move_files_to_file_directory.=移动文件到文件目录。
 
 move_group=移动分组
 
@@ -1094,10 +1094,10 @@ Move_string_up=上移字符串
 
 Move_up=上移
 
-Moved_group_"%0".=Moved_group_"%0".
+Moved_group_"%0".=移动了分组_"%0"。
 MS_Office_2007=MS_Office_2007
 MySQL=MySQL
-MySQL_database=MySQL_database
+MySQL_database=MySQL_数据库
 
 Name=名字
 Name_formatter=姓名格式化器
@@ -1106,7 +1106,7 @@ Natbib_style=Natbib_格式
 
 Native_file_dialog=本地文件对话框
 
-nested_aux_files=nested_aux_files
+nested_aux_files=nested_aux_文件
 
 New=新建
 
@@ -1118,13 +1118,13 @@ New_BibTeX_entry=新建_BibTeX_记录
 
 New_BibTeX_subdatabase=新建_BibTeX_子数据库
 
-New_content=New_content
+New_content=新内容
 
-New_database_created.=New_database_created.
+New_database_created.=创建了新数据库。
 New_field_value=新的域内容
 
 New_file=新建文件
-New_file_link_(INSERT)=New_file_link_(INSERT)
+New_file_link_(INSERT)=新文件链接(插入)
 
 New_group=新建分组
 
@@ -1132,24 +1132,24 @@ New_string=新建字符串
 
 Next_entry=下一条
 
-No_%0_found=No_%0_found
+No_%0_found=没有找到_%0
 
-No_actual_changes_found.=No_actual_changes_found.
+No_actual_changes_found.=没有实际的修改。
 
-no_base-bibtex-file_specified=no_base-bibtex-file_specified!
+no_base-bibtex-file_specified=没有指定_base-bibtex-文件!
 
-no_database_generated=no_database_generated
+no_database_generated=没有生成数据库
 
 No_duplicates_found=没有找到重复项
 
-No_entries_found._Please_make_sure_you_are_using_the_correct_import_filter.=No_entries_found._Please_make_sure_you_are_using_the_correct_import_filter.
+No_entries_found._Please_make_sure_you_are_using_the_correct_import_filter.=没有找到记录，请检查是否使用了正确的导入过滤器。
 
 
-No_entries_found_for_the_search_string_'%0'=No_entries_found_for_the_search_string_'%0'
+No_entries_found_for_the_search_string_'%0'=没有找到符合查询字符串_'%0'_的记录
 
 No_entries_imported.=没有导入记录。
 
-No_entries_or_multiple_entries_selected.=No_entries_or_multiple_entries_selected.
+No_entries_or_multiple_entries_selected.=没有选中记录。
 
 No_entries_selected=没有选中任何记录
 No_entries_selected.=没有选中任何记录。
@@ -1157,30 +1157,30 @@ No_entries_selected.=没有选中任何记录。
 No_exceptions_have_ocurred.=没有发生异常。
 No_files_found.=没有找到文件。
 
-No_GUI._Only_process_command_line_options.=No_GUI._Only_process_command_line_options.
+No_GUI._Only_process_command_line_options.=没有_GUI，只处理命令行选项。
 
-No_journal_names_could_be_abbreviated.=No_journal_names_could_be_abbreviated.
+No_journal_names_could_be_abbreviated.=没有可供缩写的期刊全称。
 
-No_journal_names_could_be_unabbreviated.=No_journal_names_could_be_unabbreviated.
-No_PDF_linked=No_PDF_linked
+No_journal_names_could_be_unabbreviated.=没有可供展开的期刊名缩写。
+No_PDF_linked=没有_PDF_链接
 
-No_pdf_or_ps_defined,_and_no_file_matching_Bibtex_key_found=No_pdf_or_ps_defined,_and_no_file_matching_Bibtex_key_found
-No_plugins_were_found_in_the_following_folders\:=No_plugins_were_found_in_the_following_folders:
+No_pdf_or_ps_defined,_and_no_file_matching_Bibtex_key_found=未定义_pdf_或_ps_链接，并且没有找到名称匹配_Bibtex_键值的文件
+No_plugins_were_found_in_the_following_folders\:=在以下目录中没有找到插件:
 
-No_references_found=No_references_found
+No_references_found=没有找到引用
 
-No_saved_session_found.=No_saved_session_found.
+No_saved_session_found.=没有保存的会话。
 
-No_url_defined=No_url_defined
-No_XMP_metadata_found_in_=No_XMP_metadata_found_in_
+No_url_defined=没有定义_url_
+No_XMP_metadata_found_in_=没有找到_XMP_元数据在
 
-not=not
+not=非
 
 not_found=无法找到
 
-Not_saved_(empty_session)=Not_saved_(empty_session)
+Not_saved_(empty_session)=没有保存(空会话)
 
-Note_that_the_entry_causing_the_problem_has_been_selected.=Note_that_the_entry_causing_the_problem_has_been_selected.
+Note_that_the_entry_causing_the_problem_has_been_selected.=注意：导致此问题的记录已经被选中。
 
 Note_that_you_must_specify_the_fully_qualified_class_name_for_the_look_and_feel,=注意：您必须为_look_and_feel_明确指定完整的经过验证的类名称，
 
@@ -1189,17 +1189,17 @@ Nothing_to_redo=无可重做
 Nothing_to_undo=无可撤销
 
 #Thenextisusedlikein"Referencesfound:1Numberofreferencestofetch?"
-Number_of_references_to_fetch?=Number_of_references_to_fetch?
+Number_of_references_to_fetch?=要抓取的引用数？
 
-occurences=occurences
+occurences=次
 
 OK=确定
 
 Ok=确定
-One_or_more_file_links_are_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?=One_or_more_file_links_are_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?
+One_or_more_file_links_are_of_the_type_'%0',_which_is_undefined._What_do_you_want_to_do?=一个或多个文件链接是未定义的文件类型_'%0'，您希望怎么做？
 
 One_or_more_keys_will_be_overwritten._Continue?=一个或多个_BibTeX_键将会被覆盖，是否继续？
-Only_one_item_is_supported=Only_one_item_is_supported
+Only_one_item_is_supported=只支持一个元素
 
 Open=打开
 
@@ -1220,7 +1220,7 @@ Open_right-click_menu_with_Ctrl+left_button=使用_Ctrl+Left_按键组合打开�
 Open_URL_or_DOI=打开_URL_或_DOI
 OpenDocument_Spreadsheet=OpenDocument_Spreadsheet
 
-Opened_database=Opened_database
+Opened_database=已打开数据库
 
 Opening=正在打开
 
@@ -1228,8 +1228,8 @@ Opening_preferences...=正在打开首选项...
 
 OpenOffice_Calc=OpenOffice_Calc
 OpenOffice_CSV=OpenOffice_CSV
-Operation_canceled.\n=Operation_canceled.\n
-Operation_not_supported=Operation_not_supported
+Operation_canceled.\n=操作被取消\n
+Operation_not_supported=不支持的操作
 
 Optional_fields=可选域
 
@@ -1240,7 +1240,7 @@ or=或
 out_of=out_of
 Output=输出
 
-Output_or_export_file=Output_or_export_file
+Output_or_export_file=输出或导出文件
 
 Override=覆盖
 
@@ -1248,7 +1248,7 @@ Override_default_file_directories=覆盖默认文件目录
 
 Override_default_font_settings=覆盖默认字体设置
 
-override_the_bibtex_key_by_the_selected_text=override_the_bibtex_key_by_the_selected_text
+override_the_bibtex_key_by_the_selected_text=使用选中文字覆盖_BibTeX_键值
 
 
 Overwrite=覆盖
@@ -1296,28 +1296,28 @@ Please_enter_a_search_term._For_example,_to_search_all_fields_for_<b>Smith</b>,_
 Please_enter_the_field_to_search_(e.g._<b>keywords</b>)_and_the_keyword_to_search_it_for_(e.g._<b>electrical</b>).=请输入要搜索的域(例如：_<b>keywords</b>)和要搜索的关键词(例如：_<b>electrical</b>)。
 
 Please_enter_the_string's_label=请输入字串的标签
-Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools=Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools
+Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools=有关_CiteSeer_工具的用法，请参考_JabRef_帮助手册
 
-Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools.=Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools.
+Please_refer_to_the_JabRef_help_manual_on_using_the_CiteSeer_tools.=有关_CiteSeer_工具的用法，请参考_JabRef_帮助手册。
 
 Please_select_an_importer=请选择一个导入器
 
-Please_select_an_importer.=Please_select_an_importer.
+Please_select_an_importer.=请选择一个导入器。
 
-Please_select_exactly_one_group_to_move.=Please_select_exactly_one_group_to_move.
-Please_specify_the_=Please_specify_the_
+Please_select_exactly_one_group_to_move.=请选中一个分组来移动。
+Please_specify_the_=请指定
 
-Please_wait_until_it_has_finished.=Please_wait_until_it_has_finished.
+Please_wait_until_it_has_finished.=请耐心等待至它正常结束。
 
-Possible_duplicate_entries=Possible_duplicate_entries
+Possible_duplicate_entries=可能的重复记录
 
-Possible_duplicate_of_existing_entry._Click_to_resolve.=Possible_duplicate_of_existing_entry._Click_to_resolve.
+Possible_duplicate_of_existing_entry._Click_to_resolve.=可能与已存在记录重复，点击以解决此问题。
 
 Preamble=导言区_(Preamble)
 
 Preferences=首选项
 
-Preferences_recorded.=Preferences_recorded.
+Preferences_recorded.=首选项被记录。
 
 Preview=预览
 
@@ -1432,7 +1432,7 @@ Removed_group_"%0".=已移除分组_"%0"。
 Removed_group_"%0"_and_its_subgroups.=已移除分组_"%0"_和它的子分组。
 
 Removed_string=已移除简写字串
-Rename_to_match_citekey=Rename_to_match_citekey
+Rename_to_match_citekey=重命名以匹配引用键值
 
 Renamed_string=重命名字符串
 
@@ -1583,7 +1583,7 @@ Settings=设置
 
 Setup_selectors=设置下拉菜单项
 
-Short_form=Short_form
+Short_form=缩写形式
 
 Shortcut=快捷键
 
@@ -1721,13 +1721,13 @@ The_chosen_encoding_'%0'_could_not_encode_the_following_characters\:_=选择的�
 The_CiteSeer_fetch_operation_returned_zero_results.=CiteSeer_抓取操作返回_0_个结果。
 
 
-The_current_version_features_a_new_way_of_handling_links_to_external_files.<br>To_take_advantage_of_this,_your_links_must_be_changed_into_the_new_format,_and<br>JabRef_must_be_configured_to_show_the_new_links.=The_current_version_features_a_new_way_of_handling_links_to_external_files.<br>To_take_advantage_of_this,_your_links_must_be_changed_into_the_new_format,_and<br>JabRef_must_be_configured_to_show_the_new_links.
+The_current_version_features_a_new_way_of_handling_links_to_external_files.<br>To_take_advantage_of_this,_your_links_must_be_changed_into_the_new_format,_and<br>JabRef_must_be_configured_to_show_the_new_links.=当前版本使用了新的方法来处理外部文件链接。为使用新特性，您的链接必须被转换成新的格式，<br>JabRef_也会被重新配置以显示新的链接。
 
 the_field_<b>%0</b>=域_<b>%0</b>
 
 The_file<BR>'%0'<BR>has_been_modified<BR>externally!=文件<BR>'%0'<BR>已经被外部程序修改！
 
-The_group_"%0"_already_contains_the_selection.=The_group_"%0"_already_contains_the_selection.
+The_group_"%0"_already_contains_the_selection.=分组_"%0"_中已经包含选中的项。
 
 The_label_of_the_string_can_not_be_a_number.=该字符串的_label_不可以为数字。
 
@@ -1735,8 +1735,8 @@ The_label_of_the_string_can_not_contain_spaces.=该字符串的_label_不可以�
 
 The_label_of_the_string_can_not_contain_the_'#'_character.=该字符串的_label_不可以包含_'#'_字符。
 
-The_output_option_depends_on_a_valid_import_option.=The_output_option_depends_on_a_valid_import_option.
-The_PDF_contains_one_or_several_bibtex-records.\nDo_you_want_to_import_these_as_new_entries_into_the_current_database?=The_PDF_contains_one_or_several_bibtex-records.\nDo_you_want_to_import_these_as_new_entries_into_the_current_database?
+The_output_option_depends_on_a_valid_import_option.=输出选项依赖于一个合法的导入选项。
+The_PDF_contains_one_or_several_bibtex-records.\nDo_you_want_to_import_these_as_new_entries_into_the_current_database?=该_PDF_包含一个或多个_BibTeX_记录，\n您希望导入这些记录到当前数据库中吗？
 
 The_regular_expression_<b>%0</b>_is_invalid%c=正则表达式_<b>%0</b>_是非法的%c
 
@@ -1744,15 +1744,15 @@ The_search_is_case_insensitive.=该查询是不区分大小写的。
 
 The_search_is_case_sensitive.=该查询是区分大小写的。
 
-The_string_has_been_removed_locally=The_string_has_been_removed_locally
+The_string_has_been_removed_locally=简写字串被本地移除
 
 The_type_name_can_not_contain_spaces.=类型名不应该包含空格.
 
-The_URL_field_appears_to_be_empty_on_entry_number_=The_URL_field_appears_to_be_empty_on_entry_number_
+The_URL_field_appears_to_be_empty_on_entry_number_=URL_域看似是空的——记录号
 
-There_are_possible_duplicates_(marked_with_a_'D'_icon)_that_haven't_been_resolved._Continue?=There_are_possible_duplicates_(marked_with_a_'D'_icon)_that_haven't_been_resolved._Continue?
+There_are_possible_duplicates_(marked_with_a_'D'_icon)_that_haven't_been_resolved._Continue?=存在可能仍未解决的重复项(以'D'图标标记)，是否继续？
 
-There_is_no_entry_type=There_is_no_entry_type
+There_is_no_entry_type=没有记录类型
 
 this_button_will_update=这个按钮将更新
 This_database_was_written_using_an_older_version_of_JabRef.=此数据库是由旧版本的_JabRef_生成的。
@@ -1821,7 +1821,7 @@ Union=并集
 
 Unknown_bibtex_entries=未知的_BibTeX_记录
 
-unknown_edit=unknown_edit
+unknown_edit=未知修改
 
 unknown_entry_type=位置的记录类型
 
@@ -1835,13 +1835,13 @@ Unmark_entry=撤销记录高亮标记
 
 Unmarked_selected=已撤销选中高亮标记
 
-Unpack_EndNote_filter_set=解开_EndNote_filter_set
+Unpack_EndNote_filter_set=解开_EndNote_过滤器集合
 
 Unpacked_file.=释放的文件。
 
 Unsupported_version_of_class_%0:_%1=不支持的类版本_%0:_%1
 
-untitled=untitled
+untitled=未命名
 
 Up=上
 
@@ -1852,7 +1852,7 @@ Updated_group_selection=更新分组选择
 Updating_entries...=升级记录中...
 Upgrade_external_links=升级外部链接
 Upgrade_external_PDF/PS_links_to_use_the_'%0'_field.=升级外部_PDF/PS_链接以使用_'%0'_域。
-Upgrade_file=Upgrade_file
+Upgrade_file=升级文件
 Upgrade_old_external_file_links_to_use_the_new_feature=升级旧外部文件链接以使用新特性
 Upgraded_links.=完成升级链接。
 UPPER=大写全部
@@ -1861,7 +1861,7 @@ Upper_first=大写句首
 
 usage=用法
 
-Use_antialiasing_font=Use_antialiasing_font
+Use_antialiasing_font=使用_antialiasing_字体
 Use_autocompletion_for_the_following_fields=为以下域开启自动完成功能
 Use_custom_icon_theme=使用自定义图标主题
 Use_default_viewer=使用默认查看器
@@ -1935,31 +1935,31 @@ XMP_metadata_found_in_PDF\:_%0=PDF_中的_XMP_元数据:_%0
 You_have_changed_the_language_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了语言设置。为了该更改生效，您必须重新启动_Jabref。
 You_have_changed_the_look_and_feel_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了外观设置。为了使该更改生效，您必须重新启动_Jabref。
 
-You_have_cleared_this_field._Original_value=You_have_cleared_this_field._Original_value
+You_have_cleared_this_field._Original_value=您清除了这个域，原来的值
 
-You_have_entered_an_invalid_search_'%0'.=You_have_entered_an_invalid_search_'%0'.
+You_have_entered_an_invalid_search_'%0'.=您输入了一个非法的查询_'%0'.
 
-You_must_choose_a_file_name_to_store_journal_abbreviations=You_must_choose_a_file_name_to_store_journal_abbreviations
+You_must_choose_a_file_name_to_store_journal_abbreviations=您必须选择一个文件名来存储期刊名称缩写
 
-You_must_enter_an_integer_value_in_the_text_field_for=You_must_enter_an_integer_value_in_the_text_field_for
+You_must_enter_an_integer_value_in_the_text_field_for=您必须在文本域中输入一个整数以使
 
-You_must_fill_in_a_name_for_the_entry_type.=You_must_fill_in_a_name_for_the_entry_type.
+You_must_fill_in_a_name_for_the_entry_type.=您必须为该类型输入一个名称.
 
-You_must_restart_JabRef_for_the_new_key_bindings_to_work_properly.=You_must_restart_JabRef_for_the_new_key_bindings_to_work_properly.
+You_must_restart_JabRef_for_the_new_key_bindings_to_work_properly.=为使热键绑定生效，您必须重启_JabRef。
 
-You_must_select_at_least_one_row_to_perform_this_operation.=You_must_select_at_least_one_row_to_perform_this_operation.
+You_must_select_at_least_one_row_to_perform_this_operation.=您必须选中至少一行才能执行此操作。
 
-You_must_set_both_BibTeX_key_and_%0_directory=You_must_set_both_BibTeX_key_and_%0_directory
+You_must_set_both_BibTeX_key_and_%0_directory=您必须设置_BibTeX_键值和%0目录
 
-Your_new_key_bindings_have_been_stored.=Your_new_key_bindings_have_been_stored.
+Your_new_key_bindings_have_been_stored.=您的热键绑定已经被存储。
 
 
 The_following_fetchers_are_available:=下面列出的是可用的抓取器:
 Could_not_find_fetcher_'%0'=无法找到抓取器_'%0'
-Running_Query_'%0'_with_fetcher_'%1'.=Running_Query_'%0'_with_fetcher_'%1'.
+Running_Query_'%0'_with_fetcher_'%1'.=使用抓取器'%1'执行请求'%0'
 Please_wait!=请稍候！
-Query_'%0'_with_fetcher_'%1'_did_not_return_any_results.=Query_'%0'_with_fetcher_'%1'_did_not_return_any_results.
-Open_SPIRES_entry=Open_SPIRES_entry
+Query_'%0'_with_fetcher_'%1'_did_not_return_any_results.=使用抓取器'%1'请求'%0'未返回任何结果。
+Open_SPIRES_entry=打开_SPIRES_记录
 Move/Rename_file=移动/重命名_文件
 File_moved=文件移动完成
 Move_file_failed=移动文件失败
@@ -1976,7 +1976,7 @@ Error_while_fetching_from_JSTOR=从_JSTOR_抓取发生错误
 Fetching_Medline_by_id...=依据_id_从_Medline_抓取...
 
 Fetching_Medline_by_term...=依据_term_从_Medline_抓取...
-Medline_import_canceled=Medline_import_canceled
+Medline_import_canceled=Medline_导入被取消
 Please_enter_a_valid_number=请输入一个合法的数字
 Please_enter_a_comma_separated_list_of_Medline_IDs_(numbers)_or_search_terms.=请输入以逗号分割的_Medline_ID_(数字)_或者_term_列表。
 An_Error_occurred_while_fetching_from_SPIRES_source_(%0)\:=从_SPIRES_源_(%0)_抓取时发生了一个错误\:
