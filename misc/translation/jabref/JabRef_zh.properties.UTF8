@@ -633,9 +633,8 @@ Error_converting_Bibtex_to_XMP:_%0=转换_Bibtex_到_XMP_错误:_%0
 Error_converting_Bibtex_to_XMP\:_%0=转换_Bibtex_到_XMP_错误:_%0
 Error_converting_XMP_to_'%0'...=转换_XMP_到_'%0'_错误...
 Error_exporting_to_clipboard=导出到剪贴板错误
-
 ##Error:_check_your_External_viewer_settings_in_Preferences=错误：请检查“首选项”中的外部查看器设置
-Error_in_field=错误发生在域
+Error_in_field=Error_in_field
 Error_in_starting_plug-in_system._Starting_without,_but_some_functionality_may_be_missing.=启动插件系统时发生错误，忽略之，不过某些功能将不可用。
 Error_occured_when_parsing_entry=分析记录时发生错误
 
@@ -660,7 +659,6 @@ exists.Overwrite?=已存在，覆盖？
 
 Expand_subtree=展开子树
 
-#previousentrynottranslated.Toviewit,openGroupinterfaceandclickonthe"newgroup"button
 Export=导出
 
 Export_entry_types=导出记录类型
@@ -707,7 +705,6 @@ Field=域
 
 field=域
 
-#Integritycheckisaprocessthatchecksforindicationsofwronglyfilledoutbibtexfields."Scan"isthebuttonthatstartsthecheck.
 Field_content=域内容
 
 Field_name=域名称
@@ -943,7 +940,6 @@ Insert_URL=插入_URL
 
 integrity=完整性
 
-#Integritycheckisaprocessthatchecksforindicationsofwronglyfilledoutbibtexfields."Scan"isthebuttonthatstartsthecheck.
 Integrity_check=完整性检查
 
 Intersection=交集
@@ -1242,11 +1238,11 @@ Output=输出
 
 Output_or_export_file=输出或导出文件
 
-Override=覆盖
+Override=跳过
 
-Override_default_file_directories=覆盖默认文件目录
+Override_default_file_directories=跳过默认文件目录
 
-Override_default_font_settings=覆盖默认字体设置
+Override_default_font_settings=跳过默认字体设置
 
 override_the_bibtex_key_by_the_selected_text=使用选中文字覆盖_BibTeX_键值
 
@@ -2018,7 +2014,7 @@ Legacy_file_fields=旧式文件域
 %0_entries_found._To_reduce_server_load,_only_%1_will_be_downloaded.=共找到_%0_条相关记录，为减轻服务器负担，只下载其中的_%1_条。
 This_makes_JabRef_look_up_each_%0_extension_and_check_if_the_file_exists._If_not,_you_will_be_given_options<BR>to_resolve_the_problem.=这将使_JabRef_依据%0扩展名查找文件是否存在，如果找不到，JabRef_将提供给您选项来解决这个问题。
 Run_Fetcher,_e.g._"--fetch=Medline\:cancer"=运行抓取器，例如_"--fetch=Medline\:cancer"
-Override_legacy_file_fields=覆盖旧式文件域
+Override_legacy_file_fields=跳过旧式文件域
 
 The_ACM_Digital_Library=ACM_数字图书馆
 
