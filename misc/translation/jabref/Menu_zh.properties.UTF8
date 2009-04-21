@@ -81,14 +81,12 @@ Save_session=保存当前会话
 # Tools
 Search=查找_(&S)
 Search_IEEEXplore=搜索_IEEEXplore
-Search_ACM_Portal=搜索_ACM_Portal
 Select_all=全选_(&A)
 Set_up_general_fields=配置_&general_域
 Show_error_console=打开错误显示终端
 
 Sort_tabs=标签页排序_(&S)
 Switch_preview_layout=切换记录预览方式_(&S)
-Synchronize_file_links=自动同步所有文件链接
 Synchronize_PDF_links=自动同步_PDF_链接
 Synchronize_PS_links=自动同步_PS_链接
 # Export menu
@@ -111,8 +109,7 @@ Scan_database...=扫描数据库_(&C)...
 
 Push_entries_to_external_application_(%0)=推送选中记录到外部程序_(%0)
 Write_XMP-metadata_to_PDFs=将_XMP_元数据写入到_PDF_中
-
-Set/clear/rename_fields=设置/清除/重命名_域
+Set/clear_fields=设置/清除_域
 
 Export_selected_entries=导出选中记录
 Fetch_ArXiv.org=抓取_ArXiv.org
@@ -134,13 +131,16 @@ Fetch_CiteSeer_by_ID=根据_ID_从_CiteSeer_抓取
 Search_Medline=搜索_Medline
 Import_from_external_SQL_database=从外部_SQL_数据库导入
 Focus_entry_table=激活记录列表
+Search_ACM_Portal=搜索_ACM_Portal
 
 Increase_table_font_size=放大列表字体_(&I)
 Decrease_table_font_size=缩小列表字体_(&D)
 Forward=前进
 Back=后退
+Synchronize_file_links=自动同步所有文件链接
+
+Set/clear/rename_fields=设置/清除/重命名_域
 
 Manage_plugins=管理插件
 Look_up_full_text_document=查找完整文档
 Push_entries_to_external_application_(LyX/Kile)=推送选中记录到外部程序_(LyX/Kile)
-
