@@ -1,0 +1,12 @@
+#!
+#! created/edited by Popeye version 0.54 (popeye.sourceforge.net)
+#! encoding:ISO-8859-1
+ITEXT_1=下面是提示
+ITEXT_1001=警告
+ITEXT_2001=失败
+ITEXT_1010=$FIELD 域的开头
+ITEXT_1011=异常结尾 ($FIELD 域)
+ITEXT_1012=$FIELD 域的内容可能有问题
+ITEXT_10=$FIELD 中发现未被包含在"{}"中的大写字符
+ITEXT_11=$FIELD 域应该包含四个字符的数字
+ITEXT_2010=$FIELD 域中发现意外的结束"}"
