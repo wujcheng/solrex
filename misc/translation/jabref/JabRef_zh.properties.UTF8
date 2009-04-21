@@ -33,7 +33,7 @@
 
 <select_word>=<下拉菜单项>
 
-_on_entry_number_=_on_entry_number_
+_on_entry_number_=在记录号
 
 A_CiteSeer_fetch_operation_is_currently_in_progress.=一个_CiteSeer_抓取操作正在进行中。
 
@@ -613,7 +613,7 @@ Entry_has_no_citekey=记录没有引用键值
 
 Entry_in_current_database=当前数据库中的记录
 
-Entry_in_import=Entry_in_import
+Entry_in_import=导入的记录
 
 Entry_preview=预览记录
 
@@ -635,7 +635,7 @@ Error_converting_XMP_to_'%0'...=转换_XMP_到_'%0'_错误...
 Error_exporting_to_clipboard=导出到剪贴板错误
 
 ##Error:_check_your_External_viewer_settings_in_Preferences=错误：请检查“首选项”中的外部查看器设置
-Error_in_field=Error_in_field
+Error_in_field=错误发生在域
 Error_in_starting_plug-in_system._Starting_without,_but_some_functionality_may_be_missing.=启动插件系统时发生错误，忽略之，不过某些功能将不可用。
 Error_occured_when_parsing_entry=分析记录时发生错误
 
@@ -728,7 +728,7 @@ File_'%0'_is_already_open.=文件_'%0'_已经被打开。
 
 File_'%0'_not_found=无法找到文件_'%0'
 
-File_changed=File_changed
+File_changed=文件已改变
 File_directory=文件目录
 File_directory_is_'%0':=文件目录是_'%0':
 
@@ -925,7 +925,7 @@ Independent_group\:_When_selected,_view_only_this_group's_entries=独立分组�
 
 Initially_show_groups_tree_expanded=初始时显示展开的分组树
 
-Input=Work_options
+Input=输入
 
 Input_error=输入错误
 
@@ -1014,7 +1014,7 @@ Limit_to_selected_entries=限制范围为选中的记录
 
 Link=链接
 Link_local_file=链接本地文件
-Link_to_file_%0=Link_to_file_%0
+Link_to_file_%0=到文件_%0_的链接
 
 Listen_for_remote_operation_on_port=监听端口
 Load_and_Save_preferences_from/to_jabref.xml_on_start-up_(memory_stick_mode)=加载/保存首选项设置从/到_jabref.xml_文件(记忆棒模式)
@@ -1254,7 +1254,7 @@ override_the_bibtex_key_by_the_selected_text=使用选中文字覆盖_BibTeX_键
 Overwrite=覆盖
 Overwrite_existing_field_values=覆盖原有域内容
 
-Overwrite_keys=Overwrite_keys
+Overwrite_keys=覆盖键值
 
 pairs_processed=已处理记录对
 Password_\:=口令:
@@ -1327,7 +1327,7 @@ Primary_sort_criterion=主排序依据
 Print_Preview=打印预览
 Printing_Entry_Preview=正在打印记录预览
 
-Problem_with_parsing_entry=Problem_with_parsing_entry
+Problem_with_parsing_entry=解析记录时的问题
 Processing_=正在处理
 Program_output=程序输出
 
@@ -2063,4 +2063,31 @@ You_can_only_rename_one_field_at_a_time=一次只能重命名一个域
 Remove_all_broken_links=移除所有失效链接
 
 Cannot_use_port_%0_for_remote_operation;_another_application_may_be_using_it._Try_specifying_another_port.=无法使用端口_%0_进行远程操作;该端口可能被其它应用程序占用，请使用其它端口。
+Plugin_installer=插件安装工具
+Unable_to_create_plugin_directory=无法创建插件目录
+Unable_to_copy_file=无法拷贝文件
+Plugin_installed_successfully._You_must_restart_JabRef_to_load_the_new_plugin.=插件安装成功，您必须重启_JabRef_以载入新插件。
+Unable_to_create_user_plugin_directory=无法创建用户插件目录
+Plugin_installation_failed.=插件安装失败。
+The_same_version_of_this_plugin_is_already_installed.=该插件的同一版本已经安装。
+A_newer_version_of_this_plugin_is_already_installed.=该插件的更新版本已经安装。
+One_or_more_older_versions_of_this_plugin_is_installed._Delete_old_versions?=该插件的一个或多个旧版本已经安装，删除旧版本？
+Old_versions_deleted_successfully.=成功删除旧版本。
+Deletion_of_old_versions_failed.=旧版本删除失败。
+Install_plugin=安装插件
+Download_plugin=下载插件
+Plugin_manager=插件管理工具
+Plugins_installed_in_your_user_plugin_directory_(%0)_are_listed_below:=已安装到您的用户插件目录_(%0)_下的插件列表：
+Delete_the_%0_selected_plugins?=删除选中的_%0_个插件？
+Delete_plugins=删除插件
+Delete_the_selected_plugin?=删除选中的插件？
+Delete_plugin=删除插件
+Enter_download_URL=输入下载_URL
+Plugin_name=插件名
+Version=版本
+Unknown=未知
+Not_loaded=没有被加载
+Loaded=已加载
+Could_not_determine_version_of_=无法取得版本信息——
+Install_anyway?=仍然继续安装？
 Highlight_groups_that_contain_entries_contained_in_any_currently_selected_group=高亮显示与当前选中分组有重叠记录的分组
