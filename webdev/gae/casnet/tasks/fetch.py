@@ -1,6 +1,3 @@
-import cgi
-
-from google.appengine.api import users
 from google.appengine.api import urlfetch
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -31,11 +28,9 @@ class Fetch(webapp.RequestHandler):
       self.response.out.write('<blockquote>%s</blockquote>' %
                               i.status_code)
 
-application = webapp.WSGIApplication(
-                                     [('/tasks/fetch', Fetch)],
-                                     debug=True)
 
 def main():
+  application = webapp.WSGIApplication([('/tasks/fetch', Fetch)], debug=True)
   run_wsgi_app(application)
 
 if __name__ == "__main__":
