@@ -1,0 +1,2 @@
+#!/bin/bash
+iconv -f gbk -t utf-8 "$@" | sed -e 's/ //g;s/$//g' | awk 'NR==1 {a=$3; printf "%s %s",$3,$1; next; }{ if($3==a) printf " %s",$1;else printf "\n%s %s",$3,$1; a=$3;}' | sort  -d
