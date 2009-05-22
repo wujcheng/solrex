@@ -1,4 +1,15 @@
 #!/bin/bash
+# This script fetch user specified citys' weather forecast from http://weather.com.cn,
+# and send them using a CLI SMS sender "sendsms" which you can get from
+# http://share.solrex.cn/dcount/click.php?id=5.
+#
+# You can look for new or bug fix version @ http://share.solrex.cn/scripts/weatherman.sh.
+# Copyright (C) Solrex Yang <http://solrex.cn> with GPL license.
+#
+# Usage: You should add it to crontab by "crontab -e", and then add a line such as:
+# 00 20 * * * /usr/bin/weatherman.sh >> ~/bin/log/weatherman.log 2>&1
+# which will send weather forecast to your fetion friends at every 8pm.
+
 CITY_LIST=("南京" "北京" "郑州")
 URL_LIST=("101190101" "101010100" "101180101")
 URLBASE="http://www.weather.com.cn/html/weather/"
@@ -56,12 +67,12 @@ parse_html()
 send_forcast()
 {
   for city in ${MY_CITIES[*]}; do
-    sendsms -v -f 13xxxxxxxxx -p ******** "`cat $city.txt`"
+    sendsms -vl -f 13xxxxxxxxx -p ******** "`cat $city.txt`"
     sleep 1
   done
   i=0
   for user in ${SMS_USER[*]}; do
-    sendsms -v -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} "`cat ${SMS_CITY[$i]}.txt`"
+    sendsms -vl -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} "`cat ${SMS_CITY[$i]}.txt`"
     sleep 1
     i=$(($i+1))
   done

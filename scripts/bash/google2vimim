@@ -1,2 +1,9 @@
 #!/bin/bash
-iconv -f gbk -t utf-8 "$@" | sed -e 's/ //g;s/$//g' | awk 'NR==1 {a=$3; printf "%s %s",$3,$1; next; }{ if($3==a) printf " %s",$1;else printf "\n%s %s",$3,$1; a=$3;}' | sort  -d
+# This script convert Google Pinyin phase dictionary to Vimim pinyin phrase dictionary.
+# You can look for new or bug fix version @ http://share.solrex.cn/scripts/google2vimim.
+# Author: Solrex Yang <http://solrex.cn>
+# Release to public domain, no copyright.
+#
+# Usage: ./google2vimim google.dic > vimim.pinyin.txt
+
+iconv -f gbk -t utf-8 "$@" | sed -e 's/ //g;s/\r$//g' | awk 'NR==1 {a=$3; printf "%s %s",$3,$1; next; }{ if($3==a) printf " %s",$1;else printf "\n%s %s",$3,$1; a=$3;}' | sort  -d
