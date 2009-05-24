@@ -21,7 +21,7 @@ body {
 	background:#BEC3C6 url(img/bg.jpg) repeat-x;
 	color:#555;
 	font-family:Verdana,"BitStream vera Sans",Helvetica,Sans-serif;
-	font-size:12px;
+	font-size:13px;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight:bold;
@@ -77,10 +77,13 @@ a:hover {
 	margin:0;
 }
 blockquote, pre {
-	background:#F4F5F7 url(img/blockquote.gif) 3px 3px no-repeat;
+	background:#F4F5F7 url(img/blockquote.gif) 1px 1px no-repeat;
 	border:1px dashed #CCC;
-	padding:8px 12px 8px 36px;
+	padding:8px 8px 8px 28px;
 	margin:5px 0;
+	font-family: "Courier New","DejaVu Sans Mono",Monospace;
+	font-size: 12px;
+	line-height: 145%;
 }
 .more-link {
 	font-size:11px;
@@ -156,7 +159,7 @@ textarea {
 /* layout START */
 #wrap {
 	background:url(img/light.gif) center top no-repeat;
-	padding:20px 0;
+	padding:40px 0 10px;
 }
 #container {
 	margin:0 auto;
@@ -178,7 +181,7 @@ textarea {
 	color:#FFF;
 	height:30px;
 	display:block;
-	font-family:"Trajan Pro";
+	font-family: Palatino,"Palatino Linotype","URW Palladio L", Serif;
 	letter-spacing:0;
 }
 /* image blog title */
@@ -346,7 +349,7 @@ textarea {
 	color:#080;
 }
 #notice a {
-	text-decoration:underline;
+	text-decoration:none;
 }
 .post {
 	padding-bottom:5px !important;
@@ -451,8 +454,9 @@ textarea {
 }
 .post .content {
 	padding:5px 0 0 5px;
-	line-height:145%;
+	line-height:158%;
 	overflow:hidden;
+	font-size:14px;
 }
 .post .content p {
 	margin-bottom:10px;
@@ -837,6 +841,7 @@ a#gotop {
 .comment .content blockquote p {
 	margin-top:0;
 	margin-bottom:10px;
+	line-height: 145%;
 }
 .admincomment .author {
 	float:right;
