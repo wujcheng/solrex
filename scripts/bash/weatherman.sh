@@ -1,22 +1,25 @@
 #!/bin/bash
-# This script fetch user specified citys' weather forecast from http://weather.com.cn,
-# and send them using a CLI SMS sender "sendsms" which you can get from
-# http://share.solrex.cn/dcount/click.php?id=5.
+# This script fetch user specified citys' weather forecast from
+# http://weather.com.cn, and send them using a CLI SMS sender "sendsms"
+# which you can get from http://share.solrex.cn/dcount/click.php?id=5.
 #
-# You can look for new or bug fix version @ http://share.solrex.cn/scripts/weatherman.sh.
+# You can look for new or bug fix version 
+# @ http://share.solrex.cn/scripts/weatherman.sh.
 # Copyright (C) Solrex Yang <http://solrex.cn> with GPL license.
 #
-# Usage: You should add it to crontab by "crontab -e", and then add a line such as:
+# Usage: You should add it to crontab by "crontab -e", and then add a line
+# such as:
 # 00 20 * * * /usr/bin/weatherman.sh >> ~/bin/log/weatherman.log 2>&1
 # which will send weather forecast to your fetion friends at every 8pm.
 
+
 CITY_LIST=("南京" "北京" "郑州")
 URL_LIST=("101190101" "101010100" "101180101")
-URLBASE="http://www.weather.com.cn/html/weather/"
 
-MY_CITIES=("南京" "北京")
-SMS_USER=("yyyyyyyyy")
-SMS_CITY=("郑州")
+SMS_USER=("135xxxxxxxx" "136xxxxxxxx,137xxxxxxxx")
+SMS_CITY=("郑州" "北京")
+
+URLBASE="http://www.weather.com.cn/html/weather/"
 
 get_html()
 {
@@ -34,7 +37,8 @@ parse_html()
   for city in ${CITY_LIST[*]}; do
     grep -q "dd_0" $city.txt
     # Select useful part.
-    if [ $? -ne 0 ]; then
+    EVENING=$?
+    if [ $EVENING -ne 0 ]; then
       sed -i -e '1,/c_1_1/d;/c_1_2/,$d;' $city.txt
     else
       sed -i -e '1,/c_1_1/d;/surf/,$d;' $city.txt
@@ -50,7 +54,11 @@ parse_html()
     # Format file content to SMS.
     LANG=zh_CN.UTF-8
     MES="${city}天气\n"
-    MES=$MES`date -d tomorrow +%d`日周`date -d tomorrow +%a`:
+    if [ $EVENING -ne 0 ]; then
+      MES=$MES`date -d tomorrow +%-d`日周`date -d tomorrow +%a`:
+    else
+      MES=$MES`date +%-d`日周`date +%a`:
+    fi
     MES=$MES`sed -n -e '1p' $city.txt | tr -d '\r\n'`,
     MES=$MES`sed -n -e '3p' $city.txt | tr -d '\r\n'`到
     MES=$MES`sed -n -e '2p' $city.txt | tr -d '\r\n'`度,
@@ -66,13 +74,9 @@ parse_html()
 
 send_forcast()
 {
-  for city in ${MY_CITIES[*]}; do
-    sendsms -vl -f 13xxxxxxxxx -p ******** "`cat $city.txt`"
-    sleep 1
-  done
   i=0
   for user in ${SMS_USER[*]}; do
-    sendsms -vl -f 13xxxxxxxxx -p ******** -t ${SMS_USER[$i]} "`cat ${SMS_CITY[$i]}.txt`"
+    sendsms -vlf 13xxxxxxxxx -p **** -t ${SMS_USER[$i]} < ${SMS_CITY[$i]}.txt
     sleep 1
     i=$(($i+1))
   done
@@ -88,4 +92,4 @@ clear_html()
 get_html
 parse_html
 send_forcast
-clear_html
+#clear_html
