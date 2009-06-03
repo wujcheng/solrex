@@ -27,7 +27,7 @@ get_html()
   for city in ${CITY_LIST[*]}; do
     url=$URLBASE${URL_LIST[i]}.shtml
     #wget -e "http_proxy=http://user:passwd@192.168.0.1:8080" -O $city.txt $url
-    wget -O $city.txt $url
+    wget -nv -O $city.txt $url 2> /dev/null
     i=$(($i+1))
   done
 }
@@ -35,39 +35,51 @@ get_html()
 parse_html()
 {
   for city in ${CITY_LIST[*]}; do
-    grep -q "dd_0" $city.txt
+    grep -q "18:00" $city.txt
     # Select useful part.
-    EVENING=$?
-    if [ $EVENING -ne 0 ]; then
-      sed -i -e '1,/c_1_1/d;/c_1_2/,$d;' $city.txt
-    else
+    NOT18=$?
+    if [ $NOT18 -eq 0 ]; then
       sed -i -e '1,/c_1_1/d;/surf/,$d;' $city.txt
       sed -i -e '/dl class="right"/,/dd_0/d;' $city.txt
+    else
+      sed -i -e '1,/c_1_1/d;/box_hist/,$d;' $city.txt
+      sed -i -e '/dl class="right"/,/c_1_2/d;s/<br \/>.*<\/dd>//g;' $city.txt
     fi
     # Remove HTML tags.
     sed -i -e 's/<[^>]*>//g;/<!--/d' $city.txt
     # Remove empty lines.
     sed -i -e 's/&nbsp;//g;s/&deg;C//g;s/^\s*//g;/^$/d' $city.txt
+    sed -i -e '14,$d;' $city.txt
     # Cut verbose words.
-    sed -i -e 's/℃//g;s/高温//g;s/低温//g;s/：//g;s/指数//g;' $city.txt
-    sed -i -e 's/星期/周/g;s@/@\n@g;s/ //g;'  $city.txt
+    sed -i -e 's/℃//g;s/高温：//g;s/低温：//g;s/指数//g;' $city.txt
+    sed -i -e 's/星期/周/g;s@/@\n@g;s/[ \t\r]*//g;s/：/:/g;'  $city.txt
     # Format file content to SMS.
     LANG=zh_CN.UTF-8
-    MES="${city}天气\n"
-    if [ $EVENING -ne 0 ]; then
+    if [ ${NOT18} -eq 0 ]; then
+      MES="${city}(18:00发布)\n"
       MES=$MES`date -d tomorrow +%-d`日周`date -d tomorrow +%a`:
+      MES=$MES`sed -n -e '1p' $city.txt`,
+      MES=$MES`sed -n -e '2p' $city.txt`到`sed -n -e '3p' $city.txt`度,
+      MES=$MES`sed -n -e '4p' $city.txt`'\n'
+      MES=$MES`sed -n -e '5p' $city.txt`:`sed -n -e '6p' $city.txt`,
+      MES=$MES`sed -n -e '8p' $city.txt`到`sed -n -e '7p' $city.txt`度,
+      MES=$MES`sed -n -e '9p' $city.txt`'\n'
+      MES=$MES`sed -n -e '10p' $city.txt`:`sed -n -e '11p' $city.txt`,
+      MES=$MES`sed -n -e '13p' $city.txt`到`sed -n -e '12p' $city.txt`度,
+      MES=$MES`sed -n -e '14p' $city.txt`
     else
-      MES=$MES`date +%-d`日周`date +%a`:
+      MES="${city}(8:00发布)\n"
+      MES=$MES今天白天:
+      MES=$MES`sed -n -e '1p' $city.txt`,
+      MES=$MES`sed -n -e '2p' $city.txt`到`sed -n -e '3p' $city.txt`度,
+      MES=$MES`sed -n -e '4p' $city.txt`'\n'
+      MES=$MES`sed -n -e '5p' $city.txt`'\n'
+      MES=$MES`sed -n -e '6p' $city.txt`'\n'
+      MES=$MES`sed -n -e '7p' $city.txt`'\n'
+      MES=$MES`sed -n -e '8p' $city.txt`'\n'
+      MES=$MES`sed -n -e '10p' $city.txt`'\n'
+      MES=$MES`sed -n -e '11p' $city.txt`
     fi
-    MES=$MES`sed -n -e '1p' $city.txt | tr -d '\r\n'`,
-    MES=$MES`sed -n -e '3p' $city.txt | tr -d '\r\n'`到
-    MES=$MES`sed -n -e '2p' $city.txt | tr -d '\r\n'`度,
-    MES=$MES`sed -n -e '4p' $city.txt | tr -d '\r\n'`'\n'
-    MES=$MES`sed -n -e '5p' $city.txt | tr -d '\r\n'`:
-    MES=$MES`sed -n -e '6p' $city.txt | tr -d '\r\n'`,
-    MES=$MES`sed -n -e '8p' $city.txt | tr -d '\r\n'`到
-    MES=$MES`sed -n -e '7p' $city.txt | tr -d '\r\n'`度,
-    MES=$MES`sed -n -e '9p' $city.txt| tr -d '\r\n'`
     echo -ne $MES > $city.txt
   done
 }
