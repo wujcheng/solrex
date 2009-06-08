@@ -1,5 +1,4 @@
 #!/bin/bash
-# {start|stop|restart:username:ipaddress}
 
 COMMAND="stop"
 SERVER="0.0.0.0"
@@ -12,20 +11,21 @@ SSHOPTS="-C -f -N -g -o PreferredAuthentications=publickey -o StrictHostKeyCheck
 
 get_server_info()
 {
-  #info=`wget -nv -O - $INFOURL 2> /dev/null | iconv -f gbk -t utf8 |
-        grep -o -e "{.*}" | tr -d '{}'`
-  info=`wget -nv -O - $INFOURL 2> /dev/null | iconv -f gbk -t utf8 |
-        sed -n "/{*}/s/.*{\(.*\)}.*/\1/p"`
+  #info=`grep "{*}" | sed -e "s/.*{//;s/}.*//;"`
+  info=`wget --timeout=2 --tries=3 -nv -O - $INFOURL 2> /dev/null |
+        iconv -f gbk -t utf8 | sed -n "/{*}/s/.*{\(.*\)}.*/\1/p"`
+  if [ -z $info ]; then
+    echo "BBS server error."
+    exit 1
+  fi
   COMMAND=${info%%:*}
   SERVER=${info#*:}
-  USRNAME=${SERVER%:*}
-  SERVER=${SERVER#*:}
 }
 
 tunneling_status()
 {
   tun_ps=`ps aux | grep "ssh -C" | wc -l`
-  if [ $tun_ps -gt 4 ]; then
+  if [ $tun_ps -gt 1 ]; then
     echo -n "running"
   else
     echo -n "died"
@@ -40,19 +40,24 @@ start_tunneling()
 
 failsafe_tunneling()
 {
-  ssh $SSHOPTS -R 8022:127.0.0.1:22 ${USRNAME}@${SERVER} -p $PORT
+  ssh $SSHOPTS -R 18022:127.0.0.1:22 ${USRNAME}@${SERVER} -p $PORT
 }
 
 stop_tunneling()
 {
   killall -e ssh
+  #vncserver -kill :51
 }
 
 echo -n "[`date +%F\ %R`] "
 get_server_info
 
 case "$COMMAND" in
-  start)
+  sleep | sleeps)
+    echo "Sleeping."
+    exit 0
+    ;;
+  start | starts)
     if [ $(tunneling_status) = "running" ]; then
       echo "Starting ssh tunneling.(started, do nothing)"
     else
@@ -60,7 +65,7 @@ case "$COMMAND" in
       start_tunneling
     fi
     ;;
-  restart)
+  restart | restarts)
     if [ $(tunneling_status) = "running" ]; then
       echo "Restarting ssh tunneling."
       stop_tunneling
@@ -70,7 +75,7 @@ case "$COMMAND" in
       start_tunneling
     fi
     ;;
-  stop)
+  stop | stops)
     if [ $(tunneling_status) = "running" ]; then
       echo "Stoping ssh tunneling."
       stop_tunneling
@@ -78,13 +83,12 @@ case "$COMMAND" in
       echo "Stoping ssh tunneling.(stoped, do nothing)"
     fi
     ;;
-  failsafe)
+  failsafe | failsafes)
     echo "Starting ssh tunneling.(failsafe mode)"
     failsafe_tunneling
     ;;
-  sleep)
-    echo "Sleeping."
-    exit 0
+  starth | stoph | restarth | sleeph | failsafeh)
+    echo "Not my business, sleeping."
     ;;
   *)
     echo "Unrecogenized server command ($COMMAND)."
