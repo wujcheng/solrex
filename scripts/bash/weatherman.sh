@@ -35,7 +35,7 @@ get_html()
 parse_html()
 {
   for city in ${CITY_LIST[*]}; do
-    grep -q "18:00" $city.txt
+    grep -q "明日天气预报 (18:00发布)" $city.txt
     # Select useful part.
     NOT18=$?
     if [ $NOT18 -eq 0 ]; then
@@ -103,5 +103,5 @@ clear_html()
 
 get_html
 parse_html
-send_forcast
+#send_forcast
 #clear_html
