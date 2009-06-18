@@ -21,6 +21,11 @@ function isBlockedHost(host)
       dnsDomainIs(host, "wordpress.com") ||
       dnsDomainIs(host, "android.com") ||
       dnsDomainIs(host, "youtube.com") ||
+      dnsDomainIs(host, "mail-archive.com") ||
+      dnsDomainIs(host, "osdir.com") ||
+      dnsDomainIs(host, "markmail.org") ||
+      dnsDomainIs(host, "blogger.com") ||
+      dnsDomainIs(host, "technorati.com") ||
       dnsDomainIs(host, "flickr.com") )
     return true;
   else
