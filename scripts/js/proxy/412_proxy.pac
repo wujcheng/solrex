@@ -62,7 +62,9 @@ function FindProxyForURL(url, host)
   var libProxy    = "PROXY 159.226.100.43:8918";
   var gaeProxy    = "PROXY localhost:8000";
 
-  if(isFreeHost(host) || isLocalHost(host)) {
+  if(isFreeHost(host)) {
+    return libProxy;
+  } else if(isLocalHost(host)) {
     return direct;
   } else if(isBlockedHost(host)) {
     return gaeProxy;
