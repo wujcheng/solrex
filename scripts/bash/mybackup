@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ ! -d ~/history ]; then
+  mkdir -p ~/history
+fi
+cp -R "$@" ~/history/"$@".`date +%Y-%m-%d.%H-%M-%S`
