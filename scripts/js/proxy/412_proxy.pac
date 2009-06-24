@@ -32,6 +32,25 @@ function isBlockedHost(host)
     return false;
 }
 
+function isBlockedURL(url, host)
+{
+  if( dnsDomainIs(host, "google.com") ) {
+    if ( shExpMatch(url, "*zh.wikipedia.org*") ||
+         shExpMatch(url, "*blogspot.com*") ||
+         shExpMatch(url, "*wordpress.com*") ||
+         shExpMatch(url, "*android.com*") ||
+         shExpMatch(url, "*youtube.com*") ||
+         shExpMatch(url, "*mail-archive.com*") ||
+         shExpMatch(url, "*osdir.com*") ||
+         shExpMatch(url, "*markmail.com*") ||
+         shExpMatch(url, "*blogger.com*") ||
+         shExpMatch(url, "*technorati.com*") ||
+         shExpMatch(url, "*flickr.com*") )
+      return true;
+  }
+  return false;
+}
+
 function isLocalIP(addr)
 {
   if( isInNet(addr,"127.0.0.0","255.0.0.0") ||
@@ -71,7 +90,7 @@ function FindProxyForURL(url, host)
     return libProxy;
   } else if(isLocalHost(host)) {
     return direct;
-  } else if(isBlockedHost(host)) {
+  } else if(isBlockedURL(url, host) || isBlockedHost(host)) {
     return gaeProxy;
   }
 
