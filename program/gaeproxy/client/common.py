@@ -50,8 +50,6 @@ GOOGLE_PROXY = 'www.google.cn:80'
 DEF_LOCAL_PROXY = ''
 DEF_FETCH_SERVER = ''
 DEF_LISTEN_PORT = 8000
-DEF_KEY_FILE  = os.path.join(dir, 'ssl/LocalProxyServer.key')
-DEF_CERT_FILE = os.path.join(dir, 'ssl/LocalProxyServer.cert')
 DEF_CONF_FILE = os.path.join(dir, 'proxy.conf')
 DEF_COMM_FILE = os.path.join(dir, '.proxy.conf.tmp')
 
