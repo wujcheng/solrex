@@ -19,7 +19,7 @@
 import BaseHTTPServer, SocketServer
 import urllib, urllib2, urlparse
 import zlib, base64
-import socket, pprint
+import socket
 import errno 
 import os, sys
 import common
@@ -203,7 +203,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     try:
       resp = urllib2.urlopen(request, data)
     except urllib2.HTTPError, e:
-      self.send_error(e)
+      print e
       self.connection.close()
       return
 
@@ -213,6 +213,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     words = resp.readline().split()
     status = int(words[1])
     reason = ' '.join(words[2:])
+
     try:
       self.send_response(status, reason)
     except socket.error, (errNum, _): 
@@ -233,6 +234,11 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       (name, _, value) = line.partition(':')
       name = name.strip()
       value = value.strip()
+      if name == 'Set-Cookie':
+        value_list = value.split(', ')
+        for value in value_list:
+          self.send_header(name, value)
+        continue
       self.send_header(name, value)
       # check Content-Type
       if name.lower() == 'content-type':
