@@ -50,16 +50,19 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       self.send_error(501, 'LPS error, Only port 443 is allowed for https.')
       self.connection.close()
       return
-    certFile = 'certs/' + httpsHost + '.crt'
-    keyFile = 'certs/' + httpsHost + '.key'
-    if not os.path.isfile(certFile):
-      print 'Creating cert file', certFile
-      cmd = 'openssl genrsa -out %s 1024' % keyFile
-      os.system(cmd)
-      cmd = 'openssl req -batch -new -key %s -out certs/%s.csr -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, httpsHost, httpsHost, httpsHost)
-      os.system(cmd)
-      cmd = 'openssl ca -batch -config ca.conf -notext -out %s -infiles certs/%s.csr'% (certFile, httpsHost)
-      os.system(cmd)
+    if sys.platform != 'win32':
+      certFile = 'certs/' + httpsHost + '.crt'
+      keyFile = 'certs/' + httpsHost + '.key'
+      if not os.path.isfile(certFile):
+        cmd = 'openssl genrsa -out %s 1024' % keyFile
+        os.system(cmd)
+        cmd = 'openssl req -batch -new -key %s -out certs/%s.csr -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, httpsHost, httpsHost, httpsHost)
+        os.system(cmd)
+        cmd = 'openssl ca -batch -config ca.conf -notext -out %s -infiles certs/%s.csr'% (certFile, httpsHost)
+        os.system(cmd)
+    else:
+      certFile = 'ca/ca.crt'
+      keyFile = 'ca/ca.key'
 
     # continue
     self.wfile.write('HTTP/1.1 200 OK\r\n')
