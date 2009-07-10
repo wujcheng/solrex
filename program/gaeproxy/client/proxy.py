@@ -57,7 +57,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       if not os.path.isfile(crtFile):
         cmd = 'openssl genrsa -out %s 1024' % keyFile
         os.system(cmd)
-        cmd = 'openssl req -batch -new -key %s -out%s -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, csrFile, httpsHost, httpsHost)
+        cmd = 'openssl req -batch -new -key %s -out %s -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, csrFile, httpsHost, httpsHost)
         os.system(cmd)
         cmd = 'openssl ca -batch -config %s/ca.conf -notext -out %s -infiles %s'% (common.dir, crtFile, csrFile)
         os.system(cmd)
@@ -238,11 +238,6 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       (name, _, value) = line.partition(':')
       name = name.strip()
       value = value.strip()
-      if name == 'Set-Cookie':
-        value_list = value.split(', ')
-        for value in value_list:
-          self.send_header(name, value)
-        continue
       self.send_header(name, value)
       # check Content-Type
       if name.lower() == 'content-type':
