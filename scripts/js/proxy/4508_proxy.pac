@@ -23,6 +23,12 @@ function isBlockedHost(host)
       dnsDomainIs(host, "markmail.org") ||
       dnsDomainIs(host, "blogger.com") ||
       dnsDomainIs(host, "technorati.com") ||
+      dnsDomainIs(host, "twitter.com") ||
+      dnsDomainIs(host, "amazon.com") ||
+      dnsDomainIs(host, "edgefcs.net") ||
+      dnsDomainIs(host, "realrumors.net") ||
+      dnsDomainIs(host, "facebook.com") ||
+      dnsDomainIs(host, "fbcdn.net") ||
       dnsDomainIs(host, "flickr.com") )
     return true;
   else
@@ -253,7 +259,7 @@ function isFreeIP(addr)
       isInNet(addr,"123.99.228.148","255.255.255.254") ||
       isInNet(addr,"123.99.228.252","255.255.255.254") ||
       isInNet(addr,"123.100.0.0","255.255.224.0") ||
-      isInNet(addr,"123.112.0.0","255.240.0.0") ||
+      isInNet(addr,"123.112.0.0","255.248.0.0") ||
       isInNet(addr,"123.128.0.0","255.248.0.0") ||
       isInNet(addr,"123.138.0.0","255.254.0.0") ||
       isInNet(addr,"123.144.0.0","255.252.0.0") ||
@@ -585,9 +591,8 @@ function FindProxyForURL(url, host)
 {
   var direct      = "DIRECT";
   var labProxy    = "PROXY 166.111.139.21:8080";
-  var gaeProxy    = "PROXY localhost:8000";
-//  var labProxy    = gaeProxy;
-
+  var gaeProxy    = "PROXY 192.168.177.65:8000";
+  var torProxy    = "SOCKS localhost:9050";
 
   if(isFreeHost(host) || isLocalHost(host)) {
     return direct;

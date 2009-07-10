@@ -23,6 +23,12 @@ function isBlockedHost(host)
       dnsDomainIs(host, "markmail.org") ||
       dnsDomainIs(host, "blogger.com") ||
       dnsDomainIs(host, "technorati.com") ||
+      dnsDomainIs(host, "twitter.com") ||
+      dnsDomainIs(host, "amazon.com") ||
+      dnsDomainIs(host, "edgefcs.net") ||
+      dnsDomainIs(host, "realrumors.net") ||
+      dnsDomainIs(host, "facebook.com") ||
+      dnsDomainIs(host, "fbcdn.net") ||
       dnsDomainIs(host, "flickr.com") )
     return true;
   else
