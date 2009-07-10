@@ -51,25 +51,26 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       self.connection.close()
       return
     if sys.platform != 'win32':
-      certFile = 'certs/' + httpsHost + '.crt'
-      keyFile = 'certs/' + httpsHost + '.key'
-      if not os.path.isfile(certFile):
+      crtFile = common.dir + '/certs/' + httpsHost + '.crt'
+      csrFile = common.dir + '/certs/' + httpsHost + '.csr'
+      keyFile = common.dir + '/certs/' + httpsHost + '.key'
+      if not os.path.isfile(crtFile):
         cmd = 'openssl genrsa -out %s 1024' % keyFile
         os.system(cmd)
-        cmd = 'openssl req -batch -new -key %s -out certs/%s.csr -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, httpsHost, httpsHost, httpsHost)
+        cmd = 'openssl req -batch -new -key %s -out%s -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, csrFile, httpsHost, httpsHost)
         os.system(cmd)
-        cmd = 'openssl ca -batch -config ca.conf -notext -out %s -infiles certs/%s.csr'% (certFile, httpsHost)
+        cmd = 'openssl ca -batch -config %s/ca.conf -notext -out %s -infiles %s'% (common.dir, crtFile, csrFile)
         os.system(cmd)
     else:
-      certFile = 'ca/ca.crt'
-      keyFile = 'ca/ca.key'
+      crtFile = common.dir + '/ca/ca.crt'
+      keyFile = common.dir + 'ca/ca.key'
 
     # continue
     self.wfile.write('HTTP/1.1 200 OK\r\n')
     self.wfile.write('\r\n')
     sslSock = ssl.wrap_socket(self.connection, 
                             server_side=True,
-                            certfile=certFile,
+                            certfile=crtFile,
                             keyfile=keyFile)
 
     # rewrite request line, url to abs
