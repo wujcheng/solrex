@@ -29,6 +29,7 @@ import wsgiref.handlers, urlparse, StringIO, logging, base64, zlib
 from google.appengine.ext import webapp
 from google.appengine.api import urlfetch
 from google.appengine.api import urlfetch_errors
+import re
 # from accesslog import logAccess
 
 
@@ -153,14 +154,14 @@ class MainHandler(webapp.RequestHandler):
             if header.strip().lower() in self.HtohHdrs:
                 # don't forward
                 continue
-            ## there may have some problems on multi-cookie process in urlfetch.
-            #if header.lower() == 'set-cookie':
-            #    logging.info('O %s: %s' % (header, resp.headers[header]))
-            #    scs = resp.headers[header].split(',')
-            #    for sc in scs:
-            #        logging.info('N %s: %s' % (header, sc.strip()))
-            #        self.response.out.write('%s: %s\r\n' % (header, sc.strip()))
-            #    continue
+            # NOTE 20090710/Solrex: Fix multi-cookie process problem
+            if header.lower() == 'set-cookie':
+                logging.info('O %s: %s' % (header, resp.headers[header]))
+                scs = re.sub(r', ([^;]+=)', r'\n\1', resp.headers[header]).split('\n')
+                for sc in scs:
+                    logging.info('N %s: %s' % (header, sc.strip()))
+                    self.response.out.write('%s: %s\r\n' % (header, sc.strip()))
+                continue
             # other
             self.response.out.write('%s: %s\r\n' % (header, resp.headers[header]))
             # check Content-Type

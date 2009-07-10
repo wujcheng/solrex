@@ -87,7 +87,7 @@ class MainHandler(webapp.RequestHandler):
         cmd = self.request.get('cmd')
         # check
         if user:
-            if user.email() == 'dugang@188.com':
+            if user.email() == 'solrex@TODO':
                 # OK, dispatch
                 if obj.lower() == 'accesslog':
                     # for AccessLog
