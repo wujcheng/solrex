@@ -52,6 +52,10 @@ stop_tunneling()
 echo -n "[`date +%F\ %R`] "
 get_server_info
 
+if [ $# -ne 0 ]; then
+  COMMAND=$1
+fi
+
 case "$COMMAND" in
   sleep | sleeps)
     echo "Sleeping."

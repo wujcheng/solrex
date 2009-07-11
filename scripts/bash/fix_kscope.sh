@@ -8,7 +8,7 @@ case "$MACHINE" in
   i386 | i586 | i686)
     ARCH="i386"
     ;;
-  amd64)
+  x86_64)
     ARCH="amd64"
     ;;
   *)
