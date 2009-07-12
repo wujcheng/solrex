@@ -63,7 +63,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         os.system(cmd)
     else:
       crtFile = common.dir + '/ca/ca.crt'
-      keyFile = common.dir + 'ca/ca.key'
+      keyFile = common.dir + '/ca/ca.key'
 
     # continue
     self.wfile.write('HTTP/1.1 200 OK\r\n')
