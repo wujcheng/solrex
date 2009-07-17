@@ -171,8 +171,13 @@ int main(int argc, char** argv)
     fprintf(stderr, "PASS: init().\n");
   }
 
-  /* Read environment variable "http_proxy". */
-  if ((proxyenv = getenv("http_proxy"))) {
+  /* Read environment variable "http_proxy" and "socks_proxy". */
+  if ((proxyenv = getenv("http_proxy")) != NULL) {
+      proxy.type = PROXY_HTTP;
+  } else if((proxyenv = getenv("socks_proxy")) != NULL){
+      proxy.type = PROXY_SOCKS5;
+  }
+  if (proxyenv != NULL) {
     proxyenv = strdup(proxyenv);
     if (strncmp(proxyenv, "http://", 7) == 0) {
       if ((p = strchr(proxyenv, '@'))) {
@@ -192,8 +197,7 @@ int main(int argc, char** argv)
         *p = '\0';
         proxy.port = p + 1;
       }
-      proxy.type = PROXY_HTTP;
-      /* Set http proxy. */
+      /* Set proxy. */
       fx_set_proxy(&proxy);
     }
   }
