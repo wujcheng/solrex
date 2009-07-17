@@ -29,6 +29,9 @@ function isBlockedHost(host)
       dnsDomainIs(host, "realrumors.net") ||
       dnsDomainIs(host, "facebook.com") ||
       dnsDomainIs(host, "fbcdn.net") ||
+      dnsDomainIs(host, "friendfeed.com") ||
+      dnsDomainIs(host, "picasaweb.google.com") ||
+      dnsDomainIs(host, "ggpht.com") ||
       dnsDomainIs(host, "flickr.com") )
     return true;
   else
@@ -48,6 +51,7 @@ function isBlockedURL(url, host)
          shExpMatch(url, "*markmail.com*") ||
          shExpMatch(url, "*blogger.com*") ||
          shExpMatch(url, "*technorati.com*") ||
+         shExpMatch(url, "*friendfeed.com*") ||
          shExpMatch(url, "*flickr.com*") )
       return true;
   }
