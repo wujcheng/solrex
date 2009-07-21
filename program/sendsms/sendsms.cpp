@@ -37,7 +37,7 @@
 #define L_MES_LEN 1024   /* Long message length. */
 
 /* Version, contact, user defined doc, argument doc strings for argp.h. */
-const char *argp_program_version = "sendsms 0.11(2009-01-11)";
+const char *argp_program_version = "sendsms 0.12(2009-09-21)";
 const char *argp_program_bug_address = "<http://solrex.cn>";
 static char doc[] = "Example:\n  sendsms -f SENDER -p PASSWD -t fetion1,\
 fetion2 \"Hey, sendsms is so cool!\"\nOptions:";
@@ -52,6 +52,7 @@ static struct argp_option options[] = {
   {"longsms", 'l',          0,    0,
    "Enable long SMS, up to 1024 chars in 1 message."},
   {"verbose", 'v',          0,    0, "Print verbose information." },
+  {"vverbose",'w',          0,    0, "Print more verbose information." },
   { 0 }
 };
  
@@ -61,8 +62,8 @@ typedef struct _args {
   char *passwd;     /* Sender's password string pointer. */
   char *to;         /* Receiver's phone/fetion number string pointer. */
   char *message;    /* SMS message body pointer. */
-  BOOL  longsms;    /* Switch of long SMS option. */
-  BOOL  verbose;    /* Switch of verbose mode. */
+  BOOL longsms;     /* Switch of long SMS option. */
+  int  verbose;     /* Switch of verbose mode. */
 } ARGUMENTS;
 
 /* Parse a single option. */
@@ -88,7 +89,10 @@ parse_opt (int key, char *arg, struct argp_state *state)
       p_args->longsms = TRUE;
     break;
     case 'v':
-      p_args->verbose = TRUE;
+      p_args->verbose = 1;
+    break;
+    case 'w':
+      p_args->verbose = 2;
     break;
     case ARGP_KEY_ARG:   /* No more than one(none-option) argument: MESSAGE. */
       if (state->arg_num > 1)   
@@ -133,7 +137,7 @@ int main(int argc, char** argv)
   args.from = NULL;
   args.passwd = NULL;
   args.to = NULL;
-  args.verbose = FALSE;
+  args.verbose = 0;
   args.longsms = FALSE;
 
   /* Parse our arguments; every option seen by |parse_opt| will be reflected
@@ -167,7 +171,7 @@ int main(int argc, char** argv)
   if (!fx_init()) {                         /* Init libfetion. */
     fprintf(stderr, "FAIL: init().\n");
     return 1;
-  } else if (args.verbose == TRUE) {
+  } else if (args.verbose > 1) {
     fprintf(stderr, "PASS: init().\n");
   }
 
@@ -213,7 +217,7 @@ int main(int argc, char** argv)
   if (!ret) {
     fprintf(stderr, "FAIL: %s login() after %d tries.\n", args.from, i);
     return 2;
-  } else if (args.verbose == TRUE) {
+  } else if (args.verbose > 1) {
     fprintf(stderr, "PASS: %s login() after %d tries.\n", args.from, i);
   }
   /* If "-t" option is ignored, send the MESSAGE to the SENDER-self. */
@@ -229,7 +233,7 @@ int main(int argc, char** argv)
       fprintf(stderr, "FAIL: send_sms() from %s to %s after %d tries.\n",
               args.from, args.to, i);
       return 3; 
-    } else if (args.verbose == TRUE) {
+    } else if (args.verbose > 0) {
       fprintf(stderr, "PASS: send_sms() from %s to %s after %d tries.\n",
               args.from, args.to, i);
     }
@@ -263,7 +267,7 @@ int main(int argc, char** argv)
         fprintf(stderr, "FAIL: send_sms() from %s to %s after %d tries.\n",
                 args.from, p, i);
         return 3; 
-      } else if (args.verbose == TRUE) {
+      } else if (args.verbose > 0) {
         fprintf(stderr, "PASS: send_sms() from %s to %s after %d tries.\n",
                 args.from, p, i);
       }
@@ -279,7 +283,7 @@ int main(int argc, char** argv)
   fx_loginout();
   fx_close_network();
   //fx_terminate();
-  if (args.verbose == TRUE) {
+  if (args.verbose > 1) {
     fprintf(stderr, "PASS: terminate().\n");
   }
   free (args.message);
