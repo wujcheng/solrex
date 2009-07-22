@@ -3,6 +3,7 @@
 
 * Fix UDP BW unit bug.
 * Resolve symbol link to driver script.
+* Modify build.xml to packet all 3rd party jars into jar.
 
 -------------------------------------------------------------------------------
 2009-05 Nicolas Richasse <nicolas.richasse@gmail.com>
