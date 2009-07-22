@@ -1,0 +1,12 @@
+Package: jperf
+Version: 2.0.2-solrex1
+Architecture: i386
+Maintainer: Solrex Yang <http://solrex.cn>
+Original-Maintainer: Nicolas Richasse <nicolas.richasse@gmail.com>
+Installed-Size: 2964
+Depends: iperf (>=2.0), sun-java6-jre | sun-java5-jre | openjdk-6-jre
+Section: net
+Priority: optional
+Homepage: http://iperf.sourceforge.net/
+Description: GUI front end of Internet Protocol bandwidth measuring tool Iperf.
+
