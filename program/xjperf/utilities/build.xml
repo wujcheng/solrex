@@ -1,7 +1,6 @@
 <project name="JPerf 2.0 builder">
 	<property name="project.root" value=".."/>
 	<property name="project.src.dir" value="${project.root}/src"/>
-	<property name="project.lib.dir" value="${project.root}/lib"/>
 	<property name="project.release.dir" value="${project.root}/release"/>
 	<property name="project.release.distrib.generic.dir" value="${project.release.dir}/jperf-generic"/>
 	<property name="project.name" value="jperf"/>
@@ -9,8 +8,11 @@
 	<property name="project.release.distrib.dir" value="${project.release.dir}/${project.filename}"/>
 	
 	<path id="project.classpath">
-		<fileset dir="${project.lib.dir}">
-			<include name="**/*.jar" />
+		<fileset dir="/usr/share/java">
+			<include name="swingx.jar" />
+			<include name="jcommon.jar" />
+			<include name="forms.jar" />
+			<include name="jfreechart.jar" />
 		</fileset>
 	</path>
 	
@@ -42,9 +44,6 @@
 			</fileset>
 		</jar>
 		<delete dir="${project.release.distrib.dir}/classes" includeemptydirs="true" />
-		<copy todir="${project.release.distrib.dir}/lib">
-			<fileset dir="${project.lib.dir}" />
-		</copy>
 		<copy todir="${project.release.distrib.dir}">
 			<fileset dir="${project.root}">
 				<include name="ChangeLog"/>
