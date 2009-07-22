@@ -1,61 +1,79 @@
-<project name="JPerf 2.0 builder">
-	<property name="project.root" value=".."/>
-	<property name="project.src.dir" value="${project.root}/src"/>
-	<property name="project.release.dir" value="${project.root}/release"/>
-	<property name="project.release.distrib.generic.dir" value="${project.release.dir}/jperf-generic"/>
-	<property name="project.name" value="jperf"/>
-	<property name="project.filename" value="jperf-2.0.2"/>
-	<property name="project.release.distrib.dir" value="${project.release.dir}/${project.filename}"/>
+<project name="JPerf" default="release">
+	<property name="root" value=".."/>
+	<property name="src.dir" value="${root}/src"/>
+	<property name="lib.dir" value="/usr/share/java"/>
+	<property name="release.dir" value="${root}/release"/>
+	<property name="release.generic.dir" value="${release.dir}/jperf-generic"/>
+	<property name="name" value="jperf"/>
+	<property name="filename" value="jperf-2.0.2"/>
+	<property name="release.dis.dir" value="${release.dir}/${filename}"/>
+	<property name="release.dis.classes" value="${release.dis.dir}/classes"/>
 	
-	<path id="project.classpath">
-		<fileset dir="/usr/share/java">
-			<include name="swingx.jar" />
-			<include name="jcommon.jar" />
-			<include name="forms.jar" />
-			<include name="jfreechart.jar" />
-		</fileset>
+	<fileset id="jarsFileset" dir="${lib.dir}">
+		<include name="swingx.jar" />
+		<include name="jcommon.jar" />
+		<include name="forms.jar" />
+		<include name="jfreechart.jar" />
+	</fileset>
+
+	<path id="classpath">
+		<fileset refid="jarsFileset" />
 	</path>
 	
-	<target name="release">
-		<mkdir dir="${project.release.distrib.dir}"/>
-		<copy todir="${project.release.distrib.dir}">
-			<fileset dir="${project.release.distrib.generic.dir}">
-				<include name="**/*"/>
-			</fileset>
-		</copy>
-		
-		<mkdir dir="${project.release.distrib.dir}/classes"/>
-		<javac 
-			target="1.5"
-			classpathref="project.classpath"
-			destdir="${project.release.distrib.dir}/classes">
-			<src path="${project.src.dir}"/>
+	<target name="compile">
+		<mkdir dir="${release.dis.dir}"/>
+		<mkdir dir="${release.dis.classes}"/>
+		<javac debug="off" deprecation="on" target="1.5"
+			destdir="${release.dis.classes}">
+			<src path="${src.dir}"/>
+			<classpath refid="classpath" />
 		</javac>
-		<copy todir="${project.release.distrib.dir}/classes">
-			<fileset dir="${project.src.dir}">
+	</target>
+
+	<target name="unjarlib" description="Unpacks jars from library">
+		<unjar dest="${release.dis.classes}">
+			<fileset refid="jarsFileset" />
+		</unjar>
+		<delete dir="${release.dis.classes}/META-INF" includeemptydirs="true" />
+	</target>
+
+
+	<target name="jar" depends="compile, unjarlib">
+		<copy todir="${release.dis.classes}">
+			<fileset dir="${src.dir}">
 				<include name="**/*"/>
 				<exclude name="**/*.java"/>
 				<exclude name="**/.svn"/>
 			</fileset>
 		</copy>
-		<jar destfile="${project.release.distrib.dir}/${project.name}.jar">
-			<fileset dir="${project.release.distrib.dir}/classes">
+		<jar destfile="${release.dis.dir}/${name}.jar">
+			<fileset dir="${release.dis.classes}">
 				<include name="**/*"/>
 			</fileset>
+            <manifest>
+                <attribute name="Main-Class" value="net.nlanr.jperf.JPerf" />
+                <attribute name="Class-Path" value="." />
+            </manifest>
 		</jar>
-		<delete dir="${project.release.distrib.dir}/classes" includeemptydirs="true" />
-		<copy todir="${project.release.distrib.dir}">
-			<fileset dir="${project.root}">
+	</target>
+
+	<target name="release" depends="jar">
+		<delete dir="${release.dis.classes}" includeemptydirs="true" />
+		<copy todir="${release.dis.dir}">
+			<fileset dir="${root}">
 				<include name="ChangeLog"/>
 				<include name="README.txt"/>
+			</fileset>
+			<fileset dir="${release.generic.dir}">
+				<include name="**/*"/>
 			</fileset>
 		</copy>
 	</target>
 	
-	<target name="create zipped distrib" depends="release">
-		<zip destfile="${project.release.dir}/${project.filename}.zip">
-			<fileset dir="${project.release.dir}">
-				<include name="${project.filename}/**"/>
+	<target name="create zipped dis" depends="release">
+		<zip destfile="${release.dir}/${filename}.zip">
+			<fileset dir="${release.dir}">
+				<include name="${filename}/**"/>
 				<exclude name="**/.svn"/>
 			</fileset>
 		</zip>
