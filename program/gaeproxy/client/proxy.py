@@ -59,7 +59,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         os.system(cmd)
         cmd = 'openssl req -batch -new -key %s -out %s -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, csrFile, httpsHost, httpsHost)
         os.system(cmd)
-        cmd = 'openssl ca -batch -config %s/ca.conf -notext -out %s -infiles %s'% (common.dir, crtFile, csrFile)
+        cmd = 'cd %s && openssl ca -batch -config %s/ca.conf -notext -out %s -infiles %s'% (common.dir, common.dir, crtFile, csrFile)
         os.system(cmd)
     else:
       crtFile = common.dir + '/ca/ca.crt'
