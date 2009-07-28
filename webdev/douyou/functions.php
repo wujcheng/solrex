@@ -12,7 +12,7 @@ function getCounter($username) {
     } else {
       return 'NaN';
     }
-  }else{
+  } else {
     return 'Err';
   }
 }
@@ -35,23 +35,20 @@ function updateCounter($username) {
   return TRUE;
 }
 
-function dcExist($username) {
-  $file = 'dc_img/'.$username.'.png';
-  if(file_exists($file)) {
-    return TRUE;
-  } else {
-    return FALSE;
-  }
-}
-
 function getImgUrl($username) {
   $username = strtolower($username);
-  if (!dcExist($username)) {
+  $file = 'dc_img/'.$username.'.png';
+  if (!file_exists($file)) {
     $ret = updateCounter($username);
-    if ($ret == 'NaN' || $ret = 'Err') {
+    if ($ret == 'NaN' || $ret == 'Err') {
       return 'templates/'.$ret.'.png';
     }
+  } else {
+    $last_modified = filemtime($file);
+    if ( date('U') - $last_modified > 86400) {
+      updateCounter($username);
+    }
   }
-  return 'dc_img/'.$username.'.png';
+  return $file;
 }
 ?>
