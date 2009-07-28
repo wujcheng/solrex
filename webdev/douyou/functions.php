@@ -49,6 +49,10 @@ function getImgUrl($username) {
       updateCounter($username);
     }
   }
-  return $file;
+  if (file_exists($file)) {
+    return $file;
+  } else {
+    return 'templates/Err.png';
+  }
 }
 ?>
