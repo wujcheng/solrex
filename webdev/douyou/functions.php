@@ -28,7 +28,11 @@ function updateImg($username, $dc_str) {
 
 function updateCounter($username) {
   $counter  = getCounter($username);
+  if ($counter == 'NaN' || $counter == 'Err') {
+    return $counter;
+  }
   updateImg($username, $counter);
+  return TRUE;
 }
 
 function dcExist($username) {
@@ -43,7 +47,10 @@ function dcExist($username) {
 function getImgUrl($username) {
   $username = strtolower($username);
   if (!dcExist($username)) {
-    updateCounter($username);
+    $ret = updateCounter($username);
+    if ($ret == 'NaN' || $ret = 'Err') {
+      return 'templates/'.$ret.'.png';
+    }
   }
   return 'dc_img/'.$username.'.png';
 }

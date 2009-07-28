@@ -1,5 +1,5 @@
 <?php
-$string = "798";
+$string = "NaN";
 $im     = imagecreatefrompng("templates/douyou.png");
 $fcolor = imagecolorallocate($im, 0x42, 0x42, 0x42);
 $px     = 43 - 6 * strlen($string);
