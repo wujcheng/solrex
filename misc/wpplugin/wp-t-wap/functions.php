@@ -140,7 +140,7 @@ function _wp_list_categories($args = '') {
 			$output .= __("No categories");
 	} else {
 		foreach ( $categories as $category ) {            
-            $output .= '<a href="?cat=' . $category->term_id . '" title="' . sprintf(__("View all posts in %s"), apply_filters('the_category', $category->name)) . '" ' . $rel . '>' . apply_filters('the_category', $category->name) .'</a><br/>';
+            $output .= '<a href="?cat=' . $category->term_id . '" title="' . sprintf(__("View all posts in %s"), apply_filters('the_category', $category->name)) . '" ' . $rel . '>' . apply_filters('the_category', $category->name) .'</a> | ';
         }
 	}
 
@@ -644,6 +644,7 @@ if($filename != 'login.php'){
 }
 ?>
 </div>
+<br/><a href="http://www.google.com/reader/m/view/feed/http:%2F%2Ffeed.solrex.cn">用Google Reader手机版订阅</a>
 <br/>切换访问：2.0版 | <a href="index-wap.php">1.1版</a><br/>
 <div id="ft">
 <?php 
@@ -655,6 +656,12 @@ if($filename != 'login.php'){
     }
 ?>
 </div>
+	<script src='http://www.google-analytics.com/ga.js' type='text/javascript'> </script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-1164295-5");
+		} catch(err) {}
+	</script>
 </body>
 </html>
     <?php
