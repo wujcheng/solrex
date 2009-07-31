@@ -20,7 +20,7 @@ import BaseHTTPServer, SocketServer
 import urllib, urllib2, urlparse
 import zlib, base64
 import socket
-import errno 
+import errno
 import os, sys
 import common
 
@@ -68,7 +68,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     # continue
     self.wfile.write('HTTP/1.1 200 OK\r\n')
     self.wfile.write('\r\n')
-    sslSock = ssl.wrap_socket(self.connection, 
+    sslSock = ssl.wrap_socket(self.connection,
                             server_side=True,
                             certfile=crtFile,
                             keyfile=keyFile)
@@ -145,7 +145,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     sslSock.shutdown(socket.SHUT_WR)
     sslSock.close()
     self.connection.close()
-  
+
   def do_METHOD(self):
     # check http self.command and post data
     if self.command == 'GET' or self.command == 'HEAD':
@@ -186,12 +186,12 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     path = urlparse.urlunparse((scm, netloc, path, data, query, ''))
 
     # create request for GAppProxy
-    data = urllib.urlencode({'method': self.command, 
+    data = urllib.urlencode({'method': self.command,
                    #'path': path, 
-                   'encoded_path': base64.b64encode(path), 
-                   'headers': self.headers, 
-                   'encodeResponse': 'compress', 
-                   'b64_postdata': base64.b64encode(postData), 
+                   'encoded_path': base64.b64encode(path),
+                   'headers': self.headers,
+                   'encodeResponse': 'compress',
+                   'b64_postdata': base64.b64encode(postData),
                    'version': '1.0.0 beta'})
     request = urllib2.Request(fetchServer)
     request.add_header('Accept-Encoding', 'identity, *;q=0')
@@ -220,7 +220,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     try:
       self.send_response(status, reason)
-    except socket.error, (errNum, _): 
+    except socket.error, (errNum, _):
       # Connection/Webpage closed before proxy return
       if errNum == errno.EPIPE or errNum == 10053: # *nix, Windows
         return
@@ -258,8 +258,8 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
   do_HEAD = do_METHOD
   do_POST = do_METHOD
 
-class ThreadingHTTPServer(SocketServer.ThreadingMixIn, 
-              BaseHTTPServer.HTTPServer): 
+class ThreadingHTTPServer(SocketServer.ThreadingMixIn,
+              BaseHTTPServer.HTTPServer):
   pass
 
 def shallWeNeedDefaultProxy():
@@ -348,6 +348,6 @@ if __name__ == '__main__':
   print 'Local Proxy  : %s' % localProxy
   print 'Fetch Server : %s' % fetchServer
   print '--------------------------------------------'
-  httpd = ThreadingHTTPServer(('', common.DEF_LISTEN_PORT), 
+  httpd = ThreadingHTTPServer(('', common.DEF_LISTEN_PORT),
                 LocalProxyHandler)
   httpd.serve_forever()

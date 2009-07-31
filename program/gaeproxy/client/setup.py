@@ -32,7 +32,7 @@ import datetime, glob
 now = datetime.datetime.now();
 
 setup(
-    options = {"py2exe": 
+    options = {"py2exe":
         { "optimize": 2,
           "compressed": 1,
           "bundle_files": 1
@@ -45,7 +45,7 @@ setup(
 
     zipfile = None,
     windows=['proxy.py', 'gui.pyw'],
-    
+
     data_files = [
         ('images', ['images/gap.png']),
         ('service', glob.glob('service/*')),
