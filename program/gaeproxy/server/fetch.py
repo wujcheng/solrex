@@ -1,29 +1,20 @@
-#! /usr/bin/env python
-# coding=utf-8
-#############################################################################
-#                                                                           #
-#   File: fetch.py                                                          #
-#                                                                           #
-#   Copyright (C) 2008-2009 Du XiaoGang <dugang@188.com>                    #
-#                                                                           #
-#   Home: http://gappproxy.googlecode.com                                   #
-#                                                                           #
-#   This file is part of GAppProxy.                                         #
-#                                                                           #
-#   GAppProxy is free software: you can redistribute it and/or modify       #
-#   it under the terms of the GNU General Public License as                 #
-#   published by the Free Software Foundation, either version 3 of the      #
-#   License, or (at your option) any later version.                         #
-#                                                                           #
-#   GAppProxy is distributed in the hope that it will be useful,            #
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of          #
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           #
-#   GNU General Public License for more details.                            #
-#                                                                           #
-#   You should have received a copy of the GNU General Public License       #
-#   along with GAppProxy.  If not, see <http://www.gnu.org/licenses/>.      #
-#                                                                           #
-#############################################################################
+#! /usr/bin/env python2.6
+# -*- coding=utf-8 -*-
+
+# This file is part of GAEProxy.
+#
+# GAEProxy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# GAEProxy is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with GAEProxy.  If not, see <http://www.gnu.org/licenses/>.
 
 import wsgiref.handlers, urlparse, StringIO, logging, base64, zlib
 from google.appengine.ext import webapp
@@ -40,7 +31,7 @@ class MainHandler(webapp.RequestHandler):
              'proxy-authorization', 'te', 'trailers',
              'transfer-encoding', 'upgrade']
 
-  def myError(self, status, description, encodeResponse):
+  def myError(self, status, description, responseCoding):
     # header
     self.response.out.write('HTTP/1.1 %d %s\r\n' % (status, description))
     self.response.out.write('Server: %s\r\n' % self.Software)
@@ -48,35 +39,53 @@ class MainHandler(webapp.RequestHandler):
     self.response.out.write('\r\n')
     # body
     content = '<h1>Fetch Server Error</h1><p>Error Code: %d<p>Message: %s' % (status, description)
-    if encodeResponse == 'base64':
-      self.response.out.write(base64.b64encode(content))
-    elif encodeResponse == 'compress':
-      self.response.out.write(zlib.compress(content))
-    else:
-      self.response.out.write(content)
+    content = self.encode(content, responseCoding)
+    self.response.out.write(content)
+
+  def encode(self, data, coding):
+    if data != '':
+      if coding == 'zlib' or coding == 'compress':
+        return zlib.compress(data)
+      elif coding == 'base64':
+        return base64.b64encode(data)
+    return data
+
+  def decode(self, data, coding):
+    if data != '':
+      if coding == 'zlib' or coding == 'compress':
+        return zlib.decompress(data)
+      elif coding == 'base64':
+        return base64.b64decode(data)
+    return data
 
   def post(self):
     try:
-      # get post data
+      version = self.request.get('version')
       origMethod = self.request.get('method')
-      origPath = self.request.get('encoded_path')
-      if origPath != '':
-        origPath = base64.b64decode(origPath)
-      else:
-        origPath = self.request.get('path')
       origHeaders = self.request.get('headers')
-      encodeResponse = self.request.get('encodeResponse')
-      origPostData = self.request.get('b64_postdata')
-      if origPostData == '':
-        origPostData = self.request.get('postdata')
+
+      if version == '1.0.1':
+        pathCoding = self.request.get('path_coding')
+        postCoding = self.request.get('post_coding')
+        responseCoding = self.request.get('response_coding')
+
+        # get post data
+        origPath = self.decode(self.request.get('path'), pathCoding)
+        origPostData = self.decode(self.request.get('postdata'), postCoding)
       else:
-        origPostData = base64.b64decode(origPostData)
+        origPath = self.request.get('encoded_path')
+        if origPath != '':
+          origPath = base64.b64decode(origPath)
+        else:
+          origPath = self.request.get('path')
+        responseCoding = self.request.get('encodeResponse')
+        origPostData = self.request.get('postdata')
 
       # check method
       if origMethod != 'GET' and origMethod != 'HEAD' \
                and origMethod != 'POST':
         # forbid
-        self.myError(590, 'Invalid local proxy, Method not allowed.', encodeResponse)
+        self.myError(590, 'Invalid local proxy, Method not allowed.', responseCoding)
         return
       if origMethod == 'GET':
         method = urlfetch.GET
@@ -88,7 +97,7 @@ class MainHandler(webapp.RequestHandler):
       # check path
       (scm, netloc, path, params, query, _) = urlparse.urlparse(origPath)
       if (scm.lower() != 'http' and scm.lower() != 'https') or not netloc:
-        self.myError(590, 'Invalid local proxy, Unsupported Scheme.', encodeResponse)
+        self.myError(590, 'Invalid local proxy, Unsupported Scheme.', responseCoding)
         return
       # create new path
       newPath = urlparse.urlunparse((scm, netloc, path, params, query, ''))
@@ -119,17 +128,17 @@ class MainHandler(webapp.RequestHandler):
       if contentLength != 0:
         if contentLength != len(origPostData):
           self.myError(590, 'Invalid local proxy, Wrong length of post data.',
-                       encodeResponse)
+                       responseCoding)
           return
       else:
         origPostData = ''
 
       if origPostData != '' and origMethod != 'POST':
         self.myError(590, 'Invalid local proxy, Inconsistent method and data.',
-                     encodeResponse)
+                     responseCoding)
         return
     except Exception, e:
-      self.myError(591, 'Fetch server error, %s.' % str(e), encodeResponse)
+      self.myError(591, 'Fetch server error, %s.' % str(e), responseCoding)
       return
 
     # fetch, try 3 times
@@ -138,19 +147,18 @@ class MainHandler(webapp.RequestHandler):
         resp = urlfetch.fetch(newPath, origPostData, method, newHeaders, False, False)
         break
       except urlfetch_errors.ResponseTooLargeError:
-        self.myError(591, 'Fetch server error, Sorry, Google\'s limit, file size up to 1MB.', encodeResponse)
+        self.myError(591, 'Fetch server error, Sorry, Google\'s limit, file size up to 1MB.', responseCoding)
         return
       except Exception:
         continue
     else:
-      self.myError(591, 'Fetch server error, The target server may be down or not exist. Another possibility: try to request the URL directly.', encodeResponse)
+      self.myError(591, 'Fetch server error, The target server may be down or not exist. Another possibility: try to request the URL directly.', responseCoding)
       return
 
     # forward
     self.response.headers['Content-Type'] = 'application/octet-stream'
     # status line
-    self.response.out.write('HTTP/1.1 %d %s\r\n' % (resp.status_code, \
-                                self.response.http_status_message(resp.status_code)))
+    self.response.out.write('HTTP/1.1 %d %s\r\n' % (resp.status_code, self.response.http_status_message(resp.status_code)))
     # headers
     # default Content-Type is text
     textContent = True
@@ -174,17 +182,12 @@ class MainHandler(webapp.RequestHandler):
           # not text
           textContent = False
     self.response.out.write('\r\n')
+    if textContent:
     # need encode?
-    if encodeResponse == 'base64':
-      self.response.out.write(base64.b64encode(resp.content))
-    elif encodeResponse == 'compress':
-      # only compress when Content-Type is text/xxx
-      if textContent:
-        self.response.out.write(zlib.compress(resp.content))
-      else:
-        self.response.out.write(resp.content)
+      content = self.encode(resp.content, responseCoding)
     else:
-      self.response.out.write(resp.content)
+      content = resp.content
+    self.response.out.write(content)
 
   # log
   #logAccess(netloc, self.request.remote_addr)
@@ -196,31 +199,10 @@ class MainHandler(webapp.RequestHandler):
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>GAppProxy已经在工作了</title>
+        <title>Working</title>
     </head>
     <body>
-        <table width="800" border="0" align="center">
-            <tr><td align="center"><hr></td></tr>
-            <tr><td align="center">
-                <b><h1>%s 已经在工作了</h1></b>
-            </td></tr>
-            <tr><td align="center"><hr></td></tr>
-
-            <tr><td align="center">
-                GAppProxy是一个开源的HTTP Proxy软件,使用Python编写,运行于Google App Engine平台上. 
-            </td></tr>
-            <tr><td align="center"><hr></td></tr>
-
-            <tr><td align="center">
-                更多相关介绍,请参考<a href="http://gappproxy.googlecode.com/">GAppProxy项目主页</a>. 
-            </td></tr>
-            <tr><td align="center"><hr></td></tr>
-
-            <tr><td align="center">
-                <img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
-            </td></tr>
-            <tr><td align="center"><hr></td></tr>
-        </table>
+      working
     </body>
 </html>
 ''' % self.Software)
@@ -233,3 +215,4 @@ def main():
 
 if __name__ == '__main__':
   main()
+

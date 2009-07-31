@@ -36,18 +36,18 @@ fetchServer = common.DEF_FETCH_SERVER
 isGoogleProxy = {}
 
 class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
-  postMaxLen = 1024*1024
+  postMaxLen = 1024*1024  # 1MB
 
   def do_CONNECT(self):
     if not SSLEnable:
-      self.send_error(501, 'LPS error, HTTPS needs Python 2.6 or newer verion.')
+      self.send_error(501, 'Local Proxy Error: HTTPS needs Python 2.6 or newer verion.')
       self.connection.close()
       return
 
     # for ssl proxy
     (httpsHost, _, httpsPort) = self.path.partition(':')
     if httpsPort != '' and httpsPort != '443':
-      self.send_error(501, 'LPS error, Only port 443 is allowed for https.')
+      self.send_error(501, 'Local Proxy Error: Only port 443 is allowed for https.')
       self.connection.close()
       return
     if sys.platform != 'win32':
@@ -69,9 +69,9 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     self.wfile.write('HTTP/1.1 200 OK\r\n')
     self.wfile.write('\r\n')
     sslSock = ssl.wrap_socket(self.connection,
-                            server_side=True,
-                            certfile=crtFile,
-                            keyfile=keyFile)
+                              server_side=True,
+                              certfile=crtFile,
+                              keyfile=keyFile)
 
     # rewrite request line, url to abs
     firstLine = ''
@@ -149,53 +149,56 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
   def do_METHOD(self):
     # check http self.command and post data
     if self.command == 'GET' or self.command == 'HEAD':
-      # no post data
+      # no data
       postDataLen = 0
     elif self.command == 'POST':
       # get length of post data
       postDataLen = 0
       if self.headers.has_key('Content-Length'):
         postDataLen = int(self.headers['Content-Length'])
-      # exceed limit?
       if postDataLen > self.postMaxLen:
-        self.send_error(413, 'LPS error: GAE limits post data < 1MB.')
+        self.send_error(413, 'Local Proxy Error: Post data length exceeds GAE limit (1MB).')
         self.connection.close()
         return
     else:
-      # unsupported self.command
-      self.send_error(501)
+      self.send_error(501, 'Local Proxy Error: Unsupported HTTP method.')
       self.connection.close()
       return
 
     # get post data
-    postData = ''
     if postDataLen > 0:
       postData = self.rfile.read(postDataLen)
       if len(postData) != postDataLen:
-        # bad request
-        self.send_error(400)
+        self.send_error(400, "Local Proxy Error: Bad Request.")
         self.connection.close()
         return
+      postData = zlib.compress(postData)
+    else:
+      postData = ''
+
     # do path check
     (scm, netloc, path, data, query, _) = urlparse.urlparse(self.path)
     if (scm.lower() != 'http' and scm.lower() != 'https') or not netloc:
-      self.send_error(501, 'LPS: Unsupported scheme(ftp for example).')
+      self.send_error(501, 'Local Proxy Error: Unsupported scheme(ftp for example).')
       self.connection.close()
       return
+
     # create new path
     path = urlparse.urlunparse((scm, netloc, path, data, query, ''))
 
     # create request for GAppProxy
     data = urllib.urlencode({'method': self.command,
-                   #'path': path, 
-                   'encoded_path': base64.b64encode(path),
-                   'headers': self.headers,
-                   'encodeResponse': 'compress',
-                   'b64_postdata': base64.b64encode(postData),
-                   'version': '1.0.0 beta'})
+                             'headers': self.headers,
+                             'path_coding': 'base64',
+                             'path': base64.b64encode(path),
+                             'response_coding': 'zlib',
+                             'post_coding': 'zlib',
+                             'postdata': postData,
+                             'version': '1.0.1'})
     request = urllib2.Request(fetchServer)
     request.add_header('Accept-Encoding', 'identity, *;q=0')
     request.add_header('Connection', 'close')
+
     # create new opener
     if localProxy != '':
       proxyHandler = urllib2.ProxyHandler({'http': localProxy})
@@ -204,6 +207,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     opener = urllib2.build_opener(proxyHandler)
     # set the opener as the default opener
     urllib2.install_opener(opener)
+
     try:
       resp = urllib2.urlopen(request, data)
     except urllib2.HTTPError, e:
@@ -212,7 +216,6 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       return
 
     # parse resp
-    textContent = True
     # for status line
     words = resp.readline().split()
     status = int(words[1])
@@ -227,10 +230,10 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       else:
         raise
 
+    textContent = True
     # for headers
     while True:
-      line = resp.readline()
-      line = line.strip()
+      line = resp.readline().strip()
       # end header?
       if line == '':
         break
@@ -245,6 +248,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
           # not text
           textContent = False
     self.end_headers()
+
     # for page
     if textContent:
       dat = resp.read()
