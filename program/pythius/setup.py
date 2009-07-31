@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# -*- coding: iso-8859-1 -*-
 """
 Package installer for Pythius
 
@@ -112,7 +113,7 @@ setup_args = {
     'author': "Jürgen Hermann",
     'author_email': "jh@web.de",
     'url': "http://pythius.sf.net/",
-    'licence': "GPL",
+    'license': "GPL",
     'long_description': """
 Pythius is a set of tools to assess and improve the quality of Python
 code. This is commonly done by applying different code metrics. Simple

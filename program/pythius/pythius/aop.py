@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# -*- coding: iso-8859-1 -*-
+
 """Aspect Oriented Programming toolkit
 
 This module is a toolkit to help implement Aspect-Oriented
