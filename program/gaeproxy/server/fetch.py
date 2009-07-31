@@ -66,7 +66,11 @@ class MainHandler(webapp.RequestHandler):
                 origPath = self.request.get('path')
             origHeaders = self.request.get('headers')
             encodeResponse = self.request.get('encodeResponse')
-            origPostData = self.request.get('postdata')
+            origPostData = self.request.get('b64_postdata')
+            if origPostData == '':
+              origPostData = self.request.get('postdata')
+            else:
+              origPostData = base64.b64decode(origPostData)
 
             # check method
             if origMethod != 'GET' and origMethod != 'HEAD' \

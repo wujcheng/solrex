@@ -191,7 +191,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                    'encoded_path': base64.b64encode(path), 
                    'headers': self.headers, 
                    'encodeResponse': 'compress', 
-                   'postdata': postData, 
+                   'b64_postdata': base64.b64encode(postData), 
                    'version': '1.0.0 beta'})
     request = urllib2.Request(fetchServer)
     request.add_header('Accept-Encoding', 'identity, *;q=0')
