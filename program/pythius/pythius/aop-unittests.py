@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 __revision__ = "$Id: aop-unittests.py,v 1.18 2002/07/07 07:39:43 ftobin Exp $"
 

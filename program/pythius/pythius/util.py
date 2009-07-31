@@ -1,10 +1,10 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 """
     Pythius - Utility Functions
 
-    Copyright (c) 2001 by Jürgen Hermann <jh@web.de>
+    Copyright (c) 2001 by JÃ¼rgen Hermann <jh@web.de>
     All rights reserved, see LICENSE for details.
 
     This program is free software; you can redistribute it and/or modify

@@ -1,9 +1,9 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 """
 Package installer for Pythius
 
-Copyright (c) 2001 by Jürgen Hermann <jh@web.de>
+Copyright (c) 2001 by JÃ¼rgen Hermann <jh@web.de>
 All rights reserved, see LICENSE for details.
 
 $Id: setup.py,v 1.7 2001/11/05 22:59:57 jhermann Exp $
@@ -110,7 +110,7 @@ setup_args = {
     'name': "Pythius",
     'version': version.revision,
     'description': "Pythius is a set of tools to assess and improve the quality of Python code",
-    'author': "Jürgen Hermann",
+    'author': "JÃ¼rgen Hermann",
     'author_email': "jh@web.de",
     'url': "http://pythius.sf.net/",
     'license': "GPL",

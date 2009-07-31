@@ -1,7 +1,7 @@
 """
 Pythius - Source code statistics
 
-Copyright (c) 2001 by Jürgen Hermann <jh@web.de>
+Copyright (c) 2001 by JÃ¼rgen Hermann <jh@web.de>
 All rights reserved, see LICENSE for details.
 
 This program is free software; you can redistribute it and/or modify
@@ -147,7 +147,7 @@ def usage():
     """
     import os, sys
     sys.stderr.write("""
-%s v%s, Copyright (c) 2001 by Jürgen Hermann <jh@web.de>
+%s v%s, Copyright (c) 2001 by JÃ¼rgen Hermann <jh@web.de>
 
 Usage: %s [options] [files...]
 

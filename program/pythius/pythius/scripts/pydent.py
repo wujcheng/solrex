@@ -1,7 +1,7 @@
 """
     Pythius - Indent/Detab Python Source
 
-    Copyright (c) 2001 by Jürgen Hermann <jh@web.de>
+    Copyright (c) 2001 by JÃ¼rgen Hermann <jh@web.de>
     All rights reserved, see LICENSE for details.
 
     This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@ _debug = 0
 flag_backup = 1
 flag_compile = 0
 flag_dryrun = 0
+op_tabstop = 4
 
 
 #############################################################################
@@ -35,14 +36,12 @@ class Indenter:
         4 spaces and no TABs indenting.
     """
 
-    spaces = 4
-
-    def __init__(self, out):
+    def __init__(self, out, tabstop=4):
         self.out = out
         self.indent = 0
         self.newline = 1
         self.lastws = (0, "")
-        self.spacing = " " * self.spaces
+        self.spacing = " " * int(tabstop)
 
     def __emit(self, text):
         """ Write a piece of source code.
@@ -164,7 +163,7 @@ def usage():
     """
     import os, sys
     sys.stderr.write("""
-%s v%s, Copyright (c) 2001 by Jürgen Hermann <jh@web.de>
+%s v%s, Copyright (c) 2001 by JÃ¼rgen Hermann <jh@web.de>
 
 Usage: %s [options] [files...]
 
@@ -172,6 +171,7 @@ Options:
     -c, --compile           Compile reformatted source
     -n, --dry-run           Don't change any files on disk
     -q, --quiet             Be quiet (no informational messages)
+    --tabstop=[4]           Set tab stop, default 4.
     --no-backup             Don't make backups
     --help                  This help text
     --version               Version information
@@ -200,18 +200,19 @@ def main():
     #
     try:
         optlist, args = getopt.getopt(sys.argv[1:],
-            'cnq',
-            ['compile', 'dry-run', 'help', 'quiet', 'no-backup', 'version'])
+            'cnqt',
+            ['compile', 'dry-run', 'help', 'quiet', 'no-backup', 'version', 'tabstop='])
     except:
         util.fatal("Invalid parameters!", usage=1)
 
     if util.haveOptions(optlist, ["--version"]): version()
     if not args or util.haveOptions(optlist, ["--help"]): usage()
 
-    global flag_backup, flag_compile, flag_dryrun
+    global flag_backup, flag_compile, flag_dryrun, op_tabstop
     flag_backup = not util.haveOptions(optlist, ["--no-backup"])
     flag_compile = util.haveOptions(optlist, ["-c", "--compile"])
     flag_dryrun = util.haveOptions(optlist, ["-n", "--dry-run"])
+    op_tabstop =  util.getOption(optlist, ["--tabstop"])
     util.flag_quiet = util.haveOptions(optlist, ["-q", "--quiet"])
 
     #
@@ -238,7 +239,7 @@ def main():
 
         # indent source
         stream = cStringIO.StringIO()
-        indenter = Indenter(stream)
+        indenter = Indenter(stream, op_tabstop)
         indenter.parse(source)
         newsource = stream.getvalue()
         del stream
