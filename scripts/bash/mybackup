@@ -1,5 +1,16 @@
 #!/bin/bash
-if [ ! -d ~/history ]; then
-  mkdir -p ~/history
+BAKDIR=~/history
+if [ ! -d $BAKDIR ]; then
+  mkdir -p $BAKDIR
 fi
-cp -R "$@" ~/history/"$@".`date +%Y-%m-%d.%H-%M-%S`
+if [ $# -ge 1 ]; then
+  for path in $@; do
+    if [ -f $path ]; then
+      cp $path $BAKDIR/"$path".`date +%Y-%m-%d.%H-%M-%S`
+    elif [ -d $path ]; then
+      path=`basename $path`
+      tar -cvf $BAKDIR/$path.`date +%Y-%m-%d.%H-%M-%S`.tar $path
+    fi
+    echo "Backuped $path to $BAKDIR."
+  done
+fi
