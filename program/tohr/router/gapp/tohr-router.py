@@ -30,16 +30,18 @@ class MainHandler(webapp.RequestHandler):
              'proxy-authorization', 'te', 'trailers',
              'transfer-entohrCoding', 'upgrade']
 
-  def report(self, status, description, tohrCoding):
+  def report(self, status, description, coding):
     # header
     self.response.out.write('HTTP/1.1 %d %s\r\n' % (status, description))
     self.response.out.write('Server: %s\r\n' % self.Server)
     self.response.out.write('Content-Type: text/html\r\n')
+    self.response.out.write('Tohr-version: 0.1\r\n')
+    self.response.out.write('Tohr-coding: %s\r\n' % coding)
     self.response.out.write('\r\n')
     # body
     content = '<h1>Tohr Router Error</h1><p>Error Code: %d<p>Message: %s'\
               % (status, description)
-    content = self.encode(content, tohrCoding)
+    content = self.encode(content, coding)
     self.response.out.write(content)
 
   def encode(self, data, tohrCoding):
@@ -57,7 +59,7 @@ class MainHandler(webapp.RequestHandler):
   def post(self):
     try:
       # Get Tohr version
-      tohrVersion = self.request.headers['Tohr-version']
+      tohrVersion = self.request.headers['Tohr-Version']
       tohrCoding = 'plain'
 
       # Get tohrCoding and decode(or unzip, or decrypt) payload
@@ -107,8 +109,7 @@ class MainHandler(webapp.RequestHandler):
 
       # Check postdata lenth of original request
       if contentLength != 0:
-        payload = messageDict['payload'].encode('utf-8')
-        logging.info(payload)
+        payload = self.decode(messageDict['payload'], 'base64')
         if contentLength != len(payload):
           self.report(590, 'Wrong length of postdata: %d, claimed %d' \
                       % (len(payload), contentLength), tohrCoding)
@@ -137,13 +138,11 @@ class MainHandler(webapp.RequestHandler):
       self.report(591, 'Fails to get the page. ', tohrCoding)
       return
 
-    # Forward the response back to client
-    self.response.headers['Content-Type'] = 'application/octet-stream'
     # HTTP status
-    self.response.out.write('HTTP/1.0 %d %s\r\n' % (resp.status_code,
-                  self.response.http_status_message(resp.status_code)))
+    relayStatus = resp.status_code
+    relayStatusMsg = self.response.http_status_message(resp.status_code)
     # HTTP headers
-    textContent = True
+    relayHeaders = ''
     for header in resp.headers:
       # Skip hop to hop headers
       if header.strip().lower() in self.HtohHdrs:  continue
@@ -151,25 +150,24 @@ class MainHandler(webapp.RequestHandler):
       if header.lower() == 'set-cookie':
         scs = re.sub(r', ([^;]+=)', r'\n\1', resp.headers[header]).split('\n')
         for sc in scs:
-          self.response.out.write('%s: %s\r\n' % (header, sc.strip()))
+          relayHeaders += '%s: %s\r\n' % (header, sc.strip())
         continue
       # Other headers
-      self.response.out.write('%s: %s\r\n' % (header, resp.headers[header]))
-      # Check Content-Type
-      if header.lower() == 'content-type':
-        if resp.headers[header].lower().find('text') == -1:
-          # not text
-          textContent = False
-    self.response.out.write('Tohr-version: 0.1\r\n')
-    if textContent:
-      # Encode text content.
-      self.response.out.write('Tohr-coding: %s\r\n' % tohrCoding)
-      content = self.encode(resp.content, tohrCoding)
-    else:
-      content = resp.content
+      relayHeaders += '%s: %s\r\n' % (header, resp.headers[header])
+    relayPayload = self.encode(resp.content, 'base64')
 
-    self.response.out.write('\r\n')
-    self.response.out.write(content)
+    message = json.dumps({'status': relayStatus,
+                          'status_msg': relayStatusMsg,
+                          'headers': relayHeaders,
+                          'payload': relayPayload})
+    message = self.encode(message, tohrCoding)
+   
+    # Forward the response back to client
+    self.response.headers['Content-Type'] = 'application/octet-stream'
+    self.response.headers['Tohr-Version'] = '0.1'
+    self.response.headers['Tohr-Coding'] = tohrCoding
+
+    self.response.out.write(message)
 
   def get(self):
     self.response.out.write('''<html><head><title>Tohr Router</title></head>

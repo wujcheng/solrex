@@ -1,14 +1,14 @@
 #!/usr/bin/env python2.6
 # -*- coding: utf-8 -*-
 
-# This file is part of GAEProxy.
+# This file is part of Tohr.
 #
-# GAEProxy is free software: you can redistribute it and/or modify
+# Tohr is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 #
-# GAEProxy is distributed in the hope that it will be useful,
+# Tohr is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
@@ -189,6 +189,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.send_error(400, "Local Proxy Error: Bad Request.")
         self.connection.close()
         return
+      postData = self.encode(postData, 'base64')
     else:
       postData = ''
 
@@ -206,14 +207,12 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       headers += key + ': ' + self.headers[key] + '\r\n'
     f = open('out.txt','a+')
 
-
-    # create request for GAppProxy
+    # create request for Tohr Router
     message = json.dumps({'method': self.command,
                           'path': path,
                           'payload': postData,
                           'headers': headers,})
-    print >>f, postData
-    print >>f, len(postData)
+    
     coding = 'zlib'
     data = message.encode(coding)
     request = urllib2.Request(fetchServer)
@@ -241,45 +240,35 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     # parse resp
     # for status line
-    words = resp.readline().split()
-    status = int(words[1])
-    reason = ' '.join(words[2:])
+    tohrVersion = resp.info()['Tohr-Version']
+    tohrCoding = 'plain'
+    if tohrVersion == '0.1':
+      tohrCoding = resp.info()['Tohr-Coding']
+      message = self.decode(resp.read(), tohrCoding)
+    else:
+      print "Unkown version"
+      return
+    
+    messageDict = json.loads(message)
 
     try:
-      self.send_response(status, reason)
+      self.send_response(messageDict['status'], messageDict['status_msg'])
     except socket.error, (errNum, _):
       # Connection/Webpage closed before proxy return
       if errNum == errno.EPIPE or errNum == 10053: # *nix, Windows
         return
       else:
         raise
+    headers = messageDict['headers'].split('\r\n')
 
-    textContent = True
-    # for headers
-    while True:
-      line = resp.readline().strip()
-      # end header?
-      if line == '':
-        break
-      # header
-      (name, _, value) = line.partition(':')
-      name = name.strip()
-      value = value.strip()
+    # The headers
+    for header in headers:
+      (name, _, value) = header.partition(': ')
       self.send_header(name, value)
-      # check Content-Type
-      if name.lower() == 'content-type':
-        if value.lower().find('text') == -1:
-          # not text
-          textContent = False
     self.end_headers()
 
-    # for page
-    if textContent:
-      dat = resp.read()
-      if len(dat) > 0:
-        self.wfile.write(self.decode(dat, coding))
-    else:
-      self.wfile.write(resp.read())
+    # The page
+    self.wfile.write(self.decode(messageDict['payload'], 'base64'))
     self.connection.close()
 
   do_GET  = do_METHOD
