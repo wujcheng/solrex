@@ -1,5 +1,5 @@
-#! /usr/bin/env python2.6
-# -*- coding=utf-8 -*-
+#!/usr/bin/env python2.6
+# -*- coding: utf-8 -*-
 
 # This file is part of GAEProxy.
 #
@@ -172,7 +172,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.send_error(400, "Local Proxy Error: Bad Request.")
         self.connection.close()
         return
-      postData = zlib.compress(postData)
+      postData = base64.b64encode(postData)
     else:
       postData = ''
 
@@ -192,7 +192,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                              'path_coding': 'base64',
                              'path': base64.b64encode(path),
                              'response_coding': 'zlib',
-                             'post_coding': 'zlib',
+                             'post_coding': 'base64',
                              'postdata': postData,
                              'version': '1.0.1'})
     request = urllib2.Request(fetchServer)
