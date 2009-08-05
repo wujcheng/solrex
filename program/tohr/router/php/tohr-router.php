@@ -56,8 +56,21 @@ if ( !function_exists('http_parse_headers') ) {
     foreach ($lines as $line) {
       $pair = split(": ", $line);
       if ($pair[0] != "") {
+        if ($pair[0] == "Content-Length") continue;
         $ret[$pair[0]] = $pair[1];
       }
+    }
+    return $ret;
+  }
+}
+
+if ( !function_exists('http_get_header_str') ) {
+  function http_get_header_str($headers)
+  {
+    $ret = '';
+    foreach ($headers as $key => $value) {
+      if ($key == 0) continue;
+      $ret .= $value;
     }
     return $ret;
   }
@@ -66,7 +79,6 @@ if ( !function_exists('http_parse_headers') ) {
 function post()
 {
   $headers = getallheaders();
-  //var_dump($headers);
   $tohrVersion = $headers['Tohr-Version'];
   $tohrCoding = 'plain';
   if ($tohrVersion == '0.1') {
@@ -77,9 +89,13 @@ function post()
     return;
   }
   $messageDict = json_decode($message, true);
-  //var_dump($messageDict);
 
   $snoopy = new Snoopy;
+  $snoopy->maxredirs = 0;
+  $snoopy->maxframes = 0;
+  $snoopy->agent = '';
+  $snoopy->accept = '';
+  $snoopy->_submit_type = '';
 
   $methodDict = array("GET" => true, "HEAD" => true,
                      "POST" => true, "PUT" => true, );
@@ -87,11 +103,10 @@ function post()
     report(590, 'Invalid method: '.$messageDict["method"], $tohrCoding);
     return;
   }
-  $snoopy->_httpmethod = $messageDict["method"];
-  //echo $snoopy->_httpmethod;
+  $method = $messageDict["method"];
 
   $URLPART = parse_url($messageDict['path']);
-  //var_dump($URLPART);
+
   if ($URLPART['scheme'] != 'http' && $URLPART['scheme'] != 'https') {
     report(590, 'Invalid scheme: '.$URLPART['scheme'], $tohrCoding);
     return;
@@ -99,16 +114,26 @@ function post()
   $url = $messageDict['path'];
 
   $snoopy->rawheaders = http_parse_headers($messageDict['headers']);
-  //var_dump($snoopy->rawheaders);
 
-  if ($messageDict["method"] == 'GET') {
+  $payload = decode($messageDict['payload'], 'base64');
+
+  if ($method == 'GET') {
     $snoopy->fetch($url);
-  } else if ($messageDict["method"] == 'POST') {
-    $snoopy->submit($url, $messageDict['payload']);
+  } else if ($method == 'POST') {
+    $snoopy->submit($url, $payload);
   }
   header('Content-Type: application/octet-stream');
-  header('Tohr-version: 0.1\r\n');
-  header('Tohr-coding: '.$tohrCoding);
+  header('Tohr-Version: 0.1');
+  header('Tohr-Coding: '.$tohrCoding);
+  $relayStatus = $snoopy->status;
+  $relayStatusMsg = substr($snoopy->response_code, 13, -2);
+  $relayHeaders = http_get_header_str($snoopy->headers);
+  $relayPayload = encode($snoopy->results, 'base64');
+  $message = json_encode(array('status' => $relayStatus,
+                               'status_msg' => $relayStatusMsg,
+                               'headers' => $relayHeaders,
+                               'payload' => $relayPayload));
+  echo $message;
 }
 
 function get()

@@ -40,20 +40,26 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
   postMaxLen = 1024*1024  # 1MB
 
   def encode(self, data, coding):
-    if data != '':
-      if coding == 'zlib' or coding == 'compress':
-        return data.encode('zlib')
-      elif coding == 'base64':
-        return data.encode('base64')
+    if data == '':  return data;
+    if coding == 'zlib' or coding == 'compress':
+      return data.encode('zlib')
+    elif coding == 'base64':
+      return data.encode('base64')
     return data
 
   def decode(self, data, coding):
-    if data != '':
-      if coding == 'zlib' or coding == 'compress':
-        return data.decode('zlib')
-      elif coding == 'base64':
-        return data.decode('base64')
+    if data == '':  return data
+    if coding == 'zlib' or coding == 'compress':
+      return data.decode('zlib')
+    elif coding == 'base64':
+      return data.decode('base64')
     return data
+
+  def uc_param(self, param):
+    ucParam = ''
+    for word in param.split('-'):
+      ucParam += word.capitalize() + '-'
+    return ucParam.rstrip('-')
 
   def do_CONNECT(self):
     if not SSLEnable:
@@ -202,10 +208,10 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     # create new path
     path = urlparse.urlunparse((scm, netloc, path, data, query, ''))
+
     headers = ''
     for key in self.headers:
-      headers += key + ': ' + self.headers[key] + '\r\n'
-    f = open('out.txt','a+')
+      headers += self.uc_param(key) + ': ' + self.headers[key] + '\r\n'
 
     # create request for Tohr Router
     message = json.dumps({'method': self.command,
@@ -213,8 +219,8 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                           'payload': postData,
                           'headers': headers,})
     
-    coding = 'zlib'
-    data = message.encode(coding)
+    coding = 'plain'
+    data = self.encode(message, coding)
     request = urllib2.Request(fetchServer)
     request.add_header('Accept-Encoding', 'identity, *;q=0')
     request.add_header('Connection', 'close')
@@ -252,7 +258,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     messageDict = json.loads(message)
 
     try:
-      self.send_response(messageDict['status'], messageDict['status_msg'])
+      self.send_response(int(messageDict['status']), messageDict['status_msg'])
     except socket.error, (errNum, _):
       # Connection/Webpage closed before proxy return
       if errNum == errno.EPIPE or errNum == 10053: # *nix, Windows
