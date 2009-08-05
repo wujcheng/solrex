@@ -155,39 +155,6 @@ class Snoopy
 					}
 					
 					$this->_disconnect($fp);
-
-					if($this->_redirectaddr)
-					{
-						/* url was redirected, check if we've hit the max depth */
-						if($this->maxredirs > $this->_redirectdepth)
-						{
-							// only follow redirect if it's on this site, or offsiteok is true
-							if(preg_match("|^http://".preg_quote($this->host)."|i",$this->_redirectaddr) || $this->offsiteok)
-							{
-								/* follow the redirect */
-								$this->_redirectdepth++;
-								$this->lastredirectaddr=$this->_redirectaddr;
-								$this->fetch($this->_redirectaddr);
-							}
-						}
-					}
-
-					if($this->_framedepth < $this->maxframes && count($this->_frameurls) > 0)
-					{
-						$frameurls = $this->_frameurls;
-						$this->_frameurls = array();
-						
-						while(list(,$frameurl) = each($frameurls))
-						{
-							if($this->_framedepth < $this->maxframes)
-							{
-								$this->fetch($frameurl);
-								$this->_framedepth++;
-							}
-							else
-								break;
-						}
-					}					
 				}
 				else
 				{
@@ -216,38 +183,6 @@ class Snoopy
 					$this->_httpsrequest($path, $URI, $this->_httpmethod);
 				}
 
-				if($this->_redirectaddr)
-				{
-					/* url was redirected, check if we've hit the max depth */
-					if($this->maxredirs > $this->_redirectdepth)
-					{
-						// only follow redirect if it's on this site, or offsiteok is true
-						if(preg_match("|^http://".preg_quote($this->host)."|i",$this->_redirectaddr) || $this->offsiteok)
-						{
-							/* follow the redirect */
-							$this->_redirectdepth++;
-							$this->lastredirectaddr=$this->_redirectaddr;
-							$this->fetch($this->_redirectaddr);
-						}
-					}
-				}
-
-				if($this->_framedepth < $this->maxframes && count($this->_frameurls) > 0)
-				{
-					$frameurls = $this->_frameurls;
-					$this->_frameurls = array();
-
-					while(list(,$frameurl) = each($frameurls))
-					{
-						if($this->_framedepth < $this->maxframes)
-						{
-							$this->fetch($frameurl);
-							$this->_framedepth++;
-						}
-						else
-							break;
-					}
-				}					
 				return true;					
 				break;
 			default:
@@ -270,11 +205,8 @@ class Snoopy
 	Output:		$this->results	the text output from the post
 \*======================================================================*/
 
-	function submit($URI, $formvars="", $formfiles="")
+	function submit($URI, $postdata)
 	{
-		unset($postdata);
-		
-		$postdata = $this->_prepare_post_body($formvars, $formfiles);
 			
 		$URI_PARTS = parse_url($URI);
 		if (!empty($URI_PARTS["user"]))
@@ -307,46 +239,6 @@ class Snoopy
 					}
 					
 					$this->_disconnect($fp);
-
-					if($this->_redirectaddr)
-					{
-						/* url was redirected, check if we've hit the max depth */
-						if($this->maxredirs > $this->_redirectdepth)
-						{						
-							if(!preg_match("|^".$URI_PARTS["scheme"]."://|", $this->_redirectaddr))
-								$this->_redirectaddr = $this->_expandlinks($this->_redirectaddr,$URI_PARTS["scheme"]."://".$URI_PARTS["host"]);						
-							
-							// only follow redirect if it's on this site, or offsiteok is true
-							if(preg_match("|^http://".preg_quote($this->host)."|i",$this->_redirectaddr) || $this->offsiteok)
-							{
-								/* follow the redirect */
-								$this->_redirectdepth++;
-								$this->lastredirectaddr=$this->_redirectaddr;
-								if( strpos( $this->_redirectaddr, "?" ) > 0 )
-									$this->fetch($this->_redirectaddr); // the redirect has changed the request method from post to get
-								else
-									$this->submit($this->_redirectaddr,$formvars, $formfiles);
-							}
-						}
-					}
-
-					if($this->_framedepth < $this->maxframes && count($this->_frameurls) > 0)
-					{
-						$frameurls = $this->_frameurls;
-						$this->_frameurls = array();
-						
-						while(list(,$frameurl) = each($frameurls))
-						{														
-							if($this->_framedepth < $this->maxframes)
-							{
-								$this->fetch($frameurl);
-								$this->_framedepth++;
-							}
-							else
-								break;
-						}
-					}					
-					
 				}
 				else
 				{
@@ -375,45 +267,7 @@ class Snoopy
 					$this->_httpsrequest($path, $URI, $this->_submit_method, $this->_submit_type, $postdata);
 				}
 
-				if($this->_redirectaddr)
-				{
-					/* url was redirected, check if we've hit the max depth */
-					if($this->maxredirs > $this->_redirectdepth)
-					{						
-						if(!preg_match("|^".$URI_PARTS["scheme"]."://|", $this->_redirectaddr))
-							$this->_redirectaddr = $this->_expandlinks($this->_redirectaddr,$URI_PARTS["scheme"]."://".$URI_PARTS["host"]);						
-
-						// only follow redirect if it's on this site, or offsiteok is true
-						if(preg_match("|^http://".preg_quote($this->host)."|i",$this->_redirectaddr) || $this->offsiteok)
-						{
-							/* follow the redirect */
-							$this->_redirectdepth++;
-							$this->lastredirectaddr=$this->_redirectaddr;
-							if( strpos( $this->_redirectaddr, "?" ) > 0 )
-								$this->fetch($this->_redirectaddr); // the redirect has changed the request method from post to get
-							else
-								$this->submit($this->_redirectaddr,$formvars, $formfiles);
-						}
-					}
-				}
-
-				if($this->_framedepth < $this->maxframes && count($this->_frameurls) > 0)
-				{
-					$frameurls = $this->_frameurls;
-					$this->_frameurls = array();
-
-					while(list(,$frameurl) = each($frameurls))
-					{														
-						if($this->_framedepth < $this->maxframes)
-						{
-							$this->fetch($frameurl);
-							$this->_framedepth++;
-						}
-						else
-							break;
-					}
-				}					
-				return true;					
+				return true;
 				break;
 				
 			default:
@@ -713,13 +567,13 @@ class Snoopy
 							chr(176),
 							chr(39),
 							chr(128),
-							"ä",
-							"ö",
-							"ü",
-							"Ä",
-							"Ö",
-							"Ü",
-							"ß",
+							"ï¿½",
+							"ï¿½",
+							"ï¿½",
+							"ï¿½",
+							"ï¿½",
+							"ï¿½",
+							"ï¿½",
 						);
 					
 		$text = preg_replace($search,$replace,$document);
