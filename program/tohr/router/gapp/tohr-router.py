@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Tohr.  If not, see <http://www.gnu.org/licenses/>.
 
-import wsgiref.handlers, urlparse, StringIO, logging
+import wsgiref.handlers, urlparse, logging
 from django.utils import simplejson as json
 from google.appengine.ext import webapp
 from google.appengine.api import urlfetch
@@ -26,148 +26,153 @@ import re
 class MainHandler(webapp.RequestHandler):
   Server = 'Tohr Router/0.1'
   # hop to hop header should not be forwarded
-  HtohHdrs= ['connection', 'keep-alive', 'proxy-authenticate',
+  SkipHeaders= ['connection', 'keep-alive', 'proxy-authenticate',
              'proxy-authorization', 'te', 'trailers',
-             'transfer-entohrCoding', 'upgrade']
+             'transfer-encoding', 'upgrade']
 
-  def report(self, status, description, coding):
+  def report(self, status, description):
     # header
     self.response.out.write('HTTP/1.1 %d %s\r\n' % (status, description))
     self.response.out.write('Server: %s\r\n' % self.Server)
     self.response.out.write('Content-Type: text/html\r\n')
     self.response.out.write('Tohr-version: 0.1\r\n')
-    self.response.out.write('Tohr-coding: %s\r\n' % coding)
+    self.response.out.write('Tohr-coding: plain\r\n')
     self.response.out.write('\r\n')
     # body
     content = '<h1>Tohr Router Error</h1><p>Error Code: %d<p>Message: %s'\
               % (status, description)
-    content = self.encode(content, coding)
     self.response.out.write(content)
 
-  def encode(self, data, tohrCoding):
-    if data != '':
-      if tohrCoding == 'zlib' or tohrCoding == 'base64':
-        return data.encode(tohrCoding)
+  def encode(self, data, coding):
+    if data == '': return data
+    if coding == 'zlib' or coding == 'base64':
+      return data.encode(coding)
     return data
 
-  def decode(self, data, tohrCoding):
-    if data != '':
-      if tohrCoding == 'zlib' or tohrCoding == 'base64':
-        return data.decode(tohrCoding)
+  def decode(self, data, coding):
+    if data == '': return data
+    if coding == 'zlib' or coding == 'base64':
+      return data.decode(coding)
     return data
 
   def post(self):
     try:
       # Get Tohr version
-      tohrVersion = self.request.headers['Tohr-Version']
-      tohrCoding = 'plain'
-
-      # Get tohrCoding and decode(or unzip, or decrypt) payload
-      if tohrVersion == '0.1':
-        tohrCoding = self.request.headers['Tohr-Coding']
-        message = self.request.body
-        message = self.decode(message, tohrCoding)
-      else:
-        self.report(590, 'Invalide Tohr version number: %s' % tohrVersion,
-                    tohrCoding)
-
-      # Dump json objects to dictionary.
-      messageDict = json.loads(message)
-
-      # Get the method of original request
-      methodDict = {'GET': urlfetch.GET, 'HEAD': urlfetch.HEAD,
-                    'POST': urlfetch.POST, 'PUT': urlfetch.PUT}
-      if messageDict['method'] not in methodDict:
-        self.report(590, 'Invalid method: %s' % messageDict['method'], tohrCoding)
+      if 'Tohr-Version' not in self.request.headers:
+        self.report(590, 'Not a Tohr Message, check your entry Tohr router.')
         return
-      method = methodDict[messageDict['method']]
+      
+      inTohrVersion = self.request.headers['Tohr-Version']
+      inTohrCoding = 'plain'
+      # Get Tohr coding and decode(or unzip, or decrypt) incoming Tohr message
+      if inTohrVersion == '0.1':
+        inTohrCoding = self.request.headers['Tohr-Coding']
+        inTohrMessage = self.decode(self.request.body, inTohrCoding)
+      else:
+        self.report(590, 'Unsupported Tohr version number: %s' % inTohrVersion)
+        return
 
-      # Make path from path string in the original request
-      path = messageDict['path']
+      # Load json object to dictionary.
+      inTohrMessageDict = json.loads(inTohrMessage)
+
+      # Get the method of incoming Tohr message
+      methodDict = {'GET': urlfetch.GET, 'POST': urlfetch.POST}
+      if inTohrMessageDict['method'] not in methodDict:
+        self.report(590, 'Unsupported method: %s' % inTohrMessageDict['method'])
+        return
+      method = methodDict[inTohrMessageDict['method']]
+
+      # Make path from path string in the incoming Tohr message
+      path = inTohrMessageDict['path']
       (scm, netloc, path, params, query, _) = urlparse.urlparse(path)
       if (scm.lower() != 'http' and scm.lower() != 'https') or not netloc:
-        self.report(590, 'Invalid scheme: %s' % scm.lower(), tohrCoding)
+        self.report(590, 'Unsupported scheme: %s' % scm.lower())
         return
       path = urlparse.urlunparse((scm, netloc, path, params, query, ''))
 
-      # Make headers from the header string of original request
+      # Make headers from the 'header' argument of incoming Tohr message
       headers = {}
-      contentLength = 0
-      si = StringIO.StringIO(messageDict['headers'])
-      while True:
-        line = si.readline().strip()
-        if line == '':  break
-        (name, _, value) = line.partition(':')
-        name = name.strip()
-        value = value.strip()
+      for headerStr in inTohrMessageDict['headers'].split('\r\n'):
+        (name, _, value) = headerStr.partition(': ')
         # Skip hop to hop headers
-        if name.lower() in self.HtohHdrs:  continue
-        headers[name] = value
-        if name.lower() == 'content-length':
-          contentLength = int(value)
+        if name.lower() in self.SkipHeaders: continue
+        if name != '':  headers[name] = value
       headers['Connection'] = 'close'
 
-      # Check postdata lenth of original request
-      if contentLength != 0:
-        payload = self.decode(messageDict['payload'], 'base64')
-        if contentLength != len(payload):
+      # Get payload coding of incoming Tohr message
+      try:
+        inTohrPayloadCoding = inTohrMessageDict['payload_coding']
+      except KeyError:
+        inTohrPayloadCoding = 'base64'
+
+      # Check postdata lenth of incoming Tohr message
+      if 'Content-Length' in headers:
+        payload = self.decode(inTohrMessageDict['payload'], inTohrPayloadCoding)
+        if int(headers['Content-Length']) != len(payload):
           self.report(590, 'Wrong length of postdata: %d, claimed %d' \
-                      % (len(payload), contentLength), tohrCoding)
+                      % (len(payload), contentLength))
           return
       else:
         payload = ''
-
       if payload != '' and method != urlfetch.POST:
-        self.report(590, 'Inconsistent method and data.', tohrCoding)
+        self.report(590, 'Error http method. Payload without POST.')
         return
     except Exception, e:
-      self.report(591, 'Unkown error, %s.' % str(e), tohrCoding)
+      self.report(591, 'Unkown error, %s.' % str(e))
       return
 
-    # Fetch url, retry 3 times
+    # Fetch url with Google App Engine Feth API, retry 3 times
     for _ in range(3):
       try:
         resp = urlfetch.fetch(path, payload, method, headers, False, False)
         break
       except urlfetch_errors.ResponseTooLargeError:
-        self.report(591, 'Response exceed Google limit: >1MB', tohrCoding)
+        self.report(591, 'Response exceed Google limit: >1MB')
         return
       except Exception:
         continue
     else:
-      self.report(591, 'Fails to get the page. ', tohrCoding)
+      self.report(591, 'Fails to get the page.')
       return
 
+    # Construct outgoing Tohr Message
+    # Codings
+    outTohrCoding = inTohrCoding
+    outTohrPayloadCoding = inTohrPayloadCoding
     # HTTP status
-    relayStatus = resp.status_code
-    relayStatusMsg = self.response.http_status_message(resp.status_code)
+    outTohrStatus = resp.status_code
+    outTohrStatusMsg = self.response.http_status_message(outTohrStatus)
     # HTTP headers
-    relayHeaders = ''
+    outTohrHeaders = ''
     for header in resp.headers:
       # Skip hop to hop headers
-      if header.strip().lower() in self.HtohHdrs:  continue
-      # Fix multi-cookie process problem
+      if header.strip().lower() in self.SkipHeaders: continue
+      # Fix multi-cookie process problem, special to Google.
       if header.lower() == 'set-cookie':
         scs = re.sub(r', ([^;]+=)', r'\n\1', resp.headers[header]).split('\n')
         for sc in scs:
-          relayHeaders += '%s: %s\r\n' % (header, sc.strip())
+          outTohrHeaders += '%s: %s\r\n' % (header, sc.strip())
         continue
       # Other headers
-      relayHeaders += '%s: %s\r\n' % (header, resp.headers[header])
-    relayPayload = self.encode(resp.content, 'base64')
+      outTohrHeaders += '%s: %s\r\n' % (header, resp.headers[header])
+    # Response raw data enbedded in payload
+    outTohrPayload = self.encode(resp.content, outTohrPayloadCoding)
+    # Dump dictionary to JSON object string
+    message = json.dumps({'status': outTohrStatus,
+                          'status_msg': outTohrStatusMsg,
+                          'headers': outTohrHeaders,
+                          'payload_coding': outTohrPayloadCoding,
+                          'payload': outTohrPayload})
+    message = self.encode(message, outTohrCoding)
 
-    message = json.dumps({'status': relayStatus,
-                          'status_msg': relayStatusMsg,
-                          'headers': relayHeaders,
-                          'payload': relayPayload})
-    message = self.encode(message, tohrCoding)
-   
-    # Forward the response back to client
+    # Forward the outgoing Tohr Message back to the request Tohr router
     self.response.headers['Content-Type'] = 'application/octet-stream'
     self.response.headers['Tohr-Version'] = '0.1'
-    self.response.headers['Tohr-Coding'] = tohrCoding
+    self.response.headers['Tohr-Coding'] = outTohrCoding
 
     self.response.out.write(message)
+
+    return
 
   def get(self):
     self.response.out.write('''<html><head><title>Tohr Router</title></head>

@@ -216,10 +216,11 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     # create request for Tohr Router
     message = json.dumps({'method': self.command,
                           'path': path,
+                          'payload_coding': 'base64',
                           'payload': postData,
                           'headers': headers,})
     
-    coding = 'plain'
+    coding = 'zlib'
     data = self.encode(message, coding)
     request = urllib2.Request(fetchServer)
     request.add_header('Accept-Encoding', 'identity, *;q=0')
@@ -244,37 +245,52 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       self.connection.close()
       return
 
-    # parse resp
-    # for status line
-    tohrVersion = resp.info()['Tohr-Version']
-    tohrCoding = 'plain'
-    if tohrVersion == '0.1':
-      tohrCoding = resp.info()['Tohr-Coding']
-      message = self.decode(resp.read(), tohrCoding)
-    else:
-      print "Unkown version"
-      return
-    
-    messageDict = json.loads(message)
-
-    try:
-      self.send_response(int(messageDict['status']), messageDict['status_msg'])
-    except socket.error, (errNum, _):
-      # Connection/Webpage closed before proxy return
-      if errNum == errno.EPIPE or errNum == 10053: # *nix, Windows
-        return
+    # Parse response
+    # Check if response is a Tohr response.
+    if 'Tohr-Version' in resp.info():
+      tohrVersion = resp.info()['Tohr-Version']
+      tohrCoding = 'plain'
+      if tohrVersion == '0.1':
+        tohrCoding = resp.info()['Tohr-Coding']
+        message = self.decode(resp.read(), tohrCoding)
       else:
-        raise
-    headers = messageDict['headers'].split('\r\n')
+        print "Unkown version"
+        return
+      messageDict = json.loads(message)
+      try:
+        self.send_response(int(messageDict['status']),
+                           messageDict['status_msg'])
+      except socket.error, (errNum, _):
+        # Connection/Webpage closed before proxy return
+        if errNum == errno.EPIPE or errNum == 10053: # *nix, Windows
+          return
+        else:
+          raise
+      headers = messageDict['headers'].split('\r\n')
+      # The headers
+      for header in headers:
+        (name, _, value) = header.partition(': ')
+        self.send_header(name, value)
+      self.end_headers()
+      # The page
+      payload_coding = messageDict['payload_coding']
+      self.wfile.write(self.decode(messageDict['payload'], payload_coding))
+    else:
+      try:
+        self.send_response(200, 'OK')
+      except socket.error, (errNum, _):
+        # Connection/Webpage closed before proxy return
+        if errNum == errno.EPIPE or errNum == 10053: # *nix, Windows
+          return
+        else:
+          raise
+      # The headers
+      for key in resp.info():
+        self.send_header(key, resp.info()[key])
+      self.end_headers()
+      # The page
+      self.wfile.write(resp.read())
 
-    # The headers
-    for header in headers:
-      (name, _, value) = header.partition(': ')
-      self.send_header(name, value)
-    self.end_headers()
-
-    # The page
-    self.wfile.write(self.decode(messageDict['payload'], 'base64'))
     self.connection.close()
 
   do_GET  = do_METHOD

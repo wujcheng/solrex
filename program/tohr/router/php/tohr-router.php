@@ -2,6 +2,15 @@
 require('Snoopy.class.php');
 
 $Server = 'Tohr Router/0.1';
+$SkipHeaders = array('Connection' => true,
+                     'Keep-Alive'  => true,
+                     'Proxy-Authenticate' => true,
+                     'Proxy-Authorization' => true,
+                     'Te'  => true,
+                     'Trailers' => true,
+                     'Transfer-Encoding' => true,
+                     'Upgrade' => true,
+                     'Content-Length' => true);
 
 function encode($data, $coding)
 {
@@ -51,12 +60,13 @@ if ( !function_exists('http_get_request_body') ) {
 if ( !function_exists('http_parse_headers') ) {
   function http_parse_headers($header)
   {
+    global $SkipHeaders;
     $ret = array();
     $lines = split("\r\n", $header);
     foreach ($lines as $line) {
       $pair = split(": ", $line);
       if ($pair[0] != "") {
-        if ($pair[0] == "Content-Length") continue;
+        if ($SkipHeaders[$pair[0]] == true)  continue;
         $ret[$pair[0]] = $pair[1];
       }
     }
@@ -97,8 +107,7 @@ function post()
   $snoopy->accept = '';
   $snoopy->_submit_type = '';
 
-  $methodDict = array("GET" => true, "HEAD" => true,
-                     "POST" => true, "PUT" => true, );
+  $methodDict = array("GET" => true, "POST" => true);
   if ($methodDict[$messageDict["method"]] != true) {
     report(590, 'Invalid method: '.$messageDict["method"], $tohrCoding);
     return;
@@ -114,8 +123,9 @@ function post()
   $url = $messageDict['path'];
 
   $snoopy->rawheaders = http_parse_headers($messageDict['headers']);
-
-  $payload = decode($messageDict['payload'], 'base64');
+  $payload_coding = $messageDict['payload_coding'];
+  if ($payload_coding == '') $payload_coding = 'base64';
+  $payload = decode($messageDict['payload'], $payload_coding);
 
   if ($method == 'GET') {
     $snoopy->fetch($url);
@@ -128,12 +138,14 @@ function post()
   $relayStatus = $snoopy->status;
   $relayStatusMsg = substr($snoopy->response_code, 13, -2);
   $relayHeaders = http_get_header_str($snoopy->headers);
-  $relayPayload = encode($snoopy->results, 'base64');
+  $relayPaloadCoding = $payload_coding == '' ? 'base64' : $payload_coding;
+  $relayPayload = encode($snoopy->results, $relayPaloadCoding);
   $message = json_encode(array('status' => $relayStatus,
                                'status_msg' => $relayStatusMsg,
                                'headers' => $relayHeaders,
+                               'payload_coding' => $relayPaloadCoding,
                                'payload' => $relayPayload));
-  echo $message;
+  echo encode($message, $tohrCoding);
 }
 
 function get()
