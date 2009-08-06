@@ -34,17 +34,16 @@ function decode($data, $coding)
   return $data;
 }
 
-function report($status, $description, $coding)
+function report($status, $description)
 {
     header('HTTP/1.0 '.$status.' '.$description);
     header('Server: '.$Server);
     header('Content-Type: text/html');
     header('Tohr-version: 0.1\r\n');
-    header('Tohr-coding: '.$coding);
+    header('Tohr-coding: plain');
 
     # body
     $content = '<h1>Tohr Router Error</h1><p>Error Code: '.$status.'<p>Message: '.$description;
-    $content = encode($content, $coding);
     echo $content;
 }
 
@@ -95,7 +94,7 @@ function post()
     $tohrCoding = $headers['Tohr-Coding'];
     $message = decode(http_get_request_body(), $tohrCoding);
   } else {
-    report('590', 'Error', $tohrCoding);
+    report('590', 'Error');
     return;
   }
   $messageDict = json_decode($message, true);
@@ -106,10 +105,11 @@ function post()
   $snoopy->agent = '';
   $snoopy->accept = '';
   $snoopy->_submit_type = '';
+  $snoopy->curl_path = '/usr/bin/curl';
 
   $methodDict = array("GET" => true, "POST" => true);
   if ($methodDict[$messageDict["method"]] != true) {
-    report(590, 'Invalid method: '.$messageDict["method"], $tohrCoding);
+    report(590, 'Invalid method: '.$messageDict["method"]);
     return;
   }
   $method = $messageDict["method"];
@@ -117,7 +117,7 @@ function post()
   $URLPART = parse_url($messageDict['path']);
 
   if ($URLPART['scheme'] != 'http' && $URLPART['scheme'] != 'https') {
-    report(590, 'Invalid scheme: '.$URLPART['scheme'], $tohrCoding);
+    report(590, 'Invalid scheme: '.$URLPART['scheme']);
     return;
   }
   $url = $messageDict['path'];
@@ -126,12 +126,14 @@ function post()
   $payload_coding = $messageDict['payload_coding'];
   if ($payload_coding == '') $payload_coding = 'base64';
   $payload = decode($messageDict['payload'], $payload_coding);
-
+  //var_dump($snoopy->rawheaders);
+  //var_dump($payload);
   if ($method == 'GET') {
     $snoopy->fetch($url);
   } else if ($method == 'POST') {
     $snoopy->submit($url, $payload);
   }
+
   header('Content-Type: application/octet-stream');
   header('Tohr-Version: 0.1');
   header('Tohr-Coding: '.$tohrCoding);
