@@ -48,6 +48,26 @@ function report($status, $description)
     echo $content;
 }
 
+if (!function_exists('getallheaders'))
+{
+  if (function_exists('apache_request_headers')) {
+    function getallheaders()
+    {
+      return apache_request_headers();
+    }
+  } else {
+    function getallheaders()
+    {
+      foreach ($_SERVER as $name => $value) {
+        if (substr($name, 0, 5) == 'HTTP_') {
+          $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+        }
+      }
+      return $headers;
+    }
+  }
+}
+
 if ( !function_exists('http_get_request_body') ) {
   function http_get_request_body()
   {
