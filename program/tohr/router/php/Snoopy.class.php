@@ -71,6 +71,7 @@ class Snoopy
 	var $error			=	"";					// error messages sent here
 	var	$response_code	=	"";					// response code returned from server
 	var	$headers		=	array();			// headers returned from server sent here
+	var $headersStr		=   "";
 	var	$maxlength		=	500000;				// max return data length (body)
 	var $read_timeout	=	0;					// timeout on read operations, in seconds
 												// supported only since PHP 4 Beta 4
@@ -133,7 +134,6 @@ class Snoopy
 			$URI_PARTS["query"] = '';
 		if (empty($URI_PARTS["path"]))
 			$URI_PARTS["path"] = '';
-				
 		switch(strtolower($URI_PARTS["scheme"]))
 		{
 			case "http":
@@ -204,6 +204,7 @@ class Snoopy
 				$this->host = $URI_PARTS["host"];
 				if(!empty($URI_PARTS["port"]))
 					$this->port = $URI_PARTS["port"];
+
 				if($this->_isproxy)
 				{
 					// using proxy, send entire URI
@@ -850,10 +851,9 @@ class Snoopy
 				$this->status=-100;
 				return false;
 			}
-				
 			if($currentHeader == "\r\n")
 				break;
-						
+			$this->headersStr .= $currentHeader;
 			// if a header begins with Location: or URI:, set the redirect
 			if(preg_match("/^(Location:|URI:)/i",$currentHeader))
 			{
@@ -949,11 +949,13 @@ class Snoopy
 		//$headers[] = $http_method." ".$url." ".$this->_httpversion;		
 		if(!empty($this->agent))
 			$headers[] = "User-Agent: ".$this->agent;
+		/*
 		if(!empty($this->host))
 			if(!empty($this->port))
 				$headers[] = "Host: ".$this->host.":".$this->port;
 			else
 				$headers[] = "Host: ".$this->host;
+		*/
 		if(!empty($this->accept))
 			$headers[] = "Accept: ".$this->accept;
 		if(!empty($this->referer))
@@ -1003,7 +1005,8 @@ class Snoopy
 		
 		$headerfile = tempnam($temp_dir, "sno");
 
-		exec($this->curl_path." -k -D \"$headerfile\"".$cmdline_params." \"".escapeshellcmd($URI)."\"",$results,$return);
+		//echo $this->curl_path." -k -D \"$headerfile\"".$cmdline_params." \"".$URI."\"";
+		exec($this->curl_path." -k -D \"$headerfile\"".$cmdline_params." \"".$URI."\"",$results,$return);
 		
 		if($return)
 		{
@@ -1011,11 +1014,10 @@ class Snoopy
 			return false;
 		}
 			
-			
 		$results = implode("\r\n",$results);
 		
 		$result_headers = file("$headerfile");
-						
+		$this->headersStr = implode($result_headers);
 		$this->_redirectaddr = false;
 		unset($this->headers);
 						

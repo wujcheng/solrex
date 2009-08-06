@@ -219,7 +219,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                           'payload_coding': 'base64',
                           'payload': postData,
                           'headers': headers,})
-    
+
     coding = 'zlib'
     data = self.encode(message, coding)
     request = urllib2.Request(fetchServer)
@@ -270,7 +270,8 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       # The headers
       for header in headers:
         (name, _, value) = header.partition(': ')
-        self.send_header(name, value)
+        if ( _ == ': '):
+          self.send_header(self.uc_param(name), value)
       self.end_headers()
       # The page
       payload_coding = messageDict['payload_coding']

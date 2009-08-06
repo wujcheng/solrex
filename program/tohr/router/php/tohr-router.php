@@ -10,7 +10,8 @@ $SkipHeaders = array('Connection' => true,
                      'Trailers' => true,
                      'Transfer-Encoding' => true,
                      'Upgrade' => true,
-                     'Content-Length' => true);
+                     'Content-Length' => true,
+                     'Accept-Encoding' => true);
 
 function encode($data, $coding)
 {
@@ -36,7 +37,7 @@ function decode($data, $coding)
 
 function report($status, $description)
 {
-    header('HTTP/1.0 '.$status.' '.$description);
+    header('HTTP/1.1 '.$status.' '.$description);
     header('Server: '.$Server);
     header('Content-Type: text/html');
     header('Tohr-version: 0.1\r\n');
@@ -72,7 +73,7 @@ if ( !function_exists('http_parse_headers') ) {
     return $ret;
   }
 }
-
+/*
 if ( !function_exists('http_get_header_str') ) {
   function http_get_header_str($headers)
   {
@@ -84,7 +85,7 @@ if ( !function_exists('http_get_header_str') ) {
     return $ret;
   }
 }
-
+*/
 function post()
 {
   $headers = getallheaders();
@@ -137,9 +138,9 @@ function post()
   header('Content-Type: application/octet-stream');
   header('Tohr-Version: 0.1');
   header('Tohr-Coding: '.$tohrCoding);
-  $relayStatus = $snoopy->status;
-  $relayStatusMsg = substr($snoopy->response_code, 13, -2);
-  $relayHeaders = http_get_header_str($snoopy->headers);
+  $relayStatus = substr($snoopy->response_code, 9, 3);
+  $relayStatusMsg = substr($snoopy->response_code, 13, -1);
+  $relayHeaders = $snoopy->headersStr;
   $relayPaloadCoding = $payload_coding == '' ? 'base64' : $payload_coding;
   $relayPayload = encode($snoopy->results, $relayPaloadCoding);
   $message = json_encode(array('status' => $relayStatus,
