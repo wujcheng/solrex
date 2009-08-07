@@ -31,7 +31,7 @@ except:
   SSLEnable = False
 
 # Configure logging level, for debugging.
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
     #format='%(filename)s:%(lineno)d: %(levelname)s: %(message)s')
     format='Tohr %(levelname)s: %(message)s')
 
@@ -137,7 +137,7 @@ class TohrDaemonHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     # connect to local proxy server
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(('127.0.0.1', conf['listen-port']))
+    sock.connect((conf['listen-address'], conf['listen-port']))
     sock.send('%s %s %s\r\n' % (self.command, path, ver))
 
     # forward https request
@@ -209,7 +209,6 @@ class TohrDaemonHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     headers = ''
     for key in self.headers:
       headers += self.uc_param(key) + ': ' + self.headers[key] + '\r\n'
-    print payload
 
     # Creat Tohr message for Tohr Router
     message = json.dumps({'method': self.command,
@@ -251,7 +250,7 @@ class TohrDaemonHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         tohrCoding = resp.info()['Tohr-Coding']
         message = self.decode(resp.read(), tohrCoding)
       else:
-        print "Unkown version"
+        self.report(591, "Unkown Tohr version , check your Tohr router.")
         return
       messageDict = json.loads(message)
       try:
@@ -272,7 +271,6 @@ class TohrDaemonHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         (name, _, value) = header.partition(': ')
         if ( _ == ': '):
           self.send_header(self.uc_param(name), value)
-          print self.uc_param(name), ':', value
       self.end_headers()
       # The page
       payload_coding = messageDict['payload_coding']
@@ -379,7 +377,6 @@ if __name__ == '__main__':
   conf = get_conf()
   logging.debug(conf)
 
-  
   logging.info('Using Tohr router: %s' % conf['tohr-router'])
   logging.info('Using outgoing proxy: %s' % conf['outgoing-proxy'])
   logging.info('Start serving at http://%s:%d' % (conf['listen-address'],
