@@ -1,7 +1,10 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+#
 # This file is part of Tohr.
+#
+# The originally version of this file was borrowed from GAppProxy project
+# <http://code.google.com/p/gappproxy/>. Special thanks to dugang@188.com.
 #
 # Tohr is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as
@@ -14,16 +17,12 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with GAEProxy.  If not, see <http://www.gnu.org/licenses/>.
+# along with Tohr.  If not, see <http://www.gnu.org/licenses/>.
 
-import BaseHTTPServer, SocketServer
-import urllib, urllib2, urlparse
-import zlib, base64
-import socket
-import errno
-import os, sys
-import common
-import json
+import os, sys, errno, logging
+import BaseHTTPServer, SocketServer, socket
+import urllib2, urlparse, json
+import re
 
 try:
   import ssl
@@ -31,13 +30,15 @@ try:
 except:
   SSLEnable = False
 
-# global varibles
-localProxy = common.DEF_LOCAL_PROXY
-fetchServer = common.DEF_FETCH_SERVER
-isGoogleProxy = {}
+# Configure logging level, for debugging.
+logging.basicConfig(level=logging.DEBUG,
+    #format='%(filename)s:%(lineno)d: %(levelname)s: %(message)s')
+    format='Tohr %(levelname)s: %(message)s')
 
-class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
-  postMaxLen = 1024*1024  # 1MB
+# Global varibles
+conf = {}
+
+class TohrDaemonHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
   def encode(self, data, coding):
     if data == '':  return data;
@@ -55,40 +56,46 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       return data.decode('base64')
     return data
 
+  # Upper case http header paramaters, e.g. set-cookies => Set-Cookies
   def uc_param(self, param):
     ucParam = ''
     for word in param.split('-'):
       ucParam += word.capitalize() + '-'
     return ucParam.rstrip('-')
 
+  def report(self, status, message):
+    self.send_error(status, 'Tohr-daemon: '+message)
+    self.connection.close()
+    logging.error('%d: %s' % (status, message))
+
+  # Handle https connections
   def do_CONNECT(self):
     if not SSLEnable:
-      self.send_error(501, 'Local Proxy Error: HTTPS needs Python 2.6 or newer verion.')
-      self.connection.close()
+      self.report(501, 'HTTPS support requires Python 2.6 or higher.')
       return
 
-    # for ssl proxy
+    # For ssl proxy
     (httpsHost, _, httpsPort) = self.path.partition(':')
     if httpsPort != '' and httpsPort != '443':
-      self.send_error(501, 'Local Proxy Error: Only port 443 is allowed for https.')
-      self.connection.close()
+      self.report(501, 'Only port 443 is allowed for https.')
       return
-    if sys.platform != 'win32':
-      crtFile = common.dir + '/certs/' + httpsHost + '.crt'
-      csrFile = common.dir + '/certs/' + httpsHost + '.csr'
-      keyFile = common.dir + '/certs/' + httpsHost + '.key'
+    caDir = os.path.join(conf['install-dir'], 'ca')
+    if sys.platform == 'win32':
+      crtFile = os.path.join(caDir, 'ca.crt')
+      keyFile = os.path.join(caDir, 'ca.key')
+    else:
+      crtFile = os.path.join(conf['install-dir'], 'certs', httpsHost + '.crt')
+      csrFile = os.path.join(conf['install-dir'], 'certs', httpsHost + '.csr')
+      keyFile = os.path.join(conf['install-dir'], 'certs', httpsHost + '.key')
       if not os.path.isfile(crtFile):
         cmd = 'openssl genrsa -out %s 1024' % keyFile
         os.system(cmd)
         cmd = 'openssl req -batch -new -key %s -out %s -subj "/C=CN/ST=BJ/L=BJ/O=%s/CN=%s"' % (keyFile, csrFile, httpsHost, httpsHost)
         os.system(cmd)
-        cmd = 'cd %s && openssl ca -batch -config %s/ca.conf -notext -out %s -infiles %s'% (common.dir, common.dir, crtFile, csrFile)
+        cmd = 'cd %s && openssl ca -batch -config %s/ca.conf -notext -out %s -infiles %s'% (conf['install-dir'], conf['install-dir'], crtFile, csrFile)
         os.system(cmd)
-    else:
-      crtFile = common.dir + '/ca/ca.crt'
-      keyFile = common.dir + '/ca/ca.key'
 
-    # continue
+    # Continue
     self.wfile.write('HTTP/1.1 200 OK\r\n')
     self.wfile.write('\r\n')
     sslSock = ssl.wrap_socket(self.connection,
@@ -96,7 +103,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                               certfile=crtFile,
                               keyfile=keyFile)
 
-    # rewrite request line, url to abs
+    # Rewrite request line, url to abs
     firstLine = ''
     while True:
       chr = sslSock.read(1)
@@ -130,7 +137,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     # connect to local proxy server
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(('127.0.0.1', common.DEF_LISTEN_PORT))
+    sock.connect(('127.0.0.1', conf['listen-port']))
     sock.send('%s %s %s\r\n' % (self.command, path, ver))
 
     # forward https request
@@ -169,80 +176,70 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     sslSock.close()
     self.connection.close()
 
+  # Handle http request and responses.
   def do_METHOD(self):
-    # check http self.command and post data
-    if self.command == 'GET' or self.command == 'HEAD':
-      # no data
-      postDataLen = 0
-    elif self.command == 'POST':
-      # get length of post data
-      postDataLen = 0
-      if self.headers.has_key('Content-Length'):
-        postDataLen = int(self.headers['Content-Length'])
-      if postDataLen > self.postMaxLen:
-        self.send_error(413, 'Local Proxy Error: Post data length exceeds GAE limit (1MB).')
-        self.connection.close()
-        return
-    else:
-      self.send_error(501, 'Local Proxy Error: Unsupported HTTP method.')
-      self.connection.close()
+    # Check upstreaming http method and post data.
+    methodList = ['GET', 'POST']
+    if self.command not in methodList:
+      self.report(501, 'Unsupported HTTP method.')
       return
+    payloadLen = 0
+    if self.command == 'POST':
+      if self.headers.has_key('Content-Length'):
+        payloadLen = int(self.headers['Content-Length'])
 
-    # get post data
-    if postDataLen > 0:
-      postData = self.rfile.read(postDataLen)
-      if len(postData) != postDataLen:
-        self.send_error(400, "Local Proxy Error: Bad Request.")
-        self.connection.close()
+    # Get post data
+    payload = ''
+    if payloadLen > 0:
+      payload = self.rfile.read(payloadLen)
+      if len(payload) != payloadLen:
+        self.report(400, "Request Content-Length error.")
         return
-      postData = self.encode(postData, 'base64')
-    else:
-      postData = ''
+      # Encoding payload binary data to a string
+      payload = self.encode(payload, conf['payload-coding'])
 
-    # do path check
+    # Check path
     (scm, netloc, path, data, query, _) = urlparse.urlparse(self.path)
     if (scm.lower() != 'http' and scm.lower() != 'https') or not netloc:
-      self.send_error(501, 'Local Proxy Error: Unsupported scheme(ftp for example).')
-      self.connection.close()
+      self.report(501, 'Unsupported scheme: %s', scm.lower())
       return
-
-    # create new path
     path = urlparse.urlunparse((scm, netloc, path, data, query, ''))
 
+    # Make headers
     headers = ''
     for key in self.headers:
       headers += self.uc_param(key) + ': ' + self.headers[key] + '\r\n'
+    print payload
 
-    # create request for Tohr Router
+    # Creat Tohr message for Tohr Router
     message = json.dumps({'method': self.command,
                           'path': path,
-                          'payload_coding': 'base64',
-                          'payload': postData,
-                          'headers': headers,})
+                          'headers': headers,
+                          'payload_coding': conf['payload-coding'],
+                          'payload': payload,})
+    data = self.encode(message, conf['tohr-coding'])
 
-    coding = 'zlib'
-    data = self.encode(message, coding)
-    request = urllib2.Request(fetchServer)
+    request = urllib2.Request(conf['tohr-router'])
     request.add_header('Accept-Encoding', 'identity, *;q=0')
     request.add_header('Connection', 'close')
     request.add_header('Content-Type', 'application/octet-stream')
     request.add_header('Tohr-version', '0.1')
-    request.add_header('Tohr-coding', coding)
+    request.add_header('Tohr-coding', conf['tohr-coding'])
 
-    # create new opener
-    if localProxy != '':
-      proxyHandler = urllib2.ProxyHandler({'http': localProxy})
+    # Create new opener
+    if conf['outgoing-proxy'] != '':
+      proxyHandler = urllib2.ProxyHandler({'http': conf['outgoing-proxy']})
     else:
-      proxyHandler = urllib2.ProxyHandler(isGoogleProxy)
+      proxyHandler = urllib2.ProxyHandler({})
     opener = urllib2.build_opener(proxyHandler)
-    # set the opener as the default opener
+    # Set the opener as the default opener
     urllib2.install_opener(opener)
 
     try:
       resp = urllib2.urlopen(request, data)
     except urllib2.HTTPError, e:
-      print e
-      self.connection.close()
+      logging.error(e)
+      self.report(591, 'Http error, see command line log.')
       return
 
     # Parse response
@@ -266,12 +263,16 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
           return
         else:
           raise
+
       headers = messageDict['headers'].split('\r\n')
+      logging.debug(messageDict['headers'])
+
       # The headers
       for header in headers:
         (name, _, value) = header.partition(': ')
         if ( _ == ': '):
           self.send_header(self.uc_param(name), value)
+          print self.uc_param(name), ':', value
       self.end_headers()
       # The page
       payload_coding = messageDict['payload_coding']
@@ -290,6 +291,7 @@ class LocalProxyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.send_header(key, resp.info()[key])
       self.end_headers()
       # The page
+
       self.wfile.write(resp.read())
 
     self.connection.close()
@@ -302,92 +304,88 @@ class ThreadingHTTPServer(SocketServer.ThreadingMixIn,
               BaseHTTPServer.HTTPServer):
   pass
 
-def shallWeNeedDefaultProxy():
-  global isGoogleProxy
-
-  # send http request directly
-  request = urllib2.Request(common.LOAD_BALANCE)
-  try:
-    # avoid wait too long at startup, timeout argument need py2.6 or later.
-    if sys.hexversion > 0x20600f0:
-      resp = urllib2.urlopen(request, timeout=3)
-    else:
-      resp = urllib2.urlopen(request)
-    resp.read()
-  except:
-    isGoogleProxy = {'http': common.GOOGLE_PROXY}
-
-def getAvailableFetchServer():
-  request = urllib2.Request(common.LOAD_BALANCE)
-  if localProxy != '':
-    proxyHandler = urllib2.ProxyHandler({'http': localProxy})
+# Parse configuration file
+def get_conf():
+  if sys.platform == 'win32':
+    settingDir = os.path.join(os.getenv('HOMEDRIVE'),
+                              os.getenv('HOMEPATH'),
+                              #+ os.getenv('HOMEPATH').decode('gbk').encode('utf8')
+                              'Application Data',
+                              'tohr')
+    installDir = os.path.dirname(sys.argv[0]);
+    pathList = [settingDir, installDir]
   else:
-    proxyHandler = urllib2.ProxyHandler(isGoogleProxy)
-  opener = urllib2.build_opener(proxyHandler)
-  urllib2.install_opener(opener)
-  try:
-    resp = urllib2.urlopen(request)
-    return resp.read().strip()
-  except:
-    return ''
-
-def parseConf(confFile):
-  global localProxy, fetchServer
-
-  # read config file
-  try:
-    fp = open(confFile, 'r')
-  except IOError:
-    # use default parameters
-    return
-  # parse user defined parameters
-  while True:
-    line = fp.readline()
-    if line == '':
-      # end
+    settingDir = os.path.join(os.getenv('HOME'),
+                              '.tohr')
+    installDir = os.path.abspath(sys.path[0])
+    pathList = [settingDir,
+                '/etc',
+                '/usr/local/etc',
+                installDir]
+  confPath = ''
+  for directory in pathList:
+    if os.path.isfile(os.path.join(directory, 'tohr.conf')):
+      confPath = os.path.join(directory, 'tohr.conf')
       break
-    # parse line
-    line = line.strip()
-    if line == '':
-      # empty line
-      continue
-    if line.startswith('#'):
-      # comments
-      continue
-    (name, sep, value) = line.partition('=')
-    if sep == '=':
-      name = name.strip().lower()
-      value = value.strip()
-      if name == 'local_proxy':
-        localProxy = value
-      elif name == 'fetch_server':
-        fetchServer = value
-  fp.close()
+  if confPath == '':
+    logging.error('''Configuration file not found.
+    Please check the following path for "tohr.conf":
+    %s
+    Example "tohr.conf" can be found at:
+    %s/tohr-example.conf''' % (str(pathList), installDir))
+    exit()
+  logging.info('Loading configuaration from %s' % confPath)
+  try:
+    f = open(confPath, 'r')
+    content = f.read()
+    f.close()
+  except IOError, e:
+    logging.error(e)
+    exit()
+  confStr = re.sub(r'#.*\n', r'', content)
+  try:
+    confs = json.loads(confStr)
+  except:
+    logging.debug(confStr)
+    logging.error('''Unsupported 'tohr.conf' format.
+    Check %s accoding to:
+    %s/tohr-example.conf''' % (confPath, installDir))
+    exit()
+  confs['install-dir'] = installDir
+  try:
+    # Assign default values to options.
+    if (confs['listen-address'] == ''):
+      confs['listen-address'] = 'localhost'
+    if (confs['listen-port'] == ''):
+      confs['listen-port'] = 9090
+    else:
+      confs['listen-port'] = int(confs['listen-port'])
+    if (confs['tohr-coding'] == ''):
+      conf['tohr-coding'] = 'zlib'
+    if (confs['payload-coding'] == ''):
+      confs['payload-coding'] = 'base64'
+  except KeyError, e:
+    logging.error(e)
+    logging.error('Your configuration file is incomplete, please check it.')
+    exit()
+  return confs
 
 if __name__ == '__main__':
-  print '--------------------------------------------'
-  if SSLEnable:
-    print 'HTTP Enabled : YES'
-    print 'HTTPS Enabled: YES'
-  else:
-    print 'HTTP Enabled : YES'
-    print 'HTTPS Enabled: NO'
+  logging.info('HTTPS Enabled: %s' % str(SSLEnable))
+  if (SSLEnable != True):
+    logging.info('HTTPS support requires python 2.6 or higher.')
 
-  parseConf(common.DEF_CONF_FILE)
+  # Get configuration from tohr.conf file.
+  conf = get_conf()
+  logging.debug(conf)
 
-  if localProxy == '':
-    shallWeNeedDefaultProxy()
+  
+  logging.info('Using Tohr router: %s' % conf['tohr-router'])
+  logging.info('Using outgoing proxy: %s' % conf['outgoing-proxy'])
+  logging.info('Start serving at http://%s:%d' % (conf['listen-address'],
+                                                  conf['listen-port']))
 
-  if fetchServer == '':
-    fetchServer = getAvailableFetchServer()
-  if fetchServer == '':
-    raise common.GAppProxyError('Invalid response from load balance server.')
-
-  # Want to know whether you are connect to fetchserver direct? uncomment it.
-  print 'Direct Fetch : %s' % ( isGoogleProxy and 'NO' or 'YES' )
-  print 'Local Proxy  : %s' % localProxy
-  print 'Fetch Server : %s' % fetchServer
-  print '--------------------------------------------'
-  httpd = ThreadingHTTPServer(('', common.DEF_LISTEN_PORT),
-                LocalProxyHandler)
+  httpd = ThreadingHTTPServer(('', conf['listen-port']),
+                TohrDaemonHandler)
+  # Start serving
   httpd.serve_forever()
