@@ -1,6 +1,7 @@
 #!/bin/bash
-# This script convert Google Pinyin phase dictionary to Vimim pinyin phrase dictionary.
-# You can look for new or bug fix version @ http://share.solrex.cn/scripts/google2vimim.
+# This script converts Google Pinyin phase dictionary to Vimim pinyin phrase
+# dictionary. You can look for new or bug fix version
+# @ http://share.solrex.cn/scripts/google2vimim.
 # Author: Solrex Yang <http://solrex.cn>
 # Release to public domain, no copyright.
 #

@@ -1,0 +1,13 @@
+#!/bin/bash
+# This script enables GUI svn diff without add wrapers. You can look for new
+# or bug fix version @ http://share.solrex.cn/scripts/svndiff.
+# Author: Solrex Yang <http://solrex.cn>
+# Release to public domain, no copyright.
+#
+# Require: Application ``meld'' to be installed, e.g. apt-get install meld.
+#
+# Usage: ./svndiff
+
+sed -i -e 's/^# diff-cmd.*$/diff-cmd=meld/' ~/.subversion/config
+svn diff
+sed -i -e 's/^diff-cmd.*$/# diff-cmd = meld/' ~/.subversion/config
