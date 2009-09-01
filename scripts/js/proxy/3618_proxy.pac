@@ -1,19 +1,31 @@
-function isLocalHost(host)
+function isLocalSite(url, host)
 {
   if( dnsDomainIs(host, "localhost") )
-    return true;
-  else
-    return false;
-}
-
-function isFreeHost(host)
-{
-  if ( dnsDomainIs(host, "gucas.ac.cn") )
     return true;
   return false;
 }
 
-function isBlockedHost(host)
+function isFreeSite(url, host)
+{
+  if(
+      dnsDomainIs(host, "gucas.ac.cn") ||
+      shExpMatch(url, "*www.kaixin001.com*") ||
+      shExpMatch(url, "*www.douban.com/login*") ||
+      shExpMatch(url, "*wap.kaixin001.com/home*") ||
+      shExpMatch(url, "*bbs.nju.edu.cn/file/*")
+    )
+    return true;
+  return false;
+}
+
+function isLibSite(url, host)
+{
+  if( dnsDomainIs(host, "ieee.org") )
+    return true;
+  return false;
+}
+
+function isBlockedSite(url, host)
 {
   if(
       dnsDomainIs(host, "2mdn.net") ||
@@ -48,14 +60,9 @@ function isBlockedHost(host)
       dnsDomainIs(host, "zh.wikipedia.org")
     )
     return true;
-  else
-    return false;
-}
-
-function isBlockedURL(url, host)
-{
   if( dnsDomainIs(host, "www.google.com") ) {
-    if (
+    if ( 
+         !isIPV6(dnsResolve(www.google.com)) &&
          shExpMatch(url, "*android.com*") ||
          shExpMatch(url, "*blogger.com*") ||
          shExpMatch(url, "*blogspot.com*") ||
@@ -83,8 +90,7 @@ function isLocalIP(addr)
       isInNet(addr,"192.168.0.0","255.255.0.0") ||
       isInNet(addr,"172.16.0.0","255.255.0.0") )
     return true;
-  else
-    return false;
+  return false;
 }
 
 function isFreeIP(addr)
@@ -103,8 +109,7 @@ function isIPV6(addr)
 {
   if( shExpMatch(addr, "*:*") )
     return true;
-  else
-    return false;
+  return false;
 }
 
 function FindProxyForURL(url, host)
@@ -112,11 +117,14 @@ function FindProxyForURL(url, host)
   var direct      = "DIRECT";
   var hHttpProxy  = "PROXY localhost:4080";
   var tohrProxy   = "PROXY localhost:9090";
+  var libProxy    = "PROXY 159.226.100.43:8918";
 
-  if(isFreeHost(host) || isLocalHost(host)) {
+  if(isFreeSite(url, host) || isLocalSite(url, host)) {
     return direct;
-  } else if(isBlockedURL(url, host) || isBlockedHost(host)) {
+  } else if(isBlockedSite(url, host)) {
     return tohrProxy;
+  } else if (isLibSite(url, host)) {
+    return libProxy;
   }
 
   if(!isResolvable(host)) {

@@ -1,4 +1,4 @@
-function isLocalHost(host)
+function isLocalSite(url, host)
 {
   if( dnsDomainIs(host, "localhost") )
     return true;
@@ -6,15 +6,19 @@ function isLocalHost(host)
     return false;
 }
 
-function isFreeHost(host)
+function isFreeSite(url, host)
+{
+  return false;
+}
+
+function isLibSite(url, host)
 {
   if( dnsDomainIs(host, "ieee.org") )
     return true;
-  else
-    return false;
+  return false;
 }
 
-function isBlockedHost(host)
+function isBlockedSite(url, host)
 {
   if(
       dnsDomainIs(host, "2mdn.net") ||
@@ -49,14 +53,9 @@ function isBlockedHost(host)
       dnsDomainIs(host, "zh.wikipedia.org")
     )
     return true;
-  else
-    return false;
-}
-
-function isBlockedURL(url, host)
-{
-  if( dnsDomainIs(host, "google.com") ) {
+  if( dnsDomainIs(host, "www.google.com") ) {
     if (
+         !isIPV6(dnsResolve(www.google.com)) &&
          shExpMatch(url, "*android.com*") ||
          shExpMatch(url, "*blogger.com*") ||
          shExpMatch(url, "*blogspot.com*") ||
@@ -84,8 +83,7 @@ function isLocalIP(addr)
       isInNet(addr,"192.168.0.0","255.255.0.0") ||
       isInNet(addr,"172.16.0.0","255.255.0.0") )
     return true;
-  else
-    return false;
+  return false;
 }
 
 function isFreeIP(addr)
@@ -102,8 +100,7 @@ function isIPV6(addr)
 {
   if( shExpMatch(addr, "*:*") )
     return true;
-  else
-    return false;
+  return false;
 }
 
 function FindProxyForURL(url, host)
@@ -112,12 +109,12 @@ function FindProxyForURL(url, host)
   var libProxy    = "PROXY 159.226.100.43:8918";
   var tohrProxy   = "PROXY localhost:9090";
 
-  if(isFreeHost(host)) {
-    return libProxy;
-  } else if(isLocalHost(host)) {
+  if(isFreeSite(url, host) || isLocalSite(url, host)) {
     return direct;
-  } else if(isBlockedURL(url, host) || isBlockedHost(host)) {
+  } else if(isBlockedSite(url, host)) {
     return tohrProxy;
+  } else if (isLibSite(url, host)) {
+    return libProxy;
   }
 
   if(!isResolvable(host)) {
@@ -126,9 +123,7 @@ function FindProxyForURL(url, host)
 
   var IpAddr = dnsResolve(host);
 
-  if(isFreeIP(IpAddr)) {
-    return libProxy;
-  } else if(isLocalIP(IpAddr) || isIPV6(IpAddr)) {
+  if(isFreeIP(IpAddr) || isLocalIP(IpAddr) || isIPV6(IpAddr)) {
     return direct;
   } else if(isBlockedIP(IpAddr)) {
     return tohrProxy;
