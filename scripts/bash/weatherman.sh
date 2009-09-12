@@ -35,50 +35,47 @@ get_html()
 parse_html()
 {
   for city in ${CITY_LIST[*]}; do
-    grep -q "明日天气预报 (18:00发布)" $city.txt
+    grep -q " 18:00发布）" $city.txt
     # Select useful part.
     NOT18=$?
     if [ $NOT18 -eq 0 ]; then
-      sed -i -e '1,/c_1_1/d;/surf/,$d;' $city.txt
-      sed -i -e '/dl class="right"/,/dd_0/d;' $city.txt
+      sed -i -e '1,/"dd_0"/d;/ddd_0/,$d;1,/风力/d;' $city.txt
+      sed -i -e 's$</li><li>$</li>\n<li>$g' $city.txt
     else
-      sed -i -e '1,/c_1_1/d;/box_hist/,$d;' $city.txt
-      sed -i -e '/dl class="right"/,/c_1_2/d;s/<br \/>.*<\/dd>//g;' $city.txt
+      exit
     fi
-    # Remove HTML tags.
+    # Remove HTML tags and empty lines.
     sed -i -e 's/<[^>]*>//g;/<!--/d' $city.txt
-    # Remove empty lines.
     sed -i -e 's/&nbsp;//g;s/&deg;C//g;s/^\s*//g;/^$/d' $city.txt
-    sed -i -e '14,$d;' $city.txt
     # Cut verbose words.
-    sed -i -e 's/℃//g;s/高温：//g;s/低温：//g;s/指数//g;' $city.txt
-    sed -i -e 's/星期/周/g;s@/@\n@g;s/[ \t\r]*//g;s/：/:/g;'  $city.txt
+    sed -i -e 's/无持续风向/不定向/g;s/℃/度/g;s/星期/周/g;s/\r//g;' $city.txt
     # Format file content to SMS.
     LANG=zh_CN.UTF-8
     if [ ${NOT18} -eq 0 ]; then
+      LINES=(`cat $city.txt`)
+      COUNT=0
       MES="${city}(18:00发布)\n"
-      MES=$MES`date -d tomorrow +%-d`日周`date -d tomorrow +%a`:
-      MES=$MES`sed -n -e '1p' $city.txt`,
-      MES=$MES`sed -n -e '2p' $city.txt`到`sed -n -e '3p' $city.txt`度,
-      MES=$MES`sed -n -e '4p' $city.txt`'\n'
-      MES=$MES`sed -n -e '5p' $city.txt`:`sed -n -e '6p' $city.txt`,
-      MES=$MES`sed -n -e '8p' $city.txt`到`sed -n -e '7p' $city.txt`度,
-      MES=$MES`sed -n -e '9p' $city.txt`'\n'
-      MES=$MES`sed -n -e '10p' $city.txt`:`sed -n -e '11p' $city.txt`,
-      MES=$MES`sed -n -e '13p' $city.txt`到`sed -n -e '12p' $city.txt`度,
-      MES=$MES`sed -n -e '14p' $city.txt`
+      MES=$MES${LINES[$((COUNT++))]}:
+      MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+      MES=$MES${LINES[$((COUNT++))]},
+      MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}'.\n'
+      MES=$MES${LINES[$((COUNT++))]}:
+      MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
+      MES=$MES${LINES[$((COUNT+4))]},
+      MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
+      MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
+      MES=$MES${LINES[$((COUNT+5))]},
+      MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
+      COUNT=$((COUNT+10))
+      MES=$MES${LINES[$((COUNT++))]}:
+      MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
+      MES=$MES${LINES[$((COUNT+4))]},
+      MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
+      MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
+      MES=$MES${LINES[$((COUNT+5))]},
+      MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
     else
       MES="${city}(8:00发布)\n"
-      MES=$MES今天白天:
-      MES=$MES`sed -n -e '1p' $city.txt`,
-      MES=$MES`sed -n -e '2p' $city.txt`到`sed -n -e '3p' $city.txt`度,
-      MES=$MES`sed -n -e '4p' $city.txt`'\n'
-      MES=$MES`sed -n -e '5p' $city.txt`'\n'
-      MES=$MES`sed -n -e '6p' $city.txt`'\n'
-      MES=$MES`sed -n -e '7p' $city.txt`'\n'
-      MES=$MES`sed -n -e '8p' $city.txt`'\n'
-      MES=$MES`sed -n -e '10p' $city.txt`'\n'
-      MES=$MES`sed -n -e '11p' $city.txt`
     fi
     echo -ne $MES > $city.txt
   done
