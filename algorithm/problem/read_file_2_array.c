@@ -18,6 +18,8 @@ char ** read_file_2_array(const char * fname)
     p = (char *) malloc(n*sizeof(char));
     if (p == NULL) return NULL;
   }
+  ret[lines-1]=NULL;
+  close(fp);
   return ret;
 }
 
