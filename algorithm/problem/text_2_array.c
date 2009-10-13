@@ -24,16 +24,17 @@ char ** text_2_array(const char *filename)
   fclose(fp);
 
   /* Get number of lines. */
-  for(p=strchr(buf, '\n'), lines=1; p!=NULL; p = strchr(p, '\n'), lines++) {
-    if(*p=='\n') p++;
+  for(p=strchr(buf, '\n'), lines=1; p!=NULL; p=strchr(p, '\n'), lines++) {
+    if(*p == '\n') p++;
   }
 
-  /* Allocate space for array; split file buffer to lines by change '\n' to '\0'. */
+  /* Allocate space for array; split file buffer to lines by change '\n' to
+     '\0'. */
   array = (char **) calloc(lines+1, sizeof(char*));
   array[0] = buf;
-  for(p=strchr(buf, '\n'), lines=1; p!=NULL; p = strchr(p, '\n')) {
-    if(*p=='\n') *p++ = '\0';
-    if(p!=NULL) array[lines++] = p;
+  for(p=strchr(buf, '\n'), lines=1; p!=NULL; p=strchr(p, '\n')) {
+    if(*p == '\n') *p++ = '\0';
+    if(p != NULL) array[lines++] = p;
   }
   /* Add a terminate NULL pointer. */
   array[lines] = NULL;
