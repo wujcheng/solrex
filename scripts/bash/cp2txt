@@ -1,0 +1,13 @@
+#!/bin/bash
+for arg; do 
+  :
+done
+cp $@
+if [ -d $arg ]; then
+  cd $arg 
+  pwd
+  rename .c .txt *.c
+  rename .cpp .txt *.c
+  unix2dos *.txt
+fi
+
