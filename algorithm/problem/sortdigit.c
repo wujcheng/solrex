@@ -10,7 +10,7 @@
 
 int compare(const void *p, const void *q)
 {
-  return *(const char *)p > *(const char *)q;
+  return *(const char *)p - *(const char *)q;
 }
 
 unsigned int sortdigit(unsigned int x)
@@ -23,5 +23,6 @@ unsigned int sortdigit(unsigned int x)
 
 int main()
 {
-  printf("%u\n", sortdigit(1300515));
+  printf("%u\n", sortdigit(1312515));
+  return 0;
 }
