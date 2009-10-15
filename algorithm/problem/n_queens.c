@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#ifdef __unix__
-#include <unistd.h>
-#include <sys/times.h>
-#else
 #include <time.h>
-#endif
 
 //#define PUTBOARD
 
@@ -93,35 +88,24 @@ int main(int argc, char **argv)
 {
   int n;
 
-#ifdef __unix__
-  struct tms tmsstart, tmsend;
   clock_t start, end;
-  long clktck = sysconf(_SC_CLK_TCK);
-#endif
 
   if (argc != 2 || sscanf(argv[1], "%d", &n) == -1) {
     fprintf(stderr, "Usage: %s n", argv[0]);
     return -1;
   }
   
-#ifdef __unix__
-  start = times(&tmsstart);
-#endif
-
+  start = clock();
   queens_rec(n);
+  end = clock();
 
-#ifdef __unix__
-  end = times(&tmsend);
-  printf("queens_nrec() run %7.3f s\n", (end-start)/ (double) clktck);
-  start = times(&tmsstart);
-#endif
+  printf("queens_nrec() run %7.3f s\n", (end-start)/ (double) CLOCKS_PER_SEC);
 
+  start = clock();
   queens_nrec(n);
+  end = clock();
 
-#ifdef __unix__
-  end = times(&tmsend);
-  printf("queens_rec() run %7.3f s\n", (end-start)/ (double) clktck);
-#endif
+  printf("queens_rec() run %7.3f s\n", (end-start)/ (double) CLOCKS_PER_SEC);
 
   return 0;
 }
