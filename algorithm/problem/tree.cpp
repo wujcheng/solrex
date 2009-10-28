@@ -97,6 +97,25 @@ void in_order_nrec(tNode *root)
   }
 }
 
+void level_order(tNode *root)
+{
+  if (root == NULL) return;
+  tNode *p;
+  queue <tNode *> q;
+  q.push(root);
+  while (!q.empty()) {
+    p = q.front();
+    q.pop();
+    if (p != NULL) {
+      printf("%d ", p->data);
+      if (p->left != NULL)
+        q.push(p->left);
+      if (p->right != NULL);
+        q.push(p->right);
+    } 
+  }
+}
+
 int bst_insert(tNode **root, int key)
 {
   tNode *node = (tNode *) calloc(1, sizeof(tNode));
@@ -146,6 +165,9 @@ int main(int argc, char **argv)
   printf("\n");
   post_order_nrec(root);
   printf("\n");
+  level_order(root);
+  printf("\n");
+  return 0;
 }
 
 
