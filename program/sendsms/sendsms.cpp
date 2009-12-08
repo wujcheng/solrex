@@ -129,7 +129,7 @@ int main(int argc, char** argv)
 {
   ARGUMENTS args;
   PROXY_ITEM proxy;
-  char *proxyenv = NULL, *p, *q;
+  char *proxyenv = NULL, *p, *q, *s;
   int ret, i, mes_len;
   long int uid;
 
@@ -204,6 +204,7 @@ int main(int argc, char** argv)
       /* Set proxy. */
       fx_set_proxy(&proxy);
     }
+    free(proxyenv);
   }
 
   fx_set_login_status(FX_STATUS_OFFLINE);   /* Set status offline. */
@@ -241,6 +242,7 @@ int main(int argc, char** argv)
     /* If "-t" option is a mobile phone number, use API: 
      * |fs_send_sms_by_mobile_no|. */
     p = strdup(args.to);
+    s = p;
     q = strchr(p, ',');
     while (p != NULL) {
       if (q != NULL)    *q = '\0';
@@ -278,6 +280,7 @@ int main(int argc, char** argv)
         p = NULL;
       }
     }
+    free(s);
   }
   /* Logout, disconnect and release resources. */
   fx_loginout();
