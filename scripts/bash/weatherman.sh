@@ -35,13 +35,22 @@ get_html()
 parse_html()
 {
   for city in ${CITY_LIST[*]}; do
-    grep -q " 08:00发布）" $city.txt
-    # Select useful part.
-    IS18=$?
-    if [ $IS18 -ne 0 ]; then
-      sed -i -e '1,/"dd_0"/d;/ddd_0/,$d;1,/风力/d;' $city.txt
+    grep -q '"tableTop"'  $city.txt
+    ISOLD=$?
+    if [ $ISOLD -eq 0 ]; then
+      grep -q " 08:00发布)" $city.txt
+      # Select useful part.
+      IS18=$?
+      sed -i -e '1,/"tableTop"/d;/weatherYubao2/,$d;1,/风力/d;' $city.txt
     else
-      sed -i -e '1,/ch_text/d;/未来/,$d;1,/风力/d;' $city.txt
+      grep -q " 08:00发布）" $city.txt
+      # Select useful part.
+      IS18=$?
+      if [ $IS18 -ne 0 ]; then
+        sed -i -e '1,/"dd_0"/d;/ddd_0/,$d;1,/风力/d;' $city.txt
+      else
+        sed -i -e '1,/ch_text/d;/未来/,$d;1,/风力/d;' $city.txt
+      fi
     fi
     # Add seperate chars
     sed -i -e 's$</li><li>$</li>\n<li>$g' $city.txt
@@ -50,47 +59,59 @@ parse_html()
     sed -i -e 's/&nbsp;//g;s/&deg;C//g;s/^\s*//g;/^$/d' $city.txt
     # Cut verbose words.
     sed -i -e 's/无持续风向/不定向/g;s/℃/度/g;s/星期/周/g;s/\r//g;' $city.txt
+    #continue
     # Format file content to SMS.
     LINES=(`cat $city.txt`)
     COUNT=0
-    if [ ${IS18} -ne 0 ]; then
-      MES="${city}(18:00发布)\n"
-      MES=$MES${LINES[$((COUNT++))]}:
-      MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
-      MES=$MES${LINES[$((COUNT++))]},
-      MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}'.\n'
-      MES=$MES${LINES[$((COUNT++))]}:
-      MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
-      MES=$MES${LINES[$((COUNT+4))]},
-      MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
-      MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
-      MES=$MES${LINES[$((COUNT+5))]},
-      MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
-      COUNT=$((COUNT+10))
-      MES=$MES${LINES[$((COUNT++))]}:
-      MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
-      MES=$MES${LINES[$((COUNT+4))]},
-      MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
-      MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
-      MES=$MES${LINES[$((COUNT+5))]},
-      MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
+    if [ ${ISOLD} -eq 0 ]; then
+      if [ ${IS18} -ne 0 ]; then
+        MES="${city}(18:00发布)\n"
+        MES=$MES${LINES[$((COUNT++))]}:
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}'.\n'
+      else
+        MES="${city}(8:00发布)\n"
+      fi
+        MES=$MES${LINES[$((COUNT++))]}:
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}';'
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}'.\n'
+        MES=$MES${LINES[$((COUNT++))]}:
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}';'
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}'.\n'
     else
-      MES="${city}(8:00发布)\n"
-      MES=$MES${LINES[$((COUNT++))]}:
-      MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
-      MES=$MES${LINES[$((COUNT+4))]},
-      MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
-      MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
-      MES=$MES${LINES[$((COUNT+5))]},
-      MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
-      COUNT=$((COUNT+10))
-      MES=$MES${LINES[$((COUNT++))]}:
-      MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
-      MES=$MES${LINES[$((COUNT+4))]},
-      MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
-      MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
-      MES=$MES${LINES[$((COUNT+5))]},
-      MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
+      if [ ${IS18} -ne 0 ]; then
+        MES="${city}(18:00发布)\n"
+        MES=$MES${LINES[$((COUNT++))]}:
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]},
+        MES=$MES${LINES[$((COUNT++))]}${LINES[$((COUNT++))]}'.\n'
+      else
+        MES="${city}(8:00发布)\n"
+      fi
+        MES=$MES${LINES[$((COUNT++))]}:
+        MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
+        MES=$MES${LINES[$((COUNT+4))]},
+        MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
+        MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
+        MES=$MES${LINES[$((COUNT+5))]},
+        MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
+        COUNT=$((COUNT+10))
+        MES=$MES${LINES[$((COUNT++))]}:
+        MES=$MES${LINES[$((COUNT))]}${LINES[$((COUNT+2))]},
+        MES=$MES${LINES[$((COUNT+4))]},
+        MES=$MES${LINES[$((COUNT+6))]}${LINES[$((COUNT+8))]}';'
+        MES=$MES${LINES[$((COUNT+1))]}${LINES[$((COUNT+3))]},
+        MES=$MES${LINES[$((COUNT+5))]},
+        MES=$MES${LINES[$((COUNT+7))]}${LINES[$((COUNT+9))]}'.\n'
     fi
     echo -ne $MES > $city.txt
   done
