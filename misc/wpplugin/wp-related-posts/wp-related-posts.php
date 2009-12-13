@@ -1,12 +1,12 @@
 <?php
 /*
-   Plugin Name: WordPress Related Posts
+   Plugin Name: WP Related Posts
    Modified by Solrex for self use.
 */
 
 add_action('init', 'init_textdomain');
 function init_textdomain(){
-  load_plugin_textdomain('wp_related_posts',PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/lang');
+  load_plugin_textdomain('wp-related-posts',PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/lang');
 }
 
 function wp_get_related_posts($exclude, $limit, $wp_rp_title, $wp_no_rp, $wp_no_rp_text, $show_date, $show_comments_count, $show_excerpt, $excerpt_length) {
@@ -111,7 +111,7 @@ function wp_get_excerpt($content, $length) {
   $pa = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|\xe0[\xa0-\xbf][\x80-\xbf]|[\xe1-\xef][\x80-\xbf][\x80-\xbf]|\xf0[\x90-\xbf][\x80-\xbf][\x80-\xbf]|[\xf1-\xf7][\x80-\xbf][\x80-\xbf][\x80-\xbf]/";
 
   $str = preg_replace('/(\r\n)|(\n)/', '', $content); // 消灭换行符
-  $str = rp_remove_blockquotes($str); // 消灭所有 blockquote 内容
+//  $str = rp_remove_blockquotes($str); // 消灭所有 blockquote 内容
   $str = preg_replace('/\<(.+?)\>/', '', $str); // 消灭所有标签
 
   preg_match_all($pa, $str, $t_str);
@@ -119,6 +119,8 @@ function wp_get_excerpt($content, $length) {
   if(count($t_str[0]) - $start > $length) {
     $ellipsis = '...';
     $excerpt = join('', array_slice($t_str[0], $start, $length)) . $ellipsis;
+  } else {
+    $excerpt = join('', array_slice($t_str[0], $start));
   }
   return $excerpt;
 }
@@ -292,13 +294,13 @@ add_action('admin_menu', 'wp_add_related_posts_options_page');
 
 function wp_add_related_posts_options_page() {
   if (function_exists('add_options_page')) {
-    add_options_page( __('WordPress Related Posts','wp_related_posts'), __('WordPress Related Posts','wp_related_posts'), 8, basename(__FILE__), 'wp_related_posts_options_subpanel');
+    add_options_page( __('WP Related Posts','wp_related_posts'), __('WP Related Posts','wp_related_posts'), 8, basename(__FILE__), 'wp_related_posts_options_subpanel');
   }
 }
 
 function wp_related_posts_options_subpanel() {
   if($_POST["wp_rp_Submit"]){
-    $message = "WordPress Related Posts Setting Updated";
+    $message = "WP Related Posts Setting Updated";
   
     $wp_rp_saved = get_option("wp_rp");
   
@@ -329,22 +331,7 @@ function wp_related_posts_options_subpanel() {
 ?>
     <div class="wrap">
         <h2 id="write-post"><?php _e("Related Posts Options&hellip;",'wp_related_posts');?></h2>
-        <p><?php _e("WordPress Related Posts Plugin will generate a related posts via WordPress tags, and add the related posts to feed.",'wp_related_posts');?></p>
-        <div style="float:right;">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-          <input type="hidden" name="cmd" value="_donations">
-          <input type="hidden" name="business" value="honghua.deng@gmail.com">
-          <input type="hidden" name="item_name" value="Donate to fairyfish.net">
-          <input type="hidden" name="no_shipping" value="0">
-          <input type="hidden" name="no_note" value="1">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="tax" value="0">
-          <input type="hidden" name="lc" value="US">
-          <input type="hidden" name="bn" value="PP-DonationsBF">
-          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"><br />
-          </form>
-        </div>
+        <p><?php _e("WP Related Posts Plugin will generate a related posts via WordPress tags, and add the related posts to feed.",'wp_related_posts');?></p>
         <h3><?php _e("Related Posts Preference",'wp_related_posts');?></h3>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo basename(__FILE__); ?>">
         
