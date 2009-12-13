@@ -1059,21 +1059,8 @@ a#gotop {
 #related_posts .excerpt {
 	color:#999;
 	font-size:11px;
-	display:block;
+	/*display:block;*/
 }
-/* when related posts without title */
-/*
-#related_posts {
-	padding-top:3px;
-	padding-bottom:8px;
-}
-#related_posts ul li {
-	list-style:none;
-	padding:3px 5px;
-	border-bottom:1px solid #E3E4E6;
-	line-height:18px;
-}
-*/
 /* related posts END */
 
 /* one-column START */
