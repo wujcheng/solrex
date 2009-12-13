@@ -12,6 +12,7 @@ fi
 alias rm='rm -i'
 alias ll='ls -l'
 alias la='ls -A'
+alias lh='ls -lh'
 alias l='ls -CF'
 alias d='dirs -v'
 alias p='pushd'
