@@ -76,10 +76,20 @@ a:hover {
 .post .content .wp-caption p {
 	margin:0;
 }
-blockquote, pre {
+blockquote {
 	background:#F4F5F7 url(img/blockquote.gif) 1px 1px no-repeat;
 	border:1px dashed #CCC;
 	padding:8px 8px 8px 28px;
+	margin:5px 0;
+	font-family: "Courier New","DejaVu Sans Mono",Monospace;
+	font-size: 12px;
+	line-height: 145%;
+}
+
+pre {
+	background:#F4F5F7;
+	border:1px dashed #CCC;
+	padding:8px 8px 8px 8px;
 	margin:5px 0;
 	font-family: "Courier New","DejaVu Sans Mono",Monospace;
 	font-size: 12px;
@@ -529,22 +539,28 @@ textarea {
 	margin:10px -5px 0;
 	padding:10px 5px 0;
 }
-#pagenavi {
-	font-size:11px;
+#topnavi {
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	margin:8px -5px 8px;
+	padding:0px 5px 0;
+	font-size:90%;
 }
 #pagenavi .newer a, 
+#topnavi .prev a, 
 #postnavi .prev a {
-	background:url(img/icons.gif) 0 -224px no-repeat;
-	padding-left:22px;
-	float:left;
+	background:url(img/icons.gif) 100% -240px no-repeat;
+	padding-right:22px;
+	float:right;
 	height:16px;
 	line-height:16px;
 }
 #pagenavi .older a, 
+#topnavi .next a,
 #postnavi .next a {
-	background:url(img/icons.gif) 100% -240px no-repeat;
-	padding-right:22px;
-	float:right;
+	background:url(img/icons.gif) 0 -224px no-repeat;
+	padding-left:22px;
+	float:left;
 	height:16px;
 	line-height:16px;
 }
@@ -1059,7 +1075,6 @@ a#gotop {
 #related_posts .excerpt {
 	color:#999;
 	font-size:11px;
-	/*display:block;*/
 }
 /* related posts END */
 
@@ -1190,3 +1205,4 @@ a#gotop {
 }
 /* thread twitter END */
 
+#cse-search-results iframe {width:100%;}
