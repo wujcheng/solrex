@@ -9,10 +9,7 @@ function isFreeSite(url, host)
 {
   if(
       dnsDomainIs(host, "gucas.ac.cn") ||
-      shExpMatch(url, "*www.kaixin001.com*") ||
-      shExpMatch(url, "*www.douban.com/login*") ||
-      shExpMatch(url, "*wap.kaixin001.com/home*") ||
-      shExpMatch(url, "*bbs.nju.edu.cn/file/*")
+      dnsDomainIs(host, "acm.org") 
     )
     return true;
   return false;
@@ -20,7 +17,8 @@ function isFreeSite(url, host)
 
 function isLibSite(url, host)
 {
-  if( dnsDomainIs(host, "ieee.org") )
+  if( dnsDomainIs(host, "ieee.org") ||
+      dnsDomainIs(host, "159.226.100.24") )
     return true;
   return false;
 }
@@ -29,31 +27,40 @@ function isBlockedSite(url, host)
 {
   if(
       dnsDomainIs(host, "2mdn.net") ||
+      dnsDomainIs(host, "airccse.org") ||
       dnsDomainIs(host, "amazon.com") ||
       dnsDomainIs(host, "android.com") ||
+      dnsDomainIs(host, "bit.ly") ||
       dnsDomainIs(host, "blogger.com") ||
       dnsDomainIs(host, "blogspot.com") ||
       dnsDomainIs(host, "blogsearch.google.com") ||
+      dnsDomainIs(host, "bullogger.com") ||
+      dnsDomainIs(host, "chromium.org") ||
       dnsDomainIs(host, "depositfiles.com") ||
       dnsDomainIs(host, "edgefcs.net") ||
       dnsDomainIs(host, "ebookee.com.cn") ||
       dnsDomainIs(host, "facebook.com") ||
       dnsDomainIs(host, "fbcdn.net") ||
       dnsDomainIs(host, "ff.im") ||
-      dnsDomainIs(host, "flickr.com") ||
       dnsDomainIs(host, "friendfeed.com") ||
-      dnsDomainIs(host, "ggpht.com") ||
+      dnsDomainIs(host, "golang.org") ||
+      dnsDomainIs(host, "hecaitou.net") ||
       dnsDomainIs(host, "mail-archive.com") ||
       dnsDomainIs(host, "markmail.org") ||
+      dnsDomainIs(host, "mitbbs.com") ||
       dnsDomainIs(host, "nlanr.net") ||
       dnsDomainIs(host, "osdir.com") ||
+      dnsDomainIs(host, "opera.com") ||
       dnsDomainIs(host, "picasaweb.google.com") ||
+      dnsDomainIs(host, "peacehall.com") ||
       dnsDomainIs(host, "realrumors.net") ||
       dnsDomainIs(host, "samba.org") ||
+      dnsDomainIs(host, "t66y.com") ||
       dnsDomainIs(host, "technorati.com") ||
       dnsDomainIs(host, "torproject.org") ||
       dnsDomainIs(host, "twitter.com") ||
       dnsDomainIs(host, "wordpress.com") ||
+      dnsDomainIs(host, "xysblogs.org") ||
       dnsDomainIs(host, "yeeyan.com") ||
       dnsDomainIs(host, "ytimg.com") ||
       dnsDomainIs(host, "youtube.com") ||
@@ -95,7 +102,7 @@ function isLocalIP(addr)
 
 function isFreeIP(addr)
 {
-  if( isInNet(addr,"210.77.23.0","255.255.255.0") )
+  if( isInNet(addr,"210.77.23.0","255.255.248.0") )
     return true;
   return false;
 }
@@ -114,31 +121,36 @@ function isIPV6(addr)
 
 function FindProxyForURL(url, host)
 {
-  var direct      = "DIRECT";
-  var hHttpProxy  = "PROXY localhost:4080";
-  var tohrProxy   = "PROXY localhost:9090";
-  var libProxy    = "PROXY 159.226.100.43:8918";
+  var NO_Proxy   = 'DIRECT';
+  var HTTP_Proxy = 'PROXY localhost:11110; DIRECT';
+  var GFW_Proxy  = 'SOCKS5 localhost:9090; DIRECT';
+  var LIB_Proxy  = 'PROXY 159.226.100.43:8918; DIRECT';
+  //GFW_Proxy   = 'PROXY localhost:9090';
+  //HTTP_Proxy  = "SOCKS localhost:11111";
+  //HTTP_Proxy = GFW_Proxy;
+  //HTTP_Proxy = NO_Proxy;
+  LIB_Proxy = HTTP_Proxy;
 
   if(isFreeSite(url, host) || isLocalSite(url, host)) {
-    return direct;
+    return NO_Proxy;
   } else if(isBlockedSite(url, host)) {
-    return tohrProxy;
+    return GFW_Proxy;
   } else if (isLibSite(url, host)) {
-    return libProxy;
+    return LIB_Proxy;
   }
 
   if(!isResolvable(host)) {
-    return hHttpProxy;
+    return HTTP_Proxy;
   }
 
   var IpAddr = dnsResolve(host);
 
   if(isFreeIP(IpAddr) || isLocalIP(IpAddr) || isIPV6(IpAddr)) {
-    return direct;
+    return NO_Proxy;
   } else if(isBlockedIP(IpAddr)) {
-    return tohrProxy;
+    return GFW_Proxy;
   } else {
-    return hHttpProxy;
+    return HTTP_Proxy;
   }
 }
 
