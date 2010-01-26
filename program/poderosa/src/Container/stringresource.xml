@@ -7,18 +7,22 @@ $Id: stringresource.xml,v 1.2 2005/04/20 09:06:03 okajima Exp $
 <!-- 汎用 -->
 <record name="Common.OK">
   <ja>OK</ja>
+  <zh>OK</zh>
   <en>OK</en>
 </record>
 <record name="Common.Cancel">
   <ja>キャンセル</ja>
+  <zh>取消</zh>
   <en>Cancel</en>
 </record>
 <record name="Common.DoNot">
   <ja>しない</ja>
+  <zh>不要</zh>
   <en>Don't</en>
 </record>
 <record name="Common.Do">
   <ja>する</ja>
+  <zh>继续</zh>
   <en>Do</en>
 </record>
 <record name="Common.Reception">
@@ -27,10 +31,12 @@ $Id: stringresource.xml,v 1.2 2005/04/20 09:06:03 okajima Exp $
 </record>
 <record name="Common.Transmission">
   <ja>送信</ja>
+  <zh>传输</zh>
   <en>Transmission</en>
 </record>
 <record name="Common.FontSample">
   <ja>Poderosa</ja>
+  <zh>Poderosa</zh>
   <en>Poderosa</en>
 </record>
 <record name="Common.JapaneseFontSample">
@@ -635,6 +641,7 @@ Please confirm the permission for writing {1} directory.</en>
 <!-- GFrame.cs -->
 <record name="Menu._menuFile">
   <ja>ファイル(&amp;F)</ja>
+  <zh>文件(&amp;F)</zh>
   <en>&amp;File</en>
 </record>
 <record name="Menu._menuNewConnection">

@@ -23,7 +23,20 @@ namespace Poderosa.LocalShell
 
 		public static EncodingType DefaultEncoding {
 			get {
-				return GEnv.Options.Language==Language.Japanese? EncodingType.SHIFT_JIS : EncodingType.ISO8859_1;
+                switch (GEnv.Options.Language)
+                {
+                    case Language.Japanese:
+                        return EncodingType.SHIFT_JIS;
+                        break;
+                    case Language.English:
+                        return EncodingType.ISO8859_1;
+                        break;
+                    case Language.Chinese:
+                        return EncodingType.UTF8;
+                        break;
+                    default:
+                        return EncodingType.UTF8;
+                }
 			}
 		}
 

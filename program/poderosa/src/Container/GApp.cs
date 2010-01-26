@@ -141,9 +141,19 @@ namespace Poderosa
 			LoadConfigFiles(dir, act);
 			_options.OptionPreservePlace = place;
 
-			//ここまできたら言語設定をチェックし、必要なら読み直し
-			if(GUtil.CurrentLanguage!=_options.Language) {
-				System.Threading.Thread.CurrentThread.CurrentUICulture = _options.Language==Language.Japanese? new CultureInfo("ja") : CultureInfo.InvariantCulture;
+			// Check the language settings, re-read it if needed.
+			if (GUtil.CurrentLanguage != _options.Language) {
+                switch (_options.Language) {
+                    case Language.Japanese:
+                        System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("ja");
+                    break;
+                    case Language.Chinese:
+                        System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh");
+                    break;
+                    default:
+                        System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+                    break;
+                }
 				ReloadStringResource();
 			}
 
@@ -300,7 +310,17 @@ namespace Poderosa
 			_frame.AdjustMRUMenu();
 
 			if(_options.Language!=opt.Language) { //言語のリロードが必要なとき
-				System.Threading.Thread.CurrentThread.CurrentUICulture = opt.Language==Language.Japanese? new CultureInfo("ja") : CultureInfo.InvariantCulture;
+                switch (opt.Language) {
+                    case Language.Japanese:
+                        System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("ja");
+                        break;
+                    case Language.Chinese:
+                        System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh");
+                        break;
+                    default:
+                        System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+                        break;
+                }
 				GApp.ReloadStringResource();
 				Granados.SSHC.Strings.Reload();
 				GApp.MacroManager.ReloadLanguage();

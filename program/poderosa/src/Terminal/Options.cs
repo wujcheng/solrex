@@ -602,8 +602,9 @@ namespace Poderosa.Config
 
 	[EnumDesc(typeof(Language))]
 	public enum Language {
-		[EnumValue(Description="Enum.Language.English")] English,
-		[EnumValue(Description="Enum.Language.Japanese")] Japanese
+		[EnumValue(Description = "Enum.Language.English")] English,
+		[EnumValue(Description = "Enum.Language.Japanese")] Japanese,
+        [EnumValue(Description = "Enum.Language.Chinese")] Chinese,
 	}
 
 

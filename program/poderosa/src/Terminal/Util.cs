@@ -101,7 +101,13 @@ namespace Poderosa
 
 		public static Language CurrentLanguage {
 			get {
-				return CultureInfo.CurrentUICulture.Name.StartsWith("ja")? Language.Japanese : Language.English;
+                if (CultureInfo.CurrentUICulture.Name.StartsWith("ja")) {
+                    return Language.Japanese;
+                } else if (CultureInfo.CurrentUICulture.Name.StartsWith("zh")) {
+                    return Language.Chinese;
+                } else {
+                    return Language.English;
+                }
 			}
 		}
 	
