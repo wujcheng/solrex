@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal", "Terminal\Terminal.csproj", "{F05162FD-398F-4E90-9BB1-618FE17D5718}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AC1E2AB5-B82C-4D00-AEF0-58FF58333086} = {AC1E2AB5-B82C-4D00-AEF0-58FF58333086}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Container", "Container\Container.csproj", "{60BE1158-C079-4603-8BC4-1658133E8EE5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AC1E2AB5-B82C-4D00-AEF0-58FF58333086} = {AC1E2AB5-B82C-4D00-AEF0-58FF58333086}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6673AA9D-DE8B-4202-A726-018D9207F03E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portforwarding", "Portforwarding\Portforwarding.csproj", "{DBB96693-DCFE-4FD0-AF4C-F95889152607}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AC1E2AB5-B82C-4D00-AEF0-58FF58333086} = {AC1E2AB5-B82C-4D00-AEF0-58FF58333086}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granados", "Granados\Granados.csproj", "{AC1E2AB5-B82C-4D00-AEF0-58FF58333086}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F05162FD-398F-4E90-9BB1-618FE17D5718}.Debug.ActiveCfg = Debug|.NET
+		{F05162FD-398F-4E90-9BB1-618FE17D5718}.Debug.Build.0 = Debug|.NET
+		{F05162FD-398F-4E90-9BB1-618FE17D5718}.Release.ActiveCfg = Release|.NET
+		{F05162FD-398F-4E90-9BB1-618FE17D5718}.Release.Build.0 = Release|.NET
+		{60BE1158-C079-4603-8BC4-1658133E8EE5}.Debug.ActiveCfg = Debug|.NET
+		{60BE1158-C079-4603-8BC4-1658133E8EE5}.Debug.Build.0 = Debug|.NET
+		{60BE1158-C079-4603-8BC4-1658133E8EE5}.Release.ActiveCfg = Release|.NET
+		{60BE1158-C079-4603-8BC4-1658133E8EE5}.Release.Build.0 = Release|.NET
+		{6673AA9D-DE8B-4202-A726-018D9207F03E}.Debug.ActiveCfg = Debug|.NET
+		{6673AA9D-DE8B-4202-A726-018D9207F03E}.Debug.Build.0 = Debug|.NET
+		{6673AA9D-DE8B-4202-A726-018D9207F03E}.Release.ActiveCfg = Release|.NET
+		{6673AA9D-DE8B-4202-A726-018D9207F03E}.Release.Build.0 = Release|.NET
+		{DBB96693-DCFE-4FD0-AF4C-F95889152607}.Debug.ActiveCfg = Debug|.NET
+		{DBB96693-DCFE-4FD0-AF4C-F95889152607}.Debug.Build.0 = Debug|.NET
+		{DBB96693-DCFE-4FD0-AF4C-F95889152607}.Release.ActiveCfg = Release|.NET
+		{DBB96693-DCFE-4FD0-AF4C-F95889152607}.Release.Build.0 = Release|.NET
+		{AC1E2AB5-B82C-4D00-AEF0-58FF58333086}.Debug.ActiveCfg = Debug|.NET
+		{AC1E2AB5-B82C-4D00-AEF0-58FF58333086}.Debug.Build.0 = Debug|.NET
+		{AC1E2AB5-B82C-4D00-AEF0-58FF58333086}.Release.ActiveCfg = Release|.NET
+		{AC1E2AB5-B82C-4D00-AEF0-58FF58333086}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

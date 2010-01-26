@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+$Id: stringresource.xml,v 1.2 2005/04/20 09:06:04 okajima Exp $
+-->
+<string-resource>
+<record name="Common.MessageBoxTitle">
+  <ja>Poderosa</ja>
+  <en>Poderosa</en>
+</record>
+
+<!-- Connections.cs -->
+<record name="Caption.ConnectionTag.Disconnected">
+  <ja>(切断)</ja>
+  <en>(Disconnected)</en>
+</record>
+
+<!-- CommandTarget.cs -->
+<record name="Message.ConnectionCommandTarget.CloseError">
+  <ja>接続を閉じるときにエラーが発生しました。</ja>
+  <en>An error occurred when closing the connection.</en>
+</record>
+<record name="Message.ConnectionCommandTarget.AreYouThereCondition">
+  <ja>AreYouThereを実行できるのはTelnetだけです。</ja>
+  <en>"Are You There" can be executed on Telnet connections only.</en>
+</record>
+<record name="Message.ConnectionCommandTarget.BreakCondition">
+  <ja>Break送信を実行できるのはシリアル,Telnet,SSH2です。</ja>
+  <en>"Send Break" can be executed to serial, Telnet, and SSH2 connections only.</en>
+</record>
+<record name="Message.ConnectionCommandTarget.SendError">
+  <ja>送信に失敗しました。</ja>
+  <en>Failed to transmit.</en>
+</record>
+<record name="Caption.ConnectionCommandTarget.DuringPaste">
+  <ja>貼り付け中</ja>
+  <en>Paste</en>
+</record>
+
+
+<!-- CommunicationUtil.cs -->
+<record name="Message.SSHConnector.Cancelled">
+  <ja>接続を中止しました。</ja>
+  <en>The connection is aborted.</en>
+</record>
+<record name="Message.CommunicationUtil.FailedToOpenSerial">
+  <ja>シリアルポートのオープンに失敗しました。</ja>
+  <en>Failed to open the serial port.</en>
+</record>
+<record name="Message.CommunicationUtil.NoSuchDevice">
+  <ja>
+存在しないデバイスが選択されました。</ja>
+  <en>
+The selected device does not exist.</en>
+</record>
+<record name="Message.CommunicationUtil.DeviceIsBusy">
+  <ja>
+ポートは既に別のアプリケーションに使われています。</ja>
+  <en>
+The port is already being used by other applications.</en>
+</record>
+<record name="Message.CommunicationUtil.FailedToConfigSerial">
+  <ja>シリアルポートの設定に失敗しました。</ja>
+  <en>Failed to configure the serial port.</en>
+</record>
+
+<!-- CygwinUtil.cs -->
+<record name="Message.CygwinUtil.KeyNotFound">
+  <ja>レジストリキー{0}がみつかりません。Cygwinが正しくインストールされていないと思われます。</ja>
+  <en>The registry key {0} is not found. Cygwin may be not installed correctly.</en>
+</record>
+<record name="Message.SFUUtil.KeyNotFound">
+  <ja>レジストリキー{0}がみつかりません。Services for Unixが正しくインストールされていないと思われます。</ja>
+  <en>The registry key {0} is not found. Services for Unix may be not installed correctly.</en>
+</record>
+<record name="Message.CygwinUtil.FailedToConnect">
+  <ja>cygwinとの接続中にエラーが発生しました。
+</ja>
+  <en>An error occurred while connecting to cygwin.
+</en>
+</record>
+<record name="Message.SFUUtil.FailedToConnect">
+  <ja>Services for Unixとの接続中にエラーが発生しました。
+</ja>
+  <en>An error occurred while connecting to Services for Unix.
+</en>
+</record>
+
+<!-- InterThread.cs -->
+<record name="Message.InterThread.Disconnected">
+  <ja>ホスト {0} が接続を切断しました。</ja>
+  <en>The host {0} disconnected the connection.</en>
+</record>
+
+<!-- Options.cs -->
+<record name="Message.Options.WheelAmountRange">
+  <ja>ホイールでのスクロール量の設定値は1から99までです。</ja>
+  <en>The amount of wheel must be between 1 and 99.</en>
+</record>
+<record name="Message.Options.BufferSizeRange">
+  <ja>バッファ行数は0から9999までです。</ja>
+  <en>The buffer size must be between 0 and 9999.</en>
+</record>
+<record name="Util.Options.JapaneseDefaultFont">
+  <ja>ＭＳ ゴシック</ja>
+  <en>Courier New</en>
+</record>
+<record name="Message.Options.IntFormatError">
+  <ja>設定ファイルのフォーマットエラー： {0}要素が整数ではありません。</ja>
+  <en>Configuration File Format Error: {0} element is not an integer.</en>
+</record>
+<record name="Message.Options.FloatFormatError">
+  <ja>設定ファイルのフォーマットエラー： {0}要素が数値ではありません。</ja>
+  <en>Configuration File Format Error: {0} element is not a number.</en>
+</record>
+<record name="Message.Options.BoolFormatError">
+  <ja>設定ファイルのフォーマットエラー： {0}要素がbool値ではありません。</ja>
+  <en>Configuration File Format Error: {0} element is not a boolean.</en>
+</record>
+<record name="Enum.WarningOption.Ignore">
+  <ja>無視</ja>
+  <en>Ignore</en>
+</record>
+<record name="Enum.WarningOption.StatusBar">
+  <ja>ステータスバーに表示</ja>
+  <en>Display in status bar</en>
+</record>
+<record name="Enum.WarningOption.MessageBox">
+  <ja>メッセージボックスを表示</ja>
+  <en>Display a message box</en>
+</record>
+<record name="Enum.DisconnectNotification.MessageBox">
+  <ja>メッセージボックスを表示</ja>
+  <en>Display a message box</en>
+</record>
+<record name="Enum.DisconnectNotification.StatusBar">
+  <ja>ステータスバーに表示</ja>
+  <en>Display in status bar</en>
+</record>
+<record name="Enum.AltKeyAction.Menu">
+  <ja>メニューとショートカット</ja>
+  <en>Menus and Shortcuts</en>
+</record>
+<record name="Enum.AltKeyAction.ESC">
+  <ja>ESC &lt;x&gt;</ja>
+  <en>ESC &lt;x&gt;</en>
+</record>
+<record name="Enum.AltKeyAction.Meta">
+  <ja>Metaキー</ja>
+  <en>Meta Key</en>
+</record>
+<record name="Enum.RightButtonAction.ContextMenu">
+  <ja>コンテキストメニュー</ja>
+  <en>Context Menu</en>
+</record>
+<record name="Enum.RightButtonAction.Paste">
+  <ja>貼り付け</ja>
+  <en>Paste</en>
+</record>
+<record name="Enum.ImageStyle.Center">
+  <ja>中央</ja>
+  <en>Center</en>
+</record>
+<record name="Enum.ImageStyle.TopLeft">
+  <ja>左上</ja>
+  <en>TopLeft</en>
+</record>
+<record name="Enum.ImageStyle.TopRight">
+  <ja>右上</ja>
+  <en>TopRight</en>
+</record>
+<record name="Enum.ImageStyle.BottomLeft">
+  <ja>左下</ja>
+  <en>BottomLeft</en>
+</record>
+<record name="Enum.ImageStyle.BottomRight">
+  <ja>右下</ja>
+  <en>BottomRight</en>
+</record>
+<record name="Enum.ImageStyle.Scaled">
+  <ja>伸縮</ja>
+  <en>Scaled</en>
+</record>
+<record name="Enum.Language.English">
+  <ja>英語</ja>
+  <en>English</en>
+</record>
+<record name="Enum.Language.Japanese">
+  <ja>日本語</ja>
+  <en>Japanese</en>
+</record>
+<record name="Enum.LineFeedRule.Normal">
+  <ja>標準</ja>
+  <en>Standard</en>
+</record>
+<record name="Enum.LineFeedRule.LFOnly">
+  <ja>LFで改行しCRを無視</ja>
+  <en>LF:Line Break, CR:Ignore</en>
+</record>
+<record name="Enum.LineFeedRule.CROnly">
+  <ja>CRで改行しLFを無視</ja>
+  <en>CR:Line Break, LF:Ignore</en>
+</record>
+
+
+
+<!-- RenderProfile.cs -->
+<record name="Message.RenderProfile.FailedToLoadPicture">
+  <ja>ファイル {0} から画像を読み込めませんでした。</ja>
+  <en>Failed to load a picture from {0}.</en>
+</record>
+
+<!-- SocketWithTimeout.cs -->
+<record name="Message.SocketWithTimeout.DestinationNotFound">
+  <ja>{0} {1} が見つかりません。</ja>
+  <en>The {0} {1} was not found.</en>
+</record>
+<record name="Message.SocketWithTimeout.FailedtoConnect">
+  <ja>{0} {1} へ接続できませんでした。アドレスとポートを確認してください。</ja>
+  <en>Failed to connect {0} {1}. Please check the address and the port.</en>
+</record>
+<record name="Message.SocketWithTimeout.SOCKSError">
+  <ja>SOCKSの接続中のエラーです。</ja>
+  <en>An error occurred while SOCKS negotiation.</en>
+</record>
+<record name="Message.SocketWithTimeout.InvalidAddressForSOCKS">
+  <ja>{0} はネットワークアドレスとして不適切です</ja>
+  <en>{0} is not suitable as a network address.</en>
+</record>
+
+<!-- SOCKS.cs -->
+<record name="Message.SOCKS.AddressIsNotSpecified">
+  <ja>アドレスが指定されていません。</ja>
+  <en>The address is not specified.</en>
+</record>
+<record name="Message.SOCKS.FailedToAuthenticate">
+  <ja>SOCKSの認証に失敗しました。</ja>
+  <en>SOCKS authentication failed.</en>
+</record>
+<record name="Message.SOCKS.FailedToConnect">
+  <ja>SOCKSサーバと通信できませんでした。</ja>
+  <en>Failed to communicate with the SOCKS server.</en>
+</record>
+<record name="Message.SOCKS.VersionError">
+  <ja>SOCKSサーバのバージョンが違います。</ja>
+  <en>The protocol version of the SOCKS server is wrong.</en>
+</record>
+<record name="Messaeg.SOCKS.UnknownAuthMethod">
+  <ja>サポートされていないSOCKS認証方式[{0}]がサーバから指定されました。</ja>
+  <en>The SOCKS server specified an unsupported authentication method [{0}].</en>
+</record>
+<record name="Message.FailedToConnect">
+  <ja>接続が失敗しました。</ja>
+  <en>Failed to connect.</en>
+</record>
+<record name="Message.SOCKS.ServerError">
+  <ja>SOCKSサーバのエラーです。</ja>
+  <en>SOCKS server error</en>
+</record>
+<record name="Message.SOCKS.NotPermitted">
+  <ja>接続は許可されていません。</ja>
+  <en>The connection is not allowed.</en>
+</record>
+<record name="Message.SOCKS.FailedToConnectNetwork">
+  <ja>ネットワークに到達できません。</ja>
+  <en>Failed to reach the destination network.</en>
+</record>
+<record name="Message.SOCKS.FailedToConnectHost">
+  <ja>ホストに到達できません。</ja>
+  <en>Failed to reach the destination host.</en>
+</record>
+<record name="Message.SOCKS.AccessDenied">
+  <ja>アクセスが拒否されました。</ja>
+  <en>The access is denied.</en>
+</record>
+<record name="Message.SOCKS.TTLDisposed">
+  <ja>TTLが無効になりました。</ja>
+  <en>TTL is disposed.</en>
+</record>
+<record name="Message.SOCKS.UnsupportedCommand">
+  <ja>サポートされていないコマンドです。</ja>
+  <en>The SOCKS command is not supported.</en>
+</record>
+<record name="Message.SOCKS.UnsupportedAddress">
+  <ja>アドレスタイプがサポートされていません。</ja>
+  <en>The type of address is not supported.</en>
+</record>
+<record name="Message.SOCKS.UnknownMessage">
+  <ja>不明なコード {0}</ja>
+  <en>Unknown Code {0}</en>
+</record>
+
+<!-- Telnet.cs -->
+<record name="Message.Telnet.FailedToSendTerminalType">
+  <ja>ターミナルタイプの指定に失敗しました。</ja>
+  <en>Failed to specify terminal type.</en>
+</record>
+<record name="Message.Telnet.FailedToSendWidnowSize">
+  <ja>ウィンドウサイズの指定に失敗しました。</ja>
+  <en>Failed to specify window size.</en>
+</record>
+<record name="Message.Telnet.FailedToSendSuppressGoAhead">
+  <ja>SuppressGoAheadの指定に失敗しました。</ja>
+  <en>Failed to specify SuppressGoAhead option.</en>
+</record>
+
+<!-- TerminalBase.cs -->
+<record name="Message.AbstractTerminal.UnsupportedCharSet">
+  <ja>未サポートのキャラクタセット {0} が検出されました。画面表示が乱れるかもしれません。</ja>
+  <en>An unsupported character set {0} is detected. The screen may not be displayed correctly.</en>
+</record>
+<record name="Message.AbstractTerminal.UnexpectedChar">
+  <ja>現在のエンコーディング {0} に合わないデータを受信しました。エンコーディング設定を確認してください。</ja>
+  <en>Failed to decode characters by the current encoding {0}. Please check the setting of encoding.</en>
+</record>
+<record name="Message.EscapesequenceTerminal.UnsupportedSequence">
+  <ja>未サポートのエスケープシーケンスを見つけました。
+</ja>
+  <en>An unsupported escape sequence is detected.
+</en>
+</record>
+
+<!-- TerminalConnection.cs -->
+<record name="Message.ChannelPoderosaSocket.FailedToPortforward">
+  <ja>ポートフォワーディングに失敗しました。接続先がポートフォワーディングを許可しているかを確認してください。</ja>
+  <en>Port-forwarding failure. Please check whether the host allows port-forwarding.</en>
+</record>
+<record name="Caption.TCPTerminalConnection.UsingSOCKS">
+  <ja>(SOCKSを使用)</ja>
+  <en>(Using SOCKS)</en>
+</record>
+<record name="Caption.TCPTerminalConnection.UsingRouteSpike">
+  <ja>(RouteSpikeを使用)</ja>
+  <en>(Using RouteSpike)</en>
+</record>
+<record name="Message.SSHTerminalConnection.ReproduceErrorOnSSH1">
+  <ja>SSH1で接続を複製するときはオプションのSSHタブでパスフレーズを記憶するようにしていないといけません。</ja>
+  <en>The "Memory Passphrase until the Application Quits" option in the SSH tab of the option dialog must be set when you reproduce SSH1 connections.</en>
+</record>
+<record name="Message.SSHTerminalConnection.ReproduceErrorOnSSH2">
+  <ja>SSH2で一度閉じた接続を複製するときはオプションのSSHタブでパスフレーズを記憶するようにしていないといけません。</ja>
+  <en>The "Memory Passphrase until the Application Quits" option in the SSH tab of the option dialog must be set when you reproduce closed SSH2 connections.</en>
+</record>
+<record name="Message.SSHTerminalConnection.CloseError">
+  <ja>接続を閉じるときにエラーが発生しました。</ja>
+  <en>An error occurred while closing the connection.</en>
+</record>
+<record name="Message.SSHTerminalconnection.BreakError">
+  <ja>Break信号の送信ができませんでした。SSHサーバがBreak信号をサポートしているか確認してください。</ja>
+  <en>Failed to send break signal. Please check whether the SSH server supports break signals.</en>
+</record>
+<record name="Message.SerialTerminalConnection.ReproduceError">
+  <ja>シリアル接続の複製はできません。</ja>
+  <en>Serial connections can not be reproduced.</en>
+</record>
+<record name="Message.SerialTerminalConnection.ConfigError">
+  <ja>シリアルポートの設定に失敗しました。</ja>
+  <en>Failed to configure serial port.</en>
+</record>
+
+<!-- TerminalDataReceiver.cs -->
+<record name="Message.TerminalDataReceiver.GenericError">
+  <ja>{0}との通信時に次のエラーが発生しました。
+{1}</ja>
+  <en>The following error occurred when connecting to {0}. 
+{1}</en>
+</record>
+
+<!-- TerminalDocument.cs -->
+<record name="Message.TerminalDocument.UnexpectedCode">
+  <ja>予期しないコードがサーバから送られました。画面が乱れるかもしれません。</ja>
+  <en>An unexpected code is detected. The screen may not be displayed correctly.</en>
+</record>
+
+<!-- TerminalPane.cs -->
+<record name="Message.TerminalPane.FailedToSend">
+  <ja>送信に失敗しました。</ja>
+  <en>Failed to transmit.</en>
+</record>
+
+<!-- TerminalParam.cs -->
+<record name="Enum.AuthType.Password">
+  <ja>パスワード</ja>
+  <en>Password</en>
+</record>
+<record name="Enum.AuthType.PublicKey">
+  <ja>公開鍵</ja>
+  <en>PublicKey</en>
+</record>
+<record name="Enum.AuthType.KeyboardInteractive">
+  <ja>Keyboard Interactive</ja>
+  <en>Keyboard Interactive</en>
+</record>
+<record name="Enum.EncodingType.ISO8859_1">
+  <ja>iso-8859-1</ja>
+  <en>iso-8859-1</en>
+</record>
+<record name="Enum.EncodingType.UTF8">
+  <ja>utf-8</ja>
+  <en>utf-8</en>
+</record>
+<record name="Enum.EncodingType.EUC_JP">
+  <ja>euc-jp</ja>
+  <en>euc-jp</en>
+</record>
+<record name="Enum.EncodingType.SHIFT_JIS">
+  <ja>shift-jis</ja>
+  <en>shift-jis</en>
+</record>
+<record name="Enum.LogType.None">
+  <ja>なし</ja>
+  <en>None</en>
+</record>
+<record name="Enum.LogType.Default">
+  <ja>標準</ja>
+  <en>Standard</en>
+</record>
+<record name="Enum.LogType.Binary">
+  <ja>バイナリ</ja>
+  <en>Binary</en>
+</record>
+<record name="Enum.LogType.Xml">
+  <ja>デバッグ</ja>
+  <en>Debug</en>
+</record>
+<record name="Enum.NewLine.CR">
+  <ja>CR</ja>
+  <en>CR</en>
+</record>
+<record name="Enum.NewLine.LF">
+  <ja>LF</ja>
+  <en>LF</en>
+</record>
+<record name="Enum.NewLine.CRLF">
+  <ja>CR+LF</ja>
+  <en>CR+LF</en>
+</record>
+<record name="Enum.TerminalType.KTerm">
+  <ja>kterm</ja>
+  <en>kterm</en>
+</record>
+<record name="Enum.TerminalType.XTerm">
+  <ja>xterm</ja>
+  <en>xterm</en>
+</record>
+<record name="Enum.TerminalType.VT100">
+  <ja>vt100</ja>
+  <en>vt100</en>
+</record>
+<record name="Message.TCPTerminalParam.PropCannotBeSet">
+  <ja>このプロパティは設定できません。</ja>
+  <en>This property can not be changed.</en>
+</record>
+<record name="Mesage.SSHTerminalParam.MethodSetError">
+  <ja>SSH1またはSSH2を指定してください。</ja>
+  <en>The method must be SSH1 or SSH2.</en>
+</record>
+<record name="Enum.FlowControl.None">
+  <ja>なし</ja>
+  <en>None</en>
+</record>
+<record name="Enum.FlowControl.Xon_Xoff">
+  <ja>Xon/Xoff</ja>
+  <en>Xon/Xoff</en>
+</record>
+<record name="Enum.FlowControl.Hardware">
+  <ja>ハードウェア</ja>
+  <en>Hardware</en>
+</record>
+<record name="Enum.Parity.NOPARITY">
+  <ja>なし</ja>
+  <en>None</en>
+</record>
+<record name="Enum.Parity.ODDPARITY">
+  <ja>奇数</ja>
+  <en>Odd</en>
+</record>
+<record name="Enum.Parity.EVENPARITY">
+  <ja>偶数</ja>
+  <en>Even</en>
+</record>
+<record name="Enum.StopBits.ONESTOPBIT">
+  <ja>1ビット</ja>
+  <en>1 bit</en>
+</record>
+<record name="Enum.StopBits.ONE5STOPBITS">
+  <ja>1.5ビット</ja>
+  <en>1.5 bits</en>
+</record>
+<record name="Enum.StopBits.TWOSTOPBITS">
+  <ja>2ビット</ja>
+  <en>2 bits</en>
+</record>
+<record name="Message.SerialPTerminalParam.TransmitDelayRange">
+  <ja>TransmitDelayは0から1000まででなければいけません。</ja>
+  <en>The value of TransmitDelay must be between 0 and 1000.</en>
+</record>
+
+<!-- GUtil.cs -->
+<record name="Message.HostKeyChecker.AskHostKeyRegister">
+  <ja>SSHサーバの公開鍵はssh_known_hostsに登録されていません。登録して続行しますか？</ja>
+  <en>The public key of the SSH server is not registered in ssh_known_hosts. Do you wish to register it and continue?</en>
+</record>
+<record name="Message.HostKeyChecker.AskHostKeyRenew">
+  <ja>SSHサーバの公開鍵はssh_known_hostsに登録されているものと異なります。更新して続行しますか？</ja>
+  <en>The public key of the SSH server differs from the old key in ssh_known_hosts. Do you wish to renew it and continue?</en>
+</record>
+<record name="Message.GUtil.InternalError">
+  <ja>内部エラーです。{0}error.logファイルを送ってください。
+{1}</ja>
+  <en>An internal error occurred. Please send {0}error.log file. 
+{1}</en>
+</record>
+
+<!-- WarningWithDisableOption.cs -->
+<record name="Form.WarningWithDisableOption.Text">
+  <ja>注意</ja>
+  <en>Warning</en>
+</record>
+<record name="Form.WarningWithDisableOption._disableCheckBox">
+  <ja>次回からこのメッセージを表示しない(&amp;N)</ja>
+  <en>Do &amp;not display this message from next time</en>
+</record>
+
+<!-- xmodem.cs -->
+<record name="Message.XModem.StartTimedOut">
+  <ja>XMODEMの開始はタイムアウトしました。</ja>
+  <en>Timed out of the xmodem negotiation.</en>
+</record>
+<record name="Message.XModem.ReceiveComplete">
+  <ja>受信を完了しました。</ja>
+  <en>Reception completed successfully.</en>
+</record>
+<record name="Message.XModem.SequenceError">
+  <ja>XMODEMのシーケンス番号エラーです。処理を中止します。</ja>
+  <en>An XMODEM sequence number error occurred. The procedure will be aborted.</en>
+</record>
+<record name="Message.XModem.CheckSumError">
+  <ja>XMODEMのチェックサムエラーです。処理を中止します。</ja>
+  <en>An XMODEM checksum error occurred. The procedure will be aborted.</en>
+</record>
+<record name="Message.XModem.SendComplete">
+  <ja>送信が完了しました。</ja>
+  <en>Transmission completed successfully.</en>
+</record>
+<record name="Message.XModem.BlockStartError">
+  <ja>XMODEMのブロック受信信号を受け取れませんでした。処理を中止します。</ja>
+  <en>Failed to receive the block start signal of XMODEM. The procedure will be aborted.</en>
+</record>
+
+<!--
+<record name="">
+  <ja></ja>
+  <en></en>
+</record>
+
+[設定漏れを探す正規表現]
+".*(:Id|:Hi|:Ka).*"
+
+-->
+
+</string-resource>
