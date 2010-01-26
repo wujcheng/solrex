@@ -93,7 +93,7 @@ namespace Poderosa.LocalShell
 					PrepareEnv(_param);
 				}
 
-				string cygtermPath = "cygterm\\"+(IsCygwin(_param)? "cygterm.exe" : "sfuterm.exe");
+				string cygtermPath = "bin\\"+(IsCygwin(_param)? "cygterm.exe" : "sfuterm.exe");
 				string connectionName = IsCygwin(_param)? "Cygwin" : "SFU";
 
 				string args = String.Format("-p {0} -v HOME=\"{1}\" -s \"{2}\"", _localPort, _param.Home, _param.Shell);
@@ -198,21 +198,35 @@ namespace Poderosa.LocalShell
 				return "/bin/bash -i -l";
 			}
 		}
-
+		// NOTE/WBY-20100126: Cygwin 1.7 changed mounting method.
 		public static string GuessRootDirectory() {
-			RegistryKey reg = null;
-			string keyname = "SOFTWARE\\Cygnus Solutions\\Cygwin\\mounts v2\\/";
-			//HKCU -> HKLMÇÃèáÇ≈ÉTÅ[É`
-			reg = Registry.CurrentUser.OpenSubKey(keyname);
-			if(reg==null) {
-				reg = Registry.LocalMachine.OpenSubKey(keyname);
-				if(reg==null) {
-					GUtil.Warning(GEnv.Frame, String.Format(GEnv.Strings.GetString("Message.CygwinUtil.KeyNotFound"), keyname));
-					return "";
+			RegistryKey legacy_reg = null, reg = null;
+			string legacy_item = "SOFTWARE\\Cygnus Solutions\\Cygwin\\mounts v2\\/";
+			string item = "SOFTWARE\\Cygwin\\setup";
+			string t = null;
+			// pre-1.7 test
+			legacy_reg = Registry.CurrentUser.OpenSubKey(legacy_item);
+			if (legacy_reg == null) {
+				legacy_reg = Registry.LocalMachine.OpenSubKey(legacy_item);
+				if (legacy_reg == null) {
+					// post-1.7 test
+					reg = Registry.CurrentUser.OpenSubKey(item);
+					if (reg == null) {
+						reg = Registry.LocalMachine.OpenSubKey(item);
+					}
 				}
 			}
-			string t = (string)reg.GetValue("native");
-			reg.Close();
+			if (legacy_reg != null) {
+				t = (string)legacy_reg.GetValue("native");  // pre-1.7 key
+				legacy_reg.Close();
+			} else if (reg != null) {
+				t = (string)reg.GetValue("rootdir"); // post-1.7 key
+				reg.Close();
+			} else {
+				// Cygwin root dir not found.
+				t = "";
+				GUtil.Warning(GEnv.Frame, String.Format(GEnv.Strings.GetString("Message.CygwinUtil.KeyNotFound"), legacy_item+" and "+item));
+			}
 			return t;
 		}
 	}

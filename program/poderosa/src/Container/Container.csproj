@@ -19,8 +19,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Poderosa</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>Poderosa.GApp</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>0.0</OldToolsVersion>
