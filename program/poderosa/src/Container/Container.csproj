@@ -1,572 +1,419 @@
-<VisualStudioProject>
-    <CSHARP
-        ProjectType = "Local"
-        ProductVersion = "7.10.3077"
-        SchemaVersion = "2.0"
-        ProjectGuid = "{60BE1158-C079-4603-8BC4-1658133E8EE5}"
-    >
-        <Build>
-            <Settings
-                ApplicationIcon = "poderosa.ico"
-                AssemblyKeyContainerName = ""
-                AssemblyName = "Poderosa"
-                AssemblyOriginatorKeyFile = ""
-                DefaultClientScript = "JScript"
-                DefaultHTMLPageLayout = "Grid"
-                DefaultTargetSchema = "IE50"
-                DelaySign = "false"
-                OutputType = "WinExe"
-                PreBuildEvent = ""
-                PostBuildEvent = ""
-                RootNamespace = "Poderosa"
-                RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = ""
-            >
-                <Config
-                    Name = "Debug"
-                    AllowUnsafeBlocks = "true"
-                    BaseAddress = "285212672"
-                    CheckForOverflowUnderflow = "false"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE"
-                    DocumentationFile = ""
-                    DebugSymbols = "true"
-                    FileAlignment = "4096"
-                    IncrementalBuild = "false"
-                    NoStdLib = "false"
-                    NoWarn = ""
-                    Optimize = "false"
-                    OutputPath = "bin\Debug\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "4"
-                />
-                <Config
-                    Name = "Release"
-                    AllowUnsafeBlocks = "true"
-                    BaseAddress = "285212672"
-                    CheckForOverflowUnderflow = "false"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE"
-                    DocumentationFile = ""
-                    DebugSymbols = "true"
-                    FileAlignment = "4096"
-                    IncrementalBuild = "false"
-                    NoStdLib = "false"
-                    NoWarn = ""
-                    Optimize = "true"
-                    OutputPath = "bin\Release\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "4"
-                />
-            </Settings>
-            <References>
-                <Reference
-                    Name = "System"
-                    AssemblyName = "System"
-                    HintPath = "..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
-                />
-                <Reference
-                    Name = "System.XML"
-                    AssemblyName = "System.Xml"
-                    HintPath = "..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
-                />
-                <Reference
-                    Name = "Terminal"
-                    Project = "{F05162FD-398F-4E90-9BB1-618FE17D5718}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "System.Windows.Forms"
-                    AssemblyName = "System.Windows.Forms"
-                    HintPath = "..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
-                />
-                <Reference
-                    Name = "System.Drawing"
-                    AssemblyName = "System.Drawing"
-                    HintPath = "..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
-                />
-                <Reference
-                    Name = "Microsoft.JScript"
-                    AssemblyName = "Microsoft.JScript"
-                    HintPath = "..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\Microsoft.JScript.dll"
-                />
-                <Reference
-                    Name = "System.Data"
-                    AssemblyName = "System.Data"
-                    HintPath = "..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
-                />
-                <Reference
-                    Name = "UILib"
-                    Project = "{6673AA9D-DE8B-4202-A726-018D9207F03E}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "Granados"
-                    Project = "{AC1E2AB5-B82C-4D00-AEF0-58FF58333086}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-            </References>
-        </Build>
-        <Files>
-            <Include>
-                <File
-                    RelPath = "AboutBox.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "AboutBox.resx"
-                    DependentUpon = "AboutBox.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "AssemblyInfo.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ChangeLogDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ChangeLogDialog.resx"
-                    DependentUpon = "ChangeLogDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "ChangePassphrase.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ChangePassphrase.resx"
-                    DependentUpon = "ChangePassphrase.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "Command.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "CommandOptionPanel.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ConnectionHistory.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ConnectionOptionPanel.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ContainerCommandTarget.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ContainerInterThread.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ContainerOptions.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ContainerUtil.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Credits.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Credits.resx"
-                    DependentUpon = "Credits.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "CygwinLoginDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "CygwinLoginDialog.resx"
-                    DependentUpon = "CygwinLoginDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "DisplayOptionPanel.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "EditEnvVariable.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "EditEnvVariable.resx"
-                    DependentUpon = "EditEnvVariable.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "EditEscapeSequenceColor.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "EditEscapeSequenceColor.resx"
-                    DependentUpon = "EditEscapeSequenceColor.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "EditRenderProfile.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "EditRenderProfile.resx"
-                    DependentUpon = "EditRenderProfile.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "EnvVariable.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "EnvVariable.resx"
-                    DependentUpon = "EnvVariable.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "GApp.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "GDialogBar.cs"
-                    SubType = "UserControl"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "GDialogBar.resx"
-                    DependentUpon = "GDialogBar.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "GenericOptionPanel.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "GFontDialog.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "GFontDialog.resx"
-                    DependentUpon = "GFontDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "GFrame.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "GFrame.resx"
-                    DependentUpon = "GFrame.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "GIcons.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "GStatusBar.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "HotKey.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "IconList.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "IconList.resx"
-                    DependentUpon = "IconList.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "icons.resx"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "InputBox.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "InputBox.resx"
-                    DependentUpon = "InputBox.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "KeyGenWizard.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "KeyGenWizard.resx"
-                    DependentUpon = "KeyGenWizard.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "KnownHosts.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "LineFeedStyleDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "LineFeedStyleDialog.resx"
-                    DependentUpon = "LineFeedStyleDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "LoginDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "LoginDialog.resx"
-                    DependentUpon = "LoginDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "LogNoteForm.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "LogNoteForm.resx"
-                    DependentUpon = "LogNoteForm.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "MacroEnv.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "MacroExec.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "MacroInterface.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "MacroList.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "MacroList.resx"
-                    DependentUpon = "MacroList.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "MacroModule.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "MacroTrace.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "MacroTrace.resx"
-                    DependentUpon = "MacroTrace.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "ModuleProperty.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ModuleProperty.resx"
-                    DependentUpon = "ModuleProperty.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "MultiPaneControl.cs"
-                    SubType = "UserControl"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "MultiPaneControl.resx"
-                    DependentUpon = "MultiPaneControl.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "OptionDialog.cs"
-                    SubType = "UserControl"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "OptionDialog.resx"
-                    DependentUpon = "OptionDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "PeripheralOptionPanel.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "RCollectionUtil.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SendingLargeText.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SendingLargeText.resx"
-                    DependentUpon = "SendingLargeText.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "SerialConfig.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SerialConfig.resx"
-                    DependentUpon = "SerialConfig.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "SerialLoginDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SerialLoginDialog.resx"
-                    DependentUpon = "SerialLoginDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "ServerInfo.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ServerInfo.resx"
-                    DependentUpon = "ServerInfo.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "SSHOptionPanel.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SSHShortcutLoginDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SSHShortcutLoginDialog.resx"
-                    DependentUpon = "SSHShortcutLoginDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "strings.resx"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "strings_ja.resx"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "TabBar.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "TabBar.resx"
-                    DependentUpon = "TabBar.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "TerminalOptionPanel.cs"
-                    SubType = "Component"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ThreeButtonMessageBox.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ThreeButtonMessageBox.resx"
-                    DependentUpon = "ThreeButtonMessageBox.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "WelcomeDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "WelcomeDialog.resx"
-                    DependentUpon = "WelcomeDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "XModemDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "XModemDialog.resx"
-                    DependentUpon = "XModemDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-            </Include>
-        </Files>
-    </CSHARP>
-</VisualStudioProject>
-
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60BE1158-C079-4603-8BC4-1658133E8EE5}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>poderosa.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Poderosa</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Poderosa</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.JScript">
+      <Name>Microsoft.JScript</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Name>UILib</Name>
+      <Project>{6673AA9D-DE8B-4202-A726-018D9207F03E}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Granados\Granados.csproj">
+      <Name>Granados</Name>
+      <Project>{AC1E2AB5-B82C-4D00-AEF0-58FF58333086}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Terminal\Terminal.csproj">
+      <Name>Terminal</Name>
+      <Project>{F05162FD-398F-4E90-9BB1-618FE17D5718}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChangeLogDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassphrase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Command.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommandOptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConnectionHistory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConnectionOptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContainerCommandTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContainerInterThread.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContainerOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContainerUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CygwinLoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisplayOptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EditEnvVariable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEscapeSequenceColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditRenderProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnvVariable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GApp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GDialogBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GenericOptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GFontDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GIcons.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GStatusBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HotKey.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IconList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyGenWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KnownHosts.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LineFeedStyleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogNoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MacroEnv.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MacroExec.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MacroInterface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MacroList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MacroModule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MacroTrace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiPaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeripheralOptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RCollectionUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SendingLargeText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialLoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SSHOptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SSHShortcutLoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TerminalOptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThreeButtonMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WelcomeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XModemDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeLogDialog.resx">
+      <DependentUpon>ChangeLogDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassphrase.resx">
+      <DependentUpon>ChangePassphrase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Credits.resx">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CygwinLoginDialog.resx">
+      <DependentUpon>CygwinLoginDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEnvVariable.resx">
+      <DependentUpon>EditEnvVariable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEscapeSequenceColor.resx">
+      <DependentUpon>EditEscapeSequenceColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditRenderProfile.resx">
+      <DependentUpon>EditRenderProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnvVariable.resx">
+      <DependentUpon>EnvVariable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GDialogBar.resx">
+      <DependentUpon>GDialogBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GFontDialog.resx">
+      <DependentUpon>GFontDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GFrame.resx">
+      <DependentUpon>GFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IconList.resx">
+      <DependentUpon>IconList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="icons.resx" />
+    <EmbeddedResource Include="InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyGenWizard.resx">
+      <DependentUpon>KeyGenWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LineFeedStyleDialog.resx">
+      <DependentUpon>LineFeedStyleDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginDialog.resx">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogNoteForm.resx">
+      <DependentUpon>LogNoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MacroList.resx">
+      <DependentUpon>MacroList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MacroTrace.resx">
+      <DependentUpon>MacroTrace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuleProperty.resx">
+      <DependentUpon>ModuleProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiPaneControl.resx">
+      <DependentUpon>MultiPaneControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionDialog.resx">
+      <DependentUpon>OptionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendingLargeText.resx">
+      <DependentUpon>SendingLargeText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SerialConfig.resx">
+      <DependentUpon>SerialConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SerialLoginDialog.resx">
+      <DependentUpon>SerialLoginDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerInfo.resx">
+      <DependentUpon>ServerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SSHShortcutLoginDialog.resx">
+      <DependentUpon>SSHShortcutLoginDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="strings.resx" />
+    <EmbeddedResource Include="strings_ja.resx" />
+    <EmbeddedResource Include="TabBar.resx">
+      <DependentUpon>TabBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeButtonMessageBox.resx">
+      <DependentUpon>ThreeButtonMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WelcomeDialog.resx">
+      <DependentUpon>WelcomeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XModemDialog.resx">
+      <DependentUpon>XModemDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
