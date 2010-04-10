@@ -1,12 +1,4 @@
-function isLocalSite(url, host)
-{
-  if( dnsDomainIs(host, "localhost") )
-    return true;
-  return false;
-}
 
-function isFreeSite(url, host)
-{
   if(
       dnsDomainIs(host, "gucas.ac.cn") ||
       dnsDomainIs(host, "acm.org") 
@@ -67,26 +59,6 @@ function isBlockedSite(url, host)
       dnsDomainIs(host, "zh.wikipedia.org")
     )
     return true;
-  if( dnsDomainIs(host, "www.google.com") ) {
-    if ( 
-         !isIPV6(dnsResolve(www.google.com)) &&
-         shExpMatch(url, "*android.com*") ||
-         shExpMatch(url, "*blogger.com*") ||
-         shExpMatch(url, "*blogspot.com*") ||
-         shExpMatch(url, "*friendfeed.com*") ||
-         shExpMatch(url, "*flickr.com*") ||
-         shExpMatch(url, "*mail-archive.com*") ||
-         shExpMatch(url, "*markmail.com*") ||
-         shExpMatch(url, "*osdir.com*") ||
-         shExpMatch(url, "*samba.org*") ||
-         shExpMatch(url, "*security*") ||
-         shExpMatch(url, "*technorati.com*") ||
-         shExpMatch(url, "*wordpress.com*") ||
-         shExpMatch(url, "*youtube.com*") ||
-         shExpMatch(url, "*zh.wikipedia.org*")
-      )
-      return true;
-  }
   return false;
 }
 
@@ -122,13 +94,9 @@ function isIPV6(addr)
 function FindProxyForURL(url, host)
 {
   var NO_Proxy   = 'DIRECT';
-  var HTTP_Proxy = 'PROXY localhost:11110; DIRECT';
-  var GFW_Proxy  = 'SOCKS5 localhost:9090; DIRECT';
-  var LIB_Proxy  = 'PROXY 159.226.100.43:8918; DIRECT';
-  //GFW_Proxy   = 'PROXY localhost:9090';
-  //HTTP_Proxy  = "SOCKS localhost:11111";
-  //HTTP_Proxy = GFW_Proxy;
-  //HTTP_Proxy = NO_Proxy;
+  var HTTP_Proxy = 'PROXY localhost:11110';
+  var GFW_Proxy  = 'SOCKS5 localhost:9090';
+  var LIB_Proxy  = 'PROXY 159.226.100.43:8918';
   LIB_Proxy = HTTP_Proxy;
 
   if(isFreeSite(url, host) || isLocalSite(url, host)) {
