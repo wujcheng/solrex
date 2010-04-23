@@ -548,6 +548,9 @@ msgstr "首页"
 msgid "Type text to search here..."
 msgstr "搜索..."
 
+msgid "Short link"
+msgstr "短网址"
+
 #~ msgid "Author: "
 #~ msgstr "作者: "
 
