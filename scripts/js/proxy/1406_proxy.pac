@@ -6,11 +6,6 @@ function isLocalHost(host)
     return false;
 }
 
-function isFreeHost(host)
-{
-  return false;
-}
-
 function isBlockedHost(host)
 {
   if(
@@ -72,17 +67,6 @@ function isBlockedURL(url, host)
       return true;
   }
   return false;
-}
-
-function isLocalIP(addr)
-{
-  if( isInNet(addr,"127.0.0.0","255.0.0.0") ||
-      isInNet(addr,"10.0.0.0","255.0.0.0") ||
-      isInNet(addr,"192.168.0.0","255.255.0.0") ||
-      isInNet(addr,"172.16.0.0","255.255.0.0") )
-    return true;
-  else
-    return false;
 }
 
 function isFreeIP(addr)
@@ -595,11 +579,6 @@ function isFreeIP(addr)
     return false;
 }
 
-function isBlockedIP(addr)
-{
-  return false;
-}
-
 function isIPV6(addr)
 {
   if( shExpMatch(addr, "*:*") )
@@ -611,27 +590,24 @@ function isIPV6(addr)
 function FindProxyForURL(url, host)
 {
   var direct      = "DIRECT";
-  var labProxy    = "PROXY 166.111.139.21:8080";
-  var tohrProxy   = "PROXY localhost:9090";
-  var torProxy    = "SOCKS localhost:9050";
+  var httpProxy   = "PROXY 162.105.71.47:8080";
+  var gfwProxy    = httpProxy;
 
-  if(isFreeHost(host) || isLocalHost(host)) {
+  if(isLocalHost(host)) {
     return direct;
   } else if(isBlockedURL(url, host) || isBlockedHost(host)) {
-    return tohrProxy;
+    return gfwProxy;
   }
 
   if(!isResolvable(host)) {
-    return hHttpProxy;
+    return httpProxy;
   }
 
   var IpAddr = dnsResolve(host);
 
-  if(isFreeIP(IpAddr) || isLocalIP(IpAddr) || isIPV6(IpAddr)) {
+  if(isFreeIP(IpAddr) || isIPV6(IpAddr)) {
     return direct;
-  } else if(isBlockedIP(IpAddr)) {
-    return tohrProxy;
-  } else {
-    return labProxy;
   }
+
+  return httpProxy;
 }
