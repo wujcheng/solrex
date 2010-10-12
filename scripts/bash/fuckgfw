@@ -1,0 +1,9 @@
+#!/usr/bin/expect -f
+set timout 5
+spawn ssh -C -f -N -g -o PreferredAuthentications=password -D 9090
+username@example.com
+expect {
+	"assword:" {
+		send "password\r"
+	}
+}
