@@ -78,10 +78,10 @@ input[type=submit]
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
 pre {
-	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-family: "Courier New","DejaVu Sans Mono",Monospace;
 }
 code {
-	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-family: "Courier New","DejaVu Sans Mono",Monospace;;
 }
 
 
@@ -178,8 +178,7 @@ ins {
 	text-decoration: none;
 }
 blockquote {
-	font-style: italic;
-	padding: 0 3em;
+	background:#F4F5F7;
 }
 blockquote cite,
 blockquote em,
@@ -187,11 +186,11 @@ blockquote i {
 	font-style: normal;
 }
 pre {
-	background: #f7f7f7;
-	color: #222;
-	line-height: 18px;
-	margin-bottom: 18px;
-	padding: 1.5em;
+	background:#F4F5F7;
+	border:1px dashed #CCC;
+	padding:8px 8px 8px 8px;
+	margin:5px 0;
+	line-height: 145%;
 }
 abbr,
 acronym {
@@ -616,12 +615,14 @@ div.menu li {
 	font-size: 10px;
 }
 .entry-content blockquote {
-	color:#a1a1a1;
-	font-style:normal;
-	font-size:1.5em;
-	line-height:1.5em;
-	padding:10px 55px;
-	background:#e9e9e9 url(library/images/blockquote.png) no-repeat 3% 0;
+	background:#F4F5F7 url(library/images/blockquote.png) no-repeat 1% 0;
+	border:1px dashed #CCC;
+	padding:16px 8px 8px 16px;
+	margin:5px 0;
+	font-family: "Courier New","DejaVu Sans Mono",Monospace;
+	font-size: 12px;
+	line-height: 145%;
+	color:#686868;
 }
 .entry-content blockquote.left {
 	float: left;

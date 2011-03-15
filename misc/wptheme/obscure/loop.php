@@ -37,7 +37,10 @@
 	 * the rest of the loop that is shared.
 	 *
 	 * Without further ado, the loop:
-	 */ ?>
+	 */ 
+	$top3 = 0;
+?>
+
 <?php while ( have_posts() ) : the_post(); ?>
 
 <?php /* How to display posts in the Gallery category. */ ?>
@@ -97,7 +100,12 @@
                 <img class="alignleft" src="<?php bloginfo("template_directory"); ?>/timthumb.php?src=<?php echo $image[0]; ?>&w=150&h=150&zc=1" border="0" />
 				<?php 
 					endif;
-					the_excerpt( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'obscure' ) ); ?>
+					if ($top3 < 3) {
+						the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'obscure' ) );
+						$top3++;
+					} else {
+						the_excerpt( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'obscure' ) );
+					}?>
 			</div><!-- .entry-summary -->
 	<?php else : ?>
 			<div class="entry-content">

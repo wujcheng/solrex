@@ -256,18 +256,22 @@ add_filter('wp_page_menu','obscure_proper_containerclass');
  * Add post and comment rss link to the first <ul> occurence in wp_page_menu and wp_nav_menu ( top-menu ).
  */
 function obscure_add_rsslink($ulelement) {
-	return preg_replace('/class="sf-menu">/', 'class="sf-menu"><li class="rss_link"><a href="'.get_bloginfo('comments_rss2_url').'">Comments</a></li><li class="rss_link"><a href="'.get_bloginfo('rss2_url').'">Posts</a></li>', $ulelement, 1);
+	$rss_link=get_option("obscure_syndication");
+	if ($rss_link == "") {
+		$rss_link=get_bloginfo('rss2_url');
+	}
+	return preg_replace('/class="sf-menu">/', 'class="sf-menu"><li class="rss_link"><a href="'.get_bloginfo('comments_rss2_url').'">Comments</a></li><li class="rss_link"><a href="'.$rss_link.'">Posts</a></li>', $ulelement, 1);
 }
 add_filter('wp_nav_menu','obscure_add_rsslink');
 add_filter('wp_page_menu','obscure_add_rsslink');
 
 /**
- * Sets the post excerpt length to 40 characters.
+ * Sets the post excerpt length to 8 white spaces.
  *
  * @return int
  */
 function obscure_excerpt_length( $length ) {
-	return 80;
+	return 8;
 }
 add_filter( 'excerpt_length', 'obscure_excerpt_length' );
 
