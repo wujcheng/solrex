@@ -45,7 +45,7 @@ input,
 textarea,
 .page-title span,
 .pingback a.url {
-	font-family: Georgia, "Bitstream Charter", serif;
+	font-family: Georgia,"Bitstream Charter","WenQuanYi Micro Hei","Microsoft YaHei",serif;
 }
 
 h3#comments-title,
@@ -75,13 +75,13 @@ h3#reply-title,
 .wp-caption-text,
 input[type=submit]
 {
-	font-family: Georgia, "Times New Roman", Times, serif;
+	font-family: Georgia,"Times New Roman",Times,"WenQuanYi Micro Hei","Microsoft YaHei",serif;
 }
 pre {
-	font-family: "Courier New","DejaVu Sans Mono",Monospace;
+	font-family: "Courier New","DejaVu Sans Mono","WenQuanYi Micro Hei Mono","Microsoft YaHei",Monospace;
 }
 code {
-	font-family: "Courier New","DejaVu Sans Mono",Monospace;;
+	font-family: "Courier New","DejaVu Sans Mono","WenQuanYi Micro Hei Mono","Microsoft YaHei",Monospace;;
 }
 
 
@@ -179,6 +179,7 @@ ins {
 }
 blockquote {
 	background:#F4F5F7;
+	font-family: "Courier New","DejaVu Sans Mono","WenQuanYi Micro Hei Mono","Microsoft YaHei",Monospace;
 }
 blockquote cite,
 blockquote em,
@@ -384,14 +385,14 @@ div.menu li {
 	background:url(library/images/feed.png) no-repeat 10px 50%;
 }
 #top-menu li.rss_link a:hover { background:url(library/images/feed2.png) no-repeat 10px 50%; }
-#top-menu a { font-size:10px; text-transform:uppercase; line-height:30px; padding-left:20px; padding-right:20px; color:#a4a5a1; text-shadow:#000 0px 1px 1px; }
+#top-menu a { font-size:12px; text-transform:uppercase; line-height:30px; padding-left:20px; padding-right:20px; color:#a4a5a1; text-shadow:#000 0px 1px 1px; }
 #top-menu ul ul { top:30px; }
 #top-menu ul ul a:hover { background-color:#e1e2df; }
 #bottom-menu {
 	clear:both;
 	height:40px;
 }
-#bottom-menu a { font-size:10px; text-transform:uppercase; line-height:40px; padding-left:20px; padding-right:20px; color:#e1e2df; text-shadow:#000 0px 1px 1px; }
+#bottom-menu a { font-size:12px; text-transform:uppercase; line-height:40px; padding-left:20px; padding-right:20px; color:#e1e2df; text-shadow:#000 0px 1px 1px; }
 #bottom-menu ul li { background:url(library/images/li-bg.jpg) no-repeat right center; }
 #bottom-menu ul ul { top:40px; border-right:1px solid #545756; }
 #bottom-menu ul ul a { background-color:#4a4d4c; color:#e1e2df; border-left:1px solid #545756;
@@ -438,7 +439,7 @@ div.menu li {
 #content input,
 #content textarea {
 	color: #555;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 20px;
 }
 #content p,
@@ -540,9 +541,8 @@ div.menu li {
 	color:#171615;
 	font-size: 25px;
 	line-height: 1.3em;
-	font-weight: bold;
 	margin-bottom: 0;
-	font-family: 'Arial', 'Trebuchet MS';
+	font-family: 'Arial','Trebuchet MS','WenQuanYi Micro Hei','Microsoft YaHei',serif;
 	text-transform:uppercase; 
 	text-shadow: #fff 1px 1px 1px;
 	width:497px;
@@ -619,7 +619,6 @@ div.menu li {
 	border:1px dashed #CCC;
 	padding:16px 8px 8px 16px;
 	margin:5px 0;
-	font-family: "Courier New","DejaVu Sans Mono",Monospace;
 	font-size: 12px;
 	line-height: 145%;
 	color:#686868;
@@ -1319,8 +1318,7 @@ h3#reply-title {
 }
 .widget-title {
 	color: #222;
-	font-weight:normal;
-	font-size:22px;
+	font-size:20px;
 	text-shadow:#FFF 1px 1px 1px;
 	padding-bottom:10px;
 }
