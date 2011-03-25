@@ -218,7 +218,7 @@ function obscure_head_scripts() {
 	
 	// Inset custom header script - via theme option
 	if(get_option("obscure_scripts_header") <> "") {
-		$scripts .= get_option("obscure_scripts_header") . "\n";
+		$scripts .= stripslashes(get_option("obscure_scripts_header")) . "\n";
 	}
 	
 	// Print filtered scripts
