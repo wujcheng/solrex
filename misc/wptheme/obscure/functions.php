@@ -196,15 +196,7 @@ function obscure_head_scripts() {
 	$scriptdir_start .= '/library/scripts/';
 	$scriptdir_end = '"></script>';
 	$scripts .= $scriptdir_start . 'jquery.min.js' . $scriptdir_end . "\n";
-	$scripts .= $scriptdir_start . 'common.js' . $scriptdir_end . "\n";
-	$scripts .= $scriptdir_start . 'hoverIntent.js' . $scriptdir_end . "\n";
-	$scripts .= $scriptdir_start . 'superfish.js' . $scriptdir_end . "\n";
-	$scripts .= $scriptdir_start . 'supersubs.js' . $scriptdir_end . "\n";
-	$dropdown_options = $scriptdir_start . 'dropdowns.js' . $scriptdir_end . "\n";
-	$scripts = $scripts . apply_filters('dropdown_options', $dropdown_options);
-	$scripts .= $scriptdir_start . 'jquery.easing.min.js' . $scriptdir_end . "\n";
-	$scripts .= $scriptdir_start . 'jquery.lavalamp.js' . $scriptdir_end . "\n";
-	$scripts .= $scriptdir_start . 'jquery.cycle.js' . $scriptdir_end . "\n";
+	$scripts .= $scriptdir_start . 'third.js' . $scriptdir_end . "\n";
 	$scripts .= '<script type="text/javascript">' . "\n";
 	$scripts .= '//<![CDATA[' . "\n";
 	$scripts .= 'jQuery.noConflict();' . "\n";
