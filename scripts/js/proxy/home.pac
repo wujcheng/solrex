@@ -2,6 +2,7 @@
 function isBlockedSite(url, host)
 {
 	if(	dnsDomainIs(host, "2mdn.net") ||
+		dnsDomainIs(host, "4sq.com") ||
 		dnsDomainIs(host, "airccse.org") ||
 //		dnsDomainIs(host, "amazon.com") ||
 		dnsDomainIs(host, "android.com") ||
@@ -21,12 +22,16 @@ function isBlockedSite(url, host)
 		dnsDomainIs(host, "fb.me") ||
 		dnsDomainIs(host, "feedproxy.google.com") ||
 		dnsDomainIs(host, "ff.im") ||
+		dnsDomainIs(host, "flickr.com") ||
+		dnsDomainIs(host, "foursquare.com") ||
 		dnsDomainIs(host, "friendfeed.com") ||
+		dnsDomainIs(host, "fusion.google.com") ||
 		dnsDomainIs(host, "golang.org") ||
 		dnsDomainIs(host, "groups.google.com") ||
 		dnsDomainIs(host, "hecaitou.net") ||
 		dnsDomainIs(host, "img.ly") ||
 		dnsDomainIs(host, "mail-archive.com") ||
+		dnsDomainIs(host, "mail.google.com") ||
 		dnsDomainIs(host, "markmail.org"))
 		return true;
 	if(dnsDomainIs(host, "mitbbs.com") ||
@@ -50,6 +55,7 @@ function isBlockedSite(url, host)
 		dnsDomainIs(host, "youtube.com") ||
 		dnsDomainIs(host, "wikileaks.org") ||
 		dnsDomainIs(host, "wikimedia.org") ||
+		dnsDomainIs(host, "www.google.com") ||
 		dnsDomainIs(host, "zh.wikipedia.org"))
 		return true;
 	return false;
@@ -63,7 +69,7 @@ function isBlockedIP(addr)
 function FindProxyForURL(url, host)
 {
 	var NO_Proxy	 = 'DIRECT';
-	var GFW_Proxy	= 'SOCKS5 127.0.0.1:9090';
+	var GFW_Proxy	= 'SOCKS 127.0.0.1:9090';
 
 	if(isBlockedSite(url, host)) {
 		return GFW_Proxy;
