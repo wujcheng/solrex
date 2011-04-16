@@ -99,7 +99,6 @@ Unabbreviate_journal_names=展开期刊名称
 Undo=撤销_(&U)
 Unmark_all=撤销所有高亮标记_(&L)
 Unmark_entries=撤销选中高亮标记_(&N)
-Unpack_EndNote_filter_set=解开_&EndNote_filter_set
 View=视图_(&V)
 Web_search=Web_搜索
 Import_into_new_database=导入到新数据库
@@ -137,10 +136,13 @@ Increase_table_font_size=放大列表字体_(&I)
 Decrease_table_font_size=缩小列表字体_(&D)
 Forward=前进
 Back=后退
-Synchronize_file_links=自动同步所有文件链接
-
-Set/clear/rename_fields=设置/清除/重命名_域
 
 Manage_plugins=管理插件
 Look_up_full_text_document=查找完整文档
-Push_entries_to_external_application_(LyX/Kile)=推送选中记录到外部程序_(LyX/Kile)
+
+Set/clear/rename_fields=设置/清除/重命名_域
+
+Search_ScienceDirect=搜索_ScienceDirect
+Mark_specific_color=用指定颜色标记_(&a)
+Resolve_duplicate_BibTeX_keys=处理重复的_BibTeX_键值
+Unpack_EndNote_filter_set=解开_EndNote_过滤器集

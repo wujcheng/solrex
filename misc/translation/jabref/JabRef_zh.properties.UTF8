@@ -25,8 +25,6 @@
 <field_name>=<域名称>
 <HTML>Could_not_find_file_'%0'<BR>linked_from_entry_'%1'</HTML>=<HTML>无法找到记录'%1'链接的文件'%0'</HTML>
 
-<HTML>Unpack_the_zip_file_containing_import/export_filters_for_Endnote,<BR>for_optimal_interoperability_with_JabRef</HTML>=<HTML>打开解压包含_Endnote_导入/导出过滤器的_zip_文件<BR>（以最大的与_JabRef_的兼容性）</HTML>
-
 <no_field>=<没有域>
 
 <select>=<选择>
@@ -104,7 +102,7 @@ All_subgroups_(recursively)=所有子分组(递归地)
 Allow_editing_in_table_cells=Allow_editing_in_table_cells
 An_Error_occurred_while_fetching_from_OAI2_source_(%0)\:=当从_OAI2_源_(%0)_抓取时发生了一个错误:
 An_Exception_ocurred_while_accessing_'%0'=当访问_'%0'_时发生了一个异常
-An_SAXException_ocurred_while_parsing_'%0':=当解析'%0'时发生了一个_SAXException:
+An_SAXException_ocurred_while_parsing_'%0'\:=当解析'%0'时发生了一个_SAXException:
 
 and=和
 and_inside_the_JabRef-jar\:=和_JabRef-jar_中\:
@@ -120,7 +118,7 @@ Append_contents_from_a_BibTeX_database_into_the_currently_viewed_database=从一
 
 Append_database=追加数据库
 
-append_the_selected_text_to_bibtex_key=追加选中的文本到_BibTeX_键
+append_the_selected_text_to_bibtex_key=追加选中的文本到_BibTeX_键值
 Application=应用程序
 
 Apply=应用
@@ -163,7 +161,7 @@ Automatically_create_groups=自动创建分组
 
 Automatically_create_groups_for_database.=自动为数据库创建分组。
 
-Automatically_created_groups=完成自动创建分组
+Automatically_created_groups=自动创建的分组
 
 Automatically_hide_groups_interface_when_switching_to_a_database_that_contains_no_groups=当切换到一个不包含分组的数据库时自动隐藏分组界面
 
@@ -188,8 +186,6 @@ Available_export_formats=可用的导出格式
 Available_fields=可用的_BibTeX_域
 
 Available_import_formats=可用的导入格式
-
-Background_color_for_marked_entries=高亮记录的背景颜色
 
 Background_color_for_optional_fields=可选域的背景颜色
 
@@ -266,7 +262,7 @@ Changed_font_settings=已修改字体设置
 
 Changed_language_settings=已修改语言设置
 
-Changed_look_and_feel_settings=已修改_look_and_feel_设置
+Changed_look_and_feel_settings=已修改视觉效果类_(look_and_feel)_设置
 
 Changed_preamble=已修改导言区_(preamble)
 
@@ -318,7 +314,7 @@ Collapse_subtree=折叠子树
 
 Color_codes_for_required_and_optional_fields=列表记录项的可选域和必选域用不同颜色显示
 
-Color_for_marking_incomplete_entries=不完整记录的颜色
+Color_for_marking_incomplete_entries=标记不完整记录的颜色
 
 Column_width=列宽
 
@@ -443,7 +439,7 @@ Default_encoding=默认编码
 
 Default_grouping_field=默认分组依据域
 
-Default_look_and_feel=默认_look_and_feel
+Default_look_and_feel=默认视觉效果类_(look_and_feel)
 
 Default_pattern=默认模式
 
@@ -516,7 +512,6 @@ Do_not_show_splash_window_at_startup=不显示启动画面
 Do_not_show_these_options_in_the_future=以后不要再显示这些选项
 
 Do_not_wrap_the_following_fields_when_saving=保存时不要对下列域添加换行符
-Do_not_write_the_following_fields_to_XMP_Metadata:=不要将以下域写入_XMP_元数据:
 Do_not_write_the_following_fields_to_XMP_Metadata\:=不要将以下域写入_XMP_元数据:
 
 Do_you_want_JabRef_to_do_the_following_operations?=您希望_JabRef_做以下操作吗？
@@ -609,7 +604,6 @@ entry=记录
 
 Entry_editor=记录编辑器
 
-Entry_has_no_citekey=记录没有引用键值
 
 Entry_in_current_database=当前数据库中的记录
 
@@ -634,7 +628,7 @@ Error_converting_Bibtex_to_XMP\:_%0=转换_Bibtex_到_XMP_错误:_%0
 Error_converting_XMP_to_'%0'...=转换_XMP_到_'%0'_错误...
 Error_exporting_to_clipboard=导出到剪贴板错误
 ##Error:_check_your_External_viewer_settings_in_Preferences=错误：请检查“首选项”中的外部查看器设置
-Error_in_field=Error_in_field
+Error_in_field=域中的错误
 Error_in_starting_plug-in_system._Starting_without,_but_some_functionality_may_be_missing.=启动插件系统时发生错误，忽略之，不过某些功能将不可用。
 Error_occured_when_parsing_entry=分析记录时发生错误
 
@@ -655,7 +649,7 @@ Exceptions=异常
 Existing_file=已有文件
 
 exists._Overwrite_file?=已存在，覆盖文件？
-exists.Overwrite?=已存在，覆盖？
+exists._Overwrite?=已存在，覆盖？
 
 Expand_subtree=展开子树
 
@@ -713,7 +707,7 @@ Field_names_are_not_allowed_to_contain_white_space_or_the_following_characters=�
 Field_sizes=域大小
 Field_to_filter=要过滤的域
 
-Field_to_group_by=要分组的域
+Field_to_group_by=用来分组的域
 
 Fields=域
 
@@ -726,8 +720,7 @@ File_'%0'_is_already_open.=文件_'%0'_已经被打开。
 File_'%0'_not_found=无法找到文件_'%0'
 
 File_changed=文件已改变
-File_directory=文件目录
-File_directory_is_'%0':=文件目录是_'%0':
+File_directory_is_'%0'\:=文件目录是_'%0':
 
 File_directory_is_not_set_or_does_not_exist!=文件目录未设置或该目录不存在！
 File_download=文件下载
@@ -772,7 +765,7 @@ FontSelector=字体下拉菜单项
 
 for=为
 
-Format_of_author_and_editor_names=作者和编辑的姓名格式
+Format_of_author_and_editor_names=作者和编者的姓名格式
 Format_String=格式化字串
 
 Format_used=使用的格式
@@ -1020,7 +1013,7 @@ Load_session=载入会话
 Loading_session...=载入会话...
 localhost=localhost
 
-Look_and_feel=Look_and_feel_(Java 界面类)
+Look_and_feel=视觉效果类_(look_and_feel，即_Java_界面类)
 Looking_for_pdf...=搜索_pdf...
 lower=小写全部
 Main_file_directory=文件主目录
@@ -1079,7 +1072,6 @@ Move_down=下移
 
 Move_entries_in_group_selection_to_the_top=移动选中分组的记录到顶部
 Move_external_links_to_'file'_field=移动外部链接到_'file'_域
-Move_file_to_file_directory=移动文件到文件目录
 Move_files_to_file_directory.=移动文件到文件目录。
 
 move_group=移动分组
@@ -1099,8 +1091,6 @@ Name=名字
 Name_formatter=姓名格式化器
 
 Natbib_style=Natbib_格式
-
-Native_file_dialog=本地文件对话框
 
 nested_aux_files=nested_aux_文件
 
@@ -1178,7 +1168,7 @@ Not_saved_(empty_session)=没有保存(空会话)
 
 Note_that_the_entry_causing_the_problem_has_been_selected.=注意：导致此问题的记录已经被选中。
 
-Note_that_you_must_specify_the_fully_qualified_class_name_for_the_look_and_feel,=注意：您必须为_look_and_feel_明确指定完整的经过验证的类名称，
+Note_that_you_must_specify_the_fully_qualified_class_name_for_the_look_and_feel,=注意：您必须为视觉效果类_(look_and_feel)_明确指定完整的经过验证的类名称，
 
 Nothing_to_redo=无可重做
 
@@ -1265,8 +1255,6 @@ Paste_from_clipboard=从剪贴板粘贴
 Pasted=完成粘贴
 
 Path_to_%0_not_defined=到_%0_的路径未定义
-
-Path_to_HTML_viewer=到_HTML_查看器的路径
 
 Path_to_LatexEditor_(LEd.exe)=到_LatexEditor_(LEd.exe)_的路径
 
@@ -1428,7 +1416,6 @@ Removed_group_"%0".=已移除分组_"%0"。
 Removed_group_"%0"_and_its_subgroups.=已移除分组_"%0"_和它的子分组。
 
 Removed_string=已移除简写字串
-Rename_to_match_citekey=重命名以匹配引用键值
 
 Renamed_string=重命名字符串
 
@@ -1482,9 +1469,7 @@ Save_failed_during_backup_creation=保存失败，无法创建备份
 
 Save_failed_while_committing_changes=保存失败，无法提交修改
 
-Save_in_default_table_sort_order=以缺省的列表排序顺序保存
-
-Save_ordered_by_author/editor/year=以“作者/编辑/年份”顺序保存
+Save_ordered_by_author/editor/year=以“作者/编者/年份”顺序保存
 Save_selected_as_...=选中记录另存为...
 
 Saved_database=已保存数据库
@@ -1865,7 +1850,7 @@ Use_default_viewer=使用默认查看器
 Use_inspection_window_also_when_a_single_entry_is_imported.=仅导入一条记录时也打开检视窗口显示该记录
 Use_native_file_dialog=使用本地文件对话框
 
-Use_other_look_and_feel=使用其它_look_and_feel_(Java_界面类)
+Use_other_look_and_feel=使用其它视觉效果类_(look_and_feel,_即_Java_界面类)
 Use_Regular_Expression_Search=使用正则表达式搜索
 
 Use_regular_expressions=使用正则表达式
@@ -1873,8 +1858,6 @@ Use_regular_expressions=使用正则表达式
 Use_the_following_delimiter_character(s)=使用下面的分隔符
 User_does_not_have_sufficient_privileges.\n=用户没有足够的权限。\n
 Username_\:=用户名:
-
-Uses_default_application=使用默认应用程序
 
 Value_cleared_externally=内容从外部被清除
 
@@ -1929,15 +1912,13 @@ XMP_metadata=XMP_元数据
 XMP_metadata_found_in_PDF\:_%0=PDF_中的_XMP_元数据:_%0
 
 You_have_changed_the_language_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了语言设置。为了该更改生效，您必须重新启动_Jabref。
-You_have_changed_the_look_and_feel_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了外观设置。为了使该更改生效，您必须重新启动_Jabref。
+You_have_changed_the_look_and_feel_setting._You_must_restart_JabRef_for_this_to_come_into_effect.=您已经改变了视觉效果类设置。为了使该更改生效，您必须重新启动_Jabref。
 
 You_have_cleared_this_field._Original_value=您清除了这个域，原来的值
 
 You_have_entered_an_invalid_search_'%0'.=您输入了一个非法的查询_'%0'.
 
 You_must_choose_a_file_name_to_store_journal_abbreviations=您必须选择一个文件名来存储期刊名称缩写
-
-You_must_enter_an_integer_value_in_the_text_field_for=您必须在文本域中输入一个整数以使
 
 You_must_fill_in_a_name_for_the_entry_type.=您必须为该类型输入一个名称.
 
@@ -1950,7 +1931,7 @@ You_must_set_both_BibTeX_key_and_%0_directory=您必须设置_BibTeX_键值和%0
 Your_new_key_bindings_have_been_stored.=您的热键绑定已经被存储。
 
 
-The_following_fetchers_are_available:=下面列出的是可用的抓取器:
+The_following_fetchers_are_available\:=下面列出的是可用的抓取器:
 Could_not_find_fetcher_'%0'=无法找到抓取器_'%0'
 Running_Query_'%0'_with_fetcher_'%1'.=使用抓取器'%1'执行请求'%0'
 Please_wait!=请稍候！
@@ -2002,7 +1983,6 @@ Search_JSTOR=搜索_JSTOR
 Attempting_SQL_import...=尝试_SQL_导入...
 BibO_RDF=BibO_RDF
 HTML_parser=HTML_解析
-RIS_importer=RIS_导入
 
 Move_the_keyboard_focus_to_the_entry_table=将键盘焦点移动到记录列表
 MIME_type=MIME_类型
@@ -2011,12 +1991,11 @@ This_feature_lets_new_files_be_opened_or_imported_into_an_already_running_instan
 Note_that_these_settings_are_used_for_the_legacy_<b>pdf</b>_and_<b>ps</b>_fields_only.<br>For_most_users,_setting_the_<b>Main_file_directory</b>_above_should_be_sufficient.=注意：这些设置主要应用于旧式的_<b>pdf</b>_和_<b>ps</b>_域，这意味着如果您不知道它是什么意思，<BR>您可以忽视该选项。对大部分用户来说，设置上面的“主文件目录”就足够了。
 Legacy_file_fields=旧式文件域
 
-%0_entries_found._To_reduce_server_load,_only_%1_will_be_downloaded.=共找到_%0_条相关记录，为减轻服务器负担，只下载其中的_%1_条。
 This_makes_JabRef_look_up_each_%0_extension_and_check_if_the_file_exists._If_not,_you_will_be_given_options<BR>to_resolve_the_problem.=这将使_JabRef_依据%0扩展名查找文件是否存在，如果找不到，JabRef_将提供给您选项来解决这个问题。
-Run_Fetcher,_e.g._"--fetch=Medline\:cancer"=运行抓取器，例如_"--fetch=Medline\:cancer"
-Override_legacy_file_fields=跳过旧式文件域
+Run_Fetcher,_e.g._"--fetch=Medline\:cancer"=运行抓取器，例如_"--fetch\=Medline\:cancer"
 
 The_ACM_Digital_Library=ACM_数字图书馆
+Reset=重置
 
 Use_IEEE_LaTeX_abbreviations=使用_IEEE_LaTeX_缩写
 The_Guide_to_Computing_Literature=The_Guide_to_Computing_Literature
@@ -2047,7 +2026,6 @@ Unable_to_find_full_text_document_in_the_linked_web_page.=在给定的链接页�
 Connection_error_when_trying_to_find_full_text_document.=尝试下载全文时网络连接失败。
 This_entry_provides_no_URL_or_DOI_links.=此记录未提供_URL_或_DOI_链接。
 Full_text_article_download_failed=下载全文失败
-Down_up=下移
 Update_to_current_column_order=使用当前视图中的列顺序
 
 Rename_field=重命名域
@@ -2069,11 +2047,9 @@ The_same_version_of_this_plugin_is_already_installed.=该插件的同一版本�
 A_newer_version_of_this_plugin_is_already_installed.=该插件的更新版本已经安装。
 One_or_more_older_versions_of_this_plugin_is_installed._Delete_old_versions?=该插件的一个或多个旧版本已经安装，删除旧版本？
 Old_versions_deleted_successfully.=成功删除旧版本。
-Deletion_of_old_versions_failed.=旧版本删除失败。
 Install_plugin=安装插件
 Download_plugin=下载插件
 Plugin_manager=插件管理工具
-Plugins_installed_in_your_user_plugin_directory_(%0)_are_listed_below:=已安装到您的用户插件目录_(%0)_下的插件列表：
 Delete_the_%0_selected_plugins?=删除选中的_%0_个插件？
 Delete_plugins=删除插件
 Delete_the_selected_plugin?=删除选中的插件？
@@ -2086,4 +2062,114 @@ Not_loaded=没有被加载
 Loaded=已加载
 Could_not_determine_version_of_=无法取得版本信息——
 Install_anyway?=仍然继续安装？
-Highlight_groups_that_contain_entries_contained_in_any_currently_selected_group=高亮显示与当前选中分组有重叠记录的分组
+
+Looking_for_full_text_document...=查找文章全文文档
+Follow_DOI_or_URL_link_and_try_to_locate_PDF_full_text_document=根据_DOI_或者_URL_链接，尝试查找_PDF_全文文档。
+Unable_to_find_full_text_article._No_search_algorithm_defined_for_the_'%0'_web_site.=无法找到文章全文，没有定义网站_“%0”_上的查找算法。
+Found_pdf_link,_but_received_the_wrong_MIME_type._This_could_indicate_that_you_don't_have_access_to_the_fulltext_article.=找到_pdf_连接，但收到的_MIME_类型错误，这可能说明您没有访问该文章全文的权限。
+
+Autosave=自动保存
+Prompt_before_recovering_a_database_from_an_autosave_file=用自动保存的文件恢复数据库时进行提示
+Autosave_interval_(minutes)=自动保存间隔_(分钟)
+Do_you_want_to_recover_the_database_from_the_autosave_file?=您希望用自动保存的文件恢复数据库吗？
+Recover_from_autosave=用自动保存的文件恢复
+%0_warnings=%0_个警告
+
+Save_in_current_table_sort_order=按照当前表格排序保存
+Export_in_current_table_sort_order=按照当前表格排序导出
+Export_ordered_by_author/editor/year=按照“作者/编者/年份”顺序导出
+Export_entries_in_their_original_order=按照原始顺序导出记录
+Error_opening_file_'%0'.=打开文件_"%0"_时发生错误
+Autosave_of_file_'%0'=文件_"%0"_的自动保存文件
+Error_opening_autosave_of_'%0'._Trying_to_load_'%0'_instead.=打开_'%0'_的自动保存文件时发生错误，尝试加载_"%0"。
+
+Plugins_installed_in_your_user_plugin_directory_(%0)\:=在您的用户插件目录中安装的插件_(%0)
+Plugins_installed_in_other_locations\:=在其它位置安装的插件：
+Plugins_will_be_deleted_next_time_JabRef_starts_up.=插件将会在_JabRef_下次启动时删除。
+Plugin_will_be_deleted_next_time_JabRef_starts_up.=插件将会在_JabRef_下次启动时删除。
+Old_plugin_versions_will_be_deleted_next_time_JabRef_starts_up.=旧版本插件将会在_JabRef_下次启动时删除。
+
+Formatter_not_found\:_%0=无法找到的格式化器：_%0
+The_following_formatters_could_not_be_found=下列格式化器无法找到
+
+Clear_inputarea=清空输入框
+Automatically_set_file_links_for_this_entry=自动为此记录设置文件链接
+Could_not_save,_file_locked_by_another_JabRef_instance.=无法保存，文件被另一个_JabRef_实例锁定。
+File_is_locked_by_another_JabRef_instance.=文件被另一个_JabRef_实例锁定。
+Do_you_want_to_override_the_file_lock?=您是否希望覆盖文件锁？
+File_locked=文件被锁定
+Current_tmp_value=当前临时值
+Metadata_change=元数据改变
+Changes_have_been_made_to_the_following_metadata_elements=下列元数据元素被改变
+
+Generate_groups_for_author_last_names=用作者的姓_(last_name)_创建分组
+Generate_groups_for_editor_last_names=用编者的姓_(last_name)_创建分组
+Generate_groups_from_keywords_in_a_BibTeX_field=用_BibTeX_域中的关键词创建分组
+Enforce_legal_characters_in_BibTeX_keys=强制在_BibTeX_键值中使用合法字符
+The_#_character_is_not_allowed_in_BibTeX_strings_unless_escaped_as_in_'\\#'.=#_字符不允许出现在_BibTeX_字符串中，除非用_"\\#"_进行转义。
+Before_saving,_please_edit_any_strings_containing_the_#_character.=在保存之前，请修改任何包含_#_字符的字符串。
+
+Save_without_backup?=保存但不备份？
+Unable_to_create_backup=无法创建备份
+
+File_directory_is_not_set_or_does_not_exist.=文件目录没有设置或者不存在。
+Move_file_to_file_directory.=移动文件到文件目录。
+Rename_file_to=将文件更名为
+<b>All_Entries</b>_(this_group_cannot_be_edited_or_removed)=<b>所有记录</b>（此分组无法被编辑或者删除）
+</b>_-_static_group=</b>_-_静态分组
+,_refines_supergroup=,_refines_supergroup(翻译时没找到出处)
+,_includes_subgroups=,_包含子分组
+</b>_-_dynamic_group_(<b>=</b>_-_动态分组_(<b>
+</b>_contains_<b>=</b>_包含_<b>
+</b>_-_dynamic_group_(=</b>_-_动态分组_(
+search_expression\:_<b>=查询表达式:_<b>
+
+Disable_file_renaming_in_non-native_file_dialog=禁用非本地文件对话框中的文件重命名
+File_dialog=文件对话框
+No_entries_found._It_looks_like_you_do_not_have_access_to_search_JStor.=没有找到记录，看起来您没有_JStor_搜索功能的访问权限。
+
+Search_ScienceDirect=搜索_ScienceDirect
+Error_while_fetching_from_ScienceDirect=从_ScienceDirect_抓取时出错
+
+Error_initializing_custom_export_format_from_string_'%0'=从字串_"%0"_初始化自定义导出格式失败
+
+%0_entries_found._To_reduce_server_load,_only_%1_will_be_downloaded._It_will_be_very_slow,_in_order_to_make_ACM_happy.=找到_%0_条记录，为减轻服务器负载，只会下载其中的_%1_条。为了不惹_ACM_生气，下载速度会非常慢_^\_^
+BibTeX_importer=BibTeX_导入器
+
+BibLaTeX_mode=BibLaTeX_模式
+Optional_fields_2=可选域_2
+Please_wait=请稍候
+Waiting_for_save_operation_to_finish=正在等待保存操作完成
+Resolving_duplicate_BibTeX_keys...=处理重复的_BibTeX
+Finished_resolving_duplicate_BibTeX_keys._%0_entries_modified.=完成处理重复_BibTeX_键值，修改了_%0_条记录。
+This_database_contains_one_or_more_duplicated_BibTeX_keys.=当前数据库包含一个或多个重复的_BibTeX_键值。
+Do_you_want_to_resolve_duplicate_keys_now?=您希望马上处理重复的键值吗？
+
+Find_and_remove_duplicate_BibTeX_keys=查找并移除重复的_BibTeX_键值
+Expected_syntax_for_--fetch='<name_of_fetcher>\:<query>'=期望的语法_--fetch\='<name_of_fetcher>\:<query>'
+Duplicate_BibTeX_key=重复的_BibTeX_键值
+Duplicate_key=重复的键值
+Generate_key=生成键值
+Import_marking_color=标记导入记录的颜色
+The_current_version_features_a_new_way_of_storing_the_file_directory_setting_of<br>a_database._This_enables_multiple_users_of_the_same_database_file_to_keep_their<br>own_personal_setting_for_the_path_to_the_file_directory.<br>To_take_advantage_of_this,_your_file_directory_setting_must_be_changed_into_the<br>new_format.=当前版本使用了一种新方法来保存数据库的文件目录设置。这使得同一个数据库文件的不同<br>用户能够保存他们私有的文件目录路径。为了能够做到这点，您的文件目录设置必须改为新的格式。
+
+Ensure_unique_keys_using_letters_(a,_b,_...)=使用字母_(a,_b,_...)_保证键值唯一
+Ensure_unique_keys_using_letters_(b,_c,_...)=使用字母_(b,_c,_...)_保证键值唯一
+Always_add_letter_(a,_b,_...)_to_generated_keys=在生成键值时总是添加字母_(a,_b,_...)
+
+Table_and_entry_editor_colors=表格和记录编辑器颜色
+Entry_editor_font_color=记录编辑器字体颜色
+Entry_editor_background_color=记录编辑器背景颜色
+Entry_editor_active_background_color=记录编辑器活动的背景颜色
+Entry_editor_invalid_field_color=记录编辑器错误域颜色
+
+An_autosave_file_was_found_for_this_database._This_could_indicate_=当前数据库发现一个自动保存文件，这意味着
+that_JabRef_didn't_shut_down_cleanly_last_time_the_file_was_used.=JabRef_上次使用此文件时没有正常关闭。
+Error_setting_look_and_feel=错误设置视觉效果类_(look_and_feel)
+General_file_directory=生成文件目录
+User-specific_file_directory=用户指定的文件目录
+Search_failed\:_illegal_search_expression=搜索失败:_不合法的搜索表达式
+Show_ArXiv_column=显示_ArXiv_列
+
+You_must_enter_an_integer_value_in_the_interval_1025-65535_in_the_text_field_for=请输入_1025-65535_之间的整数值。设置项：
+Marking_color_%0=标记颜色_%0
