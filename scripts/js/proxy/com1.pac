@@ -10,6 +10,7 @@ function isBlockedSite(url, host)
 		dnsDomainIs(host, "blogger.com") ||
 		dnsDomainIs(host, "blogspot.com") ||
 		dnsDomainIs(host, "blogsearch.google.com") ||
+		dnsDomainIs(host, "books.google.com") ||
 		dnsDomainIs(host, "bullogger.com") ||
 		dnsDomainIs(host, "chromium.org") ||
 		dnsDomainIs(host, "depositfiles.com"))
@@ -40,9 +41,12 @@ function isBlockedSite(url, host)
 		dnsDomainIs(host, "opera.com") ||
 		dnsDomainIs(host, "picasaweb.google.com") ||
 		dnsDomainIs(host, "peacehall.com") ||
+		dnsDomainIs(host, "plus.google.com") ||
+		dnsDomainIs(host, "plusone.google.com") ||
 		dnsDomainIs(host, "realrumors.net") ||
 		dnsDomainIs(host, "samba.org") ||
 		dnsDomainIs(host, "sites.google.com") ||
+		dnsDomainIs(host, "t.co") ||
 		dnsDomainIs(host, "t66y.com") ||
 		dnsDomainIs(host, "technorati.com"))
 		return true;
@@ -53,9 +57,11 @@ function isBlockedSite(url, host)
 		dnsDomainIs(host, "yeeyan.com") ||
 		dnsDomainIs(host, "ytimg.com") ||
 		dnsDomainIs(host, "youtube.com") ||
+		dnsDomainIs(host, "webcache.googleusercontent.com") ||
 		dnsDomainIs(host, "wikileaks.org") ||
 		dnsDomainIs(host, "wikimedia.org") ||
 		dnsDomainIs(host, "www.google.com") ||
+		dnsDomainIs(host, "www.google.com.hk") ||
 		dnsDomainIs(host, "zh.wikipedia.org"))
 		return true;
 	return false;
@@ -69,7 +75,7 @@ function isBlockedIP(addr)
 function FindProxyForURL(url, host)
 {
 	var NO_Proxy	 = 'DIRECT';
-	var GFW_Proxy	 = 'SOCKS5 127.0.0.1:9090';
+	var GFW_Proxy	= 'PROXY 172.22.18.17:8128';
 
 	if(isBlockedSite(url, host)) {
 		return GFW_Proxy;
